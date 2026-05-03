@@ -1,0 +1,666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>~~*~~ Sandy Utah WEATHER PAGE ~~*~~ May 2, 2026</title>
+    <style type="text/css">
+      body {
+        background-color: #000080;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='%23ffff00' opacity='0.4'/%3E%3Ccircle cx='12' cy='8' r='1' fill='%23ffffff' opacity='0.3'/%3E%3Ccircle cx='7' cy='15' r='1' fill='%23ffff00' opacity='0.3'/%3E%3Ccircle cx='17' cy='13' r='1.5' fill='%23ffffff' opacity='0.4'/%3E%3C/svg%3E");
+        color: #ffff00;
+        font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+        margin: 0;
+        padding: 10px;
+      }
+      a {
+        color: #00ffff;
+        text-decoration: underline;
+      }
+      a:hover {
+        color: #ff00ff;
+      }
+      a:visited {
+        color: #ff69b4;
+      }
+      .outer-table {
+        width: 760px;
+        margin: 0 auto;
+        border: 4px ridge #00ffff;
+        background-color: #000044;
+        padding: 8px;
+      }
+      .header-cell {
+        background-color: #0000aa;
+        text-align: center;
+        padding: 8px;
+        border: 3px outset #aaaaff;
+      }
+      .title-text {
+        font-size: 28px;
+        font-weight: bold;
+        color: #ffff00;
+        text-shadow: 2px 2px #ff00ff;
+        letter-spacing: 2px;
+      }
+      .subtitle-text {
+        font-size: 14px;
+        color: #00ffff;
+      }
+      .sidebar {
+        background-color: #000066;
+        border: 2px inset #0000cc;
+        padding: 6px;
+        width: 140px;
+        vertical-align: top;
+      }
+      .main-content {
+        background-color: #000033;
+        border: 2px inset #0000cc;
+        padding: 10px;
+        vertical-align: top;
+      }
+      .weather-table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .weather-table th {
+        background-color: #0044aa;
+        color: #ffffff;
+        border: 2px outset #aaaaff;
+        padding: 5px 8px;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+      .weather-table td {
+        border: 1px solid #334488;
+        padding: 5px 8px;
+        font-size: 13px;
+        text-align: center;
+      }
+      .row-even {
+        background-color: #000055;
+      }
+      .row-odd {
+        background-color: #000077;
+      }
+      .temp-hot {
+        color: #ff6600;
+        font-weight: bold;
+      }
+      .temp-warm {
+        color: #ffcc00;
+        font-weight: bold;
+      }
+      .temp-cool {
+        color: #66ccff;
+        font-weight: bold;
+      }
+      .precip-dry {
+        color: #88ff88;
+      }
+      .precip-wet {
+        color: #aaaaff;
+      }
+      .section-header {
+        background-color: #0055cc;
+        color: #ffff00;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 4px 8px;
+        border: 2px outset #6699ff;
+        margin: 8px 0 4px 0;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+      .blinking {
+        animation: blink 1s step-start infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      .marquee-bar {
+        background-color: #000000;
+        border: 2px inset #555555;
+        padding: 4px;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #00ff00;
+        font-size: 13px;
+        font-family: "Courier New", monospace;
+      }
+      .footer-cell {
+        background-color: #000022;
+        text-align: center;
+        padding: 6px;
+        border-top: 3px ridge #00ffff;
+        font-size: 11px;
+        color: #888888;
+      }
+      .icon {
+        font-size: 22px;
+      }
+      .hit-counter {
+        border: 3px inset #333366;
+        background-color: #000000;
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        font-size: 20px;
+        padding: 4px 10px;
+        letter-spacing: 4px;
+        display: inline-block;
+      }
+      .under-construction {
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .rainbow span:nth-child(1) {
+        color: #ff0000;
+      }
+      .rainbow span:nth-child(2) {
+        color: #ff8800;
+      }
+      .rainbow span:nth-child(3) {
+        color: #ffff00;
+      }
+      .rainbow span:nth-child(4) {
+        color: #00ff00;
+      }
+      .rainbow span:nth-child(5) {
+        color: #0088ff;
+      }
+      .rainbow span:nth-child(6) {
+        color: #ff00ff;
+      }
+      .rainbow span:nth-child(7) {
+        color: #ff0000;
+      }
+      .rainbow span:nth-child(8) {
+        color: #ff8800;
+      }
+      .rainbow span:nth-child(9) {
+        color: #ffff00;
+      }
+      .rainbow span:nth-child(10) {
+        color: #00ff00;
+      }
+      .rainbow span:nth-child(11) {
+        color: #0088ff;
+      }
+      .rainbow span:nth-child(12) {
+        color: #ff00ff;
+      }
+      .guestbook-btn {
+        background-color: #330066;
+        color: #ffffff;
+        border: 3px outset #9900ff;
+        font-family: "Comic Sans MS", sans-serif;
+        font-size: 12px;
+        padding: 3px 8px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        margin: 4px 0;
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function () {
+        var msgs = [
+          "*** WELCOME TO THE SANDY UTAH WEATHER PAGE!! ***",
+          "*** Updated DAILY with the LATEST weather info!! ***",
+          "*** Best viewed in Internet Explorer 5.5 at 800x600 ***",
+          "*** Sign my GUESTBOOK below!! THANKS for visiting!! ***",
+        ];
+        var i = 0;
+        setInterval(function () {
+          if (window.status !== undefined) {
+            window.status = msgs[i % msgs.length];
+            i++;
+          }
+        }, 2000);
+      };
+    </script>
+  </head>
+  <body>
+    <div class="outer-table">
+      <!-- MARQUEE HEADER -->
+      <div class="marquee-bar">
+        <marquee behavior="scroll" direction="left" scrollamount="4">
+          *** WELCOME TO THE #1 SANDY UTAH WEATHER PAGE ON THE WEB *** TODAY IS
+          FRIDAY MAY 2, 2026 *** MORNING WEATHER: CLEAR AND COOL *** NO
+          PRECIPITATION *** HAVE A GREAT DAY SANDY!!! *** BEST VIEWED IN
+          INTERNET EXPLORER 5.5 AT 800x600 RESOLUTION ***
+        </marquee>
+      </div>
+
+      <!-- HEADER -->
+      <div class="header-cell" style="margin-top: 6px">
+        <div class="title-text">
+          &#9733;&#9733;&#9733; SANDY UTAH WEATHER ZONE &#9733;&#9733;&#9733;
+        </div>
+        <div class="subtitle-text">
+          <b>Sandy, Utah 84047 &nbsp;|&nbsp; Friday, May 2, 2026</b><br />
+          <span class="rainbow">
+            <span>M</span><span>O</span><span>R</span><span>N</span
+            ><span>I</span><span>N</span><span>G</span>
+            &nbsp;
+            <span>F</span><span>O</span><span>R</span><span>E</span
+            ><span>C</span>
+          </span>
+          <span class="rainbow">
+            <span>A</span><span>S</span><span>T</span>
+          </span>
+          &nbsp; 5 AM &ndash; 10 AM
+        </div>
+      </div>
+
+      <!-- MAIN LAYOUT TABLE -->
+      <table
+        width="100%"
+        cellspacing="4"
+        cellpadding="0"
+        style="margin-top: 6px"
+      >
+        <tr>
+          <!-- LEFT SIDEBAR -->
+          <td class="sidebar">
+            <div
+              style="
+                text-align: center;
+                font-size: 12px;
+                font-weight: bold;
+                color: #ffff00;
+              "
+            >
+              &#9829; QUICK LINKS &#9829;
+            </div>
+            <hr style="border-color: #334488" />
+
+            <div style="font-size: 11px; line-height: 1.8">
+              <a href="#">&#187; Home</a><br />
+              <a href="#">&#187; 7-Day Forecast</a><br />
+              <a href="#">&#187; Radar Map</a><br />
+              <a href="#">&#187; Storm Tracker</a><br />
+              <a href="#">&#187; Weather Cams</a><br />
+              <a href="#">&#187; Snow Report</a><br />
+              <a href="#">&#187; UV Index</a><br />
+              <a href="#">&#187; Guestbook</a><br />
+              <a href="#">&#187; Contact Me</a><br />
+              <a href="#">&#187; About This Site</a>
+            </div>
+
+            <hr style="border-color: #334488" />
+
+            <div
+              style="
+                text-align: center;
+                font-size: 11px;
+                color: #ffff00;
+                font-weight: bold;
+              "
+            >
+              *** VISITORS ***
+            </div>
+            <div style="text-align: center; margin-top: 4px">
+              <div class="hit-counter">003741</div>
+            </div>
+            <div
+              style="
+                text-align: center;
+                font-size: 10px;
+                color: #888888;
+                margin-top: 2px;
+              "
+            >
+              since Jan 1, 2001
+            </div>
+
+            <hr style="border-color: #334488" />
+
+            <div style="text-align: center">
+              <button class="guestbook-btn">&#9749; Sign Guestbook!</button>
+              <button class="guestbook-btn">&#9993; Email Webmaster</button>
+            </div>
+
+            <hr style="border-color: #334488" />
+
+            <div style="text-align: center; font-size: 22px">
+              &#9728;&nbsp;&#127754;&nbsp;&#9925;
+            </div>
+            <div style="text-align: center; font-size: 10px; color: #aaaaaa">
+              WEATHER SYMBOLS
+            </div>
+
+            <hr style="border-color: #334488" />
+
+            <div
+              class="under-construction"
+              style="text-align: center; font-size: 10px"
+            >
+              &#9888; SITE UNDER<br />CONSTRUCTION!<br />CHECK BACK SOON!
+            </div>
+
+            <hr style="border-color: #334488" />
+
+            <div style="text-align: center; font-size: 10px; color: #aaaaaa">
+              This page is<br />
+              <b style="color: #00ffff">Sandy, UT</b><br />
+              OFFICIAL unofficial<br />weather tracker!!
+            </div>
+          </td>
+
+          <!-- MAIN CONTENT AREA -->
+          <td class="main-content">
+            <div class="section-header">
+              &#9728; CURRENT CONDITIONS &nbsp;&bull;&nbsp; 5 AM &ndash; 10 AM
+              &#9728;
+            </div>
+
+            <p
+              style="
+                font-size: 12px;
+                color: #aaddff;
+                text-align: center;
+                margin: 4px 0 8px 0;
+              "
+            >
+              <b>Location:</b> Sandy, Utah 84047 &nbsp;|&nbsp;
+              <b>Lat:</b> 40.59&deg;N &nbsp;|&nbsp; <b>Lon:</b> 111.84&deg;W
+              &nbsp;|&nbsp; <b>Elevation:</b> 4,510 ft
+            </p>
+
+            <!-- HOURLY TABLE -->
+            <table class="weather-table" cellspacing="0" cellpadding="0">
+              <tr>
+                <th>&#128336; TIME</th>
+                <th>&#127777; TEMP (F)</th>
+                <th>&#127777; FEELS LIKE</th>
+                <th>&#127783; CONDITIONS</th>
+                <th>&#127783; PRECIP (in)</th>
+                <th>&#127744; HUMIDITY</th>
+                <th>&#127786; WIND</th>
+              </tr>
+              <tr class="row-odd">
+                <td><b style="color: #ffcc00">5:00 AM</b></td>
+                <td class="temp-cool">46&deg;F</td>
+                <td class="temp-cool">43&deg;F</td>
+                <td><span class="icon">&#127769;</span> Clear</td>
+                <td class="precip-dry">0.00"</td>
+                <td>61%</td>
+                <td>SW 5 mph</td>
+              </tr>
+              <tr class="row-even">
+                <td><b style="color: #ffcc00">6:00 AM</b></td>
+                <td class="temp-cool">47&deg;F</td>
+                <td class="temp-cool">44&deg;F</td>
+                <td><span class="icon">&#127774;</span> Sunrise</td>
+                <td class="precip-dry">0.00"</td>
+                <td>60%</td>
+                <td>SW 5 mph</td>
+              </tr>
+              <tr class="row-odd">
+                <td><b style="color: #ffcc00">7:00 AM</b></td>
+                <td class="temp-cool">50&deg;F</td>
+                <td class="temp-cool">48&deg;F</td>
+                <td><span class="icon">&#9728;</span> Sunny</td>
+                <td class="precip-dry">0.00"</td>
+                <td>58%</td>
+                <td>S 6 mph</td>
+              </tr>
+              <tr class="row-even">
+                <td><b style="color: #ffcc00">8:00 AM</b></td>
+                <td class="temp-warm">55&deg;F</td>
+                <td class="temp-warm">53&deg;F</td>
+                <td><span class="icon">&#9728;</span> Sunny</td>
+                <td class="precip-dry">0.00"</td>
+                <td>55%</td>
+                <td>S 7 mph</td>
+              </tr>
+              <tr class="row-odd">
+                <td><b style="color: #ffcc00">9:00 AM</b></td>
+                <td class="temp-warm">59&deg;F</td>
+                <td class="temp-warm">57&deg;F</td>
+                <td><span class="icon">&#9728;</span> Sunny</td>
+                <td class="precip-dry">0.00"</td>
+                <td>52%</td>
+                <td>SE 8 mph</td>
+              </tr>
+              <tr class="row-even">
+                <td><b style="color: #ffcc00">10:00 AM</b></td>
+                <td class="temp-warm">63&deg;F</td>
+                <td class="temp-warm">61&deg;F</td>
+                <td><span class="icon">&#127780;</span> Mostly Sunny</td>
+                <td class="precip-dry">0.00"</td>
+                <td>49%</td>
+                <td>SE 10 mph</td>
+              </tr>
+            </table>
+
+            <!-- SUMMARY BOX -->
+            <div class="section-header" style="margin-top: 10px">
+              &#9733; MORNING SUMMARY &#9733;
+            </div>
+
+            <table width="100%" cellspacing="4" cellpadding="0">
+              <tr>
+                <td width="50%" valign="top">
+                  <table
+                    width="100%"
+                    cellspacing="2"
+                    cellpadding="4"
+                    style="font-size: 12px; border: 1px solid #334488"
+                  >
+                    <tr>
+                      <td
+                        style="
+                          background: #001144;
+                          color: #aaddff;
+                          border-bottom: 1px solid #334488;
+                        "
+                        colspan="2"
+                      >
+                        <b>&#9632; 5-10 AM RANGE</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000033; color: #ffcc00">
+                        Low Temp:
+                      </td>
+                      <td style="background: #000033; color: #66ccff">
+                        <b>46&deg;F</b> (5 AM)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000044; color: #ffcc00">
+                        High Temp:
+                      </td>
+                      <td style="background: #000044; color: #ff9900">
+                        <b>63&deg;F</b> (10 AM)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000033; color: #ffcc00">
+                        Total Precip:
+                      </td>
+                      <td style="background: #000033; color: #88ff88">
+                        <b>0.00"</b> &#10003; Dry!
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000044; color: #ffcc00">
+                        Avg Humidity:
+                      </td>
+                      <td style="background: #000044; color: #aaddff">
+                        <b>56%</b>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td width="50%" valign="top">
+                  <table
+                    width="100%"
+                    cellspacing="2"
+                    cellpadding="4"
+                    style="font-size: 12px; border: 1px solid #334488"
+                  >
+                    <tr>
+                      <td
+                        style="
+                          background: #001144;
+                          color: #aaddff;
+                          border-bottom: 1px solid #334488;
+                        "
+                        colspan="2"
+                      >
+                        <b>&#9632; FUN FACTS</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000033; color: #ffcc00">
+                        Sunrise:
+                      </td>
+                      <td style="background: #000033; color: #ffaa00">
+                        <b>6:18 AM MDT</b> &#9728;
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000044; color: #ffcc00">
+                        Sunset:
+                      </td>
+                      <td style="background: #000044; color: #ff6600">
+                        <b>8:23 PM MDT</b> &#127751;
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000033; color: #ffcc00">
+                        Day Length:
+                      </td>
+                      <td style="background: #000033; color: #ffffff">
+                        <b>14h 04m</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background: #000044; color: #ffcc00">
+                        Moon Phase:
+                      </td>
+                      <td style="background: #000044; color: #dddddd">
+                        <b>Waxing Crescent</b> &#127762;
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- WEBMASTER NOTE -->
+            <div
+              style="
+                background-color: #001100;
+                border: 2px dashed #00aa00;
+                padding: 8px;
+                margin-top: 10px;
+                font-size: 11px;
+                color: #88ff88;
+              "
+            >
+              <b style="color: #00ff00">*** WEBMASTER'S NOTE ***</b><br />
+              Hey!! Welcome to my Sandy Utah weather page!! I made this site
+              because I LOVE weather and I live right here in Sandy UT and I
+              check the weather EVERY SINGLE DAY lol!!! If u have any
+              suggestions please sign my guestbook or email me!! I update this
+              page EVERY morning so bookmark it and come back!! Tell ur
+              friends!! Thanks for visiting!!
+              <br /><br />
+              <span style="color: #ffff00"
+                >P.S. - Don't forget to add this page to your favorites!!
+                (Ctrl+D)</span
+              >
+            </div>
+
+            <!-- BLINKING NOTICE -->
+            <p style="text-align: center; margin-top: 8px">
+              <span
+                class="blinking"
+                style="color: #ff0000; font-size: 13px; font-weight: bold"
+              >
+                *** DATA UPDATED DAILY AT 5:00 AM MDT ***
+              </span>
+            </p>
+
+            <!-- BOTTOM BANNERS -->
+            <table width="100%" cellspacing="2" style="margin-top: 6px">
+              <tr>
+                <td
+                  style="
+                    background: #220000;
+                    border: 2px outset #884444;
+                    text-align: center;
+                    padding: 4px;
+                    font-size: 11px;
+                    color: #ffaaaa;
+                  "
+                >
+                  &#9733; SANDY UT WEATHER &#9733;<br />
+                  <span style="font-size: 10px; color: #888888"
+                    >Serving Sandy since 2001!!</span
+                  >
+                </td>
+                <td width="8"></td>
+                <td
+                  style="
+                    background: #002200;
+                    border: 2px outset #448844;
+                    text-align: center;
+                    padding: 4px;
+                    font-size: 11px;
+                    color: #aaffaa;
+                  "
+                >
+                  &#127968; SANDY, UTAH &#127968;<br />
+                  <span style="font-size: 10px; color: #888888"
+                    >The Greatest Snow on Earth nearby!!</span
+                  >
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SECOND MARQUEE -->
+      <div class="marquee-bar" style="margin-top: 6px">
+        <marquee behavior="scroll" direction="right" scrollamount="3">
+          &#9733; SANDY UTAH 84047 &#9733; FRIDAY MAY 2, 2026 &#9733; MORNING
+          FORECAST: CLEAR &amp; SUNNY &#9733; TEMPS: 46-63 F &#9733; WINDS: S
+          5-10 MPH &#9733; PRECIPITATION: NONE &#9733; HAVE A GREAT DAY!!
+          &#9733;
+        </marquee>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer-cell">
+        <span style="color: #334488">|</span>
+        <a href="#">Home</a> <span style="color: #334488">|</span>
+        <a href="#">Forecast</a> <span style="color: #334488">|</span>
+        <a href="#">Radar</a> <span style="color: #334488">|</span>
+        <a href="#">Guestbook</a> <span style="color: #334488">|</span>
+        <a href="#">Links</a> <span style="color: #334488">|</span>
+        <a href="#">Contact</a> <span style="color: #334488">|</span>
+        <br />
+        <span style="color: #444466"
+          >&copy; 2001-2026 SandyUtahWeather.net &mdash; Best viewed in Internet
+          Explorer 5.5 at 800x600 &mdash; Netscape 4.x compatible &mdash; Page
+          last updated: May 2, 2026 5:00 AM MDT</span
+        >
+        <br />
+        <span style="color: #333355; font-size: 10px">
+          Made with &#9829; in Sandy, Utah &mdash; &lt;marquee&gt; tags powered
+          by HTML 4.01 &mdash; NO FRAMES!! &mdash; Valid HTML!!
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
