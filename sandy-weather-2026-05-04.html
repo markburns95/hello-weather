@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Sandy Utah Morning Weather - Web 2.0 AJAX-Powered Beta!" />
+  <meta name="keywords" content="sandy, utah, weather, temperature, web2.0, ajax, beta" />
+  <title>Sandy Weather :: Morning Report :: May 4, 2026 [BETA]</title>
+  <style type="text/css">
+    * { margin: 0; padding: 0; }
+    body {
+      font-family: Verdana, Tahoma, Arial, sans-serif;
+      font-size: 12px;
+      background-color: #e8eef4;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23e8eef4'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23dde5ee' opacity='0.5'/%3E%3C/svg%3E");
+      color: #333;
+    }
+    #wrapper {
+      width: 760px;
+      margin: 20px auto;
+    }
+    /* ---- HEADER ---- */
+    #header {
+      background: #1a6bbf;
+      background-image: linear-gradient(to bottom, #3d8fd9 0%, #1a6bbf 50%, #0f4f9a 100%);
+      border-radius: 8px 8px 0 0;
+      -moz-border-radius: 8px 8px 0 0;
+      padding: 16px 20px 12px 20px;
+      border: 1px solid #0a3a7a;
+      position: relative;
+    }
+    #header h1 {
+      font-family: Tahoma, Verdana, Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #0a3a7a;
+      letter-spacing: -1px;
+    }
+    #header h1 span.city {
+      color: #a8d8ff;
+    }
+    #header p.subtitle {
+      font-size: 11px;
+      color: #c5e0ff;
+      margin-top: 3px;
+    }
+    .beta-badge {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: #ff6600;
+      background-image: linear-gradient(to bottom, #ff8833, #cc4400);
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 7px;
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+      border: 1px solid #992200;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* ---- NAV TABS ---- */
+    #nav {
+      background: #d0dcea;
+      border-left: 1px solid #0a3a7a;
+      border-right: 1px solid #0a3a7a;
+      padding: 0 10px;
+      overflow: hidden;
+    }
+    #nav ul { list-style: none; }
+    #nav ul li { display: inline; }
+    #nav ul li a {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #336699;
+      text-decoration: none;
+      border: 1px solid #b0c4d8;
+      border-bottom: none;
+      background: #e8eef4;
+      background-image: linear-gradient(to bottom, #f5f8fb, #dde5ee);
+      border-radius: 4px 4px 0 0;
+      -moz-border-radius: 4px 4px 0 0;
+      margin-right: 3px;
+      position: relative;
+      top: 1px;
+    }
+    #nav ul li a.active {
+      background: #ffffff;
+      color: #cc3300;
+      border-color: #0a3a7a;
+    }
+    #nav ul li a:hover { color: #cc3300; text-decoration: underline; }
+    /* ---- MAIN CONTENT ---- */
+    #content-wrap {
+      background: #fff;
+      border: 1px solid #0a3a7a;
+      border-top: none;
+      padding: 16px;
+      overflow: hidden;
+    }
+    #main { float: left; width: 500px; }
+    #sidebar { float: right; width: 215px; }
+    /* ---- GLOSSY PANEL ---- */
+    .panel {
+      border: 1px solid #b0c4d8;
+      border-radius: 6px;
+      -moz-border-radius: 6px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .panel-header {
+      background: #2a7fd4;
+      background-image: linear-gradient(to bottom, #4a9ae8 0%, #2a7fd4 45%, #1860b0 55%, #2070cc 100%);
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 -1px 0 #0a3a7a;
+      letter-spacing: 0.5px;
+    }
+    /* glossy sheen overlay */
+    .panel-header::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      margin-top: 4px;
+    }
+    .panel-body { padding: 12px; background: #fff; }
+    /* ---- DATA TABLE ---- */
+    .weather-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .weather-table thead th {
+      background: #e0eaf5;
+      background-image: linear-gradient(to bottom, #edf3fa, #d5e4f0);
+      color: #1a4a80;
+      font-weight: bold;
+      padding: 7px 10px;
+      text-align: left;
+      border-bottom: 2px solid #a0bcd8;
+      border-right: 1px solid #c0d4e8;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .weather-table tbody tr { border-bottom: 1px solid #e8eef4; }
+    .weather-table tbody tr:hover { background-color: #f0f6fc; }
+    .weather-table tbody tr.alt { background-color: #f8fbfe; }
+    .weather-table tbody td {
+      padding: 8px 10px;
+      border-right: 1px solid #e8eef4;
+      color: #444;
+      vertical-align: middle;
+    }
+    .weather-table tbody td.time-cell {
+      font-weight: bold;
+      color: #1a6bbf;
+      white-space: nowrap;
+    }
+    .weather-table tbody td.temp-cell {
+      font-size: 14px;
+      font-weight: bold;
+      color: #cc4400;
+    }
+    .temp-bar-wrap {
+      background: #e8eef4;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      height: 10px;
+      width: 120px;
+      display: inline-block;
+      vertical-align: middle;
+      border: 1px solid #c0d4e8;
+      overflow: hidden;
+    }
+    .temp-bar {
+      height: 100%;
+      background: #ff6600;
+      background-image: linear-gradient(to bottom, #ff8833, #cc3300);
+      border-radius: 3px 0 0 3px;
+      -moz-border-radius: 3px 0 0 3px;
+    }
+    .precip-cell { color: #336699; font-weight: bold; }
+    .precip-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #3399cc;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    /* ---- SIDEBAR ---- */
+    .sidebar-widget {
+      background: #f5f8fb;
+      border: 1px solid #c0d4e8;
+      border-radius: 6px;
+      -moz-border-radius: 6px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      font-size: 11px;
+    }
+    .sidebar-widget .widget-title {
+      background: #3d8fd9;
+      background-image: linear-gradient(to bottom, #5ba5e8, #2a7fd4);
+      color: #fff;
+      font-weight: bold;
+      font-size: 11px;
+      padding: 6px 10px;
+      text-shadow: 0 -1px 0 #0a3a7a;
+    }
+    .sidebar-widget .widget-body { padding: 10px; color: #555; line-height: 1.6; }
+    .sidebar-widget .widget-body strong { color: #1a4a80; }
+    .rss-link {
+      display: inline-block;
+      background: #ff6600;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 4px;
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      text-decoration: none;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .tag {
+      display: inline-block;
+      background: #e0eaf5;
+      color: #336699;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      border: 1px solid #b0c8e0;
+      margin: 2px 1px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .tag:hover { background: #c0d8f0; }
+    /* ---- GLOSSY BUTTON ---- */
+    .btn {
+      display: inline-block;
+      padding: 6px 16px;
+      background: #2a7fd4;
+      background-image: linear-gradient(to bottom, #5aaaf0 0%, #2a7fd4 49%, #1560b0 51%, #1e72c8 100%);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: bold;
+      border: 1px solid #0a3a7a;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      text-shadow: 0 -1px 0 #0a3a7a;
+    }
+    .btn:hover {
+      background-image: linear-gradient(to bottom, #70bbff 0%, #3d8fd9 49%, #2070cc 51%, #2a85e0 100%);
+    }
+    /* ---- FOOTER ---- */
+    #footer {
+      background: #d0dcea;
+      border: 1px solid #0a3a7a;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      -moz-border-radius: 0 0 8px 8px;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 10px;
+      color: #667788;
+    }
+    #footer a { color: #336699; text-decoration: none; }
+    #footer a:hover { text-decoration: underline; }
+    .clearfix::after { content: ''; display: block; clear: both; }
+    .intro-text { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 12px; }
+    .intro-text strong { color: #1a4a80; }
+  </style>
+</head>
+<body>
+
+<div id="wrapper">
+
+  <!-- HEADER -->
+  <div id="header">
+    <span class="beta-badge">BETA</span>
+    <h1>&#9728; <span class="city">Sandy, UT</span> Weather Watch</h1>
+    <p class="subtitle">AJAX-Powered Morning Weather Report &mdash; May 4, 2026 &mdash; ZIP 84047</p>
+  </div>
+
+  <!-- NAV TABS -->
+  <div id="nav">
+    <ul>
+      <li><a href="#" class="active">&#9733; Morning Report</a></li>
+      <li><a href="#">Afternoon</a></li>
+      <li><a href="#">5-Day Forecast</a></li>
+      <li><a href="#">My Weather</a></li>
+    </ul>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content-wrap">
+    <div class="clearfix">
+
+      <!-- MAIN -->
+      <div id="main">
+        <p class="intro-text">
+          Good morning, <strong>Sandy, Utah</strong>! Here&#8217;s your hyperlocal morning weather snapshot
+          for <strong>May 4, 2026</strong>, covering the 5&nbsp;AM&ndash;10&nbsp;AM window.
+          Data refreshed automagically via Web&nbsp;2.0 technology. <a class="rss-link" href="#">RSS</a>
+        </p>
+
+        <div class="panel">
+          <div class="panel-header">&#9729; Hourly Morning Conditions &mdash; 5 AM to 10 AM</div>
+          <div class="panel-body">
+            <table class="weather-table">
+              <thead>
+                <tr>
+                  <th>Hour</th>
+                  <th>Temp (&deg;F)</th>
+                  <th>Feel</th>
+                  <th>Precip (in)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="time-cell">5:00 AM</td>
+                  <td class="temp-cell">49&deg;F</td>
+                  <td>
+                    <span class="temp-bar-wrap">
+                      <span class="temp-bar" style="width:37%"></span>
+                    </span>
+                  </td>
+                  <td class="precip-cell"><span class="precip-dot"></span>0.01 in</td>
+                </tr>
+                <tr class="alt">
+                  <td class="time-cell">6:00 AM</td>
+                  <td class="temp-cell">48&deg;F</td>
+                  <td>
+                    <span class="temp-bar-wrap">
+                      <span class="temp-bar" style="width:36%"></span>
+                    </span>
+                  </td>
+                  <td class="precip-cell"><span class="precip-dot"></span>0.01 in</td>
+                </tr>
+                <tr>
+                  <td class="time-cell">7:00 AM</td>
+                  <td class="temp-cell">52&deg;F</td>
+                  <td>
+                    <span class="temp-bar-wrap">
+                      <span class="temp-bar" style="width:42%"></span>
+                    </span>
+                  </td>
+                  <td class="precip-cell" style="color:#888;">&#8212; 0.00 in</td>
+                </tr>
+                <tr class="alt">
+                  <td class="time-cell">8:00 AM</td>
+                  <td class="temp-cell">58&deg;F</td>
+                  <td>
+                    <span class="temp-bar-wrap">
+                      <span class="temp-bar" style="width:52%"></span>
+                    </span>
+                  </td>
+                  <td class="precip-cell" style="color:#888;">&#8212; 0.00 in</td>
+                </tr>
+                <tr>
+                  <td class="time-cell">9:00 AM</td>
+                  <td class="temp-cell">63&deg;F</td>
+                  <td>
+                    <span class="temp-bar-wrap">
+                      <span class="temp-bar" style="width:61%"></span>
+                    </span>
+                  </td>
+                  <td class="precip-cell" style="color:#888;">&#8212; 0.00 in</td>
+                </tr>
+                <tr class="alt">
+                  <td class="time-cell">10:00 AM</td>
+                  <td class="temp-cell">67&deg;F</td>
+                  <td>
+                    <span class="temp-bar-wrap">
+                      <span class="temp-bar" style="width:68%"></span>
+                    </span>
+                  </td>
+                  <td class="precip-cell" style="color:#888;">&#8212; 0.00 in</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">&#9998; Today&#8217;s Morning Summary</div>
+          <div class="panel-body">
+            <p style="color:#555; line-height:1.7; font-size:12px;">
+              Chilly start to the morning in Sandy with a light drizzle around dawn (5&#8211;6&nbsp;AM),
+              clearing up by 7&nbsp;AM. Temperatures climb steadily from a low of
+              <strong style="color:#cc3300;">48&deg;F</strong> at 6&nbsp;AM to a
+              pleasant <strong style="color:#cc3300;">67&deg;F</strong> by 10&nbsp;AM.
+              Great conditions for a morning walk once the early cloud cover breaks!
+            </p>
+            <p style="margin-top: 10px;">
+              <a class="btn" href="#">&#8635; Refresh Data</a>
+              &nbsp;
+              <a class="btn" href="#" style="background:#559944; background-image: linear-gradient(to bottom, #77cc55 0%, #559944 49%, #336622 51%, #44aa33 100%); border-color:#226611;">&#9733; Bookmark</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div id="sidebar">
+
+        <div class="sidebar-widget">
+          <div class="widget-title">&#9733; Quick Stats</div>
+          <div class="widget-body">
+            <strong>Location:</strong> Sandy, UT 84047<br />
+            <strong>Date:</strong> May 4, 2026<br />
+            <strong>Window:</strong> 5 AM &ndash; 10 AM<br />
+            <strong>Low:</strong> 48&deg;F @ 6 AM<br />
+            <strong>High:</strong> 67&deg;F @ 10 AM<br />
+            <strong>Trend:</strong> &#8593; Warming<br />
+            <strong>Sky:</strong> Partly Cloudy<br />
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">&#9729; Precipitation</div>
+          <div class="widget-body">
+            Light early-morning drizzle of <strong>0.01 in</strong>
+            at 5&nbsp;AM and 6&nbsp;AM. Dry by 7&nbsp;AM onward.
+            Total for window: <strong>0.02 in</strong>.
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">&#9993; Tags</div>
+          <div class="widget-body">
+            <a class="tag" href="#">#sandy-ut</a>
+            <a class="tag" href="#">#weather</a>
+            <a class="tag" href="#">#84047</a>
+            <a class="tag" href="#">#utah</a>
+            <a class="tag" href="#">#morning</a>
+            <a class="tag" href="#">#may2026</a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">&#9776; About</div>
+          <div class="widget-body">
+            Powered by <strong>SandyWeather 2.0</strong> &mdash; the next-generation
+            Web&nbsp;2.0 hyper-local weather mashup. RSS available.
+            Best viewed at 1024&times;768.
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+
+    </div><!-- /clearfix -->
+  </div><!-- /content-wrap -->
+
+  <!-- FOOTER -->
+  <div id="footer">
+    &copy; 2026 SandyWeather 2.0 [BETA] &mdash;
+    <a href="#">Home</a> &middot;
+    <a href="#">About</a> &middot;
+    <a href="#">RSS Feed</a> &middot;
+    <a href="#">Blogroll</a> &middot;
+    <a href="#">Contact</a>
+    <br />
+    <span style="font-size:9px; color:#99aabb;">Best viewed in Firefox 1.0 or IE6 &middot; 1024&times;768 resolution &middot; Page rendered in 0.042s</span>
+  </div>
+
+</div><!-- /wrapper -->
+
+</body>
+</html>
