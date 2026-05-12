@@ -1,0 +1,907 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="SandyWx Beta - Community-powered morning weather for Sandy, Utah 84047. Digg it!" />
+  <meta name="keywords" content="sandy, utah, weather, temperature, precipitation, 84047, morning, forecast, web2.0, ajax, community, digg, tags, rss, beta" />
+  <meta name="author" content="sandywx_community" />
+  <title>SandyWx &beta; :: Morning Report :: May 12, 2026 - Sandy, Utah Weather</title>
+  <style type="text/css">
+    /* === Reset === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #dce3ea;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23dce3ea'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23c8d2dc' opacity='0.4'/%3E%3C/svg%3E");
+      font-family: 'Trebuchet MS', Tahoma, Arial, sans-serif;
+      font-size: 13px;
+      color: #333333;
+    }
+
+    a { color: #1a6699; text-decoration: none; }
+    a:hover { color: #e05000; text-decoration: underline; }
+
+    /* === Header === */
+    #header {
+      background: #1a3a5c;
+      background: -moz-linear-gradient(top, #2a5a8c 0%, #1a3a5c 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2a5a8c), color-stop(100%,#1a3a5c));
+      background: linear-gradient(to bottom, #2a5a8c 0%, #1a3a5c 100%);
+      padding: 10px 20px;
+      border-bottom: 3px solid #0a2540;
+    }
+
+    #header .logo-wrap {
+      display: inline-block;
+    }
+
+    #header h1 {
+      font-size: 30px;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-weight: bold;
+      color: #ffffff;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      line-height: 1;
+    }
+
+    #header h1 .beta {
+      font-size: 13px;
+      background: #ff6600;
+      background: linear-gradient(to bottom, #ff8800 0%, #cc4400 100%);
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 3px;
+      vertical-align: super;
+      font-weight: bold;
+      letter-spacing: 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+      text-shadow: none;
+    }
+
+    /* Reflection effect */
+    #header .logo-reflect {
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.15);
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      letter-spacing: -1px;
+      transform: scaleY(-1);
+      line-height: 0.6;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    }
+
+    #header .tagline {
+      color: #a8c8e8;
+      font-size: 11px;
+      margin-top: 3px;
+    }
+
+    #header .rss-badge {
+      float: right;
+      margin-top: 8px;
+      background: #ff6600;
+      background: linear-gradient(to bottom, #ff8800 0%, #e04400 100%);
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 7px;
+      border-radius: 3px;
+      border: 1px solid #bb3300;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      text-decoration: none;
+    }
+
+    /* === Nav bar === */
+    #navbar {
+      background: #2a6099;
+      background: linear-gradient(to bottom, #3a78bb 0%, #2a5590 100%);
+      padding: 0 20px;
+      border-bottom: 2px solid #1a3a6c;
+    }
+
+    #navbar a {
+      display: inline-block;
+      color: #ddeeff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 7px 14px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+
+    #navbar a:hover, #navbar a.active {
+      background: rgba(255,255,255,0.15);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    /* === Layout === */
+    #wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 10px;
+    }
+
+    #content-area {
+      display: table;
+      width: 100%;
+      border-spacing: 12px 0;
+    }
+
+    #main-col {
+      display: table-cell;
+      width: 660px;
+      vertical-align: top;
+    }
+
+    #side-col {
+      display: table-cell;
+      width: 260px;
+      vertical-align: top;
+    }
+
+    /* === Boxes === */
+    .box {
+      background: #ffffff;
+      border: 1px solid #c0cdd8;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .box-header {
+      background: #e8f0f8;
+      background: linear-gradient(to bottom, #f2f7fd 0%, #d8e8f5 100%);
+      border-bottom: 1px solid #b8cede;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #1a3a5c;
+    }
+
+    .box-header .box-icon {
+      color: #ff6600;
+      margin-right: 5px;
+    }
+
+    .box-body {
+      padding: 12px;
+    }
+
+    /* === Weather table === */
+    .wx-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .wx-table th {
+      background: #2a6099;
+      background: linear-gradient(to bottom, #3a78bb 0%, #2a5590 100%);
+      color: #ffffff;
+      font-weight: bold;
+      padding: 7px 10px;
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .wx-table tr:nth-child(odd) td {
+      background-color: #f5f8fc;
+    }
+
+    .wx-table tr:nth-child(even) td {
+      background-color: #eaf0f8;
+    }
+
+    .wx-table tr:hover td {
+      background-color: #ddeeff;
+    }
+
+    .wx-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #dde8f0;
+    }
+
+    .time-cell {
+      font-weight: bold;
+      color: #1a3a5c;
+      width: 90px;
+    }
+
+    .temp-cell {
+      font-weight: bold;
+      font-size: 16px;
+      color: #cc4400;
+      width: 90px;
+    }
+
+    .temp-bar-cell {
+      width: 200px;
+    }
+
+    .temp-bar-outer {
+      background: #dde8f2;
+      border-radius: 6px;
+      height: 14px;
+      overflow: hidden;
+      border: 1px solid #b8cede;
+    }
+
+    .temp-bar-inner {
+      height: 100%;
+      border-radius: 6px;
+      background: #e05000;
+      background: linear-gradient(to bottom, #ff8030 0%, #cc3300 100%);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
+    }
+
+    .precip-cell {
+      color: #336699;
+      font-weight: bold;
+      width: 100px;
+    }
+
+    .condition-cell {
+      color: #555555;
+      font-size: 12px;
+    }
+
+    /* === Digg / social buttons === */
+    .social-row {
+      padding: 10px 12px;
+      background: #f0f4f8;
+      border-top: 1px solid #d0dce8;
+      font-size: 11px;
+      color: #666;
+    }
+
+    .digg-btn {
+      display: inline-block;
+      background: #006699;
+      background: linear-gradient(to bottom, #3388cc 0%, #005588 100%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #004477;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      margin-right: 6px;
+      text-decoration: none;
+    }
+
+    .digg-btn:hover {
+      background: linear-gradient(to bottom, #44aaee 0%, #0066aa 100%);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .delicious-btn {
+      display: inline-block;
+      background: #3388ff;
+      background: linear-gradient(to bottom, #55aaff 0%, #2266dd 100%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #1155cc;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      margin-right: 6px;
+      text-decoration: none;
+    }
+
+    .su-btn {
+      display: inline-block;
+      background: #ff5500;
+      background: linear-gradient(to bottom, #ff7722 0%, #dd3300 100%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #bb2200;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      text-decoration: none;
+    }
+
+    /* === Star rating === */
+    .star-rating {
+      color: #ffaa00;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .star-rating .empty { color: #cccccc; }
+
+    /* === Summary box === */
+    .summary-box {
+      background: linear-gradient(135deg, #eaf4ff 0%, #d0e8f8 100%);
+      border: 1px solid #99c0e0;
+      border-radius: 6px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .summary-box .big-temp {
+      font-size: 48px;
+      font-weight: bold;
+      color: #cc4400;
+      line-height: 1;
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .summary-box .big-temp sup {
+      font-size: 20px;
+      vertical-align: super;
+    }
+
+    .summary-box .conditions {
+      font-size: 16px;
+      color: #2a5a8c;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .summary-box .updated {
+      font-size: 10px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    .ajax-spinner {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #ccc;
+      border-top-color: #336699;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* === Sidebar widgets === */
+    .widget-box {
+      background: #ffffff;
+      border: 1px solid #c0cdd8;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .widget-header {
+      background: linear-gradient(to bottom, #f2f7fd 0%, #d8e8f5 100%);
+      border-bottom: 1px solid #b8cede;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #1a3a5c;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .widget-body {
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    /* Tag cloud */
+    .tag-cloud a {
+      display: inline-block;
+      background: #e8f0f8;
+      border: 1px solid #b8cede;
+      border-radius: 3px;
+      color: #336699;
+      padding: 2px 6px;
+      margin: 2px;
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .tag-cloud a:hover {
+      background: #2a6099;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .tag-cloud a.tag-lg { font-size: 14px; font-weight: bold; }
+    .tag-cloud a.tag-md { font-size: 12px; }
+    .tag-cloud a.tag-sm { font-size: 10px; }
+
+    /* Sidebar user block */
+    .user-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px dotted #d0dce8;
+      margin-bottom: 8px;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #3a78bb, #1a3a5c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .user-name { font-weight: bold; color: #1a3a5c; font-size: 12px; }
+    .user-rep { font-size: 10px; color: #888; }
+
+    /* Recent activity */
+    .activity-item {
+      padding: 5px 0;
+      border-bottom: 1px dotted #dde8f0;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .activity-item:last-child { border-bottom: none; }
+
+    .activity-time {
+      color: #aaa;
+      font-size: 10px;
+    }
+
+    /* Comment count badge */
+    .comment-badge {
+      display: inline-block;
+      background: #2a6099;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 5px;
+      border-radius: 8px;
+      margin-left: 4px;
+    }
+
+    /* === Footer === */
+    #footer {
+      background: #1a2a3a;
+      color: #8899aa;
+      padding: 16px 20px;
+      font-size: 11px;
+      margin-top: 20px;
+      border-top: 3px solid #0a1a2a;
+    }
+
+    #footer a { color: #6699bb; }
+    #footer a:hover { color: #99ccff; text-decoration: underline; }
+
+    .footer-links { margin-bottom: 8px; }
+    .footer-links a { margin-right: 12px; }
+
+    .footer-badges {
+      margin-top: 10px;
+    }
+
+    .footer-badge {
+      display: inline-block;
+      background: linear-gradient(to bottom, #2a4a6a 0%, #1a2a3a 100%);
+      border: 1px solid #445566;
+      border-radius: 3px;
+      color: #8899aa;
+      font-size: 9px;
+      padding: 2px 6px;
+      margin-right: 6px;
+    }
+
+    /* === Responsive note (would be new in 2007) === */
+    .ie6-note {
+      background: #fffacc;
+      border: 1px solid #ddcc00;
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 11px;
+      color: #554400;
+      margin-bottom: 10px;
+    }
+
+    /* Comment form */
+    .comment-form input[type=text], .comment-form textarea {
+      width: 100%;
+      border: 1px solid #b8cede;
+      border-radius: 4px;
+      padding: 5px 7px;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-size: 12px;
+      color: #333;
+      background: #f8fbff;
+      margin-bottom: 6px;
+    }
+
+    .comment-form input[type=text]:focus, .comment-form textarea:focus {
+      border-color: #3a78bb;
+      outline: none;
+      background: #fff;
+    }
+
+    .submit-btn {
+      background: #2a8a00;
+      background: linear-gradient(to bottom, #44bb22 0%, #226600 100%);
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 12px;
+      border: 1px solid #115500;
+      border-radius: 4px;
+      padding: 5px 16px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(to bottom, #55cc33 0%, #337700 100%);
+    }
+  </style>
+</head>
+<body>
+
+<!-- *** SandyWx Beta - Community-Powered Weather *** -->
+<!-- Built with AJAX | Powered by Web 2.0 Awesomeness -->
+
+<div id="header">
+  <a href="#" class="rss-badge">&#9654; RSS</a>
+  <div class="logo-wrap">
+    <h1>SandyWx <span class="beta">&beta;ETA</span></h1>
+    <span class="logo-reflect" aria-hidden="true">SandyWx</span>
+  </div>
+  <div class="tagline">Community-Powered Morning Weather &mdash; Sandy, Utah 84047 &mdash; <strong style="color:#ff9944;">AJAX-Enabled</strong></div>
+</div>
+
+<div id="navbar">
+  <a href="#" class="active">&#127968; Home</a>
+  <a href="#">&#127783; Forecast</a>
+  <a href="#">&#128202; Charts</a>
+  <a href="#">&#128172; Community</a>
+  <a href="#">&#127988; My Profile</a>
+  <a href="#">&#9881; Settings</a>
+</div>
+
+<div id="wrapper">
+
+  <!-- IE6 compat note (very 2007) -->
+  <div class="ie6-note">
+    &#9888; <strong>Note:</strong> SandyWx Beta is optimized for Firefox 2.0, IE 7, and Safari 3. Some features may not display correctly in older browsers.
+    <a href="#">Upgrade now &raquo;</a>
+  </div>
+
+  <div id="content-area">
+
+    <!-- === MAIN COLUMN === -->
+    <div id="main-col">
+
+      <!-- Current conditions summary -->
+      <div class="summary-box">
+        <table width="100%">
+          <tr>
+            <td width="140">
+              <div class="big-temp">53<sup>&deg;F</sup></div>
+              <div class="conditions">&#9728; Partly Cloudy</div>
+              <div class="updated"><span class="ajax-spinner"></span> AJAX live refresh &bull; 5:00 AM MDT</div>
+            </td>
+            <td style="padding-left:20px; vertical-align:top;">
+              <table style="font-size:12px; color:#336;">
+                <tr><td style="color:#888; padding-right:10px;">Location:</td><td><strong>Sandy, Utah 84047</strong></td></tr>
+                <tr><td style="color:#888;">Date:</td><td><strong>Tuesday, May 12, 2026</strong></td></tr>
+                <tr><td style="color:#888;">Window:</td><td><strong>5:00 AM &ndash; 10:00 AM MDT</strong></td></tr>
+                <tr><td style="color:#888;">Humidity:</td><td><strong>52%</strong></td></tr>
+                <tr><td style="color:#888;">Wind:</td><td><strong>SSW 6 mph</strong></td></tr>
+                <tr><td style="color:#888;">Elevation:</td><td><strong>4,400 ft</strong></td></tr>
+              </table>
+            </td>
+            <td style="text-align:right; vertical-align:top; padding-right:10px;">
+              <div style="font-size:11px; color:#888; margin-bottom:4px;">Rate this forecast:</div>
+              <div class="star-rating">
+                &#9733;&#9733;&#9733;&#9733;<span class="empty">&#9733;</span>
+              </div>
+              <div style="font-size:10px; color:#aaa; margin-top:3px;">4.0 / 5.0 &bull; 312 votes</div>
+              <div style="margin-top:8px; font-size:11px; color:#888;">
+                <strong style="color:#1a6699;">1,204</strong> views today
+                <span class="comment-badge">17</span> comments
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Hourly weather table -->
+      <div class="box">
+        <div class="box-header">
+          <span class="box-icon">&#9200;</span>
+          Hourly Conditions &mdash; 5 AM to 10 AM
+          <span style="float:right; font-size:10px; font-weight:normal; color:#888;">
+            <span class="ajax-spinner"></span> AJAX auto-refresh every 15 min
+          </span>
+        </div>
+        <div class="box-body" style="padding:0;">
+          <table class="wx-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Temp (&deg;F)</th>
+                <th>Trend</th>
+                <th>Precip (in)</th>
+                <th>Conditions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-cell">5:00 AM</td>
+                <td class="temp-cell">53&deg;</td>
+                <td class="temp-bar-cell">
+                  <div class="temp-bar-outer">
+                    <div class="temp-bar-inner" style="width:53%;"></div>
+                  </div>
+                </td>
+                <td class="precip-cell" style="color:#338833;">0.00&quot;</td>
+                <td class="condition-cell">&#9728; Partly Cloudy</td>
+              </tr>
+              <tr>
+                <td class="time-cell">6:00 AM</td>
+                <td class="temp-cell">52&deg;</td>
+                <td class="temp-bar-cell">
+                  <div class="temp-bar-outer">
+                    <div class="temp-bar-inner" style="width:52%;"></div>
+                  </div>
+                </td>
+                <td class="precip-cell" style="color:#338833;">0.00&quot;</td>
+                <td class="condition-cell">&#9728; Partly Cloudy</td>
+              </tr>
+              <tr>
+                <td class="time-cell">7:00 AM</td>
+                <td class="temp-cell">55&deg;</td>
+                <td class="temp-bar-cell">
+                  <div class="temp-bar-outer">
+                    <div class="temp-bar-inner" style="width:55%;"></div>
+                  </div>
+                </td>
+                <td class="precip-cell" style="color:#338833;">0.00&quot;</td>
+                <td class="condition-cell">&#9788; Clearing</td>
+              </tr>
+              <tr>
+                <td class="time-cell">8:00 AM</td>
+                <td class="temp-cell">59&deg;</td>
+                <td class="temp-bar-cell">
+                  <div class="temp-bar-outer">
+                    <div class="temp-bar-inner" style="width:59%;"></div>
+                  </div>
+                </td>
+                <td class="precip-cell" style="color:#338833;">0.00&quot;</td>
+                <td class="condition-cell">&#9728; Mostly Sunny</td>
+              </tr>
+              <tr>
+                <td class="time-cell">9:00 AM</td>
+                <td class="temp-cell">64&deg;</td>
+                <td class="temp-bar-cell">
+                  <div class="temp-bar-outer">
+                    <div class="temp-bar-inner" style="width:64%;"></div>
+                  </div>
+                </td>
+                <td class="precip-cell" style="color:#338833;">0.00&quot;</td>
+                <td class="condition-cell">&#9728; Sunny</td>
+              </tr>
+              <tr>
+                <td class="time-cell">10:00 AM</td>
+                <td class="temp-cell">68&deg;</td>
+                <td class="temp-bar-cell">
+                  <div class="temp-bar-outer">
+                    <div class="temp-bar-inner" style="width:68%;"></div>
+                  </div>
+                </td>
+                <td class="precip-cell" style="color:#338833;">0.00&quot;</td>
+                <td class="condition-cell">&#9728; Sunny</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Social sharing row (very 2007) -->
+        <div class="social-row">
+          <strong>Share this report:</strong>
+          &nbsp;
+          <a href="#" class="digg-btn">&#9650; Digg It</a>
+          <a href="#" class="delicious-btn">&#128278; del.icio.us</a>
+          <a href="#" class="su-btn">&#128077; StumbleUpon</a>
+          &nbsp;&nbsp;
+          <span style="color:#999; font-size:10px;">Posted by <strong><a href="#">wx_nerd_sandy</a></strong> &bull; 3 diggs so far</span>
+        </div>
+      </div>
+
+      <!-- Community forecast summary -->
+      <div class="box">
+        <div class="box-header">
+          <span class="box-icon">&#128172;</span> Community Forecast Notes
+          <span class="comment-badge">17</span>
+        </div>
+        <div class="box-body">
+          <p style="color:#555; margin-bottom:10px; line-height:1.6;">
+            A dry and pleasant May morning in Sandy. Temperatures climb steadily from
+            the low 50s at sunrise to the upper 60s by mid-morning. No precipitation
+            expected during the 5 AM&ndash;10 AM window. High pressure system keeping
+            the Wasatch Front clear and comfortable. Great morning for a jog along the
+            Jordan River Parkway!
+          </p>
+          <p style="font-size:11px; color:#aaa;">
+            &mdash; sandywxguru &bull;
+            <span class="star-rating" style="font-size:12px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            &bull; <a href="#">5 people found this useful</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Add a comment (Web 2.0 UGC) -->
+      <div class="box">
+        <div class="box-header">
+          <span class="box-icon">&#9997;</span> Add Your Comment
+        </div>
+        <div class="box-body">
+          <form class="comment-form" onsubmit="return false;">
+            <input type="text" placeholder="Your username" style="width:200px; margin-right:6px; display:inline;" />
+            <input type="text" placeholder="Location (e.g. South Sandy)" style="width:220px; display:inline;" /><br />
+            <textarea rows="3" placeholder="Share your local conditions or thoughts... (tags welcome: #sandy #utah #weather)"></textarea>
+            <button type="submit" class="submit-btn">&#10003; Post Comment</button>
+            &nbsp;
+            <span style="font-size:11px; color:#aaa;">OpenID login coming soon!</span>
+          </form>
+        </div>
+      </div>
+
+    </div><!-- /#main-col -->
+
+    <!-- === SIDEBAR === -->
+    <div id="side-col">
+
+      <!-- About widget -->
+      <div class="widget-box">
+        <div class="widget-header">&#9432; About SandyWx</div>
+        <div class="widget-body">
+          <div class="user-block">
+            <div class="user-avatar">W</div>
+            <div>
+              <div class="user-name">wx_nerd_sandy</div>
+              <div class="user-rep">Rep: 4,821 &bull; &#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+          <p style="color:#555; font-size:11px; line-height:1.5;">
+            SandyWx is a community-driven, AJAX-powered weather portal for Sandy, Utah 84047.
+            Sign up free &mdash; no email required!
+          </p>
+          <p style="margin-top:8px; font-size:11px;">
+            <a href="#">&#9654; Create Account</a> &bull;
+            <a href="#">Sign In</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Tag cloud -->
+      <div class="widget-box">
+        <div class="widget-header">&#127991; Popular Tags</div>
+        <div class="widget-body">
+          <div class="tag-cloud">
+            <a href="#" class="tag-lg">sandy</a>
+            <a href="#" class="tag-lg">utah</a>
+            <a href="#" class="tag-md">weather</a>
+            <a href="#" class="tag-md">morning</a>
+            <a href="#" class="tag-sm">84047</a>
+            <a href="#" class="tag-md">temperature</a>
+            <a href="#" class="tag-sm">forecast</a>
+            <a href="#" class="tag-sm">sunny</a>
+            <a href="#" class="tag-md">wasatch</a>
+            <a href="#" class="tag-sm">slc</a>
+            <a href="#" class="tag-sm">precipitation</a>
+            <a href="#" class="tag-lg">dry</a>
+            <a href="#" class="tag-sm">spring</a>
+            <a href="#" class="tag-md">may</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent activity feed -->
+      <div class="widget-box">
+        <div class="widget-header">&#9889; Recent Activity</div>
+        <div class="widget-body" style="padding:8px 10px;">
+          <div class="activity-item">
+            <strong>wx_nerd_sandy</strong> posted the morning report
+            <div class="activity-time">2 minutes ago</div>
+          </div>
+          <div class="activity-item">
+            <strong>MtnViewGal</strong> rated 5 stars
+            <div class="activity-time">4 minutes ago</div>
+          </div>
+          <div class="activity-item">
+            <strong>sandywxguru</strong> added a comment
+            <div class="activity-time">8 minutes ago</div>
+          </div>
+          <div class="activity-item">
+            <strong>UtahSkyWatcher</strong> added tag: <em>#wasatch</em>
+            <div class="activity-time">11 minutes ago</div>
+          </div>
+          <div class="activity-item">
+            <strong>JordanRiverRunner</strong> digg&rsquo;d this report
+            <div class="activity-time">15 minutes ago</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RSS / subscribe -->
+      <div class="widget-box">
+        <div class="widget-header">&#9654; Subscribe / Follow</div>
+        <div class="widget-body" style="font-size:11px; line-height:2;">
+          <a href="#" style="color:#ff6600; font-weight:bold;">&#9654; RSS Feed</a><br />
+          <a href="#">&#9993; Email Alerts</a><br />
+          <a href="#">&#128241; SMS Alerts (beta)</a><br />
+          <a href="#" style="color:#1a6699;">&#128279; Add to iGoogle</a><br />
+          <a href="#">&#9733; Add to Netvibes</a>
+        </div>
+      </div>
+
+      <!-- Digg widget sidebar -->
+      <div class="widget-box">
+        <div class="widget-header">&#9650; Top Dugg Reports</div>
+        <div class="widget-body" style="font-size:11px;">
+          <div class="activity-item">
+            <span style="background:#336699;color:#fff;padding:1px 5px;border-radius:3px;font-weight:bold;">42</span>
+            &nbsp;<a href="#">May 10 &mdash; Record High 78&deg;</a>
+          </div>
+          <div class="activity-item">
+            <span style="background:#336699;color:#fff;padding:1px 5px;border-radius:3px;font-weight:bold;">31</span>
+            &nbsp;<a href="#">May 7 &mdash; Late Frost Warning</a>
+          </div>
+          <div class="activity-item">
+            <span style="background:#336699;color:#fff;padding:1px 5px;border-radius:3px;font-weight:bold;">3</span>
+            &nbsp;<a href="#">May 12 &mdash; Today&rsquo;s Report</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /#side-col -->
+
+  </div><!-- /#content-area -->
+</div><!-- /#wrapper -->
+
+<div id="footer">
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">API (beta)</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Advertise</a>
+    <a href="#">Contact</a>
+  </div>
+  <div>
+    &copy; 2007&ndash;2026 SandyWx &mdash; The Social Weather Community &mdash;
+    Sandy, Utah 84047 &mdash; All temps in &deg;F &mdash; Data may vary.
+  </div>
+  <div class="footer-badges">
+    <span class="footer-badge">XHTML 1.0</span>
+    <span class="footer-badge">CSS 2.1</span>
+    <span class="footer-badge">AJAX Powered</span>
+    <span class="footer-badge">Web 2.0 Ready</span>
+    <span class="footer-badge">RSS 2.0</span>
+    <span class="footer-badge">OpenID Soon</span>
+  </div>
+</div>
+
+</body>
+</html>
