@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandy Weather — Morning Report — May 14, 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #ECEFF1;
+      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+      color: #212121;
+      min-height: 100vh;
+    }
+
+    /* ── App Bar ── */
+    .app-bar {
+      background-color: #1565C0;
+      color: #fff;
+      padding: 16px 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.28), 0 4px 5px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .app-bar .material-icon {
+      width: 24px; height: 24px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .app-bar h1 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.005em;
+    }
+    .app-bar .subtitle {
+      margin-left: auto;
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.87;
+    }
+
+    /* ── Content wrapper ── */
+    .content {
+      max-width: 600px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* ── Hero card ── */
+    .hero-card {
+      background: #1565C0;
+      color: #fff;
+      border-radius: 2px;
+      padding: 32px 24px 24px;
+      box-shadow: 0 8px 10px rgba(0,0,0,0.14), 0 3px 14px rgba(0,0,0,0.12), 0 5px 5px rgba(0,0,0,0.20);
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+    .hero-card .location {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+    .hero-card .date {
+      font-size: 28px;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .hero-card .tagline {
+      font-size: 14px;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+    .hero-card .current-temp {
+      font-size: 72px;
+      font-weight: 300;
+      line-height: 1;
+      margin: 16px 0 4px;
+    }
+    .hero-card .current-temp sup {
+      font-size: 32px;
+      vertical-align: super;
+    }
+    .hero-card .conditions {
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.87;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #78909C;
+      margin: 16px 0 8px 4px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border-radius: 2px;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.14), 0 1px 5px rgba(0,0,0,0.12), 0 3px 1px rgba(0,0,0,0.10);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    /* ── Hourly rows ── */
+    .hourly-row {
+      display: flex;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid #ECEFF1;
+    }
+    .hourly-row:last-child { border-bottom: none; }
+
+    .hourly-row .time {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1565C0;
+      width: 52px;
+      flex-shrink: 0;
+    }
+
+    .hourly-row .bar-wrap {
+      flex: 1;
+      margin: 0 16px;
+      height: 6px;
+      background: #ECEFF1;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .hourly-row .bar {
+      height: 100%;
+      background: linear-gradient(to right, #42A5F5, #1565C0);
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    .hourly-row .temp {
+      font-size: 22px;
+      font-weight: 300;
+      color: #212121;
+      width: 60px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .hourly-row .temp span {
+      font-size: 13px;
+      color: #78909C;
+    }
+
+    .hourly-row .precip {
+      font-size: 12px;
+      color: #78909C;
+      width: 60px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .hourly-row .precip.wet {
+      color: #42A5F5;
+      font-weight: 500;
+    }
+
+    /* ── Column headers ── */
+    .row-header {
+      display: flex;
+      align-items: center;
+      padding: 8px 24px;
+    }
+    .row-header span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #90A4AE;
+      font-weight: 500;
+    }
+    .row-header .rh-time  { width: 52px; flex-shrink: 0; }
+    .row-header .rh-bar   { flex: 1; margin: 0 16px; }
+    .row-header .rh-temp  { width: 60px; text-align: right; flex-shrink: 0; }
+    .row-header .rh-precip{ width: 60px; text-align: right; flex-shrink: 0; }
+
+    /* ── Info card ── */
+    .info-card {
+      display: flex;
+      gap: 0;
+    }
+    .info-cell {
+      flex: 1;
+      padding: 16px 24px;
+      border-right: 1px solid #ECEFF1;
+    }
+    .info-cell:last-child { border-right: none; }
+    .info-cell .ic-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #78909C;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .info-cell .ic-value {
+      font-size: 24px;
+      font-weight: 300;
+      color: #212121;
+    }
+    .info-cell .ic-unit {
+      font-size: 12px;
+      color: #90A4AE;
+    }
+
+    /* ── FAB-style badge ── */
+    .fab-badge {
+      display: inline-block;
+      background: #FF6F00;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+      box-shadow: 0 2px 4px rgba(255,111,0,0.4);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #B0BEC5;
+      padding: 24px 16px 32px;
+      letter-spacing: 0.04em;
+    }
+    .footer a { color: #90A4AE; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- App Bar -->
+  <div class="app-bar">
+    <!-- cloud/sun icon SVG inline -->
+    <svg class="material-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+    </svg>
+    <h1>Sandy, UT Weather</h1>
+    <span class="fab-badge">Morning</span>
+    <span class="subtitle">May 14, 2026 · 84047</span>
+  </div>
+
+  <!-- Main content -->
+  <div class="content" style="margin-top: 80px;">
+
+    <!-- Hero -->
+    <div class="hero-card">
+      <div class="location">Sandy, Utah · Elevation 4,518 ft</div>
+      <div class="date">Wednesday, May 14<sup>th</sup></div>
+      <div class="tagline">Morning report · 5 AM – 10 AM · Zip 84047</div>
+      <div class="current-temp">56<sup>°F</sup></div>
+      <div class="conditions">Mostly Clear · Low Humidity · Calm Winds</div>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="section-label">Morning Summary</div>
+    <div class="card info-card">
+      <div class="info-cell">
+        <div class="ic-label">Low</div>
+        <div class="ic-value">49 <span class="ic-unit">°F</span></div>
+      </div>
+      <div class="info-cell">
+        <div class="ic-label">High</div>
+        <div class="ic-value">69 <span class="ic-unit">°F</span></div>
+      </div>
+      <div class="info-cell">
+        <div class="ic-label">Precip</div>
+        <div class="ic-value">0.00 <span class="ic-unit">in</span></div>
+      </div>
+    </div>
+
+    <!-- Hourly breakdown -->
+    <div class="section-label">Hourly Breakdown</div>
+    <div class="card">
+      <div class="row-header">
+        <span class="rh-time">Time</span>
+        <span class="rh-bar"></span>
+        <span class="rh-temp">Temp</span>
+        <span class="rh-precip">Precip</span>
+      </div>
+
+      <!-- 5 AM — 49°F -->
+      <div class="hourly-row">
+        <span class="time">5 AM</span>
+        <div class="bar-wrap"><div class="bar" style="width:30%"></div></div>
+        <span class="temp">49 <span>°F</span></span>
+        <span class="precip">0.00 in</span>
+      </div>
+
+      <!-- 6 AM — 51°F -->
+      <div class="hourly-row">
+        <span class="time">6 AM</span>
+        <div class="bar-wrap"><div class="bar" style="width:37%"></div></div>
+        <span class="temp">51 <span>°F</span></span>
+        <span class="precip">0.00 in</span>
+      </div>
+
+      <!-- 7 AM — 55°F -->
+      <div class="hourly-row">
+        <span class="time">7 AM</span>
+        <div class="bar-wrap"><div class="bar" style="width:50%"></div></div>
+        <span class="temp">55 <span>°F</span></span>
+        <span class="precip">0.00 in</span>
+      </div>
+
+      <!-- 8 AM — 60°F -->
+      <div class="hourly-row">
+        <span class="time">8 AM</span>
+        <div class="bar-wrap"><div class="bar" style="width:65%"></div></div>
+        <span class="temp">60 <span>°F</span></span>
+        <span class="precip">0.00 in</span>
+      </div>
+
+      <!-- 9 AM — 65°F -->
+      <div class="hourly-row">
+        <span class="time">9 AM</span>
+        <div class="bar-wrap"><div class="bar" style="width:80%"></div></div>
+        <span class="temp">65 <span>°F</span></span>
+        <span class="precip">0.00 in</span>
+      </div>
+
+      <!-- 10 AM — 69°F -->
+      <div class="hourly-row">
+        <span class="time">10 AM</span>
+        <div class="bar-wrap"><div class="bar" style="width:93%"></div></div>
+        <span class="temp">69 <span>°F</span></span>
+        <span class="precip">0.00 in</span>
+      </div>
+    </div>
+
+    <!-- Conditions card -->
+    <div class="section-label">Conditions</div>
+    <div class="card">
+      <div class="info-card">
+        <div class="info-cell">
+          <div class="ic-label">Sky</div>
+          <div class="ic-value" style="font-size:16px;font-weight:400;">Mostly Clear</div>
+        </div>
+        <div class="info-cell">
+          <div class="ic-label">Humidity</div>
+          <div class="ic-value">32 <span class="ic-unit">%</span></div>
+        </div>
+        <div class="info-cell">
+          <div class="ic-label">Wind</div>
+          <div class="ic-value" style="font-size:16px;font-weight:400;">Calm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Sandy, UT · 84047 · Lat 40.5721, Lon -111.8388<br>
+      Data reflects morning conditions 5 AM–10 AM MDT
+    </div>
+
+  </div>
+
+</body>
+</html>
