@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>~~*~~ SANDY UTAH WEATHER PAGE ~~*~~ May 15 2026 ~~*~~</title>
+<style type="text/css">
+body {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='white' opacity='0.6'/%3E%3Ccircle cx='80' cy='50' r='1' fill='white' opacity='0.4'/%3E%3Ccircle cx='150' cy='30' r='1.5' fill='white' opacity='0.7'/%3E%3Ccircle cx='60' cy='120' r='1' fill='white' opacity='0.5'/%3E%3Ccircle cx='170' cy='100' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='30' cy='170' r='1.5' fill='white' opacity='0.3'/%3E%3Ccircle cx='120' cy='160' r='1' fill='white' opacity='0.7'/%3E%3Ccircle cx='190' cy='180' r='1' fill='white' opacity='0.5'/%3E%3Ccircle cx='100' cy='90' r='1' fill='white' opacity='0.4'/%3E%3Ccircle cx='45' cy='75' r='1.5' fill='white' opacity='0.6'/%3E%3C/svg%3E");
+  font-family: "Comic Sans MS", "Times New Roman", serif;
+  color: #00FF00;
+  margin: 0;
+  padding: 0;
+}
+
+a { color: #FF00FF; text-decoration: underline; }
+a:visited { color: #FF8800; }
+a:hover { color: #FFFF00; }
+
+.page-wrapper {
+  width: 640px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.blink {
+  animation: blinkAnim 0.8s step-start infinite;
+}
+@keyframes blinkAnim {
+  50% { opacity: 0; }
+}
+
+.glow-title {
+  font-family: "Comic Sans MS", "Arial Black", sans-serif;
+  font-size: 28px;
+  color: #FFFF00;
+  text-align: center;
+  text-shadow: 0 0 8px #FFFF00, 0 0 16px #FF8800;
+  letter-spacing: 3px;
+}
+
+.section-header {
+  font-family: "Arial Black", "Impact", sans-serif;
+  font-size: 18px;
+  color: #00FFFF;
+  text-align: center;
+  text-shadow: 0 0 6px #00FFFF;
+  margin: 14px 0 6px 0;
+}
+
+.marquee-bar {
+  background-color: #000080;
+  border: 2px solid #FF00FF;
+  padding: 4px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-block;
+  animation: scrollLeft 18s linear infinite;
+  color: #FFFF00;
+  font-size: 14px;
+  font-weight: bold;
+}
+@keyframes scrollLeft {
+  from { transform: translateX(660px); }
+  to   { transform: translateX(-100%); }
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #00FF00;
+  margin: 10px 0;
+  box-shadow: 0 0 6px #00FF00;
+}
+
+.weather-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+}
+.weather-table th {
+  background-color: #000080;
+  color: #FFFF00;
+  border: 2px solid #FF00FF;
+  padding: 6px 10px;
+  text-align: center;
+  font-family: "Arial Black", sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.weather-table td {
+  background-color: #001100;
+  color: #00FF00;
+  border: 1px solid #005500;
+  padding: 7px 10px;
+  text-align: center;
+}
+.weather-table tr:hover td {
+  background-color: #002200;
+  color: #FFFF00;
+}
+.weather-table td.time-cell {
+  color: #00FFFF;
+  font-weight: bold;
+}
+.weather-table td.cold { color: #66CCFF; }
+.weather-table td.warm { color: #FF8800; }
+.weather-table td.precip { color: #88AAFF; }
+.weather-table td.dry   { color: #444444; }
+
+.counter-box {
+  text-align: center;
+  margin: 10px 0;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: #888888;
+}
+.counter-digits {
+  display: inline-block;
+  background-color: #111;
+  border: 2px inset #555;
+  color: #FF4400;
+  padding: 3px 8px;
+  font-size: 16px;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+
+.footer-note {
+  font-size: 11px;
+  color: #666666;
+  text-align: center;
+  font-family: "Times New Roman", serif;
+  margin-top: 8px;
+}
+
+.construction-bar {
+  text-align: center;
+  font-size: 13px;
+  color: #FFFF00;
+  background-color: #330000;
+  border: 2px dashed #FF4400;
+  padding: 6px;
+  margin: 10px 0;
+}
+
+.sparkle {
+  display: inline-block;
+  animation: sparkleAnim 1.4s ease-in-out infinite;
+}
+.sparkle:nth-child(2) { animation-delay: 0.4s; }
+.sparkle:nth-child(3) { animation-delay: 0.8s; }
+@keyframes sparkleAnim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.2; transform: scale(1.4); }
+}
+
+.about-box {
+  background-color: #000033;
+  border: 2px solid #0000FF;
+  padding: 8px;
+  font-size: 13px;
+  color: #CCCCCC;
+  margin: 10px 0;
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- TOP SPARKLE HEADER -->
+  <p style="text-align:center; font-size:22px; margin:10px 0 4px 0;">
+    <span class="sparkle">&#10024;</span>
+    <span class="sparkle">&#9733;</span>
+    <span class="sparkle">&#10024;</span>
+  </p>
+
+  <div class="glow-title">~~*~~ SANDY, UT WEATHER ~~*~~</div>
+  <div style="text-align:center; color:#FF00FF; font-size:15px; margin:4px 0;">
+    &lt;&lt;&lt; Morning Report &mdash; May 15, 2026 &gt;&gt;&gt;
+  </div>
+  <div style="text-align:center; color:#FFFF00; font-size:13px;">
+    ZIP Code: <b>84047</b> &nbsp;|&nbsp; Sandy, Utah, USA
+  </div>
+
+  <hr class="divider">
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <span class="marquee-inner">
+      *** WELCOME TO THE SANDY WEATHER PAGE ***
+      &#9733; Brought to you by WeatherFan2000 &#9733;
+      Click to bookmark this page! ***
+      Best viewed in Netscape Navigator 4.0 at 640x480 resolution ***
+    </span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- WEATHER TABLE -->
+  <div class="section-header">&#127783; HOURLY TEMPS &amp; PRECIP &#127783;</div>
+  <div style="text-align:center; color:#888; font-size:12px; margin-bottom:8px;">5:00 AM &mdash; 10:00 AM &nbsp;&bull;&nbsp; Mountain Time</div>
+
+  <table class="weather-table">
+    <thead>
+      <tr>
+        <th>TIME</th>
+        <th>TEMP (&#176;F)</th>
+        <th>PRECIP (in)</th>
+        <th>CONDITIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time-cell">5:00 AM</td>
+        <td class="cold">48&#176;F</td>
+        <td class="dry">0.00</td>
+        <td>Clear &amp; Cold</td>
+      </tr>
+      <tr>
+        <td class="time-cell">6:00 AM</td>
+        <td class="cold">47&#176;F</td>
+        <td class="precip">0.01</td>
+        <td>Light Drizzle</td>
+      </tr>
+      <tr>
+        <td class="time-cell">7:00 AM</td>
+        <td class="cold">49&#176;F</td>
+        <td class="dry">0.00</td>
+        <td>Partly Cloudy</td>
+      </tr>
+      <tr>
+        <td class="time-cell">8:00 AM</td>
+        <td>54&#176;F</td>
+        <td class="dry">0.00</td>
+        <td>Partly Cloudy</td>
+      </tr>
+      <tr>
+        <td class="time-cell">9:00 AM</td>
+        <td>58&#176;F</td>
+        <td class="dry">0.00</td>
+        <td>Mostly Sunny</td>
+      </tr>
+      <tr>
+        <td class="time-cell">10:00 AM</td>
+        <td class="warm">63&#176;F</td>
+        <td class="dry">0.00</td>
+        <td>Sunny!! &#9728;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <!-- UNDER CONSTRUCTION -->
+  <div class="construction-bar">
+    <span class="blink">&#9888;</span>
+    &nbsp; THIS PAGE IS UNDER CONSTRUCTION! More features coming SOON!! &nbsp;
+    <span class="blink">&#9888;</span>
+  </div>
+
+  <!-- ABOUT BOX -->
+  <div class="about-box">
+    <b style="color:#FFFF00;">ABOUT THIS PAGE:</b><br>
+    Hi!! My name is WeatherFan2000 and I made this page to share the weather in Sandy, Utah!
+    I check it every morning before school. Please <a href="mailto:weatherfan2000@aol.com">e-mail me</a>
+    if you have questions or if the data is wrong LOL!!<br><br>
+    <span style="color:#00FF00;">&#9658;</span> Data collected from local weather station, Sandy UT 84047<br>
+    <span style="color:#00FF00;">&#9658;</span> All temps in Fahrenheit<br>
+    <span style="color:#00FF00;">&#9658;</span> Precipitation in inches
+  </div>
+
+  <hr class="divider">
+
+  <!-- VISITOR COUNTER -->
+  <div class="counter-box">
+    You are visitor #<br>
+    <span class="counter-digits">0 0 4 7 2 1</span><br>
+    since January 1st!! Thanks for stopping by!!!
+  </div>
+
+  <hr class="divider">
+
+  <!-- FOOTER -->
+  <p style="text-align:center; font-size:13px; color:#FF00FF; margin:6px 0;">
+    <span class="sparkle">&#10024;</span>
+    Sign my <a href="#">GuestBook</a>! &nbsp;|&nbsp;
+    <a href="#">Web Rings</a> &nbsp;|&nbsp;
+    <a href="#">Cool Links</a>
+    <span class="sparkle">&#10024;</span>
+  </p>
+
+  <div class="footer-note">
+    &copy; 1997&ndash;2026 WeatherFan2000 Homepages &bull;
+    Best viewed in Netscape Navigator 4.0 at 640x480 &bull;
+    <span style="color:#FF00FF;">NO FRAMES VERSION AVAILABLE!</span>
+  </div>
+
+  <p style="text-align:center; margin:10px 0; font-size:11px; color:#555;">
+    Last Updated: May 15, 2026 &bull; Sandy, UT &bull; 84047
+  </p>
+
+</div>
+</body>
+</html>
