@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="SandyWeather 2.0 - Sandy, Utah 84047 Morning Weather Report" />
+  <meta name="keywords" content="sandy utah weather, 84047, morning temps, hourly weather, precipitation" />
+  <title>SandyWeather &#946;eta :: Morning Report :: May 18, 2026</title>
+  <style type="text/css">
+
+  /* === RESET & BASE === */
+  * { margin: 0; padding: 0; border: 0; }
+  body {
+    background-color: #d0dae6;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23d0dae6'/%3E%3Crect width='2' height='2' fill='%23c4cfde' opacity='0.6'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23c4cfde' opacity='0.6'/%3E%3C/svg%3E");
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333333;
+    min-width: 820px;
+  }
+  a { color: #2060a8; text-decoration: none; }
+  a:hover { color: #e06000; text-decoration: underline; }
+
+  /* === HEADER === */
+  #header {
+    background: #1a5296;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4b8fd4), color-stop(45%, #2268b5), to(#0e3e7e));
+    background: -moz-linear-gradient(top, #4b8fd4 0%, #2268b5 45%, #0e3e7e 100%);
+    background: linear-gradient(to bottom, #4b8fd4 0%, #2268b5 45%, #0e3e7e 100%);
+    border-bottom: 3px solid #0b316b;
+    -webkit-box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    padding: 14px 20px 10px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* gloss overlay */
+  #header-gloss {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 48%;
+    background: rgba(255,255,255,0.13);
+    pointer-events: none;
+  }
+  #logo {
+    font-size: 34px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.2);
+    display: inline;
+    font-family: "Lucida Grande", Arial, sans-serif;
+  }
+  #logo .weather-part { color: #a8d8ff; }
+  #beta-badge {
+    display: inline-block;
+    background: #ff6600;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff9933), to(#cc4400));
+    background: linear-gradient(to bottom, #ff9933, #cc4400);
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 7px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    margin-left: 6px;
+    vertical-align: super;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    letter-spacing: 0.5px;
+  }
+  #header-tagline {
+    color: #90c0e8;
+    font-size: 11px;
+    margin-top: 4px;
+  }
+  #header-nav {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+  }
+  #header-nav a {
+    color: #cce0ff;
+    font-size: 11px;
+    margin-left: 14px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  #header-nav a:hover { color: #fff; text-decoration: underline; }
+
+  /* === PAGE WRAPPER === */
+  #wrapper {
+    width: 840px;
+    margin: 16px auto;
+  }
+
+  /* === BREADCRUMB === */
+  #breadcrumb {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.65);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #bccede;
+  }
+  #breadcrumb a { color: #2060a8; }
+
+  /* === TWO-COLUMN LAYOUT === */
+  #main-col {
+    float: left;
+    width: 570px;
+  }
+  #side-col {
+    float: right;
+    width: 248px;
+  }
+  #page-clearfix { clear: both; }
+
+  /* === BASE CARD === */
+  .card {
+    background: #ffffff;
+    border: 1px solid #b0c4d8;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    -webkit-box-shadow: 0 2px 7px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.85);
+    -moz-box-shadow: 0 2px 7px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.85);
+    box-shadow: 0 2px 7px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.85);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: #e6f0fa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#edf5fd), to(#d8e8f6));
+    background: linear-gradient(to bottom, #edf5fd, #d8e8f6);
+    border-bottom: 1px solid #bcd2ea;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #184878;
+  }
+  .card-body { padding: 14px; }
+
+  /* === MAIN REPORT CARD HEADER === */
+  #report-hero {
+    background: #1d5aaa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4080cc), color-stop(50%, #1e5cb0), to(#0d3c88));
+    background: linear-gradient(to bottom, #4080cc 0%, #1e5cb0 50%, #0d3c88 100%);
+    -webkit-border-radius: 9px 9px 0 0;
+    -moz-border-radius: 9px 9px 0 0;
+    border-radius: 9px 9px 0 0;
+    padding: 14px 16px 12px 16px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  #report-hero-gloss {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: rgba(255,255,255,0.11);
+    pointer-events: none;
+  }
+  #report-title {
+    font-size: 21px;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    letter-spacing: -0.5px;
+  }
+  #report-subtitle {
+    font-size: 11px;
+    color: #90c4ee;
+    margin-top: 4px;
+  }
+  #date-badge {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    padding: 6px 14px;
+    text-align: center;
+    color: #fff;
+    font-size: 11px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  #date-badge .day-num {
+    font-size: 26px;
+    font-weight: bold;
+    display: block;
+    line-height: 1.1;
+  }
+
+  /* === WEATHER DATA TABLE === */
+  #weather-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  #weather-table thead tr {
+    background: #e4eef8;
+    background: linear-gradient(to bottom, #ecf4fc, #d4e8f4);
+  }
+  #weather-table th {
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+    color: #265080;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 2px solid #b0ccdf;
+  }
+  #weather-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e8f0f8;
+    color: #444;
+    vertical-align: middle;
+  }
+  #weather-table tbody tr:last-child td { border-bottom: none; }
+  #weather-table tbody tr:hover { background: #f0f7ff; }
+  #weather-table .row-alt { background: #f6fbff; }
+  #weather-table .row-alt:hover { background: #ecf6ff; }
+  .time-cell {
+    font-weight: bold;
+    color: #18427a;
+    width: 88px;
+    font-size: 12px;
+  }
+  /* glossy pill badges */
+  .temp-pill {
+    display: inline-block;
+    padding: 3px 11px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+    font-weight: bold;
+    font-size: 13px;
+    position: relative;
+  }
+  .temp-cool {
+    background: #c8e4ff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#daeeff), to(#aad0f0));
+    background: linear-gradient(to bottom, #daeeff, #aad0f0);
+    color: #1040808;
+    border: 1px solid #80b8e0;
+    color: #104070;
+  }
+  .temp-warm {
+    background: #ffe0a0;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffeecc), to(#ffc840));
+    background: linear-gradient(to bottom, #ffeecc, #ffc840);
+    color: #704000;
+    border: 1px solid #e0a030;
+  }
+  .cond-cell {
+    font-size: 11px;
+    color: #556;
+  }
+  .wx-em { font-size: 18px; vertical-align: middle; margin-right: 4px; }
+  .precip-pill {
+    display: inline-block;
+    padding: 2px 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  .precip-none {
+    background: #d8f4d8;
+    background: linear-gradient(to bottom, #e8fbe8, #c0eac0);
+    color: #186018;
+    border: 1px solid #80c880;
+  }
+  .trend-cell { font-size: 15px; color: #cc4400; }
+  .trend-dash { color: #999; }
+
+  /* === SUMMARY BAR === */
+  #summary-bar {
+    padding: 9px 14px;
+    background: #f0f7ff;
+    border-top: 1px solid #cce0f4;
+    font-size: 11px;
+    color: #446;
+  }
+  #summary-bar strong { color: #184878; }
+  .s-stat { display: inline-block; margin-right: 22px; }
+
+  /* === TAGS & SHARE === */
+  #social-bar {
+    padding: 9px 14px;
+    background: #f8f8fa;
+    border-top: 1px solid #dde0ea;
+    font-size: 11px;
+  }
+  .share-label { color: #777; font-weight: bold; }
+  .sbtn {
+    display: inline-block;
+    padding: 3px 9px;
+    margin: 0 3px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff !important;
+    text-decoration: none !important;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .sbtn-digg    { background: linear-gradient(to bottom, #88aacc, #5a7ca8); border: 1px solid #4a6a98; }
+  .sbtn-del     { background: linear-gradient(to bottom, #5599ee, #2266cc); border: 1px solid #1a55aa; }
+  .sbtn-reddit  { background: linear-gradient(to bottom, #ff8844, #dd4400); border: 1px solid #bb3300; }
+  .sbtn-stumble { background: linear-gradient(to bottom, #ff6644, #dd2200); border: 1px solid #aa1100; }
+  .sbtn:hover { opacity: 0.85; }
+  #tag-row { margin-top: 6px; }
+  .tag-label { color: #777; font-weight: bold; }
+  .tag-link {
+    display: inline-block;
+    background: #e4ecf6;
+    border: 1px solid #b8ccdf;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin: 1px 2px;
+    font-size: 10px;
+    color: #2060a0 !important;
+  }
+  .tag-link:hover { background: #ccddf0; text-decoration: none !important; }
+
+  /* === SIDEBAR WIDGETS === */
+  .widget-header {
+    font-size: 12px;
+    font-weight: bold;
+    color: #184878;
+  }
+
+  /* RSS subscribe button */
+  #rss-btn {
+    display: block;
+    text-align: center;
+    padding: 9px 8px;
+    background: #ff7700;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffaa33), to(#dd5500));
+    background: linear-gradient(to bottom, #ffaa33, #dd5500);
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: bold;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+    -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    margin-bottom: 7px;
+    text-decoration: none !important;
+  }
+  #rss-btn:hover { background: linear-gradient(to bottom, #ffbb44, #ee6611); }
+
+  /* Now conditions big display */
+  #now-temp {
+    text-align: center;
+    padding: 6px 0 10px;
+  }
+  #now-temp .now-icon { font-size: 50px; line-height: 1.1; display: block; }
+  #now-temp .now-reading { font-size: 32px; font-weight: bold; color: #cc5000; display: block; margin-top: 2px; }
+  #now-temp .now-loc { font-size: 10px; color: #888; }
+
+  /* mini bar graph */
+  .mini-bar-wrap { margin: 5px 0; }
+  .mini-bar-lbl { font-size: 10px; color: #666; margin-bottom: 2px; }
+  .mini-bar-bg {
+    background: #dde8f4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    height: 9px;
+    overflow: hidden;
+  }
+  .mini-bar-fill {
+    height: 9px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #3a8ad4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#60b0ff), to(#2070cc));
+    background: linear-gradient(to bottom, #60b0ff, #2070cc);
+  }
+
+  /* star rating */
+  .stars { color: #f8a000; font-size: 17px; letter-spacing: 2px; }
+  .stars .star-empty { color: #ddd; }
+
+  /* community links list */
+  #community-links { list-style: none; }
+  #community-links li { border-bottom: 1px solid #edf2f8; }
+  #community-links li:last-child { border-bottom: none; }
+  #community-links a { display: block; padding: 5px 2px; font-size: 11px; color: #2060a8; }
+  #community-links a:hover { background: #f0f7ff; text-decoration: none; padding-left: 5px; }
+
+  /* embed widget textarea */
+  #embed-code {
+    width: 100%;
+    height: 46px;
+    font-size: 9px;
+    border: 1px solid #c8d4e0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 4px;
+    color: #555;
+    background: #f8fafc;
+    resize: none;
+    margin-top: 6px;
+    font-family: "Courier New", monospace;
+  }
+
+  /* === FOOTER === */
+  #footer {
+    clear: both;
+    text-align: center;
+    font-size: 10px;
+    color: #889;
+    margin-top: 8px;
+    padding: 12px;
+    line-height: 1.7;
+  }
+  #footer a { color: #2060a8; }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                        -->
+<!-- ============================================================ -->
+<div id="header">
+  <div id="header-gloss"></div>
+  <span id="logo">Sandy<span class="weather-part">Weather</span></span><span id="beta-badge">BETA</span>
+  <div id="header-tagline">Sandy, Utah 84047 &mdash; Community-Powered Weather Dashboard &mdash; Updated Hourly</div>
+  <div id="header-nav">
+    <a href="#">Home</a>
+    <a href="#">Forecast</a>
+    <a href="#">Radar</a>
+    <a href="#">Maps</a>
+    <a href="#">Community</a>
+    <a href="#">API</a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE CONTENT                                                  -->
+<!-- ============================================================ -->
+<div id="wrapper">
+
+  <div id="breadcrumb">
+    <a href="#">Home</a> &rsaquo; <a href="#">Sandy, UT</a> &rsaquo; <a href="#">Morning Reports</a> &rsaquo; May 18, 2026
+  </div>
+
+  <!-- MAIN COLUMN -->
+  <div id="main-col">
+
+    <!-- WEATHER REPORT CARD -->
+    <div class="card">
+
+      <!-- Card hero header -->
+      <div id="report-hero">
+        <div id="report-hero-gloss"></div>
+        <div id="report-title">&#9728; Morning Weather Report</div>
+        <div id="report-subtitle">Sandy, Utah 84047 &mdash; Hourly conditions 5:00 AM &ndash; 10:00 AM MDT</div>
+        <div id="date-badge">
+          <span class="day-num">18</span>
+          May 2026
+        </div>
+      </div>
+
+      <!-- Hourly data table -->
+      <table id="weather-table" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Conditions</th>
+            <th>Temp (&deg;F)</th>
+            <th>Trend</th>
+            <th>Precip (in)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time-cell">5:00 AM</td>
+            <td class="cond-cell"><span class="wx-em">&#127769;</span>Clear</td>
+            <td><span class="temp-pill temp-cool">50&deg;F</span></td>
+            <td class="trend-cell"><span class="trend-dash">&mdash;</span></td>
+            <td><span class="precip-pill precip-none">0.00&quot;</span></td>
+          </tr>
+          <tr class="row-alt">
+            <td class="time-cell">6:00 AM</td>
+            <td class="cond-cell"><span class="wx-em">&#127769;</span>Clear</td>
+            <td><span class="temp-pill temp-cool">52&deg;F</span></td>
+            <td class="trend-cell">&#8593;</td>
+            <td><span class="precip-pill precip-none">0.00&quot;</span></td>
+          </tr>
+          <tr>
+            <td class="time-cell">7:00 AM</td>
+            <td class="cond-cell"><span class="wx-em">&#127774;</span>Sunny</td>
+            <td><span class="temp-pill temp-cool">55&deg;F</span></td>
+            <td class="trend-cell">&#8593;</td>
+            <td><span class="precip-pill precip-none">0.00&quot;</span></td>
+          </tr>
+          <tr class="row-alt">
+            <td class="time-cell">8:00 AM</td>
+            <td class="cond-cell"><span class="wx-em">&#9728;</span>Sunny</td>
+            <td><span class="temp-pill temp-warm">58&deg;F</span></td>
+            <td class="trend-cell">&#8593;</td>
+            <td><span class="precip-pill precip-none">0.00&quot;</span></td>
+          </tr>
+          <tr>
+            <td class="time-cell">9:00 AM</td>
+            <td class="cond-cell"><span class="wx-em">&#9728;</span>Sunny</td>
+            <td><span class="temp-pill temp-warm">63&deg;F</span></td>
+            <td class="trend-cell">&#8593;</td>
+            <td><span class="precip-pill precip-none">0.00&quot;</span></td>
+          </tr>
+          <tr class="row-alt">
+            <td class="time-cell">10:00 AM</td>
+            <td class="cond-cell"><span class="wx-em">&#9728;</span>Sunny</td>
+            <td><span class="temp-pill temp-warm">68&deg;F</span></td>
+            <td class="trend-cell">&#8593;</td>
+            <td><span class="precip-pill precip-none">0.00&quot;</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Summary bar -->
+      <div id="summary-bar">
+        <span class="s-stat"><strong>Morning Low:</strong> 50&deg;F @ 5:00 AM</span>
+        <span class="s-stat"><strong>Morning High:</strong> 68&deg;F @ 10:00 AM</span>
+        <span class="s-stat"><strong>Total Precip:</strong> 0.00&quot;</span>
+        <span class="s-stat"><strong>Overall Trend:</strong> Warming &#8593;</span>
+      </div>
+
+      <!-- Social sharing + tags -->
+      <div id="social-bar">
+        <span class="share-label">Share:</span>
+        <a href="#" class="sbtn sbtn-digg">&#9650; Digg it</a>
+        <a href="#" class="sbtn sbtn-del">&#9733; del.icio.us</a>
+        <a href="#" class="sbtn sbtn-reddit">&#9679; Reddit</a>
+        <a href="#" class="sbtn sbtn-stumble">&#9670; StumbleUpon</a>
+        <div id="tag-row">
+          <span class="tag-label">Tags:</span>
+          <a href="#" class="tag-link">sandy-utah</a>
+          <a href="#" class="tag-link">weather</a>
+          <a href="#" class="tag-link">84047</a>
+          <a href="#" class="tag-link">morning-report</a>
+          <a href="#" class="tag-link">utah</a>
+          <a href="#" class="tag-link">local-weather</a>
+          <a href="#" class="tag-link">salt-lake-valley</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /weather report card -->
+
+    <!-- ABOUT CARD -->
+    <div class="card">
+      <div class="card-header">&#9432; About SandyWeather</div>
+      <div class="card-body" style="font-size:11px; color:#555; line-height:1.65;">
+        <p><strong>SandyWeather</strong> is a community-powered weather dashboard for
+        Sandy, Utah (ZIP&nbsp;84047), aggregating data from local sensors across the Salt Lake Valley.
+        Morning reports cover the 5am&ndash;10am window &mdash; perfect for commute planning and
+        your morning run along the Wasatch foothills.</p>
+        <p style="margin-top:8px;"><strong>Want to contribute data?</strong>
+        <a href="#">Join the sensor network</a> &mdash; it&rsquo;s free and takes only 10 minutes to set up!</p>
+        <p style="margin-top:6px; color:#888;">
+          &#9888;&nbsp;<em>SandyWeather is currently in public beta. Features may change without notice.
+          Data is provided for informational purposes only.</em>
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <!-- /main column -->
+
+  <!-- SIDEBAR -->
+  <div id="side-col">
+
+    <!-- RSS / Subscribe -->
+    <div class="card">
+      <div class="card-body">
+        <a href="#" id="rss-btn">&#9656;&nbsp; Subscribe via RSS</a>
+        <div style="font-size:10px; color:#888; text-align:center; line-height:1.5;">
+          Get hourly updates in your feed reader!<br />
+          Works with Google Reader, Bloglines, Netvibes
+        </div>
+      </div>
+    </div>
+
+    <!-- Current conditions big widget -->
+    <div class="card">
+      <div class="card-header">&#9728; Now &mdash; 10:00 AM</div>
+      <div class="card-body">
+        <div id="now-temp">
+          <span class="now-icon">&#9728;</span>
+          <span class="now-reading">68&deg;F</span>
+          <span class="now-loc">Sandy, UT 84047 &mdash; Clear &amp; Sunny</span>
+        </div>
+        <div class="mini-bar-wrap">
+          <div class="mini-bar-lbl">Morning range: 50&ndash;68&deg;F</div>
+          <div class="mini-bar-bg"><div class="mini-bar-fill" style="width:72%;"></div></div>
+        </div>
+        <div style="margin-top:10px; font-size:10px; color:#666; line-height:1.7;">
+          <strong>Precipitation:</strong> None<br />
+          <strong>Sky:</strong> Clear &amp; sunny<br />
+          <strong>Trend:</strong> Warming all morning &#8593;
+        </div>
+      </div>
+    </div>
+
+    <!-- Rate this report -->
+    <div class="card">
+      <div class="card-header">&#9733; Rate This Report</div>
+      <div class="card-body" style="text-align:center;">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span></div>
+        <div style="font-size:10px; color:#999; margin-top:3px;">4.0 / 5.0 &mdash; 187 ratings</div>
+        <div style="margin-top:9px;">
+          <a href="#" style="font-size:11px;">&#9998; Leave a comment</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embed widget -->
+    <div class="card">
+      <div class="card-header">&#9723; Add to Your Blog</div>
+      <div class="card-body" style="font-size:10px; color:#555;">
+        <p>Embed the SandyWeather widget on your site or blog!</p>
+        <textarea id="embed-code" readonly="readonly">&lt;script src="http://sandyweather.com/widget.js?zip=84047"&gt;&lt;/script&gt;</textarea>
+        <div style="margin-top:4px; color:#999;">Customizable size &amp; colors &mdash; free forever!</div>
+      </div>
+    </div>
+
+    <!-- Community links -->
+    <div class="card">
+      <div class="card-header">&#9749; Sandy, UT Links</div>
+      <div class="card-body" style="padding: 6px 14px;">
+        <ul id="community-links">
+          <li><a href="#">&#9656; Sandy City Official Site</a></li>
+          <li><a href="#">&#9656; SLC Airport Conditions</a></li>
+          <li><a href="#">&#9656; Utah DOT Road Conditions</a></li>
+          <li><a href="#">&#9656; NWS Salt Lake City</a></li>
+          <li><a href="#">&#9656; Local Storm Reports</a></li>
+          <li><a href="#">&#9656; Submit a Weather Photo</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <!-- /sidebar -->
+
+  <div id="page-clearfix"></div>
+
+  <!-- FOOTER -->
+  <div id="footer">
+    &copy; 2008 SandyWeather.com &mdash; A <strong>Web 2.0</strong> Community Project &mdash;
+    Sandy, Utah 84047<br />
+    <a href="#">Privacy Policy</a> &middot;
+    <a href="#">Terms of Use</a> &middot;
+    <a href="#">Contact Us</a> &middot;
+    <a href="#">Advertise</a> &middot;
+    <a href="#">API Docs</a><br />
+    Data provided for informational purposes only. Not responsible for inaccuracies.<br />
+    <em>SandyWeather is not affiliated with Sandy City, the National Weather Service, or any government entity.</em><br />
+    <span style="color:#aab;">Best experienced in Firefox 3 or Safari 3.2 &mdash; IE6 users: time to upgrade!</span>
+  </div>
+
+</div>
+<!-- /wrapper -->
+
+</body>
+</html>
