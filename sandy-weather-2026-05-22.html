@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandy UT Weather — May 22, 2026</title>
+  <style>
+    /* ============================================================
+       SKEUOMORPHIC ERA — circa 2011
+       The year iOS 5 shipped. Every app looked like a real object.
+       Leather. Stitching. Wood. Linen. Metal bezels.
+    ============================================================ */
+
+    @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400;700&family=Courier+Prime&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      /* linen texture via SVG data URI */
+      background-color: #c8bfae;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23c8bfae'/%3E%3Cline x1='0' y1='0' x2='4' y2='4' stroke='%23b8af9e' stroke-width='0.4' opacity='0.6'/%3E%3Cline x1='4' y1='0' x2='0' y2='4' stroke='%23d8cfbe' stroke-width='0.3' opacity='0.4'/%3E%3C/svg%3E");
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px 50px;
+    }
+
+    /* ─── OUTER DEVICE FRAME ─── */
+    #device {
+      max-width: 520px;
+      margin: 0 auto;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #9e9e9e 0%, #6e6e6e 40%, #5a5a5a 100%);
+      padding: 6px;
+      box-shadow:
+        0 0 0 1px #333,
+        0 6px 30px rgba(0,0,0,0.55),
+        0 2px 4px rgba(255,255,255,0.2) inset,
+        0 -2px 4px rgba(0,0,0,0.4) inset;
+    }
+
+    /* ─── INNER BEZEL ─── */
+    #bezel {
+      border-radius: 24px;
+      background: #1a1a1a;
+      padding: 12px 10px 14px;
+      box-shadow:
+        0 0 0 1px #000 inset,
+        0 2px 6px rgba(255,255,255,0.08) inset;
+    }
+
+    /* ─── LEATHER HEADER ─── */
+    #leather-header {
+      border-radius: 16px 16px 0 0;
+      background-color: #5c2d0a;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.07) 2px,
+          rgba(0,0,0,0.07) 4px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.04) 2px,
+          rgba(255,255,255,0.04) 4px
+        ),
+        linear-gradient(180deg,
+          #7a3c12 0%,
+          #5c2d0a 40%,
+          #4a2208 100%
+        );
+      padding: 0 0 0 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #2a1005;
+      border-bottom: none;
+      box-shadow: 0 2px 0 rgba(255,255,255,0.08) inset;
+    }
+
+    /* stitching on header */
+    #leather-header::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      border-top: 2px dashed rgba(255,220,150,0.35);
+    }
+    #leather-header::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      border-top: 2px dashed rgba(255,220,150,0.35);
+    }
+
+    #header-inner {
+      padding: 22px 20px 18px;
+    }
+
+    #app-icon {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #5bbcff 0%, #1a7acc 50%, #0e5da0 100%);
+      box-shadow:
+        0 3px 6px rgba(0,0,0,0.4),
+        0 1px 0 rgba(255,255,255,0.4) inset,
+        0 -1px 0 rgba(0,0,0,0.3) inset;
+      vertical-align: middle;
+      margin-right: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    #app-icon::before {
+      content: '☁';
+      font-size: 28px;
+      position: absolute;
+      top: 8px;
+      left: 9px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
+    }
+    /* glossy shine on icon */
+    #app-icon::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.08) 100%);
+      border-radius: 10px 10px 50% 50%;
+    }
+
+    #header-title {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    #header-title h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 -1px 1px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.15);
+      letter-spacing: -0.5px;
+    }
+    #header-title .subtitle {
+      font-size: 12px;
+      color: rgba(255,210,150,0.85);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    /* ─── WOOD PANEL BODY ─── */
+    #wood-body {
+      background-color: #8b5e3c;
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 18px,
+          rgba(0,0,0,0.06) 18px,
+          rgba(0,0,0,0.06) 20px
+        ),
+        repeating-linear-gradient(
+          180deg,
+          transparent 0px,
+          rgba(255,255,255,0.03) 3px,
+          transparent 6px
+        ),
+        linear-gradient(
+          180deg,
+          #a06535 0%,
+          #8b5e3c 30%,
+          #7a5030 70%,
+          #6b4428 100%
+        );
+      border: 1px solid #4a2f18;
+      border-top: none;
+      border-bottom: none;
+      padding: 4px 10px 10px;
+    }
+
+    /* ─── DATE BADGE ─── */
+    #date-badge {
+      text-align: center;
+      padding: 10px 0 6px;
+    }
+    #date-badge .badge-pill {
+      display: inline-block;
+      background: linear-gradient(180deg, #3d3d3d 0%, #1a1a1a 100%);
+      color: #ddd;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 20px;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 1px 0 rgba(255,255,255,0.12) inset,
+        0 -1px 0 rgba(0,0,0,0.4) inset;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+
+    /* ─── NOTEPAD CARD ─── */
+    #notepad {
+      background: #fffff0;
+      border-radius: 6px;
+      margin: 8px 0;
+      box-shadow:
+        0 3px 10px rgba(0,0,0,0.45),
+        0 1px 0 rgba(255,255,255,0.9) inset;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* red margin line */
+    #notepad::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 42px;
+      width: 1px;
+      background: rgba(220, 80, 80, 0.4);
+      z-index: 1;
+    }
+
+    #notepad-header {
+      background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 100%);
+      padding: 8px 14px 8px 50px;
+      border-bottom: 2px solid #b0b0b0;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+    }
+    #notepad-header h2 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* lined paper */
+    .notepad-lines {
+      background-image: repeating-linear-gradient(
+        transparent,
+        transparent 27px,
+        #c8d8e8 27px,
+        #c8d8e8 28px
+      );
+      background-size: 100% 28px;
+      background-position: 0 4px;
+    }
+
+    /* ─── HOUR ROW ─── */
+    .hour-row {
+      display: flex;
+      align-items: center;
+      padding: 5px 14px 5px 50px;
+      min-height: 28px;
+      border-bottom: none;
+      position: relative;
+      z-index: 2;
+    }
+    .hour-row:nth-child(even) {
+      background: rgba(240, 248, 255, 0.3);
+    }
+
+    .hour-label {
+      width: 52px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #555;
+      font-family: 'Courier New', monospace;
+      flex-shrink: 0;
+    }
+
+    .temp-track {
+      flex: 1;
+      height: 20px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15) inset;
+      position: relative;
+    }
+
+    .temp-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ff9a3c 0%, #ffcc00 100%);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
+      position: relative;
+      transition: width 0.3s ease;
+    }
+    .temp-fill::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .temp-value {
+      width: 52px;
+      text-align: right;
+      font-size: 14px;
+      font-weight: 700;
+      color: #c84800;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+      flex-shrink: 0;
+    }
+
+    .precip-dot {
+      width: 36px;
+      text-align: right;
+      font-size: 10px;
+      color: #4466aa;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .rain-icon { font-size: 11px; }
+
+    /* ─── SUMMARY CARD ─── */
+    #summary-card {
+      background: linear-gradient(180deg, #2a6bbd 0%, #1a4f9c 100%);
+      border-radius: 10px;
+      margin: 10px 0 6px;
+      padding: 12px 16px;
+      box-shadow:
+        0 3px 8px rgba(0,0,0,0.4),
+        0 1px 0 rgba(255,255,255,0.25) inset,
+        0 -1px 0 rgba(0,0,0,0.3) inset;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    #summary-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+    }
+    .summary-icon { font-size: 36px; flex-shrink: 0; position: relative; z-index: 1; }
+    .summary-text { color: #fff; position: relative; z-index: 1; }
+    .summary-text .big-temp {
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1);
+      line-height: 1;
+    }
+    .summary-text .summary-label {
+      font-size: 11px;
+      color: rgba(200,220,255,0.9);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+    .summary-right {
+      margin-left: auto;
+      text-align: right;
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ─── TOGGLE BUTTONS ─── */
+    #seg-control {
+      display: flex;
+      margin: 8px 0;
+      background: rgba(0,0,0,0.25);
+      border-radius: 8px;
+      padding: 3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4) inset;
+    }
+    .seg-btn {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      padding: 5px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .seg-btn.active {
+      background: linear-gradient(180deg, #e8e8e8 0%, #c8c8c8 100%);
+      color: #333;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.3),
+        0 1px 0 rgba(255,255,255,0.8) inset;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    /* ─── TOOLBAR BOTTOM ─── */
+    #toolbar {
+      background: linear-gradient(180deg, #e2e2e2 0%, #b8b8b8 100%);
+      border-radius: 0 0 16px 16px;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid #4a2f18;
+      border-top: none;
+      box-shadow:
+        0 3px 6px rgba(0,0,0,0.4),
+        0 1px 0 rgba(255,255,255,0.7) inset;
+    }
+
+    .toolbar-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+    }
+    .toolbar-btn .tb-icon {
+      font-size: 22px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+    .toolbar-btn .tb-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: #444;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── HOME INDICATOR ─── */
+    #home-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #888 0%, #555 100%);
+      margin: 10px auto 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 1px 0 rgba(255,255,255,0.25) inset;
+    }
+    #home-btn::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    /* ─── LOCATION BAR ABOVE DEVICE ─── */
+    #location-bar {
+      max-width: 520px;
+      margin: 0 auto 14px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 10px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2) inset;
+    }
+    #location-bar .loc-icon { font-size: 16px; }
+    #location-bar .loc-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: #5c3010;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ─── STITCHED DIVIDER ─── */
+    .stitched-divider {
+      border: none;
+      border-top: 2px dashed rgba(255,200,120,0.3);
+      margin: 6px 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="location-bar">
+    <span class="loc-icon">📍</span>
+    <span class="loc-text">Sandy, Utah · ZIP 84047 · Morning Weather · May 22, 2026</span>
+  </div>
+
+  <div id="device">
+    <div id="bezel">
+
+      <!-- LEATHER HEADER -->
+      <div id="leather-header">
+        <div id="header-inner">
+          <div id="app-icon"></div>
+          <div id="header-title">
+            <h1>Sandy Weather</h1>
+            <div class="subtitle">MORNING REPORT &nbsp;·&nbsp; 84047</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WOOD BODY -->
+      <div id="wood-body">
+
+        <div id="date-badge">
+          <span class="badge-pill">Friday, May 22, 2026</span>
+        </div>
+
+        <!-- SEGMENT CONTROL -->
+        <div id="seg-control">
+          <div class="seg-btn active">Hourly</div>
+          <div class="seg-btn">Radar</div>
+          <div class="seg-btn">Alerts</div>
+          <div class="seg-btn">Settings</div>
+        </div>
+
+        <!-- SUMMARY CARD -->
+        <div id="summary-card">
+          <div class="summary-icon">⛅</div>
+          <div class="summary-text">
+            <div class="big-temp">59°F</div>
+            <div class="summary-label">Current · Partly Cloudy</div>
+          </div>
+          <div class="summary-right">
+            Humidity: 42%<br/>
+            Wind: 6 mph SW<br/>
+            Precip: 0%
+          </div>
+        </div>
+
+        <!-- NOTEPAD CARD -->
+        <div id="notepad">
+          <div id="notepad-header">
+            <h2>5 AM – 10 AM · Temperature &amp; Precipitation</h2>
+          </div>
+          <div class="notepad-lines">
+
+            <!--  5am: 52°F  -->
+            <div class="hour-row">
+              <span class="hour-label">5:00 AM</span>
+              <div class="temp-track">
+                <div class="temp-fill" style="width:44%"></div>
+              </div>
+              <span class="temp-value">52°F</span>
+              <span class="precip-dot"><span class="rain-icon">💧</span> 0.00″</span>
+            </div>
+
+            <!--  6am: 54°F  -->
+            <div class="hour-row">
+              <span class="hour-label">6:00 AM</span>
+              <div class="temp-track">
+                <div class="temp-fill" style="width:48%"></div>
+              </div>
+              <span class="temp-value">54°F</span>
+              <span class="precip-dot"><span class="rain-icon">💧</span> 0.00″</span>
+            </div>
+
+            <!--  7am: 57°F  -->
+            <div class="hour-row">
+              <span class="hour-label">7:00 AM</span>
+              <div class="temp-track">
+                <div class="temp-fill" style="width:54%"></div>
+              </div>
+              <span class="temp-value">57°F</span>
+              <span class="precip-dot"><span class="rain-icon">💧</span> 0.00″</span>
+            </div>
+
+            <!--  8am: 61°F  -->
+            <div class="hour-row">
+              <span class="hour-label">8:00 AM</span>
+              <div class="temp-track">
+                <div class="temp-fill" style="width:61%"></div>
+              </div>
+              <span class="temp-value">61°F</span>
+              <span class="precip-dot"><span class="rain-icon">💧</span> 0.00″</span>
+            </div>
+
+            <!--  9am: 64°F  -->
+            <div class="hour-row">
+              <span class="hour-label">9:00 AM</span>
+              <div class="temp-track">
+                <div class="temp-fill" style="width:67%"></div>
+              </div>
+              <span class="temp-value">64°F</span>
+              <span class="precip-dot"><span class="rain-icon">💧</span> 0.00″</span>
+            </div>
+
+            <!-- 10am: 67°F  -->
+            <div class="hour-row">
+              <span class="hour-label">10:00 AM</span>
+              <div class="temp-track">
+                <div class="temp-fill" style="width:73%"></div>
+              </div>
+              <span class="temp-value">67°F</span>
+              <span class="precip-dot"><span class="rain-icon">💧</span> 0.00″</span>
+            </div>
+
+          </div><!-- end notepad-lines -->
+        </div><!-- end notepad -->
+
+        <hr class="stitched-divider" />
+
+        <!-- BOTTOM NOTE -->
+        <div style="padding:6px 14px 4px; text-align:center;">
+          <span style="font-size:10px; color:rgba(255,230,190,0.7); text-shadow:0 1px 2px rgba(0,0,0,0.5); letter-spacing:0.5px;">
+            Forecast for Sandy City, Utah (Wasatch Front) · Elevaton 4,521 ft
+          </span>
+        </div>
+
+      </div><!-- end wood-body -->
+
+      <!-- TOOLBAR -->
+      <div id="toolbar">
+        <div class="toolbar-btn">
+          <span class="tb-icon">🏠</span>
+          <span class="tb-label">Home</span>
+        </div>
+        <div class="toolbar-btn">
+          <span class="tb-icon">🗺️</span>
+          <span class="tb-label">Map</span>
+        </div>
+        <div class="toolbar-btn">
+          <span class="tb-icon">📅</span>
+          <span class="tb-label">7-Day</span>
+        </div>
+        <div class="toolbar-btn">
+          <span class="tb-icon">⚙️</span>
+          <span class="tb-label">Settings</span>
+        </div>
+      </div>
+
+    </div><!-- end bezel -->
+
+    <!-- HOME BUTTON -->
+    <div id="home-btn"></div>
+
+  </div><!-- end device -->
+
+</body>
+</html>
