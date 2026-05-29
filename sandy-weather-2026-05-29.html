@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandy, UT Weather &mdash; May 29, 2026</title>
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" type="text/css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #ECF0F1;
+      color: #2C3E50;
+    }
+
+    /* ---- HEADER ---- */
+    .header {
+      background-color: #3498DB;
+      color: #fff;
+      padding: 40px 30px 30px;
+      text-align: center;
+    }
+
+    .header .location {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .header .date {
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    /* ---- LONG SHADOW ICON ---- */
+    .sun-icon {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background-color: #F1C40F;
+      border-radius: 50%;
+      margin: 20px auto 10px;
+      position: relative;
+    }
+
+    .sun-icon::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      right: -12px;
+      bottom: -12px;
+      border-radius: 50%;
+      border: 6px solid rgba(241, 196, 15, 0.3);
+    }
+
+    /* ---- FLAT BADGE ---- */
+    .condition-badge {
+      display: inline-block;
+      background-color: #2980B9;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      margin-top: 14px;
+    }
+
+    /* ---- MAIN GRID ---- */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 36px 20px 60px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #95A5A6;
+      margin-bottom: 18px;
+      padding-left: 4px;
+    }
+
+    /* ---- HOUR CARDS ---- */
+    .cards {
+      display: table;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .card-row {
+      display: table-row;
+    }
+
+    .card {
+      display: table-cell;
+      width: 16.666%;
+      padding: 0;
+      vertical-align: top;
+    }
+
+    .card-inner {
+      margin: 0 6px 12px;
+      text-align: center;
+    }
+
+    .card-time {
+      background-color: #34495E;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 6px;
+    }
+
+    .card-temp-block {
+      padding: 22px 10px 18px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-temp-block .temp-val {
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .card-temp-block .temp-unit {
+      font-size: 18px;
+      font-weight: 300;
+      vertical-align: super;
+      line-height: 1;
+    }
+
+    .card-temp-block .temp-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+
+    /* Hour color palette — 2013 flat UI colors cycling */
+    .card:nth-child(1) .card-temp-block { background-color: #1ABC9C; }
+    .card:nth-child(2) .card-temp-block { background-color: #27AE60; }
+    .card:nth-child(3) .card-temp-block { background-color: #3498DB; }
+    .card:nth-child(4) .card-temp-block { background-color: #9B59B6; }
+    .card:nth-child(5) .card-temp-block { background-color: #E67E22; }
+    .card:nth-child(6) .card-temp-block { background-color: #E74C3C; }
+
+    .card-precip {
+      background-color: #fff;
+      padding: 10px 6px;
+      border-top: 3px solid #ECF0F1;
+    }
+
+    .card-precip .precip-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2C3E50;
+    }
+
+    .card-precip .precip-unit {
+      font-size: 11px;
+      font-weight: 400;
+      color: #95A5A6;
+    }
+
+    .card-precip .precip-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #BDC3C7;
+      margin-top: 2px;
+    }
+
+    .drop-icon {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #3498DB;
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(-45deg);
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    /* ---- SUMMARY BAR ---- */
+    .summary-bar {
+      display: table;
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .summary-cell {
+      display: table-cell;
+      width: 33.333%;
+      padding: 0 6px;
+    }
+
+    .summary-block {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .summary-block.blue  { background-color: #3498DB; color: #fff; }
+    .summary-block.green { background-color: #2ECC71; color: #fff; }
+    .summary-block.dark  { background-color: #2C3E50; color: #fff; }
+
+    .summary-block .s-val {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .summary-block .s-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 5px;
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      background-color: #2C3E50;
+      color: #7F8C8D;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .footer strong {
+      color: #BDC3C7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="location">Sandy &bull; Utah &bull; 84047</div>
+    <h1>Morning Weather</h1>
+    <div class="date">Thursday, May 29, 2026</div>
+    <div class="sun-icon"></div>
+    <br>
+    <div class="condition-badge">Clear &amp; Sunny</div>
+  </div>
+
+  <div class="container">
+
+    <div class="section-label">Hourly Forecast &mdash; 5 AM to 10 AM</div>
+
+    <div class="cards">
+      <div class="card-row">
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-time">5 AM</div>
+            <div class="card-temp-block">
+              <div class="temp-val">54<span class="temp-unit">&deg;F</span></div>
+              <div class="temp-label">Temperature</div>
+            </div>
+            <div class="card-precip">
+              <div><span class="drop-icon"></span><span class="precip-val">0.00</span> <span class="precip-unit">in</span></div>
+              <div class="precip-label">Precip</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-time">6 AM</div>
+            <div class="card-temp-block">
+              <div class="temp-val">56<span class="temp-unit">&deg;F</span></div>
+              <div class="temp-label">Temperature</div>
+            </div>
+            <div class="card-precip">
+              <div><span class="drop-icon"></span><span class="precip-val">0.00</span> <span class="precip-unit">in</span></div>
+              <div class="precip-label">Precip</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-time">7 AM</div>
+            <div class="card-temp-block">
+              <div class="temp-val">59<span class="temp-unit">&deg;F</span></div>
+              <div class="temp-label">Temperature</div>
+            </div>
+            <div class="card-precip">
+              <div><span class="drop-icon"></span><span class="precip-val">0.00</span> <span class="precip-unit">in</span></div>
+              <div class="precip-label">Precip</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-time">8 AM</div>
+            <div class="card-temp-block">
+              <div class="temp-val">63<span class="temp-unit">&deg;F</span></div>
+              <div class="temp-label">Temperature</div>
+            </div>
+            <div class="card-precip">
+              <div><span class="drop-icon"></span><span class="precip-val">0.00</span> <span class="precip-unit">in</span></div>
+              <div class="precip-label">Precip</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-time">9 AM</div>
+            <div class="card-temp-block">
+              <div class="temp-val">67<span class="temp-unit">&deg;F</span></div>
+              <div class="temp-label">Temperature</div>
+            </div>
+            <div class="card-precip">
+              <div><span class="drop-icon"></span><span class="precip-val">0.00</span> <span class="precip-unit">in</span></div>
+              <div class="precip-label">Precip</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-time">10 AM</div>
+            <div class="card-temp-block">
+              <div class="temp-val">71<span class="temp-unit">&deg;F</span></div>
+              <div class="temp-label">Temperature</div>
+            </div>
+            <div class="card-precip">
+              <div><span class="drop-icon"></span><span class="precip-val">0.00</span> <span class="precip-unit">in</span></div>
+              <div class="precip-label">Precip</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="section-label" style="margin-top:32px;">Summary</div>
+    <div class="summary-bar">
+      <div class="summary-cell">
+        <div class="summary-block blue">
+          <div class="s-val">54&deg;</div>
+          <div class="s-label">Low at 5 AM</div>
+        </div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-block green">
+          <div class="s-val">71&deg;</div>
+          <div class="s-label">High at 10 AM</div>
+        </div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-block dark">
+          <div class="s-val">0.00&quot;</div>
+          <div class="s-label">Total Precip</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>Sandy, Utah 84047</strong> &mdash; Morning Report for May 29, 2026 &mdash; 5 AM &ndash; 10 AM MDT
+  </div>
+
+</body>
+</html>
