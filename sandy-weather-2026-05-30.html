@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="Sandy Weather Webmaster">
+<meta name="description" content="Sandy Utah weather page - 84047 - best weather on the net!!!">
+<title>*~* Sandy UT Weather *~* 84047 *~* Updated Daily!!! *~*</title>
+<style type="text/css">
+  body {
+    margin: 0;
+    padding: 20px;
+    background-color: #000022;
+    color: #00ff00;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+  }
+
+  a            { color: #ff00ff; }
+  a:visited    { color: #ffff00; }
+  a:hover      { color: #00ffff; text-decoration: underline blink; }
+
+  marquee.top {
+    background-color: #000044;
+    color: #ff00ff;
+    font-size: 14px;
+    padding: 5px 0;
+    border-top: 2px solid #0000ff;
+    border-bottom: 2px solid #0000ff;
+  }
+
+  marquee.bottom {
+    background-color: #000033;
+    color: #00ccff;
+    font-size: 12px;
+    padding: 4px 0;
+    border-top: 1px solid #004466;
+    border-bottom: 1px solid #004466;
+  }
+
+  .page-title {
+    font-size: 30px;
+    color: #ffff00;
+    text-shadow: 3px 3px 0px #ff0000, 0 0 15px #ffaa00;
+    letter-spacing: 3px;
+    animation: blink-title 2s step-start infinite;
+  }
+
+  @keyframes blink-title {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.7; }
+  }
+
+  .subtitle {
+    color: #ff6600;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .divider {
+    color: #00ff00;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin: 8px 0;
+    animation: cycle-color 4s linear infinite;
+  }
+
+  @keyframes cycle-color {
+    0%   { color: #00ff00; }
+    25%  { color: #00ffff; }
+    50%  { color: #ff00ff; }
+    75%  { color: #ffff00; }
+    100% { color: #00ff00; }
+  }
+
+  .section-header {
+    font-size: 18px;
+    color: #00ffff;
+    text-shadow: 0 0 8px #00ffff;
+    letter-spacing: 2px;
+  }
+
+  .weather-outer {
+    display: inline-block;
+    border: 4px ridge #00ff00;
+    background-color: #000a00;
+    padding: 6px;
+    margin: 10px auto;
+    width: 70%;
+    min-width: 400px;
+    box-shadow: 0 0 18px #00ff00, inset 0 0 10px #001100;
+  }
+
+  table.weather-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  table.weather-tbl th {
+    background-color: #003300;
+    color: #00ffff;
+    padding: 7px 12px;
+    border: 2px solid #00ff00;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  table.weather-tbl td {
+    padding: 6px 12px;
+    border: 1px solid #004400;
+    color: #88ff88;
+    font-size: 14px;
+  }
+
+  table.weather-tbl tr:nth-child(even) td {
+    background-color: #001a00;
+  }
+
+  table.weather-tbl tr:hover td {
+    background-color: #002200;
+    color: #ffffff;
+  }
+
+  .temp {
+    color: #ff8800 !important;
+    font-weight: bold;
+    font-size: 16px !important;
+    text-shadow: 0 0 6px #ff4400;
+  }
+
+  .precip {
+    color: #44ccff !important;
+    font-weight: bold;
+  }
+
+  .cond {
+    color: #ffff88 !important;
+  }
+
+  .blink-text {
+    animation: blink-fast 0.9s step-start infinite;
+    color: #ff0000;
+    font-weight: bold;
+  }
+
+  @keyframes blink-fast {
+    50% { opacity: 0; }
+  }
+
+  .under-construction {
+    animation: blink-fast 1.2s step-start infinite;
+    color: #ffff00;
+    font-size: 14px;
+    background: #330000;
+    border: 2px dashed #ff0000;
+    padding: 5px 15px;
+    display: inline-block;
+    margin: 8px;
+  }
+
+  .hit-counter {
+    background: #000000;
+    color: #ff3300;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    border: 3px inset #444444;
+    padding: 4px 12px;
+    letter-spacing: 4px;
+    display: inline-block;
+  }
+
+  .footer-note {
+    color: #444444;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 6px;
+  }
+
+  .star-field {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1;   transform: scale(1);   }
+    50%       { opacity: 0.1; transform: scale(0.5); }
+  }
+
+  .netscape-badge {
+    border: 2px outset #888888;
+    background: #cccccc;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 3px 7px;
+    display: inline-block;
+    margin: 2px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- Animated star background -->
+<div class="star-field" id="starfield"></div>
+
+<!-- Top scrolling marquee -->
+<marquee class="top" behavior="scroll" direction="left" scrollamount="4">
+  &nbsp;&nbsp;&nbsp;*** WELCOME 2 MY SANDY UTAH WEATHER PAGE *** BOOKMARK THIS SITE!!! *** U R VISITOR #006,482 *** SIGN MY GUESTBOOK PLZ!!! *** ADD 2 FAVORITES *** FREE EMAIL @ HOTMAIL.COM *** WEATHER DATA UPDATED EVERY DAY ***&nbsp;&nbsp;&nbsp;
+</marquee>
+
+<br>
+
+<div class="page-title">*~* Sandy, Utah Weather *~*</div>
+<div class="subtitle">:: Zip Code 84047 :: Sandy Weather On The 'Net!! ::</div>
+
+<br>
+
+<div class="divider">~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~</div>
+
+<div class="section-header">
+  .::.&nbsp;&nbsp;Morning Hourly Report&nbsp;&nbsp;.::.
+</div>
+<div style="color: #ff00ff; font-size: 13px; margin: 4px 0;">
+  Saturday, May 30, 2026 &nbsp;|&nbsp; 5:00 AM &ndash; 10:00 AM MST
+</div>
+
+<br>
+
+<div class="weather-outer">
+  <table class="weather-tbl" cellpadding="0" cellspacing="0">
+    <thead>
+      <tr>
+        <th>&#9733; TIME &#9733;</th>
+        <th>TEMP (&deg;F)</th>
+        <th>PRECIP (in)</th>
+        <th>CONDITIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5:00 AM</td>
+        <td class="temp">55 &deg;F</td>
+        <td class="precip">0.00&quot;</td>
+        <td class="cond">Clear &#9790;</td>
+      </tr>
+      <tr>
+        <td>6:00 AM</td>
+        <td class="temp">57 &deg;F</td>
+        <td class="precip">0.00&quot;</td>
+        <td class="cond">Clear &#9790;</td>
+      </tr>
+      <tr>
+        <td>7:00 AM</td>
+        <td class="temp">60 &deg;F</td>
+        <td class="precip">0.00&quot;</td>
+        <td class="cond">Mostly Clear &#9728;</td>
+      </tr>
+      <tr>
+        <td>8:00 AM</td>
+        <td class="temp">64 &deg;F</td>
+        <td class="precip">0.00&quot;</td>
+        <td class="cond">Sunny &#9728;</td>
+      </tr>
+      <tr>
+        <td>9:00 AM</td>
+        <td class="temp">68 &deg;F</td>
+        <td class="precip">0.00&quot;</td>
+        <td class="cond">Sunny &#9728;</td>
+      </tr>
+      <tr>
+        <td>10:00 AM</td>
+        <td class="temp">72 &deg;F</td>
+        <td class="precip">0.00&quot;</td>
+        <td class="cond">Sunny &#9728;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<div style="color: #ffff66; font-size: 12px; letter-spacing: 1px;">
+  *~* ALL TEMPERATURES IN DEGREES FAHRENHEIT *~*<br>
+  *~* PRECIPITATION IN INCHES *~*
+</div>
+
+<br>
+<div class="divider">~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~</div>
+<br>
+
+<div class="under-construction">
+  *** UNDER CONSTRUCTION *** ANIMATED GIF WEATHER ICONS COMING SOON!!! ***
+</div>
+
+<br><br>
+
+<table border="0" cellpadding="8" cellspacing="0" style="margin: 0 auto; background: #001100; border: 2px ridge #00ff00; width: 55%;">
+  <tr>
+    <td colspan="2" style="color: #ffff00; font-size: 13px; border-bottom: 1px solid #003300;">
+      &#9733; Sandy, Utah Quick Facts &#9733;
+    </td>
+  </tr>
+  <tr>
+    <td style="color: #00ccff; font-size: 12px; text-align: left;">Location:</td>
+    <td style="color: #88ff88; font-size: 12px; text-align: left;">Sandy City, Salt Lake County, UT</td>
+  </tr>
+  <tr>
+    <td style="color: #00ccff; font-size: 12px; text-align: left;">Elevation:</td>
+    <td style="color: #88ff88; font-size: 12px; text-align: left;">4,511 ft (1,375 m)</td>
+  </tr>
+  <tr>
+    <td style="color: #00ccff; font-size: 12px; text-align: left;">Zip Code:</td>
+    <td style="color: #88ff88; font-size: 12px; text-align: left;">84047</td>
+  </tr>
+  <tr>
+    <td style="color: #00ccff; font-size: 12px; text-align: left;">Time Zone:</td>
+    <td style="color: #88ff88; font-size: 12px; text-align: left;">Mountain Standard Time (UTC&minus;7)</td>
+  </tr>
+</table>
+
+<br><br>
+
+<div style="color: #ff00ff; font-size: 13px;">-- Page Views Since Launch --</div>
+<div class="hit-counter">006482</div>
+<br>
+<div style="color: #ffff00; font-size: 11px; margin-top: 4px;">
+  Thanks 4 visiting!! Luv ya!! xoxo
+</div>
+
+<br>
+
+<div class="netscape-badge">Best Viewed In</div>
+<div class="netscape-badge" style="color: #006600;">Netscape Navigator 4.0</div>
+<div class="netscape-badge">Or IE 5.0</div>
+<div style="color: #555555; font-size: 10px; margin-top: 3px; font-family: Arial, sans-serif;">800&times;600 resolution recommended</div>
+
+<br>
+
+<div style="color: #333333; font-size: 11px; font-family: Arial, sans-serif; margin-top: 5px;">
+  Cool Links:&nbsp;
+  <span style="color: #0000cc;">Yahoo!</span> &bull;
+  <span style="color: #ff6600;">AltaVista</span> &bull;
+  <span style="color: #ff0000;">Geocities</span> &bull;
+  <span style="color: #000066;">Excite</span> &bull;
+  <span style="color: #006633;">Ask Jeeves</span>
+</div>
+
+<br>
+
+<!-- Bottom scrolling marquee -->
+<marquee class="bottom" behavior="scroll" direction="right" scrollamount="2">
+  &nbsp;&nbsp;ICQ Me: 47829156 &nbsp;|&nbsp; Email: sandyweather@hotmail.com &nbsp;|&nbsp; Guestbook &nbsp;|&nbsp; Web Rings &nbsp;|&nbsp; Awards &nbsp;|&nbsp; About Me &nbsp;|&nbsp; Links &nbsp;&nbsp;
+</marquee>
+
+<div class="footer-note">
+  &copy; 1998 Sandy Weather Webmaster. All Rights Reserved.<br>
+  Weather data is for entertainment purposes only. Do not use for flight planning, doomsday prep, etc.<br>
+  Last updated: Today!! :) &mdash; Page made w/ Notepad.exe &amp; love &hearts;
+</div>
+
+<br>
+
+<script type="text/javascript">
+// Generate twinkling starfield
+(function() {
+  var sf = document.getElementById('starfield');
+  for (var i = 0; i < 200; i++) {
+    var s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.top  = (Math.random() * 100) + '%';
+    s.style.opacity = Math.random().toFixed(2);
+    var dur = (1.5 + Math.random() * 4).toFixed(2);
+    var delay = (Math.random() * 5).toFixed(2);
+    s.style.animation = 'twinkle ' + dur + 's ' + delay + 's ease-in-out infinite';
+    // Occasional slightly larger star
+    if (Math.random() > 0.85) {
+      s.style.width  = '3px';
+      s.style.height = '3px';
+      s.style.background = '#ffffaa';
+    }
+    sf.appendChild(s);
+  }
+})();
+</script>
+
+</body>
+</html>
