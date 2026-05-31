@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandy UT Weather — May 31, 2026</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #FAFAFA;
+      color: #212121;
+    }
+
+    .status-bar {
+      background-color: #283593;
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      letter-spacing: 0.8px;
+      padding: 4px 24px;
+      text-transform: uppercase;
+    }
+
+    .app-bar {
+      background-color: #3F51B5;
+      color: white;
+      padding: 16px 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+    }
+
+    .app-bar h1 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .app-bar .subtitle {
+      font-size: 13px;
+      font-weight: 300;
+      opacity: 0.87;
+      margin-top: 3px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 0;
+    }
+
+    .location-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E8EAF6;
+      border-radius: 16px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #3F51B5;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #9E9E9E;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    /* Hour cards */
+    .cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .hour-card {
+      background: white;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+      transition: box-shadow .25s ease;
+      flex: 1 1 130px;
+      min-width: 130px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+
+    .hour-card:hover {
+      box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    }
+
+    .card-time {
+      font-size: 11px;
+      font-weight: 500;
+      color: #9E9E9E;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .temp-circle {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background-color: #FF5722;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 17px;
+      font-weight: 700;
+      box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    }
+
+    .weather-icon {
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .precip-chip {
+      display: inline-block;
+      background-color: #E3F2FD;
+      color: #1565C0;
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .card-cond {
+      font-size: 11px;
+      color: #757575;
+      margin-top: 7px;
+    }
+
+    /* Summary table card */
+    .table-card {
+      background: white;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+
+    .table-card-header {
+      padding: 16px 24px 12px;
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    .table-card-header h2 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #3F51B5;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 500;
+      color: #9E9E9E;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 12px 24px;
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    .data-table td {
+      padding: 14px 24px;
+      border-bottom: 1px solid #F5F5F5;
+      font-size: 14px;
+      color: #424242;
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tbody tr:hover td {
+      background-color: #F5F5F5;
+    }
+
+    .temp-val {
+      color: #FF5722;
+      font-weight: 500;
+    }
+
+    .precip-val {
+      color: #1565C0;
+    }
+
+    /* Info card */
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+      flex: 1 1 200px;
+      padding: 20px;
+    }
+
+    .info-card .label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #9E9E9E;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .info-card .value {
+      font-size: 18px;
+      font-weight: 400;
+      color: #212121;
+    }
+
+    .info-card .value.accent {
+      color: #3F51B5;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: #EEEEEE;
+      margin: 8px 0 16px;
+    }
+
+    /* Footer */
+    .footer-bar {
+      background-color: #303F9F;
+      color: rgba(255,255,255,0.6);
+      padding: 16px 24px;
+      font-size: 12px;
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-bar .footer-logo {
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="status-bar">Sunday, May 31, 2026 &nbsp;·&nbsp; Sandy, UT 84047</div>
+
+<div class="app-bar">
+  <h1>Sandy, UT — Morning Weather</h1>
+  <div class="subtitle">5:00 AM – 10:00 AM · Mountain Daylight Time</div>
+</div>
+
+<div class="container">
+
+  <br>
+  <div class="location-chip">
+    <span>📍</span>
+    Sandy City · Salt Lake County · Zip 84047 · 4,511 ft
+  </div>
+
+  <div class="section-label">Hourly Breakdown</div>
+
+  <div class="cards-row">
+
+    <div class="hour-card">
+      <div class="card-time">5:00 AM</div>
+      <div class="temp-circle" style="background-color:#5C6BC0;">55°</div>
+      <div class="weather-icon">🌙</div>
+      <div class="precip-chip">0.00 in</div>
+      <div class="card-cond">Clear</div>
+    </div>
+
+    <div class="hour-card">
+      <div class="card-time">6:00 AM</div>
+      <div class="temp-circle" style="background-color:#7986CB;">57°</div>
+      <div class="weather-icon">🌅</div>
+      <div class="precip-chip">0.00 in</div>
+      <div class="card-cond">Sunrise</div>
+    </div>
+
+    <div class="hour-card">
+      <div class="card-time">7:00 AM</div>
+      <div class="temp-circle" style="background-color:#FF7043;">61°</div>
+      <div class="weather-icon">🌤</div>
+      <div class="precip-chip">0.00 in</div>
+      <div class="card-cond">Mostly Clear</div>
+    </div>
+
+    <div class="hour-card">
+      <div class="card-time">8:00 AM</div>
+      <div class="temp-circle" style="background-color:#FF5722;">65°</div>
+      <div class="weather-icon">☀️</div>
+      <div class="precip-chip">0.00 in</div>
+      <div class="card-cond">Sunny</div>
+    </div>
+
+    <div class="hour-card">
+      <div class="card-time">9:00 AM</div>
+      <div class="temp-circle" style="background-color:#F4511E;">69°</div>
+      <div class="weather-icon">☀️</div>
+      <div class="precip-chip">0.00 in</div>
+      <div class="card-cond">Sunny</div>
+    </div>
+
+    <div class="hour-card">
+      <div class="card-time">10:00 AM</div>
+      <div class="temp-circle" style="background-color:#E64A19;">73°</div>
+      <div class="weather-icon">☀️</div>
+      <div class="precip-chip">0.00 in</div>
+      <div class="card-cond">Sunny</div>
+    </div>
+
+  </div>
+
+  <!-- Summary stats -->
+  <div class="section-label">Period Summary</div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Low Temp</div>
+      <div class="value accent">55 °F</div>
+    </div>
+    <div class="info-card">
+      <div class="label">High Temp</div>
+      <div class="value accent">73 °F</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Total Precip</div>
+      <div class="value accent">0.00 in</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Sky Conditions</div>
+      <div class="value" style="font-size:14px;">Mostly Clear → Sunny</div>
+    </div>
+  </div>
+
+  <!-- Data table -->
+  <div class="section-label">Full Data Table</div>
+
+  <div class="table-card">
+    <div class="table-card-header">
+      <h2>Hourly Observations · Sandy, UT 84047</h2>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Temperature (°F)</th>
+          <th>Precipitation (in)</th>
+          <th>Sky</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5:00 AM</td>
+          <td class="temp-val">55°F</td>
+          <td class="precip-val">0.00</td>
+          <td>Clear</td>
+        </tr>
+        <tr>
+          <td>6:00 AM</td>
+          <td class="temp-val">57°F</td>
+          <td class="precip-val">0.00</td>
+          <td>Clear</td>
+        </tr>
+        <tr>
+          <td>7:00 AM</td>
+          <td class="temp-val">61°F</td>
+          <td class="precip-val">0.00</td>
+          <td>Mostly Clear</td>
+        </tr>
+        <tr>
+          <td>8:00 AM</td>
+          <td class="temp-val">65°F</td>
+          <td class="precip-val">0.00</td>
+          <td>Sunny</td>
+        </tr>
+        <tr>
+          <td>9:00 AM</td>
+          <td class="temp-val">69°F</td>
+          <td class="precip-val">0.00</td>
+          <td>Sunny</td>
+        </tr>
+        <tr>
+          <td>10:00 AM</td>
+          <td class="temp-val">73°F</td>
+          <td class="precip-val">0.00</td>
+          <td>Sunny</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Location details -->
+  <div class="section-label">Location Details</div>
+
+  <div class="table-card" style="margin-bottom: 0;">
+    <table class="data-table">
+      <tbody>
+        <tr>
+          <td style="color:#9E9E9E;font-size:12px;width:180px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;">City</td>
+          <td>Sandy City, Utah</td>
+        </tr>
+        <tr>
+          <td style="color:#9E9E9E;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;">County</td>
+          <td>Salt Lake County</td>
+        </tr>
+        <tr>
+          <td style="color:#9E9E9E;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;">Zip Code</td>
+          <td>84047</td>
+        </tr>
+        <tr>
+          <td style="color:#9E9E9E;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;">Coordinates</td>
+          <td>40.5649° N, 111.8389° W</td>
+        </tr>
+        <tr>
+          <td style="color:#9E9E9E;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;">Elevation</td>
+          <td>4,511 ft (1,375 m)</td>
+        </tr>
+        <tr>
+          <td style="color:#9E9E9E;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;">Time Zone</td>
+          <td>Mountain Daylight Time (UTC−6)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer-bar">
+  <span class="footer-logo">Sandy Weather</span>
+  <span>84047 · Data provided for informational purposes · May 31, 2026</span>
+</div>
+
+</body>
+</html>
