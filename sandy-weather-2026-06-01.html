@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Sandy UT Morning Weather - June 1, 2026" />
+  <title>WeatherWidget 2.0 &rsaquo; Sandy, UT Morning Forecast</title>
+  <style type="text/css">
+    /* Reset */
+    * { margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 13px;
+      color: #333;
+      background: #c9d6df url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23c9d6df'/%3E%3Crect width='2' height='2' fill='%23bfcdd7'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23bfcdd7'/%3E%3C/svg%3E");
+    }
+
+    /* Page wrapper */
+    #wrapper {
+      width: 620px;
+      margin: 30px auto;
+    }
+
+    /* Header banner */
+    #header {
+      background: #1a6496;
+      background: -webkit-gradient(linear, left top, left bottom, from(#2a85be), to(#0f4f7a));
+      background: linear-gradient(to bottom, #2a85be 0%, #0f4f7a 100%);
+      border-radius: 8px 8px 0 0;
+      -webkit-border-radius: 8px 8px 0 0;
+      -moz-border-radius: 8px 8px 0 0;
+      padding: 14px 20px 10px 20px;
+      border-bottom: 1px solid #0a3a5c;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Glossy shine overlay */
+    #header:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px 8px 0 0;
+      -webkit-border-radius: 8px 8px 0 0;
+    }
+    #header h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 -1px 0 #0a3a5c, 0 1px 1px rgba(255,255,255,0.2);
+      letter-spacing: -0.5px;
+    }
+    #header .tagline {
+      font-size: 11px;
+      color: #a8d4f0;
+      margin-top: 2px;
+    }
+    #header .badge {
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      background: #f90;
+      background: -webkit-gradient(linear, left top, left bottom, from(#ffc200), to(#e07800));
+      background: linear-gradient(to bottom, #ffc200 0%, #e07800 100%);
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 4px 9px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+      -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+
+    /* Sub-header strip */
+    #subheader {
+      background: #e8f0f7;
+      background: linear-gradient(to bottom, #eef4fa 0%, #dce8f4 100%);
+      padding: 7px 20px;
+      border-bottom: 1px solid #b8cfe0;
+      font-size: 11px;
+      color: #5a7a96;
+    }
+    #subheader strong { color: #2a6496; }
+
+    /* Main content */
+    #content {
+      background: #fff;
+      padding: 18px 20px;
+    }
+
+    /* Section title */
+    .section-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #1a6496;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #d0e4f0;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+
+    /* Weather table */
+    table.weather-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 18px;
+    }
+    table.weather-table thead th {
+      background: #2a85be;
+      background: linear-gradient(to bottom, #3a9fd4 0%, #1a6496 100%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 7px 12px;
+      text-align: left;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    table.weather-table thead th:last-child { border-right: none; }
+    table.weather-table tbody tr {
+      border-bottom: 1px solid #e8f0f7;
+    }
+    table.weather-table tbody tr:nth-child(odd) {
+      background: #f5f9fd;
+    }
+    table.weather-table tbody tr:nth-child(even) {
+      background: #fff;
+    }
+    table.weather-table tbody tr:hover {
+      background: #e0eef8;
+    }
+    table.weather-table td {
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #333;
+      vertical-align: middle;
+    }
+    table.weather-table td.time {
+      font-weight: bold;
+      color: #1a6496;
+      width: 80px;
+    }
+    table.weather-table td.temp {
+      width: 130px;
+    }
+    td .temp-num {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d05a00;
+    }
+    td .temp-unit {
+      font-size: 11px;
+      color: #888;
+      margin-left: 2px;
+    }
+
+    /* Precip bar */
+    .precip-bar-wrap {
+      display: inline-block;
+      background: #e8f0f7;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      height: 10px;
+      width: 100px;
+      vertical-align: middle;
+      overflow: hidden;
+      margin-right: 6px;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+    }
+    .precip-bar-fill {
+      height: 10px;
+      background: #3a9fd4;
+      background: linear-gradient(to bottom, #5bbfee 0%, #1a6496 100%);
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+    }
+    .precip-val {
+      font-size: 12px;
+      color: #5a7a96;
+      vertical-align: middle;
+    }
+
+    /* Pill tags */
+    .pill {
+      display: inline-block;
+      background: #e0eef8;
+      color: #1a6496;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 8px;
+      -webkit-border-radius: 8px;
+      border: 1px solid #b8cfe0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Info box */
+    .infobox {
+      background: #f0f7fe;
+      border: 1px solid #b8cfe0;
+      border-left: 4px solid #2a85be;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #5a7a96;
+      margin-bottom: 14px;
+    }
+    .infobox strong { color: #1a6496; }
+
+    /* Footer */
+    #footer {
+      background: #2c3e50;
+      background: linear-gradient(to bottom, #3d5166 0%, #1e2d3d 100%);
+      border-radius: 0 0 8px 8px;
+      -webkit-border-radius: 0 0 8px 8px;
+      -moz-border-radius: 0 0 8px 8px;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 10px;
+      color: #7a9ab8;
+      border-top: 1px solid #162537;
+    }
+    #footer a { color: #5ab4e8; text-decoration: none; }
+    #footer a:hover { text-decoration: underline; }
+    .footer-stars { color: #2a85be; font-size: 9px; letter-spacing: 2px; }
+
+    /* Powered-by strip */
+    #poweredby {
+      text-align: right;
+      font-size: 10px;
+      color: #9ab8cc;
+      margin-top: 4px;
+    }
+    #poweredby span {
+      background: #1a6496;
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      font-weight: bold;
+      font-size: 9px;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="wrapper">
+
+  <!-- Header -->
+  <div id="header">
+    <div class="badge">BETA 2.0</div>
+    <h1>&#9925; WeatherWidget <em style="font-weight:normal;font-size:18px;">for</em> Sandy, UT</h1>
+    <div class="tagline">84047 &nbsp;&bull;&nbsp; Morning Conditions &nbsp;&bull;&nbsp; June 1, 2026</div>
+  </div>
+
+  <!-- Sub-header -->
+  <div id="subheader">
+    <strong>Location:</strong> Sandy, Utah 84047 &nbsp;|&nbsp;
+    <strong>Coordinates:</strong> 40.5649&deg; N, 111.8389&deg; W &nbsp;|&nbsp;
+    <strong>Elevation:</strong> 4,521 ft &nbsp;|&nbsp;
+    <strong>Timezone:</strong> MDT (UTC-6)
+  </div>
+
+  <!-- Content -->
+  <div id="content">
+
+    <div class="infobox">
+      <strong>Morning Snapshot &mdash; June 1, 2026</strong><br />
+      Clear skies with a gradual warm-up through mid-morning. Typical early-summer pattern for the Salt Lake Valley.
+      No precipitation expected. Conditions: <span class="pill">Sunny</span> &nbsp;<span class="pill">Dry</span>
+    </div>
+
+    <div class="section-title">Hourly Temperatures &amp; Precipitation &mdash; 5 AM to 10 AM</div>
+
+    <table class="weather-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Temperature</th>
+          <th>Conditions</th>
+          <th>Precipitation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time">5:00 AM</td>
+          <td class="temp"><span class="temp-num">56</span><span class="temp-unit">&deg;F</span></td>
+          <td><span class="pill">Clear</span></td>
+          <td>
+            <div class="precip-bar-wrap"><div class="precip-bar-fill" style="width:0%"></div></div>
+            <span class="precip-val">0.00 in</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="time">6:00 AM</td>
+          <td class="temp"><span class="temp-num">58</span><span class="temp-unit">&deg;F</span></td>
+          <td><span class="pill">Clear</span></td>
+          <td>
+            <div class="precip-bar-wrap"><div class="precip-bar-fill" style="width:0%"></div></div>
+            <span class="precip-val">0.00 in</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="time">7:00 AM</td>
+          <td class="temp"><span class="temp-num">62</span><span class="temp-unit">&deg;F</span></td>
+          <td><span class="pill">Sunny</span></td>
+          <td>
+            <div class="precip-bar-wrap"><div class="precip-bar-fill" style="width:0%"></div></div>
+            <span class="precip-val">0.00 in</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="time">8:00 AM</td>
+          <td class="temp"><span class="temp-num">67</span><span class="temp-unit">&deg;F</span></td>
+          <td><span class="pill">Sunny</span></td>
+          <td>
+            <div class="precip-bar-wrap"><div class="precip-bar-fill" style="width:0%"></div></div>
+            <span class="precip-val">0.00 in</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="time">9:00 AM</td>
+          <td class="temp"><span class="temp-num">72</span><span class="temp-unit">&deg;F</span></td>
+          <td><span class="pill">Sunny</span></td>
+          <td>
+            <div class="precip-bar-wrap"><div class="precip-bar-fill" style="width:0%"></div></div>
+            <span class="precip-val">0.00 in</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="time">10:00 AM</td>
+          <td class="temp"><span class="temp-num">76</span><span class="temp-unit">&deg;F</span></td>
+          <td><span class="pill">Sunny</span></td>
+          <td>
+            <div class="precip-bar-wrap"><div class="precip-bar-fill" style="width:0%"></div></div>
+            <span class="precip-val">0.00 in</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="poweredby">Powered by <span>WeatherWidget API</span> &nbsp; Ajax-enabled &bull; RSS ready &bull; Widget-embeddable</div>
+
+  </div><!-- /content -->
+
+  <!-- Footer -->
+  <div id="footer">
+    <div class="footer-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+    WeatherWidget 2.0 &mdash; Sandy, Utah &mdash; Data refreshed automatically &bull;
+    <a href="#">Add to iGoogle</a> &bull; <a href="#">RSS Feed</a> &bull; <a href="#">Embed Widget</a><br />
+    &copy; 2008 WeatherWidget Inc. &mdash; Best viewed in Firefox 3 or Internet Explorer 7
+  </div>
+
+</div><!-- /wrapper -->
+
+</body>
+</html>
