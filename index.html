@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sandy Weather</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 32rem;
+    margin: 3rem auto;
+    padding: 0 1.25rem;
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
+  .sub { color: #888; margin: 0 0 1.5rem; font-size: .9rem; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { border-bottom: 1px solid rgba(128,128,128,.25); }
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: .75rem;
+    padding: .7rem .25rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover { background: rgba(128,128,128,.12); }
+  .latest { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: #c0392b; font-weight: 600; }
+  #status { color: #888; }
+</style>
+</head>
+<body>
+  <h1>Sandy Weather</h1>
+  <p class="sub">Sandy, UT &middot; daily morning report</p>
+  <p id="status">Loading reports&hellip;</p>
+  <ul id="list"></ul>
+
+<script>
+  // Earliest report. Bump this if you ever archive old months.
+  var START_DATE = "2026-05-01";
+
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+
+  // Build every date from START_DATE through today (local clock), newest first.
+  function dateList() {
+    var parts = START_DATE.split("-");
+    var start = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var out = [];
+    for (var d = new Date(today); d >= start; d.setDate(d.getDate() - 1)) {
+      out.push(iso(d));
+    }
+    return out;
+  }
+
+  function fmt(isoStr) {
+    var p = isoStr.split("-");
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return d.toLocaleDateString(undefined, {
+      weekday: "short", month: "short", day: "numeric", year: "numeric"
+    });
+  }
+
+  function fileFor(isoStr) { return "sandy-weather-" + isoStr + ".html"; }
+
+  function exists(isoStr) {
+    return fetch(fileFor(isoStr), { method: "HEAD" })
+      .then(function (r) { return r.ok ? isoStr : null; })
+      .catch(function () { return null; });
+  }
+
+  var dates = dateList();
+  Promise.all(dates.map(exists)).then(function (results) {
+    var found = results.filter(Boolean); // already newest-first
+    var status = document.getElementById("status");
+    var list = document.getElementById("list");
+
+    if (!found.length) {
+      status.textContent = "No reports yet — check back after the next morning run.";
+      return;
+    }
+
+    status.style.display = "none";
+    found.forEach(function (isoStr, i) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = fileFor(isoStr);
+      var label = document.createElement("span");
+      label.textContent = fmt(isoStr);
+      a.appendChild(label);
+      if (i === 0) {
+        var tag = document.createElement("span");
+        tag.className = "latest";
+        tag.textContent = "latest";
+        a.appendChild(tag);
+      }
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>
