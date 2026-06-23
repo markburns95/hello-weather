@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>*~*~* SANDY UT WEATHER PAGE *~*~* June 23 2026 *~*~*</TITLE>
+<META NAME="author" CONTENT="WeatherDude9000">
+<META NAME="keywords" CONTENT="sandy utah weather temperature precipitation cool page awesome visit">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<STYLE TYPE="text/css">
+  body {
+    background-color: #000000;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,80,0.3) 2px,
+      rgba(0,0,80,0.3) 4px
+    ),
+    radial-gradient(ellipse at 20% 50%, rgba(30,0,60,0.8) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0,0,80,0.6) 0%, transparent 50%);
+    background-color: #000011;
+    color: #FFFF00;
+    font-family: "Comic Sans MS", "Papyrus", cursive;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Stars */
+  body::before {
+    content: "★ ✦ · ✧ ★ · ✦ ✧ · ★ ✦ · ✧ ★ · ✦ · ✧ ★ ✦ · ✧ ★ · ✦ ✧ · ★ ✦ · ✧ ★ · ✦ · ✧ ★ ✦ · ✧ ★ · ✦ ✧ · ★";
+    position: fixed;
+    top: 5px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    color: #ffffff44;
+    letter-spacing: 8px;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    background-color: #000066;
+    border-top: 3px solid #FF00FF;
+    border-bottom: 3px solid #FF00FF;
+    padding: 4px 0;
+  }
+
+  .marquee-inner {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 18s linear infinite;
+    color: #00FFFF;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive;
+  }
+
+  @keyframes scroll-left {
+    0%   { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .main-table {
+    width: 620px;
+    margin: 10px auto;
+    border: 4px ridge #FF00FF;
+    background-color: #000033;
+    padding: 10px;
+  }
+
+  h1.sitetitle {
+    text-align: center;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 28px;
+    color: #FF00FF;
+    text-shadow: 2px 2px #000000, 0 0 12px #FF00FF, 0 0 24px #FF00FF;
+    animation: rainbow-text 3s linear infinite;
+    margin: 8px 0 4px 0;
+  }
+
+  @keyframes rainbow-text {
+    0%   { color: #FF00FF; text-shadow: 2px 2px #000, 0 0 12px #FF00FF; }
+    16%  { color: #FF4400; text-shadow: 2px 2px #000, 0 0 12px #FF4400; }
+    33%  { color: #FFFF00; text-shadow: 2px 2px #000, 0 0 12px #FFFF00; }
+    50%  { color: #00FF00; text-shadow: 2px 2px #000, 0 0 12px #00FF00; }
+    66%  { color: #00FFFF; text-shadow: 2px 2px #000, 0 0 12px #00FFFF; }
+    83%  { color: #0099FF; text-shadow: 2px 2px #000, 0 0 12px #0099FF; }
+    100% { color: #FF00FF; text-shadow: 2px 2px #000, 0 0 12px #FF00FF; }
+  }
+
+  h2.subtitle {
+    text-align: center;
+    color: #00FFFF;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 16px;
+    margin: 2px 0 8px 0;
+    text-shadow: 1px 1px #000033;
+  }
+
+  .under-construction {
+    text-align: center;
+    font-size: 12px;
+    color: #FF8800;
+    animation: blink 1s step-end infinite;
+    margin: 4px 0;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .sparkle-bar {
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 6px;
+    color: #FFFF00;
+    margin: 6px 0;
+    animation: sparkle-spin 4s linear infinite;
+  }
+
+  @keyframes sparkle-spin {
+    0%   { letter-spacing: 6px; color: #FFFF00; }
+    25%  { letter-spacing: 8px; color: #FF00FF; }
+    50%  { letter-spacing: 6px; color: #00FFFF; }
+    75%  { letter-spacing: 8px; color: #00FF88; }
+    100% { letter-spacing: 6px; color: #FFFF00; }
+  }
+
+  HR.fancy1 { border: none; height: 4px; background: linear-gradient(to right, #FF00FF, #00FFFF, #FF00FF); margin: 8px 0; }
+  HR.fancy2 { border: none; height: 3px; background: linear-gradient(to right, #FFFF00, #FF4400, #FFFF00); margin: 6px 0; }
+
+  .section-header {
+    background: linear-gradient(to right, #220044, #000099, #220044);
+    border: 2px solid #FF00FF;
+    color: #FFFF00;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 18px;
+    text-align: center;
+    padding: 6px 0;
+    text-shadow: 1px 1px #FF00FF;
+    margin: 10px 0 6px 0;
+  }
+
+  .weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 15px;
+    margin: 6px 0;
+  }
+
+  .weather-table TH {
+    background: #000066;
+    color: #00FFFF;
+    border: 2px solid #FF00FF;
+    padding: 6px 10px;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .weather-table TD {
+    border: 1px solid #330066;
+    padding: 7px 12px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .weather-table TR:nth-child(odd) TD  { background-color: #000033; }
+  .weather-table TR:nth-child(even) TD { background-color: #00003A; }
+
+  .weather-table TR:hover TD {
+    background-color: #110044;
+    color: #FFFF00;
+  }
+
+  .temp-hot  { color: #FF6600; font-weight: bold; }
+  .temp-warm { color: #FFCC00; font-weight: bold; }
+  .temp-cool { color: #00CCFF; font-weight: bold; }
+
+  .precip-none { color: #888888; }
+
+  .new-badge {
+    display: inline-block;
+    background: #FF0000;
+    color: #FFFF00;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    padding: 1px 4px;
+    border: 1px solid #FFFF00;
+    animation: blink 0.7s step-end infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  .hit-counter {
+    text-align: center;
+    margin: 8px 0;
+    font-size: 12px;
+    color: #888888;
+  }
+
+  .hit-counter SPAN {
+    display: inline-block;
+    background: #111111;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border: 2px inset #00FF00;
+    letter-spacing: 4px;
+    text-shadow: 0 0 8px #00FF00;
+  }
+
+  .footer-text {
+    text-align: center;
+    font-size: 11px;
+    color: #666699;
+    font-family: Arial, sans-serif;
+    margin: 8px 0 4px 0;
+  }
+
+  .guestbook-link {
+    text-align: center;
+    margin: 6px 0;
+  }
+
+  .guestbook-link A {
+    color: #FF00FF;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    text-decoration: underline;
+    text-shadow: 0 0 6px #FF00FF;
+  }
+
+  .best-viewed {
+    text-align: center;
+    font-size: 11px;
+    color: #AAAAAA;
+    font-family: Arial, sans-serif;
+    margin: 4px 0;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+
+<!-- MARQUEE TOP -->
+<DIV CLASS="marquee-wrap">
+  <SPAN CLASS="marquee-inner">
+    &nbsp;&nbsp;&nbsp; *** WELCOME TO THE SANDY UTAH WEATHER PAGE *** UPDATED DAILY *** BOOKMARK THIS SITE *** TELL YOUR FRIENDS *** SANDY UT 84047 *** WEATHER IS RADICAL *** *** WELCOME TO THE SANDY UTAH WEATHER PAGE *** UPDATED DAILY *** BOOKMARK THIS SITE *** TELL YOUR FRIENDS *** SANDY UT 84047 *** WEATHER IS RADICAL ***
+  </SPAN>
+</DIV>
+
+<TABLE CLASS="main-table">
+  <TR><TD>
+
+    <H1 CLASS="sitetitle">*~*~* SANDY UT WEATHER *~*~*</H1>
+    <H2 CLASS="subtitle">Hourly Temps &amp; Precipitation :: June 23, 2026 :: ZIP 84047</H2>
+
+    <DIV CLASS="sparkle-bar">✦ ★ ✧ ✦ ★ ✧ ✦ ★ ✧ ✦ ★ ✧ ✦</DIV>
+
+    <DIV CLASS="under-construction">
+      *** THIS PAGE IS ALWAYS UNDER CONSTRUCTION -- CHECK BACK EVERY DAY!!! ***
+    </DIV>
+
+    <HR CLASS="fancy1">
+
+    <DIV CLASS="section-header">
+      &gt;&gt; MORNING WEATHER REPORT &lt;&lt; <SPAN CLASS="new-badge">NEW!</SPAN>
+    </DIV>
+
+    <TABLE CLASS="weather-table">
+      <TR>
+        <TH>TIME</TH>
+        <TH>TEMP (&#176;F)</TH>
+        <TH>FEELS LIKE</TH>
+        <TH>PRECIP (IN)</TH>
+        <TH>CONDITIONS</TH>
+      </TR>
+      <TR>
+        <TD><B>5:00 AM</B></TD>
+        <TD CLASS="temp-cool">62&#176;F</TD>
+        <TD CLASS="temp-cool">60&#176;F</TD>
+        <TD CLASS="precip-none">0.00&quot;</TD>
+        <TD>Clear &#9728;</TD>
+      </TR>
+      <TR>
+        <TD><B>6:00 AM</B></TD>
+        <TD CLASS="temp-cool">63&#176;F</TD>
+        <TD CLASS="temp-cool">61&#176;F</TD>
+        <TD CLASS="precip-none">0.00&quot;</TD>
+        <TD>Clear &#9728;</TD>
+      </TR>
+      <TR>
+        <TD><B>7:00 AM</B></TD>
+        <TD CLASS="temp-warm">68&#176;F</TD>
+        <TD CLASS="temp-warm">67&#176;F</TD>
+        <TD CLASS="precip-none">0.00&quot;</TD>
+        <TD>Sunny &#9728;</TD>
+      </TR>
+      <TR>
+        <TD><B>8:00 AM</B></TD>
+        <TD CLASS="temp-warm">73&#176;F</TD>
+        <TD CLASS="temp-warm">72&#176;F</TD>
+        <TD CLASS="precip-none">0.00&quot;</TD>
+        <TD>Sunny &#9728;</TD>
+      </TR>
+      <TR>
+        <TD><B>9:00 AM</B></TD>
+        <TD CLASS="temp-warm">77&#176;F</TD>
+        <TD CLASS="temp-warm">75&#176;F</TD>
+        <TD CLASS="precip-none">0.00&quot;</TD>
+        <TD>Sunny &#9788;</TD>
+      </TR>
+      <TR>
+        <TD><B>10:00 AM</B></TD>
+        <TD CLASS="temp-hot">82&#176;F</TD>
+        <TD CLASS="temp-hot">80&#176;F</TD>
+        <TD CLASS="precip-none">0.00&quot;</TD>
+        <TD>Sunny &#9788;</TD>
+      </TR>
+    </TABLE>
+
+    <HR CLASS="fancy2">
+
+    <DIV CLASS="section-header">&gt;&gt; FUN WEATHER FACTS!! &lt;&lt;</DIV>
+
+    <TABLE WIDTH="100%" CELLPADDING="6" BORDER="0">
+      <TR>
+        <TD WIDTH="50%" VALIGN="top" STYLE="color:#00FF88; font-size:13px;">
+          <B STYLE="color:#FFFF00;">&#9733; LOCATION:</B> Sandy, Utah (Wasatch Front)<BR>
+          <B STYLE="color:#FFFF00;">&#9733; ZIP CODE:</B> 84047<BR>
+          <B STYLE="color:#FFFF00;">&#9733; ELEVATION:</B> ~4,534 ft above sea level<BR>
+          <B STYLE="color:#FFFF00;">&#9733; CLIMATE:</B> High Desert (Semi-Arid)
+        </TD>
+        <TD WIDTH="50%" VALIGN="top" STYLE="color:#00FF88; font-size:13px;">
+          <B STYLE="color:#FFFF00;">&#9733; DAILY HIGH:</B> ~91&#176;F expected<BR>
+          <B STYLE="color:#FFFF00;">&#9733; DAILY LOW:</B> ~61&#176;F overnight<BR>
+          <B STYLE="color:#FFFF00;">&#9733; HUMIDITY:</B> LOW (it's the desert duh)<BR>
+          <B STYLE="color:#FFFF00;">&#9733; PRECIP:</B> Basically ZERO!! &#128514;
+        </TD>
+      </TR>
+    </TABLE>
+
+    <HR CLASS="fancy1">
+
+    <DIV CLASS="hit-counter">
+      You are visitor #&nbsp;<SPAN>0&#160;0&#160;4&#160;2&#160;8&#160;3</SPAN>
+      &nbsp;&nbsp; <SPAN STYLE="font-size:11px; color:#666;">since Jan 1, 1997</SPAN>
+    </DIV>
+
+    <DIV CLASS="guestbook-link">
+      <A HREF="#">[sign my guestbook!!]</A>
+      &nbsp;&nbsp;&nbsp;
+      <A HREF="#" STYLE="color:#00FF88;">[ email the webmaster ]</A>
+      &nbsp;&nbsp;&nbsp;
+      <A HREF="#" STYLE="color:#FFFF00;">[ add to favorites!! ]</A>
+    </DIV>
+
+    <DIV CLASS="sparkle-bar">✧ ★ ✦ ✧ ★ ✦ ✧ ★ ✦ ✧ ★ ✦ ✧</DIV>
+
+    <HR CLASS="fancy2">
+
+    <DIV CLASS="best-viewed">
+      * Best viewed in Netscape Navigator 4.0 at 800x600 resolution *
+    </DIV>
+
+    <DIV CLASS="footer-text">
+      &copy; 1997 Sandy Weather Page &mdash; All Rights Reserved &mdash; No Hotlinking!!!<BR>
+      Data from NOAA National Weather Service &mdash; last updated: June 23, 2026 at 12:00 AM MDT
+    </DIV>
+
+  </TD></TR>
+</TABLE>
+
+<!-- MARQUEE BOTTOM -->
+<DIV CLASS="marquee-wrap" STYLE="margin-top:6px;">
+  <SPAN CLASS="marquee-inner" STYLE="animation-duration: 22s; color: #FFFF00;">
+    &nbsp;&nbsp;&nbsp; &lt;-&lt;-&lt;- SANDY UT WEATHER -&gt;-&gt;-&gt; JUNE 23 2026 -&gt;-&gt;-&gt; HIGH: 91F -&gt;-&gt;-&gt; LOW: 61F -&gt;-&gt;-&gt; PRECIP: 0.00&quot; -&gt;-&gt;-&gt; CONDITIONS: CLEAR AND SUNNY -&gt;-&gt;-&gt; HAVE A GREAT DAY SANDY UT!! -&gt;-&gt;-&gt; &lt;-&lt;-&lt;- SANDY UT WEATHER -&gt;-&gt;-&gt; JUNE 23 2026 -&gt;-&gt;-&gt; HIGH: 91F -&gt;-&gt;-&gt; LOW: 61F -&gt;-&gt;-&gt; PRECIP: 0.00&quot; -&gt;-&gt;-&gt; CONDITIONS: CLEAR AND SUNNY -&gt;-&gt;-&gt; HAVE A GREAT DAY SANDY UT!!
+  </SPAN>
+</DIV>
+
+</BODY>
+</HTML>
