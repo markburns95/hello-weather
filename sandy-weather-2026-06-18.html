@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="Microsoft FrontPage 4.0">
+<meta http-equiv="refresh" content="30">
+<title>:: SANDY UT WEATHER SYSTEM v2.0 :: ONLINE ::</title>
+<style type="text/css">
+  body {
+    background-color: #000000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23000'/%3E%3Cpath d='M0 20 L40 20 M20 0 L20 40' stroke='%2300ff0020' stroke-width='0.5'/%3E%3C/svg%3E");
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    padding: 0;
+  }
+
+  a { color: #00ffff; text-decoration: none; }
+  a:hover { color: #ff00ff; text-decoration: underline; }
+  a:visited { color: #009999; }
+
+  .outer-table {
+    width: 780px;
+    margin: 10px auto;
+    border: 2px solid #00ff00;
+    border-collapse: collapse;
+    background-color: #000000;
+  }
+
+  .header-cell {
+    background-color: #000000;
+    text-align: center;
+    padding: 10px 0 6px 0;
+    border-bottom: 2px solid #00ff00;
+  }
+
+  .header-title {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: Impact, "Arial Black", sans-serif;
+    color: #00ff00;
+    text-shadow: 0 0 8px #00ff00, 0 0 16px #00aa00;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .header-sub {
+    font-size: 11px;
+    color: #009900;
+    letter-spacing: 6px;
+    margin-top: 4px;
+  }
+
+  .status-bar {
+    background-color: #001100;
+    border: 1px solid #003300;
+    padding: 3px 8px;
+    font-size: 10px;
+    color: #009900;
+    letter-spacing: 2px;
+  }
+
+  .main-left {
+    width: 180px;
+    vertical-align: top;
+    border-right: 1px solid #003300;
+    padding: 8px;
+  }
+
+  .main-right {
+    vertical-align: top;
+    padding: 10px 14px;
+  }
+
+  .nav-box {
+    border: 1px solid #00ff00;
+    padding: 6px;
+    margin-bottom: 10px;
+    background-color: #001100;
+  }
+
+  .nav-box-title {
+    color: #00ffff;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #003300;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    text-transform: uppercase;
+  }
+
+  .nav-box a {
+    display: block;
+    font-size: 11px;
+    padding: 2px 0;
+    color: #00cc00;
+  }
+
+  .nav-box a:hover { color: #00ffff; }
+
+  .section-header {
+    background: linear-gradient(to right, #003300, #001100);
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .weather-table th {
+    background-color: #003300;
+    color: #00ffff;
+    border: 1px solid #00aa00;
+    padding: 5px 10px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .weather-table td {
+    border: 1px solid #003300;
+    padding: 5px 10px;
+    color: #00ff00;
+    background-color: #000800;
+  }
+
+  .weather-table tr:hover td {
+    background-color: #001a00;
+    color: #ffffff;
+  }
+
+  .temp-val {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Impact, sans-serif;
+    color: #ffff00;
+    text-shadow: 0 0 4px #aaaa00;
+  }
+
+  .precip-val {
+    color: #00ccff;
+    font-weight: bold;
+  }
+
+  .blink {
+    animation: blinker 1.2s step-start infinite;
+  }
+
+  @keyframes blinker {
+    50% { opacity: 0; }
+  }
+
+  .marquee-bar {
+    background-color: #001100;
+    border-top: 1px solid #003300;
+    border-bottom: 1px solid #003300;
+    padding: 4px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-bar span {
+    display: inline-block;
+    animation: marquee 18s linear infinite;
+    color: #00cc00;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  @keyframes marquee {
+    0%   { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .system-info {
+    font-size: 10px;
+    color: #006600;
+    letter-spacing: 1px;
+    line-height: 1.8;
+  }
+
+  .footer-cell {
+    border-top: 2px solid #00ff00;
+    text-align: center;
+    padding: 8px;
+    font-size: 10px;
+    color: #006600;
+    letter-spacing: 2px;
+  }
+
+  .counter-box {
+    border: 1px solid #006600;
+    padding: 4px 8px;
+    font-size: 10px;
+    color: #009900;
+    background-color: #000800;
+    display: inline-block;
+    letter-spacing: 2px;
+  }
+
+  .glow-green {
+    color: #00ff00;
+    text-shadow: 0 0 6px #00ff00;
+  }
+
+  .glow-cyan {
+    color: #00ffff;
+    text-shadow: 0 0 6px #00ffff;
+  }
+
+  .progress-bar-outer {
+    width: 100%;
+    height: 8px;
+    background-color: #001100;
+    border: 1px solid #003300;
+    margin: 2px 0;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background-color: #00ff00;
+    box-shadow: 0 0 4px #00ff00;
+  }
+
+  .mini-stat {
+    font-size: 10px;
+    color: #009900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- MARQUEE TICKER -->
+<div class="marquee-bar">
+  <span>
+    &nbsp;&nbsp;&nbsp;*** SANDY UT WEATHER SYSTEM ONLINE ***&nbsp;&nbsp;&nbsp;
+    DATA FEED: ACTIVE&nbsp;&nbsp;&nbsp;
+    LOCATION: SANDY, UTAH 84047&nbsp;&nbsp;&nbsp;
+    DATE: 06/18/2026&nbsp;&nbsp;&nbsp;
+    TEMP UNITS: FAHRENHEIT&nbsp;&nbsp;&nbsp;
+    PRECIP UNITS: INCHES&nbsp;&nbsp;&nbsp;
+    *** SYSTEM NOMINAL ***&nbsp;&nbsp;&nbsp;
+    *** NO Y2K ERRORS DETECTED ***&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- OUTER CONTAINER TABLE -->
+<table class="outer-table" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="header-cell" colspan="2">
+      <div class="header-title">[ SANDY UT :: WEATHER SYSTEM ]</div>
+      <div class="header-sub">&gt;&gt; MORNING ATMOSPHERIC DATA FEED :: 05:00 - 10:00 &lt;&lt;</div>
+      <div class="header-sub" style="color:#006600; margin-top:4px;">
+        SANDY, UTAH &nbsp;|&nbsp; ZIP: 84047 &nbsp;|&nbsp; 06/18/2026
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="header-cell" colspan="2" style="padding:2px 8px; text-align:left;">
+      <div class="status-bar">
+        [ STATUS: <span class="glow-green blink">ONLINE</span> ]
+        &nbsp;&nbsp;
+        [ DATA FEED: <span class="glow-green">LIVE</span> ]
+        &nbsp;&nbsp;
+        [ SECTOR: WASATCH FRONT GRID ]
+        &nbsp;&nbsp;
+        [ ELEV: 4,423 FT ]
+        &nbsp;&nbsp;
+        [ VISITORS: <span class="counter-box">001,337</span> ]
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="main-left">
+      <!-- LEFT NAVIGATION -->
+      <div class="nav-box">
+        <div class="nav-box-title">&gt; NAVIGATION</div>
+        <a href="#">[ HOME ]</a>
+        <a href="#">[ FORECAST ]</a>
+        <a href="#">[ RADAR ]</a>
+        <a href="#">[ ALERTS ]</a>
+        <a href="#">[ ARCHIVES ]</a>
+        <a href="#">[ GUESTBOOK ]</a>
+        <a href="#">[ LINKS ]</a>
+      </div>
+      <div class="nav-box">
+        <div class="nav-box-title">&gt; SYSTEM STATUS</div>
+        <div class="system-info">
+          SERVER: ONLINE<br>
+          MODE: AUTO<br>
+          UPTIME: 99.7%<br>
+          REFRESH: 30s<br>
+          BROWSER: IE 5.0+<br>
+          RES: 800x600
+        </div>
+      </div>
+      <div class="nav-box">
+        <div class="nav-box-title">&gt; CONDITIONS</div>
+        <div class="system-info">
+          SKY: CLEAR<br>
+          HUMIDITY: 21%<br>
+          UV IDX: HIGH<br>
+          AIR QUAL: GOOD<br>
+          WIND: SW 5 MPH<br>
+        </div>
+      </div>
+      <div class="nav-box" style="text-align:center;">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='31'%3E%3Crect width='88' height='31' fill='%23000'/%3E%3Ctext x='44' y='12' text-anchor='middle' fill='%2300ff00' font-size='7' font-family='monospace'%3ESANDY WT SYS%3C/text%3E%3Ctext x='44' y='22' text-anchor='middle' fill='%2300ffff' font-size='6' font-family='monospace'%3Ev2.0 :: Y2K OK%3C/text%3E%3C/svg%3E"
+          alt="Sandy Weather System v2.0" width="88" height="31"><br>
+        <div style="font-size:9px; color:#006600; margin-top:4px;">
+          &copy; 2000 Sandy-WX.net<br>
+          All Rights Reserved
+        </div>
+      </div>
+    </td>
+    <td class="main-right">
+      <!-- MAIN CONTENT -->
+      <div class="section-header">
+        &gt;&gt; MORNING TEMPERATURE LOG :: 05:00 - 10:00 HRS
+      </div>
+
+      <table class="weather-table">
+        <tr>
+          <th width="100">TIME</th>
+          <th width="160">TEMPERATURE (F)</th>
+          <th>TEMP LEVEL</th>
+          <th width="160">PRECIPITATION (IN)</th>
+        </tr>
+        <tr>
+          <td><span class="glow-cyan">05:00 AM</span></td>
+          <td><span class="temp-val">64&deg;F</span></td>
+          <td>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" style="width:48%; background-color:#00aaff;"></div>
+            </div>
+            <div class="mini-stat">COOL / COMFORTABLE</div>
+          </td>
+          <td><span class="precip-val">0.00&quot;</span> &nbsp;<span style="color:#006600; font-size:10px;">DRY</span></td>
+        </tr>
+        <tr>
+          <td><span class="glow-cyan">06:00 AM</span></td>
+          <td><span class="temp-val">67&deg;F</span></td>
+          <td>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" style="width:52%; background-color:#00ccaa;"></div>
+            </div>
+            <div class="mini-stat">COOL / COMFORTABLE</div>
+          </td>
+          <td><span class="precip-val">0.00&quot;</span> &nbsp;<span style="color:#006600; font-size:10px;">DRY</span></td>
+        </tr>
+        <tr>
+          <td><span class="glow-cyan">07:00 AM</span></td>
+          <td><span class="temp-val">72&deg;F</span></td>
+          <td>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" style="width:60%; background-color:#88dd00;"></div>
+            </div>
+            <div class="mini-stat">MILD / PLEASANT</div>
+          </td>
+          <td><span class="precip-val">0.00&quot;</span> &nbsp;<span style="color:#006600; font-size:10px;">DRY</span></td>
+        </tr>
+        <tr>
+          <td><span class="glow-cyan">08:00 AM</span></td>
+          <td><span class="temp-val">78&deg;F</span></td>
+          <td>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" style="width:70%; background-color:#ddcc00;"></div>
+            </div>
+            <div class="mini-stat">WARM / BUILDING</div>
+          </td>
+          <td><span class="precip-val">0.00&quot;</span> &nbsp;<span style="color:#006600; font-size:10px;">DRY</span></td>
+        </tr>
+        <tr>
+          <td><span class="glow-cyan">09:00 AM</span></td>
+          <td><span class="temp-val">83&deg;F</span></td>
+          <td>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" style="width:80%; background-color:#ff9900;"></div>
+            </div>
+            <div class="mini-stat">WARM / HEATING UP</div>
+          </td>
+          <td><span class="precip-val">0.00&quot;</span> &nbsp;<span style="color:#006600; font-size:10px;">DRY</span></td>
+        </tr>
+        <tr>
+          <td><span class="glow-cyan">10:00 AM</span></td>
+          <td><span class="temp-val">88&deg;F</span></td>
+          <td>
+            <div class="progress-bar-outer">
+              <div class="progress-bar-inner" style="width:90%; background-color:#ff4400;"></div>
+            </div>
+            <div class="mini-stat">HOT / PEAK RISING</div>
+          </td>
+          <td><span class="precip-val">0.00&quot;</span> &nbsp;<span style="color:#006600; font-size:10px;">DRY</span></td>
+        </tr>
+      </table>
+
+      <!-- SUMMARY BOX -->
+      <div class="section-header">&gt;&gt; SYSTEM ANALYSIS :: MORNING SUMMARY</div>
+      <table width="100%" cellspacing="4" style="font-size:11px;">
+        <tr>
+          <td style="width:50%; vertical-align:top;">
+            <div class="nav-box">
+              <div class="nav-box-title">&gt; TEMPERATURE SUMMARY</div>
+              <div class="system-info">
+                LOW (05:00): &nbsp;&nbsp;64&deg;F<br>
+                HIGH (10:00): &nbsp;88&deg;F<br>
+                DELTA: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+24&deg;F<br>
+                AVG: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;75.3&deg;F<br>
+                TREND: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glow-green">RISING</span>
+              </div>
+            </div>
+          </td>
+          <td style="width:50%; vertical-align:top;">
+            <div class="nav-box">
+              <div class="nav-box-title">&gt; PRECIPITATION SUMMARY</div>
+              <div class="system-info">
+                TOTAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.00 IN<br>
+                EVENTS: &nbsp;&nbsp;&nbsp;&nbsp;NONE<br>
+                HUMIDITY: &nbsp;&nbsp;21%<br>
+                DEW POINT: &nbsp;28&deg;F<br>
+                STATUS: &nbsp;&nbsp;&nbsp;&nbsp;<span class="glow-cyan">ARID / DRY</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div class="nav-box">
+              <div class="nav-box-title">&gt; MORNING ADVISORY</div>
+              <div class="system-info" style="color:#00cc00; font-size:11px; letter-spacing:1px;">
+                Typical clear-sky June morning for the Wasatch Front. Temperatures rising rapidly from
+                the mid-60s at dawn toward the upper 80s by mid-morning. Zero precipitation expected.
+                Low humidity and high UV index anticipated. Sunscreen recommended for outdoor activity.
+                Afternoon high projected near 97&deg;F.
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div style="text-align:center; margin-top:10px; font-size:10px; color:#004400; letter-spacing:2px;">
+        *** BEST VIEWED IN INTERNET EXPLORER 5.0 OR NETSCAPE 4.7 AT 800x600 RESOLUTION ***<br>
+        <span class="blink" style="color:#006600;">&gt;&gt; THIS SITE IS UNDER CONSTRUCTION &lt;&lt;</span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="footer-cell" colspan="2">
+      &copy; 2000 SANDY-WX.NET :: WEATHER DATA SYSTEMS ONLINE :: ALL RIGHTS RESERVED<br>
+      <span style="color:#003300;">
+        SANDY, UTAH 84047 &nbsp;|&nbsp; LAT: 40.5649 &nbsp;|&nbsp; LON: -111.8389 &nbsp;|&nbsp; ELEV: 4,423 FT<br>
+        PAGE LAST UPDATED: 06/18/2026 04:58:01 AM MDT &nbsp;|&nbsp; AUTO-REFRESH: 30 SEC
+      </span>
+    </td>
+  </tr>
+</table>
+
+<!-- BOTTOM MARQUEE -->
+<div class="marquee-bar" style="margin-top:4px;">
+  <span style="animation-delay: -9s;">
+    &nbsp;&nbsp;&nbsp;DISCLAIMER: WEATHER DATA IS FOR INFORMATIONAL PURPOSES ONLY &nbsp;|&nbsp;
+    SANDY-WX.NET IS NOT RESPONSIBLE FOR WEATHER-RELATED DECISIONS &nbsp;|&nbsp;
+    SIGN OUR GUESTBOOK &nbsp;|&nbsp;
+    ADD US TO YOUR FAVORITES &nbsp;|&nbsp;
+    RING: UTAH WEATHER WEBRING &nbsp;|&nbsp;
+    HIT COUNTER: 001,337 VISITORS SERVED &nbsp;|&nbsp;
+    Y2K COMPLIANT &nbsp;|&nbsp;
+  </span>
+</div>
+
+</body>
+</html>
