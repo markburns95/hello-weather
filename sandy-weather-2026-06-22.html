@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Sandy UT Morning Weather - June 22, 2026" />
+  <title>WeatherWidget 2.0 &beta; &mdash; Sandy, UT Morning Report</title>
+  <style type="text/css">
+
+    /* ============================================================
+       2007 Web 2.0 Design Language
+       Key hallmarks: glossy gradients, rounded corners,
+       shiny button overlays, Helvetica Neue, soft drop-shadows,
+       muted steel-blue palette, "gloss" highlight on everything
+    ============================================================ */
+
+    * { margin: 0; padding: 0; }
+
+    body {
+      background-color: #c9d6e0;
+      background-image:
+        linear-gradient(180deg, #b0c4d8 0%, #dde8f0 45%, #c9d6e0 100%);
+      background-attachment: fixed;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* ---- top chrome bar ---- */
+    #topbar {
+      height: 28px;
+      background: linear-gradient(180deg, #5a8db5 0%, #3a6e9a 50%, #2e5f87 51%, #4880aa 100%);
+      border-bottom: 1px solid #1d4a6e;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+    }
+
+    #topbar .brand {
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+      letter-spacing: 0.03em;
+    }
+
+    .beta-badge {
+      background: linear-gradient(180deg, #f9c030 0%, #e08800 100%);
+      color: #5a3300;
+      font-size: 9px;
+      font-weight: bold;
+      padding: 1px 5px;
+      border-radius: 8px;
+      border: 1px solid #c07000;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      vertical-align: middle;
+    }
+
+    #topbar .tagline {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+      margin-left: 4px;
+    }
+
+    #topbar .rss-button {
+      margin-left: auto;
+      background: linear-gradient(180deg, #f96518 0%, #d44200 50%, #c03a00 51%, #e05010 100%);
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #902800;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---- page wrapper ---- */
+    #wrapper {
+      max-width: 680px;
+      margin: 24px auto;
+      padding: 0 12px;
+    }
+
+    /* ---- main widget card ---- */
+    #widget-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #b0c8da;
+      box-shadow:
+        0 4px 12px rgba(0,0,0,0.18),
+        0 1px 3px rgba(0,0,0,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      overflow: hidden;
+    }
+
+    /* ---- card header with gloss shine ---- */
+    #card-header {
+      position: relative;
+      background: linear-gradient(180deg, #5a9fc8 0%, #3278a8 50%, #2568a0 51%, #3d84b8 100%);
+      padding: 20px 22px 16px;
+      overflow: hidden;
+    }
+
+    /* gloss overlay on header */
+    #card-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.30) 0%,
+        rgba(255,255,255,0.08) 100%
+      );
+      border-radius: 12px 12px 0 0;
+    }
+
+    #card-header .app-name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    #card-header .app-name .icon {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, #ffe87a 0%, #ffb800 50%, #e87800 100%);
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4),
+                  inset 0 1px 0 rgba(255,255,255,0.6);
+      vertical-align: middle;
+      margin-right: 8px;
+      text-align: center;
+      line-height: 26px;
+      font-size: 15px;
+    }
+
+    #card-header .subtitle {
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 4px;
+      position: relative;
+    }
+
+    /* ---- content area ---- */
+    #card-body {
+      padding: 16px 22px 20px;
+    }
+
+    /* ---- location pill ---- */
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(180deg, #f0f6fb 0%, #dce9f5 100%);
+      border: 1px solid #a8c8e0;
+      border-radius: 20px;
+      padding: 5px 14px 5px 10px;
+      margin-bottom: 16px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8),
+        0 1px 3px rgba(0,0,0,0.1);
+      font-size: 12px;
+      color: #2a6080;
+      font-weight: bold;
+    }
+
+    .location-pill .dot {
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle at 35% 35%, #66bbff, #0070c0);
+      border-radius: 50%;
+      margin-right: 7px;
+      box-shadow: 0 0 3px rgba(0,112,192,0.6);
+    }
+
+    /* ---- section label ---- */
+    .section-header {
+      font-size: 11px;
+      font-weight: bold;
+      color: #5a8aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-bottom: 2px solid #dde8f2;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* ---- data table ---- */
+    table.hourly-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #c4d8e8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    table.hourly-table thead tr {
+      background: linear-gradient(180deg, #e8f2f8 0%, #d0e4f2 100%);
+    }
+
+    table.hourly-table thead th {
+      padding: 8px 14px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: bold;
+      color: #3a6888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #b8d0e4;
+    }
+
+    table.hourly-table thead th:not(:first-child) {
+      text-align: center;
+    }
+
+    table.hourly-table tbody tr {
+      transition: background 0.1s;
+    }
+
+    table.hourly-table tbody tr:nth-child(odd) {
+      background: #fff;
+    }
+
+    table.hourly-table tbody tr:nth-child(even) {
+      background: linear-gradient(180deg, #f4f9fd 0%, #eaf2f8 100%);
+    }
+
+    table.hourly-table tbody tr:hover {
+      background: linear-gradient(180deg, #e0effa 0%, #d4e8f6 100%);
+    }
+
+    table.hourly-table tbody td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #e0ecf4;
+      vertical-align: middle;
+    }
+
+    table.hourly-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.hourly-table tbody td:not(:first-child) {
+      text-align: center;
+    }
+
+    .hour-label {
+      font-weight: bold;
+      font-size: 13px;
+      color: #2a5070;
+    }
+
+    .temp-display {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+      color: #cc4400;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .temp-bar-wrap {
+      display: inline-block;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .temp-bar {
+      display: inline-block;
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #f4a030 0%, #e06000 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),
+                  0 1px 2px rgba(0,0,0,0.2);
+      vertical-align: middle;
+    }
+
+    .precip-display {
+      font-size: 13px;
+      color: #3a78a8;
+      font-weight: bold;
+    }
+
+    .precip-none {
+      color: #aac0cc;
+      font-size: 12px;
+    }
+
+    /* ---- glossy "action" button ---- */
+    .gloss-btn {
+      display: inline-block;
+      background: linear-gradient(180deg, #5ab0e0 0%, #2880c8 50%, #1a6cb8 51%, #3898d8 100%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 5px 14px;
+      border-radius: 6px;
+      border: 1px solid #0c50a0;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.35);
+      text-decoration: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- footer strip ---- */
+    #card-footer {
+      background: linear-gradient(180deg, #eef4f8 0%, #e4eef6 100%);
+      border-top: 1px solid #c8dcea;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #card-footer .updated-text {
+      font-size: 11px;
+      color: #8aacbe;
+    }
+
+    #card-footer .digg-btn {
+      margin-left: auto;
+      background: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
+      color: #555;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- sidebar widget ---- */
+    #sidebar-tip {
+      margin-top: 14px;
+      background: linear-gradient(180deg, #fffde8 0%, #fff9d0 100%);
+      border: 1px solid #e0d080;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #605000;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08),
+                  inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    #sidebar-tip .tip-title {
+      font-weight: bold;
+      font-size: 11px;
+      color: #806000;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    /* ---- tags cloud ---- */
+    .tag-cloud {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      background: linear-gradient(180deg, #e8f2fb 0%, #d0e4f4 100%);
+      border: 1px solid #a0c0dc;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 11px;
+      color: #3060a0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .powered-by {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 10px;
+      color: #a0b8c8;
+    }
+
+    .powered-by span {
+      font-weight: bold;
+      color: #6090b0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- top nav chrome -->
+  <div id="topbar">
+    <span class="brand">WeatherWidget</span>
+    <span class="beta-badge">BETA</span>
+    <span class="tagline">Morning Conditions for the Wasatch Front</span>
+    <a class="rss-button" href="#">&#9658; RSS</a>
+  </div>
+
+  <div id="wrapper">
+    <div id="widget-card">
+
+      <!-- glossy header -->
+      <div id="card-header">
+        <div class="app-name">
+          <span class="icon">&#9728;</span>
+          Sandy, UT Morning Weather
+        </div>
+        <div class="subtitle">Monday, June 22, 2026 &nbsp;&bull;&nbsp; 5:00 AM &ndash; 10:00 AM MDT</div>
+      </div>
+
+      <!-- body -->
+      <div id="card-body">
+
+        <div class="location-pill">
+          <span class="dot"></span>
+          Sandy, Utah &nbsp;&middot;&nbsp; ZIP 84047 &nbsp;&middot;&nbsp; Elev. 4,500 ft
+        </div>
+
+        <div class="section-header">Hourly Breakdown</div>
+
+        <table class="hourly-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Temp (&deg;F)</th>
+              <th>Precip (in)</th>
+              <th>Conditions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="hour-label">5:00 AM</span></td>
+              <td>
+                <span class="temp-display">62&deg;</span>
+                <span class="temp-bar-wrap"><span class="temp-bar" style="width:38px;"></span></span>
+              </td>
+              <td><span class="precip-none">&mdash; 0.00 in</span></td>
+              <td>Clear</td>
+            </tr>
+            <tr>
+              <td><span class="hour-label">6:00 AM</span></td>
+              <td>
+                <span class="temp-display">65&deg;</span>
+                <span class="temp-bar-wrap"><span class="temp-bar" style="width:43px;"></span></span>
+              </td>
+              <td><span class="precip-none">&mdash; 0.00 in</span></td>
+              <td>Clear</td>
+            </tr>
+            <tr>
+              <td><span class="hour-label">7:00 AM</span></td>
+              <td>
+                <span class="temp-display">70&deg;</span>
+                <span class="temp-bar-wrap"><span class="temp-bar" style="width:50px;"></span></span>
+              </td>
+              <td><span class="precip-none">&mdash; 0.00 in</span></td>
+              <td>Sunny</td>
+            </tr>
+            <tr>
+              <td><span class="hour-label">8:00 AM</span></td>
+              <td>
+                <span class="temp-display">76&deg;</span>
+                <span class="temp-bar-wrap"><span class="temp-bar" style="width:58px;"></span></span>
+              </td>
+              <td><span class="precip-none">&mdash; 0.00 in</span></td>
+              <td>Sunny</td>
+            </tr>
+            <tr>
+              <td><span class="hour-label">9:00 AM</span></td>
+              <td>
+                <span class="temp-display">81&deg;</span>
+                <span class="temp-bar-wrap"><span class="temp-bar" style="width:65px;"></span></span>
+              </td>
+              <td><span class="precip-none">&mdash; 0.00 in</span></td>
+              <td>Sunny</td>
+            </tr>
+            <tr>
+              <td><span class="hour-label">10:00 AM</span></td>
+              <td>
+                <span class="temp-display">87&deg;</span>
+                <span class="temp-bar-wrap"><span class="temp-bar" style="width:74px;"></span></span>
+              </td>
+              <td><span class="precip-none">&mdash; 0.00 in</span></td>
+              <td>Sunny</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="sidebar-tip">
+          <div class="tip-title">&#9733; Daily Briefing</div>
+          Warm, dry start to a classic summer day in the Salt Lake Valley.
+          No precipitation expected through midday. UV index will be high by 10 AM &mdash;
+          sunscreen recommended before heading out. High near 98&deg;F later this afternoon.
+        </div>
+
+        <div class="tag-cloud">
+          <span class="tag">Sandy UT</span>
+          <span class="tag">84047</span>
+          <span class="tag">Morning Weather</span>
+          <span class="tag">Clear Skies</span>
+          <span class="tag">No Rain</span>
+          <span class="tag">Wasatch Front</span>
+          <span class="tag">Summer</span>
+        </div>
+
+      </div><!-- /card-body -->
+
+      <!-- footer strip -->
+      <div id="card-footer">
+        <span class="updated-text">&#10003; Updated: Mon Jun 22, 2026 at 5:00 AM MDT</span>
+        <button class="digg-btn">&#9650; Digg This!</button>
+      </div>
+
+    </div><!-- /widget-card -->
+
+    <p class="powered-by">Powered by <span>WeatherWidget 2.0</span> &mdash; Your Web 2.0 Weather Mashup</p>
+
+  </div><!-- /wrapper -->
+
+</body>
+</html>
