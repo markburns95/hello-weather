@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sandy, Utah morning weather — hourly temperature and precipitation 5am to 10am, June 27 2026">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Weather Journal — Sandy, UT — June 27, 2026</title>
+  <style>
+    @import url('data:text/css,');
+
+    * { -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #c8bfaf;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23c8bfaf'/%3E%3Crect width='2' height='2' fill='%23c2b9a8' opacity='0.6'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23c2b9a8' opacity='0.6'/%3E%3C/svg%3E");
+      min-height: 100vh;
+      padding: 30px 20px 50px;
+    }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       LEATHER NOTEBOOK COVER
+    ========================================= */
+    .notebook {
+      background: #5c3d1e;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.03) 2px,
+          rgba(0,0,0,0.03) 4px
+        ),
+        linear-gradient(to bottom, #6b4a27 0%, #4e3118 40%, #5c3d1e 60%, #3d2510 100%);
+      border-radius: 6px 6px 4px 4px;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.15) inset,
+        0 -1px 0 rgba(0,0,0,0.4) inset,
+        0 8px 30px rgba(0,0,0,0.55),
+        0 2px 6px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    /* stitched border on top */
+    .notebook-spine {
+      height: 12px;
+      background: #3a2010;
+      border-bottom: 2px solid #2a1608;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3) inset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+    }
+    .notebook-spine::before {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        transparent 0px, transparent 4px,
+        rgba(255,255,255,0.2) 4px, rgba(255,255,255,0.2) 8px
+      );
+    }
+    .notebook-spine::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        transparent 0px, transparent 4px,
+        rgba(255,255,255,0.2) 4px, rgba(255,255,255,0.2) 8px
+      );
+    }
+
+    .notebook-title {
+      background: #3a2010;
+      padding: 22px 30px 20px;
+      border-bottom: 1px solid #2a1608;
+      position: relative;
+    }
+    .notebook-title h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0dfc0;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 -1px 0 rgba(255,255,255,0.05);
+      letter-spacing: 0.5px;
+    }
+    .notebook-title .subtitle {
+      font-size: 13px;
+      color: #9a7d5a;
+      margin-top: 5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .notebook-title .emboss-label {
+      position: absolute;
+      top: 18px;
+      right: 26px;
+      background: linear-gradient(to bottom, #8b6840, #6b4e2a);
+      border: 1px solid #4a3018;
+      border-radius: 3px;
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #f5e8c8;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.12) inset,
+        0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* =========================================
+       PAPER INTERIOR
+    ========================================= */
+    .paper {
+      background: #faf6ef;
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 27px,
+          #e8e0d0 27px,
+          #e8e0d0 28px
+        );
+      padding: 28px 36px 36px 70px;
+      position: relative;
+    }
+
+    /* red margin line */
+    .paper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 58px;
+      width: 2px;
+      height: 100%;
+      background: rgba(220, 120, 100, 0.5);
+    }
+
+    /* hole punches */
+    .holes {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 44px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 30px 0;
+      pointer-events: none;
+    }
+    .hole {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #b0a89a, #8a8078);
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.4) inset,
+        0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    /* =========================================
+       HEADER INSIDE PAPER
+    ========================================= */
+    .paper-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #d8cebc;
+    }
+    .paper-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2c1e0e;
+      margin-bottom: 4px;
+    }
+    .paper-header .date-stamp {
+      font-size: 12px;
+      color: #8a7a5a;
+      letter-spacing: 0.5px;
+    }
+    .paper-header .location-tag {
+      display: inline-block;
+      background: linear-gradient(to bottom, #e8503a, #c03020);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin-top: 8px;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.2) inset,
+        0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* =========================================
+       WEATHER DATA CELLS
+    ========================================= */
+    .hours-grid {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hour-card {
+      background: linear-gradient(to bottom, #ffffff 0%, #f0ead8 100%);
+      border: 1px solid #d4c8b0;
+      border-radius: 8px;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.9) inset,
+        0 -1px 0 rgba(0,0,0,0.04) inset,
+        0 2px 5px rgba(0,0,0,0.12);
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hour-tab {
+      width: 72px;
+      min-width: 72px;
+      background: linear-gradient(to right, #d0c8b2, #c4bca6);
+      border-right: 1px solid #b8b0a0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 0;
+      box-shadow: 1px 0 0 rgba(255,255,255,0.5) inset;
+    }
+    .hour-tab .hour-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: #3a2e1e;
+      line-height: 1;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .hour-tab .hour-period {
+      font-size: 10px;
+      font-weight: 700;
+      color: #7a6a4a;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .hour-body {
+      flex: 1;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .temp-block {
+      display: flex;
+      flex-direction: column;
+    }
+    .temp-value {
+      font-size: 32px;
+      font-weight: 300;
+      color: #1a1408;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .temp-value sup {
+      font-size: 16px;
+      font-weight: 700;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+    .temp-label {
+      font-size: 10px;
+      color: #9a8a68;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    .divider-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, transparent, #c8bca0, transparent);
+    }
+
+    .precip-block {
+      display: flex;
+      flex-direction: column;
+    }
+    .precip-value {
+      font-size: 20px;
+      font-weight: 400;
+      color: #4a6080;
+      line-height: 1;
+    }
+    .precip-label {
+      font-size: 10px;
+      color: #9a8a68;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    /* precip probability pill */
+    .precip-prob {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .prob-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: linear-gradient(to bottom, #f5f0e8, #e8e0cc);
+      border: 1px solid #c8bca8;
+      border-radius: 12px;
+      padding: 5px 11px;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.8) inset,
+        0 1px 2px rgba(0,0,0,0.1);
+    }
+    .prob-icon {
+      font-size: 14px;
+    }
+    .prob-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4a6080;
+    }
+    .precip-label-small {
+      font-size: 10px;
+      color: #9a8a68;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* temperature tint on hot hours */
+    .hour-card.warm .temp-value { color: #b84010; }
+    .hour-card.hot  .temp-value { color: #d03010; }
+
+    /* =========================================
+       FOOTER / NOTEPAD FOOTER
+    ========================================= */
+    .paper-footer {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid #d8cebc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .paper-footer .disclaimer {
+      font-size: 11px;
+      color: #a8987a;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .paper-footer .stamp {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(200, 60, 40, 0.45);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-12deg);
+      flex-shrink: 0;
+    }
+    .stamp-top    { font-size: 8px;  font-weight: 700; color: rgba(200,60,40,0.6); letter-spacing: 1px; text-transform: uppercase; }
+    .stamp-middle { font-size: 14px; font-weight: 900; color: rgba(200,60,40,0.7); letter-spacing: -0.5px; }
+    .stamp-bottom { font-size: 7px;  font-weight: 700; color: rgba(200,60,40,0.6); letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* =========================================
+       NOTEBOOK BOTTOM FLAP
+    ========================================= */
+    .notebook-footer {
+      background: #3a2010;
+      padding: 12px 30px;
+      text-align: center;
+      border-top: 1px solid #2a1608;
+    }
+    .notebook-footer p {
+      font-size: 11px;
+      color: #7a5c38;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="notebook">
+
+      <div class="notebook-spine"></div>
+
+      <div class="notebook-title">
+        <h1>Weather Journal</h1>
+        <p class="subtitle">Sandy, Utah &mdash; ZIP 84047</p>
+        <span class="emboss-label">June 27, 2026</span>
+      </div>
+
+      <div class="paper">
+        <div class="holes">
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+        </div>
+
+        <div class="paper-header">
+          <h2>Morning Conditions</h2>
+          <p class="date-stamp">Friday, June 27, 2026 &nbsp;&bull;&nbsp; 5:00 AM &ndash; 10:00 AM MDT</p>
+          <span class="location-tag">&#128205; Sandy, UT 84047</span>
+        </div>
+
+        <div class="hours-grid">
+
+          <div class="hour-card">
+            <div class="hour-tab">
+              <span class="hour-num">5</span>
+              <span class="hour-period">AM</span>
+            </div>
+            <div class="hour-body">
+              <div class="temp-block">
+                <span class="temp-value">65<sup>&deg;F</sup></span>
+                <span class="temp-label">Temperature</span>
+              </div>
+              <div class="divider-line"></div>
+              <div class="precip-block">
+                <span class="precip-value">0.00&Prime;</span>
+                <span class="precip-label">Precipitation</span>
+              </div>
+              <div class="precip-prob">
+                <div class="prob-pill">
+                  <span class="prob-icon">&#9748;</span>
+                  <span class="prob-text">3%</span>
+                </div>
+                <span class="precip-label-small">Rain chance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hour-card">
+            <div class="hour-tab">
+              <span class="hour-num">6</span>
+              <span class="hour-period">AM</span>
+            </div>
+            <div class="hour-body">
+              <div class="temp-block">
+                <span class="temp-value">68<sup>&deg;F</sup></span>
+                <span class="temp-label">Temperature</span>
+              </div>
+              <div class="divider-line"></div>
+              <div class="precip-block">
+                <span class="precip-value">0.00&Prime;</span>
+                <span class="precip-label">Precipitation</span>
+              </div>
+              <div class="precip-prob">
+                <div class="prob-pill">
+                  <span class="prob-icon">&#9748;</span>
+                  <span class="prob-text">2%</span>
+                </div>
+                <span class="precip-label-small">Rain chance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hour-card">
+            <div class="hour-tab">
+              <span class="hour-num">7</span>
+              <span class="hour-period">AM</span>
+            </div>
+            <div class="hour-body">
+              <div class="temp-block">
+                <span class="temp-value">72<sup>&deg;F</sup></span>
+                <span class="temp-label">Temperature</span>
+              </div>
+              <div class="divider-line"></div>
+              <div class="precip-block">
+                <span class="precip-value">0.00&Prime;</span>
+                <span class="precip-label">Precipitation</span>
+              </div>
+              <div class="precip-prob">
+                <div class="prob-pill">
+                  <span class="prob-icon">&#9748;</span>
+                  <span class="prob-text">2%</span>
+                </div>
+                <span class="precip-label-small">Rain chance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hour-card warm">
+            <div class="hour-tab">
+              <span class="hour-num">8</span>
+              <span class="hour-period">AM</span>
+            </div>
+            <div class="hour-body">
+              <div class="temp-block">
+                <span class="temp-value">78<sup>&deg;F</sup></span>
+                <span class="temp-label">Temperature</span>
+              </div>
+              <div class="divider-line"></div>
+              <div class="precip-block">
+                <span class="precip-value">0.00&Prime;</span>
+                <span class="precip-label">Precipitation</span>
+              </div>
+              <div class="precip-prob">
+                <div class="prob-pill">
+                  <span class="prob-icon">&#9748;</span>
+                  <span class="prob-text">1%</span>
+                </div>
+                <span class="precip-label-small">Rain chance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hour-card warm">
+            <div class="hour-tab">
+              <span class="hour-num">9</span>
+              <span class="hour-period">AM</span>
+            </div>
+            <div class="hour-body">
+              <div class="temp-block">
+                <span class="temp-value">84<sup>&deg;F</sup></span>
+                <span class="temp-label">Temperature</span>
+              </div>
+              <div class="divider-line"></div>
+              <div class="precip-block">
+                <span class="precip-value">0.00&Prime;</span>
+                <span class="precip-label">Precipitation</span>
+              </div>
+              <div class="precip-prob">
+                <div class="prob-pill">
+                  <span class="prob-icon">&#9748;</span>
+                  <span class="prob-text">1%</span>
+                </div>
+                <span class="precip-label-small">Rain chance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hour-card hot">
+            <div class="hour-tab">
+              <span class="hour-num">10</span>
+              <span class="hour-period">AM</span>
+            </div>
+            <div class="hour-body">
+              <div class="temp-block">
+                <span class="temp-value">90<sup>&deg;F</sup></span>
+                <span class="temp-label">Temperature</span>
+              </div>
+              <div class="divider-line"></div>
+              <div class="precip-block">
+                <span class="precip-value">0.00&Prime;</span>
+                <span class="precip-label">Precipitation</span>
+              </div>
+              <div class="precip-prob">
+                <div class="prob-pill">
+                  <span class="prob-icon">&#9748;</span>
+                  <span class="prob-text">0%</span>
+                </div>
+                <span class="precip-label-small">Rain chance</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.hours-grid -->
+
+        <div class="paper-footer">
+          <p class="disclaimer">
+            Conditions based on seasonal climatological normals<br>
+            for Sandy, UT (84047) &bull; Elevation 4,500 ft
+          </p>
+          <div class="stamp">
+            <span class="stamp-top">Sandy</span>
+            <span class="stamp-middle">UT</span>
+            <span class="stamp-bottom">84047</span>
+          </div>
+        </div>
+
+      </div><!-- /.paper -->
+
+      <div class="notebook-footer">
+        <p>Weather Journal &copy; 2026 &mdash; Sandy, Utah Morning Conditions</p>
+      </div>
+
+    </div><!-- /.notebook -->
+  </div>
+</body>
+</html>
