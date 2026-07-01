@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>~*~ Sandy UT Weather Zone ~*~ :: July 1, 2026</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Sandy Utah 84047 Hourly Weather - Your #1 Source for Local Weather Info!!!">
+<style type="text/css">
+body {
+    background-color: #000033;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 60px 60px, 30px 30px;
+    background-position: 0 0, 15px 15px;
+    color: #00FF00;
+    font-family: "Comic Sans MS", "Times New Roman", serif;
+    margin: 0;
+    padding: 10px;
+}
+
+center { max-width: 700px; margin: 0 auto; }
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes rainbow {
+    0%   { color: #FF0000; }
+    16%  { color: #FF6600; }
+    33%  { color: #FFFF00; }
+    50%  { color: #00FF00; }
+    66%  { color: #00FFFF; }
+    83%  { color: #0066FF; }
+    100% { color: #FF0000; }
+}
+
+.blink { animation: blink 1s step-start infinite; }
+.rainbow-text { animation: rainbow 2s linear infinite; font-weight: bold; }
+
+marquee {
+    background-color: #000066;
+    color: #FFFF00;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    padding: 5px;
+    border: 2px solid #0000FF;
+}
+
+.title-wrap {
+    background: linear-gradient(180deg, #000066 0%, #000033 100%);
+    border: 4px ridge #00FFFF;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.site-title {
+    font-family: "Comic Sans MS", Impact, cursive;
+    font-size: 32px;
+    color: #FF6600;
+    text-shadow: 3px 3px 0px #FF0000, -1px -1px 0px #660000;
+    letter-spacing: 2px;
+}
+
+.site-subtitle {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 16px;
+    color: #00FFFF;
+    margin-top: 6px;
+}
+
+hr.rainbow {
+    border: none;
+    height: 4px;
+    background: linear-gradient(to right,
+        #FF0000, #FF6600, #FFFF00, #00FF00, #00FFFF, #0066FF, #9900FF, #FF0000);
+    margin: 12px 0;
+}
+
+hr.dotted {
+    border: none;
+    border-top: 2px dotted #0066FF;
+    margin: 8px 0;
+}
+
+.construction-zone {
+    background-color: #111100;
+    border: 3px solid #FFFF00;
+    padding: 8px 16px;
+    display: inline-block;
+    margin: 8px 0;
+}
+
+.construction-text {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 20px;
+    color: #FFFF00;
+    animation: blink 0.7s step-start infinite;
+}
+
+.section-header {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 20px;
+    color: #FFFF00;
+    background-color: #000066;
+    border: 2px solid #0066FF;
+    padding: 6px 14px;
+    display: inline-block;
+    margin: 10px 0 6px 0;
+}
+
+.weather-table {
+    border-collapse: separate;
+    border-spacing: 2px;
+    border: 4px ridge #00FFFF;
+    background-color: #000044;
+    width: 560px;
+    margin: 0 auto 12px auto;
+}
+
+.weather-table th {
+    background: linear-gradient(180deg, #003399, #001166);
+    color: #FFFF00;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 15px;
+    padding: 8px 12px;
+    border: 2px solid #0066FF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.weather-table td {
+    color: #00FF00;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    padding: 7px 14px;
+    border: 1px dotted #003399;
+    text-align: center;
+    background-color: rgba(0, 0, 68, 0.6);
+}
+
+.weather-table tr:nth-child(even) td { background-color: rgba(0, 0, 100, 0.5); }
+
+.temp-warm  { color: #FFCC00; font-weight: bold; }
+.temp-hot   { color: #FF8800; font-weight: bold; }
+.temp-scorcher { color: #FF4400; font-weight: bold; }
+
+.info-box {
+    background-color: #000044;
+    border: 2px inset #0066FF;
+    padding: 10px 18px;
+    margin: 10px auto;
+    width: 500px;
+    text-align: left;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 13px;
+    color: #AADDFF;
+}
+
+.info-box b { color: #FFFF00; }
+
+.counter-section {
+    margin: 12px 0;
+}
+
+.counter-label {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    color: #FFFF00;
+}
+
+.counter-digits {
+    background-color: #000000;
+    color: #FF2200;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+    border: 3px inset #555555;
+    display: inline-block;
+    padding: 4px 12px;
+    letter-spacing: 6px;
+}
+
+.links-bar {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.links-bar a {
+    color: #FF6600;
+    text-decoration: underline;
+}
+
+.links-bar a:visited { color: #CC4400; }
+.links-bar a:hover   { color: #FFFF00; }
+
+.footer-area {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11px;
+    color: #666699;
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 1px solid #333366;
+}
+
+.star-row {
+    font-size: 18px;
+    color: #FFFF00;
+    letter-spacing: 6px;
+    margin: 6px 0;
+}
+
+.webring-badge {
+    background-color: #000066;
+    border: 2px solid #0033CC;
+    padding: 4px 10px;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 11px;
+    color: #AAAAFF;
+    display: inline-block;
+    margin: 6px 0;
+}
+</style>
+</head>
+<body>
+<center>
+
+<div class="star-row">&#9733; &#10022; &#9733; &#10022; &#9733; &#10022; &#9733; &#10022; &#9733;</div>
+
+<marquee scrollamount="5" behavior="scroll">
+&nbsp;&nbsp;&nbsp; *** WELCOME TO THE SANDY UTAH WEATHER ZONE *** YOUR #1 STOP FOR LOCAL WEATHER ON THE INFORMATION SUPER-HIGHWAY !!!
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * TODAY: HOT &amp; SUNNY * TEMPS RISING FAST * NO RAIN IN SIGHT * BOOKMARK THIS PAGE AND TELL YOUR FRIENDS !!!
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * SANDY UT 84047 * UPDATED DAILY * PLEASE SIGN MY GUESTBOOK!!! *
+</marquee>
+
+<hr class="rainbow">
+
+<div class="title-wrap">
+    <div class="site-title">~*~ Sandy Utah Weather Zone ~*~</div>
+    <div class="site-subtitle">::: Zip Code 84047 ::: Tuesday, July 1, 2026 :::</div>
+    <div class="site-subtitle" style="margin-top:4px; color:#FF99FF;">
+        <span class="rainbow-text">~~~ Your Personal Pocket Meteorologist on the Web! ~~~</span>
+    </div>
+</div>
+
+<hr class="rainbow">
+
+<div class="construction-zone">
+    <span class="construction-text">!!! &nbsp; *** UNDER CONSTRUCTION *** &nbsp; !!!</span>
+</div>
+<br>
+<font face="Comic Sans MS" size="2" color="#FFAA00">
+    <i>More weather features coming soon! Guestbook is almost ready!</i>
+</font>
+
+<hr class="rainbow">
+
+<div class="section-header">&#9728; TODAY'S MORNING WEATHER REPORT &#9728;</div>
+
+<p>
+<font face="Comic Sans MS" size="3" color="#00FFFF">
+    <b>Hourly Temperature &amp; Precipitation</b><br>
+    Sandy, UT (84047) &mdash; 5:00 AM thru 10:00 AM MDT
+</font>
+</p>
+
+<table class="weather-table" cellspacing="2" cellpadding="0">
+    <tr>
+        <th>&#9200; TIME</th>
+        <th>&#9670; TEMP</th>
+        <th>&#9730; PRECIP</th>
+        <th>&#9729; CONDITIONS</th>
+    </tr>
+    <tr>
+        <td><b>5:00 AM</b></td>
+        <td><span class="temp-warm">65 &deg;F</span></td>
+        <td>0.00 in</td>
+        <td>Clear &#9728;</td>
+    </tr>
+    <tr>
+        <td><b>6:00 AM</b></td>
+        <td><span class="temp-warm">67 &deg;F</span></td>
+        <td>0.00 in</td>
+        <td>Sunny &#9728;</td>
+    </tr>
+    <tr>
+        <td><b>7:00 AM</b></td>
+        <td><span class="temp-warm">71 &deg;F</span></td>
+        <td>0.00 in</td>
+        <td>Sunny &#9728;</td>
+    </tr>
+    <tr>
+        <td><b>8:00 AM</b></td>
+        <td><span class="temp-hot">76 &deg;F</span></td>
+        <td>0.00 in</td>
+        <td>Warm &amp; Sunny &#9728;</td>
+    </tr>
+    <tr>
+        <td><b>9:00 AM</b></td>
+        <td><span class="temp-hot">81 &deg;F</span></td>
+        <td>0.00 in</td>
+        <td>Hot! &#9728;&#9728;</td>
+    </tr>
+    <tr>
+        <td><b>10:00 AM</b></td>
+        <td><span class="temp-scorcher">86 &deg;F</span></td>
+        <td>0.00 in</td>
+        <td>SCORCHER!! &#9728;&#9728;&#9728;</td>
+    </tr>
+</table>
+
+<div class="info-box">
+    <b>&#9658; Weather Summary:</b> Classic high-desert summer morning in Sandy! Temperatures climbing fast from the overnight low. Skies are crystal clear over the Wasatch Front &mdash; Mount Olympus visible all day. Humidity is bone dry as usual. No rain for at least the next 10 days. SUNSCREEN ALERT: SPF 50+ recommended by 9am!!
+    <br><br>
+    <b>&#9658; Location:</b> Sandy City, Utah &mdash; 84047 &mdash; Elev. ~4,527 ft
+    <br>
+    <b>&#9658; Source:</b> SandyWeatherZone.net Advanced Meteorological Data Array (tm)
+</div>
+
+<hr class="rainbow">
+
+<div class="section-header">&#9670; DID YOU KNOW? &#9670;</div>
+<p>
+<font face="Comic Sans MS" size="3" color="#FF99FF">
+    <i>Sandy Utah gets over 300 days of sunshine per year!!!<br>
+    The Great Salt Lake is just 20 miles away!! COOL HUH??</i>
+</font>
+</p>
+
+<hr class="rainbow">
+
+<div class="section-header">&#9733; VISITOR COUNTER &#9733;</div>
+<div class="counter-section">
+    <p class="counter-label">This page has been visited by:</p>
+    <div class="counter-digits">001337</div>
+    <p class="counter-label">awesome web surfers since 1998!!</p>
+</div>
+
+<hr class="rainbow">
+
+<div class="links-bar">
+    <a href="mailto:webmaster@geocities.com">&#9993; Email the Webmaster</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="#">&#9997; Sign my Guestbook!!!</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="#">&#128065; View my Guestbook</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="#">&#9654; Sandy UT WebRing</a>
+</div>
+
+<div class="webring-badge">
+    &#9670; Member of the Utah Weather Enthusiasts Web Ring &#9670;<br>
+    [&laquo; Prev] [Random] [List] [Next &raquo;]
+</div>
+
+<hr class="rainbow">
+
+<div class="footer-area">
+    Best viewed in <b>Netscape Navigator 4.0</b> or <b>Internet Explorer 5.0</b> at <b>800x600</b> resolution with 16-bit color.<br>
+    This site looks terrible in Lynx and we don't care!!<br><br>
+    &copy; 1998 SandyWeatherZone.net &mdash; All Rights Reserved (kinda sorta)<br>
+    Last Updated: <b>July 1, 2026</b> &mdash; Webmaster: CoolDude42@geocities.com<br><br>
+    <i>No animals were harmed in the making of this webpage. The same cannot be said for your eyes.</i>
+</div>
+
+<div class="star-row" style="margin-top:12px;">&#9733; &#10022; &#9733; &#10022; &#9733; &#10022; &#9733; &#10022; &#9733;</div>
+
+</center>
+</body>
+</html>
