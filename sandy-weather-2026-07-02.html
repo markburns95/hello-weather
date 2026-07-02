@@ -1,0 +1,699 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Sandy Utah 84047 Morning Weather - Hourly temps and precipitation powered by WeatherMash 2.0 Beta" />
+  <title>WeatherMash 2.0 Beta &raquo; Sandy, UT Morning Report &mdash; July 2, 2026</title>
+  <style type="text/css">
+    /* === Reset === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #d8e4f0;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#c6d8ee), to(#ddeeff));
+      background-image: linear-gradient(to bottom, #c6d8ee, #ddeeff);
+      font-family: "Trebuchet MS", "Lucida Grande", Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    a { color: #1a6aaa; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #e04c00; }
+
+    /* === HEADER === */
+    #header {
+      background: #1b4f8a;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#2e6fb5), to(#102d57));
+      background-image: linear-gradient(to bottom, #2e6fb5, #102d57);
+      border-bottom: 3px solid #0a1e3c;
+      padding: 0;
+    }
+    #header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: table;
+      width: 100%;
+    }
+    #logo-area { display: table-cell; vertical-align: middle; }
+    #logo-title {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      letter-spacing: -0.5px;
+    }
+    #logo-title span { color: #ffcc44; }
+    #logo-tagline {
+      font-size: 11px;
+      color: #aaccee;
+      margin-top: 2px;
+    }
+    #beta-badge {
+      display: inline-block;
+      background: #e04c00;
+      background-image: linear-gradient(to bottom, #ff6622, #bb3300);
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid #882200;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    #nav-area {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: right;
+    }
+    #top-nav a {
+      color: #cce0ff;
+      font-size: 12px;
+      margin-left: 16px;
+    }
+    #top-nav a:hover { color: #ffcc44; text-decoration: none; }
+
+    /* === RSS STRIP === */
+    #rss-strip {
+      background: #f7f2d0;
+      border-bottom: 1px solid #c8b860;
+      padding: 5px 0;
+      font-size: 11px;
+    }
+    #rss-strip-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .rss-icon {
+      display: inline-block;
+      width: 14px; height: 14px;
+      background: #e05a00;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+    .rss-icon:before {
+      content: "rss";
+      color: #fff;
+      font-size: 7px;
+      font-weight: bold;
+      text-transform: uppercase;
+      position: absolute;
+      top: 2px; left: 1px;
+    }
+
+    /* === LAYOUT === */
+    #main-wrap {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 20px;
+      display: table;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 16px 0;
+    }
+    #content { display: table-cell; width: 620px; vertical-align: top; }
+    #sidebar { display: table-cell; width: 240px; vertical-align: top; }
+
+    /* === WIDGETS / CARDS === */
+    .widget {
+      background: #fff;
+      border: 1px solid #b8ccdc;
+      border-radius: 8px;
+      -webkit-border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .widget-header {
+      background: #e8f0f8;
+      background-image: linear-gradient(to bottom, #f0f6ff, #d8e8f4);
+      border-bottom: 1px solid #b0c8dc;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #2a5580;
+      text-shadow: 0 1px 0 #fff;
+      border-radius: 7px 7px 0 0;
+    }
+    .widget-header .icon { margin-right: 5px; }
+    .widget-body { padding: 14px; }
+
+    /* === BREADCRUMB === */
+    #breadcrumb {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    #breadcrumb a { color: #1a6aaa; }
+    #breadcrumb span { color: #aaa; margin: 0 4px; }
+
+    /* === PAGE TITLE === */
+    #page-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1b3d6b;
+      text-shadow: 0 1px 0 #fff;
+      margin-bottom: 4px;
+    }
+    #page-meta {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    /* === WEATHER TABLE === */
+    .weather-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .weather-table thead tr {
+      background: #2a6ab0;
+      background-image: linear-gradient(to bottom, #3d7ecc, #1e5599);
+      color: #fff;
+    }
+    .weather-table thead th {
+      padding: 9px 12px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .weather-table thead th:last-child { border-right: none; }
+    .weather-table tbody tr {
+      border-bottom: 1px solid #e0e8f0;
+      transition: background 0.1s;
+    }
+    .weather-table tbody tr:nth-child(even) { background: #f4f8fc; }
+    .weather-table tbody tr:hover { background: #eaf2ff; }
+    .weather-table tbody td {
+      padding: 9px 12px;
+      color: #333;
+      border-right: 1px solid #e0e8f0;
+    }
+    .weather-table tbody td:last-child { border-right: none; }
+    .time-cell { font-weight: bold; color: #444; }
+    .temp-cell { font-weight: bold; }
+    .temp-mild  { color: #2a8a2a; }
+    .temp-warm  { color: #cc7700; }
+    .temp-hot   { color: #cc3300; }
+    .precip-zero { color: #aaa; }
+    .cond-cell { color: #555; font-style: italic; }
+
+    /* === STAR RATING === */
+    .stars { color: #f5a623; font-size: 14px; letter-spacing: 1px; }
+    .stars-label { font-size: 11px; color: #888; vertical-align: middle; margin-left: 4px; }
+
+    /* === GLOSSY BUTTONS === */
+    .btn {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 14px;
+      border: 1px solid #2255aa;
+      background: #3377cc;
+      background-image: linear-gradient(to bottom, #55aaee, #2255aa);
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.35);
+      cursor: pointer;
+      margin: 2px 4px 2px 0;
+    }
+    .btn:hover { background-image: linear-gradient(to bottom, #66bbff, #3366cc); text-decoration: none; color: #fff; }
+    .btn-orange {
+      border-color: #bb4400;
+      background: #e06020;
+      background-image: linear-gradient(to bottom, #ff8844, #cc4400);
+    }
+    .btn-orange:hover { background-image: linear-gradient(to bottom, #ff9955, #dd5511); }
+    .btn-green {
+      border-color: #226622;
+      background: #339933;
+      background-image: linear-gradient(to bottom, #55cc55, #226622);
+    }
+
+    /* === SHARE BAR === */
+    #share-bar {
+      background: #f0f4f8;
+      border: 1px solid #c0d0e0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 12px 0;
+      font-size: 11px;
+      color: #666;
+    }
+    #share-bar strong { color: #333; }
+    .share-btn {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 10px;
+      border: 1px solid;
+      margin: 0 3px;
+      cursor: pointer;
+    }
+    .share-digg  { background: linear-gradient(to bottom, #8eb8e8, #5a88bb); border-color: #3a6899; color: #fff; }
+    .share-delicious { background: linear-gradient(to bottom, #4a90d9, #1a5fa0); border-color: #0a4080; color: #fff; }
+    .share-reddit { background: linear-gradient(to bottom, #ff8844, #cc4400); border-color: #992200; color: #fff; }
+    .share-stumble { background: linear-gradient(to bottom, #ee6622, #bb3300); border-color: #882200; color: #fff; }
+
+    /* === SUMMARY BOX === */
+    .summary-box {
+      background: #edf5ff;
+      background-image: linear-gradient(to bottom, #f5faff, #ddeeff);
+      border: 1px solid #99bbdd;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 14px 0 0 0;
+      font-size: 12px;
+      color: #334;
+      line-height: 1.7;
+    }
+    .summary-box strong { color: #1b3d6b; }
+
+    /* === TAGS === */
+    .tag-cloud { line-height: 2.2; }
+    .tag {
+      display: inline-block;
+      background: #dde8f4;
+      border: 1px solid #99bbdd;
+      border-radius: 10px;
+      padding: 2px 10px;
+      font-size: 11px;
+      color: #2a5580;
+      margin: 2px;
+    }
+    .tag:hover { background: #c0d8ee; text-decoration: none; }
+    .tag-lg { font-size: 13px; font-weight: bold; }
+    .tag-sm { font-size: 10px; opacity: 0.7; }
+
+    /* === SIDEBAR WIDGETS === */
+    .side-widget { margin-bottom: 14px; }
+    .side-widget .widget-header { font-size: 12px; padding: 7px 12px; }
+    .side-widget .widget-body { padding: 10px 12px; font-size: 12px; }
+
+    .stat-row { padding: 5px 0; border-bottom: 1px dotted #dde; color: #444; }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-label { color: #888; font-size: 11px; }
+    .stat-value { font-weight: bold; color: #1b3d6b; float: right; }
+
+    /* progress bar */
+    .prog-wrap { background: #e0e8f0; border-radius: 6px; height: 8px; overflow: hidden; margin: 4px 0 8px 0; }
+    .prog-fill  { height: 8px; border-radius: 6px; background: linear-gradient(to right, #55aaff, #1166cc); }
+
+    /* avatar / profile */
+    .reporter-box {
+      text-align: center;
+      padding: 8px 4px;
+    }
+    .reporter-avatar {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4488cc, #2255aa);
+      margin: 0 auto 6px;
+      line-height: 54px;
+      font-size: 26px;
+      color: #fff;
+      border: 3px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .reporter-name { font-weight: bold; font-size: 13px; color: #1b3d6b; }
+    .reporter-title { font-size: 11px; color: #888; }
+    .karma-bar { margin: 6px 0 4px; }
+    .karma-label { font-size: 10px; color: #888; }
+
+    /* === FOOTER === */
+    #footer {
+      background: #1b4f8a;
+      background-image: linear-gradient(to bottom, #2660a0, #102d57);
+      border-top: 3px solid #0a1e3c;
+      padding: 16px 0;
+      margin-top: 24px;
+      color: #8aaac8;
+      font-size: 11px;
+      text-align: center;
+    }
+    #footer a { color: #aaccee; }
+    #footer a:hover { color: #fff; }
+    #footer .footer-links { margin: 6px 0; }
+    #footer .footer-links a { margin: 0 8px; }
+    #footer .badges { margin-top: 8px; }
+    .foot-badge {
+      display: inline-block;
+      background: #0a2040;
+      border: 1px solid #2255aa;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 10px;
+      color: #7aaacc;
+      margin: 0 3px;
+    }
+
+    /* === POWERED BADGE === */
+    .powered-strip {
+      background: linear-gradient(to bottom, #f5f5e8, #e8e8d0);
+      border: 1px solid #cccc99;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 10px;
+      color: #666;
+      display: inline-block;
+      margin: 4px 0;
+    }
+    .powered-strip strong { color: #336; }
+  </style>
+</head>
+<body>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+<div id="header">
+  <div id="header-inner">
+    <div id="logo-area">
+      <div id="logo-title">
+        Weather<span>Mash</span>
+        <span id="beta-badge">Beta</span>
+      </div>
+      <div id="logo-tagline">
+        Hyperlocal Weather &bull; Powered by the Wisdom of the Crowd &bull; Sandy, UT Edition
+      </div>
+    </div>
+    <div id="nav-area">
+      <div id="top-nav">
+        <a href="#">Home</a>
+        <a href="#">My Locations</a>
+        <a href="#">Radar</a>
+        <a href="#">Community</a>
+        <a href="#">Sign In</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RSS STRIP -->
+<div id="rss-strip">
+  <div id="rss-strip-inner">
+    <span class="rss-icon"></span>
+    <strong>Subscribe:</strong>
+    <a href="#">Sandy UT Daily Weather &rsaquo; RSS 2.0</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#">Atom</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#">iCal</a>
+    &nbsp;&nbsp;&nbsp;
+    <strong style="color:#888;">|</strong>&nbsp;&nbsp;&nbsp;
+    <strong>Community forecast accuracy:</strong>
+    <span style="color:#2a8a2a; font-weight:bold;">94.7%</span> this week
+  </div>
+</div>
+
+<!-- =========================================================
+     MAIN CONTENT AREA
+     ========================================================= -->
+<div id="main-wrap">
+
+  <!-- =================== CONTENT =================== -->
+  <div id="content">
+
+    <div id="breadcrumb">
+      <a href="#">WeatherMash</a> <span>&rsaquo;</span>
+      <a href="#">United States</a> <span>&rsaquo;</span>
+      <a href="#">Utah</a> <span>&rsaquo;</span>
+      <a href="#">Sandy</a> <span>&rsaquo;</span>
+      Morning Report
+    </div>
+
+    <div id="page-title">Sandy, UT (84047) &mdash; Morning Weather Report</div>
+    <div id="page-meta">
+      Wednesday, July 2, 2026 &nbsp;&bull;&nbsp;
+      5:00 AM &ndash; 10:00 AM MDT &nbsp;&bull;&nbsp;
+      Elevation: 4,527 ft &nbsp;&bull;&nbsp;
+      <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+      <span class="stars-label">(42 ratings)</span>
+    </div>
+
+    <!-- HOURLY WEATHER TABLE -->
+    <div class="widget">
+      <div class="widget-header">
+        <span class="icon">&#9728;</span> Hourly Temperature &amp; Precipitation
+      </div>
+      <div class="widget-body" style="padding:0;">
+        <table class="weather-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Temp (&deg;F)</th>
+              <th>Precipitation</th>
+              <th>Conditions</th>
+              <th>Feels Like</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell">5:00 AM</td>
+              <td class="temp-cell temp-mild">64&deg;F</td>
+              <td class="precip-zero">0.00 in</td>
+              <td class="cond-cell">Clear skies</td>
+              <td>63&deg;F</td>
+            </tr>
+            <tr>
+              <td class="time-cell">6:00 AM</td>
+              <td class="temp-cell temp-mild">67&deg;F</td>
+              <td class="precip-zero">0.00 in</td>
+              <td class="cond-cell">Mostly sunny</td>
+              <td>65&deg;F</td>
+            </tr>
+            <tr>
+              <td class="time-cell">7:00 AM</td>
+              <td class="temp-cell temp-warm">72&deg;F</td>
+              <td class="precip-zero">0.00 in</td>
+              <td class="cond-cell">Sunny</td>
+              <td>70&deg;F</td>
+            </tr>
+            <tr>
+              <td class="time-cell">8:00 AM</td>
+              <td class="temp-cell temp-warm">77&deg;F</td>
+              <td class="precip-zero">0.00 in</td>
+              <td class="cond-cell">Sunny &amp; warm</td>
+              <td>75&deg;F</td>
+            </tr>
+            <tr>
+              <td class="time-cell">9:00 AM</td>
+              <td class="temp-cell temp-hot">82&deg;F</td>
+              <td class="precip-zero">0.00 in</td>
+              <td class="cond-cell">Hot &amp; sunny</td>
+              <td>80&deg;F</td>
+            </tr>
+            <tr>
+              <td class="time-cell">10:00 AM</td>
+              <td class="temp-cell temp-hot">86&deg;F</td>
+              <td class="precip-zero">0.00 in</td>
+              <td class="cond-cell">Scorching sun</td>
+              <td>84&deg;F</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SHARE BAR -->
+    <div id="share-bar">
+      <strong>Share this report:</strong>
+      <a href="#" class="share-btn share-digg">&#8679; Digg It</a>
+      <a href="#" class="share-btn share-delicious">&#9733; del.icio.us</a>
+      <a href="#" class="share-btn share-reddit">Reddit</a>
+      <a href="#" class="share-btn share-stumble">StumbleUpon</a>
+      &nbsp;&nbsp; <strong>Permalink:</strong> <a href="#">weathermash.com/sandy-ut/2026-07-02</a>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="widget">
+      <div class="widget-header">
+        <span class="icon">&#128196;</span> Community Weather Summary
+      </div>
+      <div class="widget-body">
+        <p style="line-height:1.7;">
+          Classic high-desert summer morning over the Salt Lake Valley. Temperatures are climbing
+          steadily off a comfortable overnight low, with bone-dry air rolling down the Wasatch Front.
+          Expect crystal-clear visibility to Mount Olympus and the Oquirrh Range all morning.
+          Zero precipitation chance through at least the next 7 days &mdash; the summer monsoon
+          pattern hasn&rsquo;t arrived yet. Sunscreen recommended by 9 AM; UV index will hit
+          <strong>11 (Extreme)</strong> by midday.
+        </p>
+        <div class="summary-box">
+          <strong>Location:</strong> Sandy City, Utah &mdash; Zip 84047 &mdash; Elev. 4,527 ft<br />
+          <strong>Source:</strong> WeatherMash Community Sensor Network (Beta) + NWS Salt Lake City<br />
+          <strong>Last updated:</strong> 5:04 AM MDT, July 2, 2026
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div style="margin: 4px 0 16px 0;">
+      <a href="#" class="btn">&#128337; Set Weather Alert</a>
+      <a href="#" class="btn btn-orange">&#9728; 7-Day Forecast</a>
+      <a href="#" class="btn btn-green">&#128200; Historical Data</a>
+    </div>
+
+    <!-- TAGS -->
+    <div class="widget">
+      <div class="widget-header">
+        <span class="icon">&#127991;</span> Tags
+      </div>
+      <div class="widget-body tag-cloud">
+        <a href="#" class="tag tag-lg">sandy utah</a>
+        <a href="#" class="tag tag-lg">84047</a>
+        <a href="#" class="tag">morning weather</a>
+        <a href="#" class="tag">salt lake valley</a>
+        <a href="#" class="tag tag-lg">hot</a>
+        <a href="#" class="tag">wasatch front</a>
+        <a href="#" class="tag">sunny</a>
+        <a href="#" class="tag tag-sm">precipitation</a>
+        <a href="#" class="tag tag-sm">no rain</a>
+        <a href="#" class="tag">july 2026</a>
+        <a href="#" class="tag tag-sm">uv warning</a>
+        <a href="#" class="tag">hourly temps</a>
+      </div>
+    </div>
+
+  </div><!-- /#content -->
+
+  <!-- =================== SIDEBAR =================== -->
+  <div id="sidebar">
+
+    <!-- REPORTER WIDGET -->
+    <div class="widget side-widget">
+      <div class="widget-header">&#128100; Today&rsquo;s Reporter</div>
+      <div class="widget-body reporter-box">
+        <div class="reporter-avatar">&#9728;</div>
+        <div class="reporter-name">SkyWatcher_Sandy</div>
+        <div class="reporter-title">Trusted Community Member</div>
+        <div class="karma-bar">
+          <div class="karma-label">Karma: 847 pts</div>
+          <div class="prog-wrap"><div class="prog-fill" style="width:85%;"></div></div>
+        </div>
+        <div class="stars" style="font-size:13px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div style="font-size:10px; color:#888; margin-top:3px;">Top 5% reporter</div>
+      </div>
+    </div>
+
+    <!-- AT-A-GLANCE WIDGET -->
+    <div class="widget side-widget">
+      <div class="widget-header">&#9997; At a Glance</div>
+      <div class="widget-body">
+        <div class="stat-row">
+          <span class="stat-label">Low (5 AM)</span>
+          <span class="stat-value">64&deg;F</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-fill" style="width:44%;"></div></div>
+        <div class="stat-row">
+          <span class="stat-label">High (10 AM)</span>
+          <span class="stat-value">86&deg;F</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-fill" style="width:72%;"></div></div>
+        <div class="stat-row">
+          <span class="stat-label">Total Precip</span>
+          <span class="stat-value" style="color:#aaa;">0.00 in</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Humidity</span>
+          <span class="stat-value">14%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">UV Index</span>
+          <span class="stat-value" style="color:#cc3300;">11 Extreme</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Wind</span>
+          <span class="stat-value">SW 5 mph</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBE WIDGET -->
+    <div class="widget side-widget">
+      <div class="widget-header">&#128140; Get Alerts</div>
+      <div class="widget-body" style="font-size:11px;">
+        <p style="margin-bottom:8px;">Get daily weather delivered to your inbox or RSS reader!</p>
+        <input type="text" placeholder="your@email.com"
+          style="width:100%; padding:5px 8px; border:1px solid #aac; border-radius:4px; font-size:11px; margin-bottom:6px;" />
+        <a href="#" class="btn" style="width:100%; text-align:center; display:block;">Subscribe &rsaquo;</a>
+        <div style="margin-top:8px; text-align:center;">
+          <div class="powered-strip">
+            <strong>Powered by</strong> WeatherMash&trade; v2.0 Beta
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMILAR DAYS WIDGET -->
+    <div class="widget side-widget">
+      <div class="widget-header">&#128203; Similar Days</div>
+      <div class="widget-body" style="font-size:11px;">
+        <div class="stat-row">
+          <span class="stat-label">Jul 1, 2026</span>
+          <span class="stat-value">65&ndash;86&deg;F</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Jun 30, 2026</span>
+          <span class="stat-value">63&ndash;88&deg;F</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Jul 2, 2025</span>
+          <span class="stat-value">62&ndash;90&deg;F</span>
+        </div>
+        <div style="margin-top:8px; text-align:center;">
+          <a href="#" class="btn" style="font-size:11px; padding:4px 12px;">View All History</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#sidebar -->
+
+</div><!-- /#main-wrap -->
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<div id="footer">
+  <div>
+    WeatherMash 2.0 &mdash; Community-Powered Hyperlocal Weather
+  </div>
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">API</a>
+    <a href="#">Advertise</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="badges">
+    <span class="foot-badge">XHTML 1.0</span>
+    <span class="foot-badge">CSS 2.1</span>
+    <span class="foot-badge">Valid RSS 2.0</span>
+    <span class="foot-badge">Web 2.0 Ready</span>
+    <span class="foot-badge">Best viewed in Firefox 2</span>
+  </div>
+  <div style="margin-top:8px;">
+    &copy; 2007&ndash;2026 WeatherMash, Inc. All rights reserved. &nbsp;&bull;&nbsp; Sandy, UT 84047
+  </div>
+</div>
+
+</body>
+</html>
