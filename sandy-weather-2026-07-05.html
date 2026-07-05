@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="WeatherWizard 2000">
+<meta name="generator" content="Netscape Composer 4.7">
+<title>~*~ SANDY UT WEATHER ~*~ July 5, 2026 ~*~</title>
+<style type="text/css">
+  body {
+    background-color: #000033;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='5' cy='5' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='30' cy='12' r='0.7' fill='white' opacity='0.4'/%3E%3Ccircle cx='50' cy='3' r='1.2' fill='white' opacity='0.8'/%3E%3Ccircle cx='15' cy='40' r='0.8' fill='white' opacity='0.5'/%3E%3Ccircle cx='45' cy='30' r='1' fill='white' opacity='0.7'/%3E%3Ccircle cx='55' cy='55' r='0.6' fill='white' opacity='0.3'/%3E%3Ccircle cx='20' cy='55' r='1.1' fill='white' opacity='0.6'/%3E%3Ccircle cx='38' cy='48' r='0.5' fill='white' opacity='0.9'/%3E%3C/svg%3E");
+    color: #FFFF00;
+    font-family: "Comic Sans MS", "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  @keyframes blink {
+    0%   { visibility: visible; }
+    49%  { visibility: visible; }
+    50%  { visibility: hidden; }
+    100% { visibility: hidden; }
+  }
+  @keyframes rainbow {
+    0%   { color: #FF0000; }
+    16%  { color: #FF8800; }
+    33%  { color: #FFFF00; }
+    50%  { color: #00FF00; }
+    66%  { color: #00FFFF; }
+    83%  { color: #FF00FF; }
+    100% { color: #FF0000; }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes twinkle {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.2; }
+    100% { opacity: 1; }
+  }
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+  .rainbow {
+    animation: rainbow 2s linear infinite;
+    font-weight: bold;
+  }
+  .title-table {
+    width: 760px;
+    margin: 0 auto;
+    border: 4px ridge #FF00FF;
+    background-color: #000066;
+    padding: 8px;
+  }
+  .main-table {
+    width: 760px;
+    margin: 10px auto;
+    border: 3px ridge #00FFFF;
+    background-color: #000044;
+    cellpadding: 6;
+  }
+  .weather-table {
+    border: 3px double #FFFF00;
+    background-color: #000033;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .weather-table th {
+    background-color: #330066;
+    color: #00FFFF;
+    font-size: 14px;
+    padding: 6px 12px;
+    border: 2px solid #FF00FF;
+    font-family: "Comic Sans MS", Arial, sans-serif;
+    text-align: center;
+  }
+  .weather-table td {
+    color: #FFFF00;
+    font-size: 13px;
+    padding: 5px 12px;
+    border: 1px solid #330066;
+    font-family: "Comic Sans MS", Arial, sans-serif;
+    text-align: center;
+    background-color: #000033;
+  }
+  .weather-table tr:nth-child(even) td {
+    background-color: #00003a;
+  }
+  .weather-table td.temp-hot  { color: #FF4400; }
+  .weather-table td.temp-warm { color: #FFAA00; }
+  .weather-table td.temp-cool { color: #00FFAA; }
+  .section-header {
+    color: #FF00FF;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px #FF0000;
+    letter-spacing: 2px;
+    font-family: "Comic Sans MS", Impact, Arial, sans-serif;
+  }
+  hr.fancy {
+    border: none;
+    height: 4px;
+    background: linear-gradient(to right, #FF0000, #FF8800, #FFFF00, #00FF00, #00FFFF, #FF00FF, #FF0000);
+    margin: 8px 0;
+  }
+  .star {
+    display: inline-block;
+    animation: twinkle 1.5s ease-in-out infinite;
+    color: #FFFF00;
+  }
+  .star:nth-child(2) { animation-delay: 0.3s; color: #FF00FF; }
+  .star:nth-child(3) { animation-delay: 0.6s; color: #00FFFF; }
+  .under-construction {
+    display: inline-block;
+    border: 3px dashed #FF8800;
+    padding: 4px 10px;
+    color: #FF8800;
+    font-size: 11px;
+    animation: blink 1.5s step-end infinite;
+    font-family: "Comic Sans MS", Arial, sans-serif;
+  }
+  .counter {
+    display: inline-block;
+    background-color: #000000;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px inset #00FF00;
+    padding: 2px 8px;
+    letter-spacing: 4px;
+  }
+  .guestbook-link {
+    color: #FF00FF;
+    text-decoration: underline;
+    font-size: 13px;
+  }
+  .guestbook-link:hover {
+    color: #00FFFF;
+  }
+  .snowflake-icon {
+    font-size: 24px;
+    display: inline-block;
+    animation: spin 4s linear infinite;
+  }
+  .sun-icon {
+    font-size: 24px;
+    display: inline-block;
+    animation: spin 6s linear infinite;
+    color: #FF8800;
+  }
+  .nav-bar {
+    background-color: #330033;
+    border-top: 2px solid #FF00FF;
+    border-bottom: 2px solid #FF00FF;
+    padding: 4px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .nav-bar a {
+    color: #00FFFF;
+    text-decoration: none;
+    margin: 0 10px;
+    font-family: "Comic Sans MS", Arial, sans-serif;
+  }
+  .nav-bar a:hover { color: #FFFF00; text-decoration: underline; }
+  .credits {
+    font-size: 10px;
+    color: #666699;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<marquee behavior="scroll" direction="left" scrollamount="4"
+  style="background-color:#330000; color:#FFFF00; font-size:13px;
+         font-family:'Comic Sans MS',Arial,sans-serif; padding:3px 0;
+         border-bottom:2px solid #FF0000;">
+  &nbsp;&nbsp;&nbsp;
+  *** WELCOME TO THE SANDY UTAH WEATHER PAGE ***
+  &nbsp;&nbsp;&star;&nbsp;&nbsp;
+  Early Morning Conditions for July 5, 2026
+  &nbsp;&nbsp;&star;&nbsp;&nbsp;
+  ** BOOKMARK THIS PAGE!! **
+  &nbsp;&nbsp;&star;&nbsp;&nbsp;
+  Best Viewed in Netscape Navigator 4.7 or Internet Explorer 5.0
+  &nbsp;&nbsp;&star;&nbsp;&nbsp;
+  Resolution: 800x600 or higher recommended!!
+  &nbsp;&nbsp;&nbsp;
+</marquee>
+
+<!-- TITLE SECTION -->
+<div style="text-align:center; padding:12px 0 6px 0;">
+  <table class="title-table" cellpadding="10" cellspacing="0">
+    <tr>
+      <td align="center">
+        <span class="star">&#10022;</span>
+        <span class="star">&#10022;</span>
+        <span class="star">&#10022;</span>
+        &nbsp;&nbsp;
+        <span class="rainbow" style="font-size:28px; font-family:'Comic Sans MS',Impact,Arial,sans-serif;">
+          ~*~ SANDY, UTAH ~*~<br>
+          MORNING WEATHER REPORT
+        </span>
+        &nbsp;&nbsp;
+        <span class="star">&#10022;</span>
+        <span class="star">&#10022;</span>
+        <span class="star">&#10022;</span>
+        <br><br>
+        <span class="sun-icon">&#9728;</span>
+        &nbsp;&nbsp;
+        <span style="color:#00FFFF; font-size:16px; font-family:'Comic Sans MS',Arial,sans-serif;">
+          <b>Saturday, July 5, 2026</b>
+        </span>
+        &nbsp;&nbsp;
+        <span class="sun-icon">&#9728;</span>
+        <br><br>
+        <span style="color:#AAAAFF; font-size:13px; font-family:'Comic Sans MS',Arial,sans-serif;">
+          ZIP Code: 84047 &nbsp;|&nbsp;
+          Lat: 40.5649&deg;N &nbsp;|&nbsp;
+          Lon: 111.8389&deg;W &nbsp;|&nbsp;
+          Elev: 4,430 ft
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <a href="#">[HOME]</a>
+  <a href="#">[FORECAST]</a>
+  <a href="#">[RADAR]</a>
+  <a href="#">[LINKS]</a>
+  <a href="#">[GUESTBOOK]</a>
+  <a href="#">[E-MAIL ME]</a>
+</div>
+
+<!-- MAIN CONTENT TABLE -->
+<div style="text-align:center; padding:10px 0;">
+  <table class="main-table" width="760" cellpadding="12" cellspacing="0" align="center">
+    <tr>
+      <td>
+
+        <hr class="fancy">
+
+        <p class="section-header">
+          &#9733; HOURLY CONDITIONS: 5 AM &mdash; 10 AM (MDT) &#9733;
+        </p>
+
+        <hr class="fancy">
+
+        <br>
+
+        <!-- WEATHER DATA TABLE -->
+        <table class="weather-table" cellpadding="6" cellspacing="0" align="center" width="90%">
+          <tr>
+            <th>&#9728; TIME (MDT)</th>
+            <th>&#127777; TEMP (&deg;F)</th>
+            <th>&#127783; PRECIP (in)</th>
+            <th>&#127777; CONDITIONS</th>
+          </tr>
+          <tr>
+            <td><b>5:00 AM</b></td>
+            <td class="temp-cool"><b>68&deg;F</b></td>
+            <td>0.00</td>
+            <td>Clear &#9734;</td>
+          </tr>
+          <tr>
+            <td><b>6:00 AM</b></td>
+            <td class="temp-cool"><b>67&deg;F</b></td>
+            <td>0.00</td>
+            <td>Clear &#9734;</td>
+          </tr>
+          <tr>
+            <td><b>7:00 AM</b></td>
+            <td class="temp-cool"><b>71&deg;F</b></td>
+            <td>0.00</td>
+            <td>Sunny &#9728;</td>
+          </tr>
+          <tr>
+            <td><b>8:00 AM</b></td>
+            <td class="temp-warm"><b>76&deg;F</b></td>
+            <td>0.00</td>
+            <td>Sunny &#9728;</td>
+          </tr>
+          <tr>
+            <td><b>9:00 AM</b></td>
+            <td class="temp-warm"><b>82&deg;F</b></td>
+            <td>0.00</td>
+            <td>Sunny &#9728;</td>
+          </tr>
+          <tr>
+            <td><b>10:00 AM</b></td>
+            <td class="temp-hot"><b>87&deg;F</b></td>
+            <td>0.00</td>
+            <td>Sunny &amp; Hot &#9728;&#128293;</td>
+          </tr>
+        </table>
+
+        <br>
+
+        <hr class="fancy">
+
+        <!-- SUMMARY BOX -->
+        <table border="3" style="border-style:double; border-color:#FF00FF; background-color:#110033; margin:0 auto;" cellpadding="10" width="80%">
+          <tr>
+            <td align="center">
+              <span style="color:#00FFFF; font-size:15px; font-family:'Comic Sans MS',Arial,sans-serif; font-weight:bold;">
+                &#128203; MORNING SUMMARY
+              </span>
+              <br><br>
+              <span style="color:#FFFF00; font-size:13px; font-family:'Comic Sans MS',Arial,sans-serif; line-height:1.7;">
+                &bull; Overnight low: <b>67&deg;F</b> at 6:00 AM<br>
+                &bull; By 10 AM: already climbing to <b>87&deg;F</b>!<br>
+                &bull; Expected high today: <b>96&deg;F</b><br>
+                &bull; Precipitation: <b>0.00 inches</b> (dry as a bone!!)<br>
+                &bull; Humidity: <b>~20%</b> (very low)<br>
+                &bull; Wind: <b>5&ndash;10 mph</b> out of the south<br>
+                &bull; UV Index: <b>EXTREME</b> by midday &mdash; wear sunscreen!!!
+              </span>
+            </td>
+          </tr>
+        </table>
+
+        <br>
+
+        <hr class="fancy">
+
+        <!-- FUN FACTS -->
+        <p class="section-header" style="font-size:15px;">
+          &#9733; FUN WEATHER FACTS &#9733;
+        </p>
+        <div style="color:#AAFFAA; font-size:12px; font-family:'Comic Sans MS',Arial,sans-serif; text-align:left; padding:0 40px; line-height:1.8;">
+          &raquo; Sandy, UT sits at the foot of the Wasatch Range at 4,430 ft elevation!<br>
+          &raquo; July is the hottest month &mdash; averages 95&deg;F highs!<br>
+          &raquo; Utah gets only about 16 inches of rain per year!<br>
+          &raquo; The Great Salt Lake is just 20 miles to the northwest!<br>
+          &raquo; <span class="blink" style="color:#FF4400;">HEAT ADVISORY may be issued for peak afternoon hours!!</span>
+        </div>
+
+        <br>
+        <hr class="fancy">
+
+        <!-- BOTTOM STUFF: Counter, Under construction, etc. -->
+        <table width="100%" cellpadding="8" cellspacing="0">
+          <tr>
+            <td align="left" valign="top" width="33%">
+              <div class="under-construction">
+                &#9888; PAGE UNDER CONSTRUCTION &#9888;
+              </div>
+              <br>
+              <span style="color:#888888; font-size:10px; font-family:Arial,sans-serif;">
+                Coming soon: animated radar!!<br>
+                &amp; 7-day extended outlook!
+              </span>
+            </td>
+            <td align="center" valign="top" width="34%">
+              <span style="color:#AAAAFF; font-size:11px; font-family:'Comic Sans MS',Arial,sans-serif;">
+                You are visitor #
+              </span>
+              <br>
+              <span class="counter">004721</span>
+              <br>
+              <span style="color:#AAAAFF; font-size:10px; font-family:Arial,sans-serif;">
+                since July 1, 1999
+              </span>
+            </td>
+            <td align="right" valign="top" width="33%">
+              <a href="#" class="guestbook-link">&#128196; Sign My Guestbook!</a><br>
+              <a href="#" class="guestbook-link">&#128196; View My Guestbook!</a><br>
+              <a href="#" class="guestbook-link">&#9993; E-mail the Webmaster</a>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- BOTTOM MARQUEE -->
+<marquee behavior="scroll" direction="right" scrollamount="3"
+  style="background-color:#000033; color:#FF00FF; font-size:12px;
+         font-family:'Comic Sans MS',Arial,sans-serif; padding:3px 0;
+         border-top:2px solid #FF00FF; border-bottom:2px solid #FF00FF;">
+  &nbsp;&nbsp;
+  ~~~ Stay cool out there, Sandy residents!!! ~~~
+  &nbsp;&star;&nbsp;
+  Don't forget to drink water!!
+  &nbsp;&star;&nbsp;
+  Check back tomorrow for Sunday's weather!!!
+  &nbsp;&star;&nbsp;
+  This page uses DHTML &amp; CSS &mdash; Netscape 4+ or IE 5+ required!
+  &nbsp;&nbsp;
+</marquee>
+
+<!-- FOOTER -->
+<div style="text-align:center; padding:8px;">
+  <div class="credits">
+    &copy; 1999 Sandy Utah Weather Zone &bull; All Rights Reserved &bull;
+    Last Updated: July 5, 2026<br>
+    Best viewed at 800x600 resolution with 256 colors or higher &bull;
+    Font: Comic Sans MS &bull; Browser: Netscape Navigator 4.7+ or Internet Explorer 5.0+<br>
+    <span style="color:#444466;">
+      This page has been tested with <b>Netscape Navigator 4.7</b> and <b>Internet Explorer 5.5</b> &mdash;
+      your experience may vary on other browsers.
+    </span>
+  </div>
+</div>
+
+</body>
+</html>
