@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>~*~ Sandy UT WeAtHeR ~*~ August 2, 2026 ~*~</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="WeatherDude99">
+<meta name="keywords" content="sandy utah weather temperature forecast cool awesome">
+<style type="text/css">
+body {
+  background-color: #000022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23000022'/%3E%3Ccircle cx='10' cy='15' r='1' fill='white' opacity='0.8'/%3E%3Ccircle cx='45' cy='5' r='0.8' fill='white' opacity='0.6'/%3E%3Ccircle cx='80' cy='30' r='1.2' fill='white' opacity='0.9'/%3E%3Ccircle cx='120' cy='12' r='0.7' fill='white' opacity='0.5'/%3E%3Ccircle cx='160' cy='25' r='1' fill='white' opacity='0.7'/%3E%3Ccircle cx='190' cy='8' r='0.9' fill='white' opacity='0.8'/%3E%3Ccircle cx='30' cy='60' r='0.8' fill='white' opacity='0.4'/%3E%3Ccircle cx='70' cy='75' r='1.1' fill='white' opacity='0.9'/%3E%3Ccircle cx='100' cy='55' r='0.6' fill='white' opacity='0.6'/%3E%3Ccircle cx='140' cy='80' r='1' fill='white' opacity='0.7'/%3E%3Ccircle cx='175' cy='65' r='0.8' fill='white' opacity='0.5'/%3E%3Ccircle cx='15' cy='120' r='1.2' fill='white' opacity='0.8'/%3E%3Ccircle cx='55' cy='110' r='0.7' fill='white' opacity='0.6'/%3E%3Ccircle cx='90' cy='140' r='1' fill='white' opacity='0.9'/%3E%3Ccircle cx='130' cy='125' r='0.8' fill='white' opacity='0.4'/%3E%3Ccircle cx='165' cy='150' r='1.1' fill='white' opacity='0.7'/%3E%3Ccircle cx='195' cy='130' r='0.9' fill='white' opacity='0.5'/%3E%3Ccircle cx='25' cy='180' r='0.8' fill='white' opacity='0.8'/%3E%3Ccircle cx='65' cy='170' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='110' cy='195' r='0.7' fill='white' opacity='0.9'/%3E%3Ccircle cx='150' cy='185' r='1.2' fill='white' opacity='0.5'/%3E%3Ccircle cx='185' cy='175' r='0.9' fill='white' opacity='0.7'/%3E%3C/svg%3E");
+  color: #00ff00;
+  font-family: "Comic Sans MS", "Courier New", monospace;
+  margin: 0;
+  padding: 10px;
+}
+
+.blink {
+  animation: blink-anim 0.8s step-start infinite;
+}
+@keyframes blink-anim {
+  50% { opacity: 0; }
+}
+
+.spin {
+  display: inline-block;
+  animation: spin-anim 3s linear infinite;
+}
+@keyframes spin-anim {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rainbow {
+  animation: rainbow-anim 2s linear infinite;
+}
+@keyframes rainbow-anim {
+  0%   { color: #ff0000; }
+  16%  { color: #ff8800; }
+  33%  { color: #ffff00; }
+  50%  { color: #00ff00; }
+  66%  { color: #0088ff; }
+  83%  { color: #ff00ff; }
+  100% { color: #ff0000; }
+}
+
+.neon-text {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #0088ff;
+}
+
+.fire-text {
+  color: #ffff00;
+  text-shadow: 0 0 5px #ff8800, 0 0 10px #ff4400, 0 0 20px #ff0000;
+}
+
+.main-table {
+  border: 3px ridge #ff00ff;
+  background-color: #000044;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.header-cell {
+  background-color: #110033;
+  text-align: center;
+  padding: 15px;
+  border-bottom: 2px solid #ff00ff;
+}
+
+.weather-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.weather-table th {
+  background-color: #330066;
+  color: #ffff00;
+  border: 2px solid #ff00ff;
+  padding: 8px 14px;
+  font-family: "Comic Sans MS", Arial;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.weather-table td {
+  border: 1px solid #6600cc;
+  padding: 8px 14px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.weather-table tr:nth-child(odd) td {
+  background-color: #110033;
+  color: #00ff88;
+}
+
+.weather-table tr:nth-child(even) td {
+  background-color: #220044;
+  color: #88ffff;
+}
+
+.divider {
+  border: 0;
+  height: 4px;
+  background: linear-gradient(to right, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #ff00ff, #ff0000);
+  margin: 12px 0;
+}
+
+.hit-counter {
+  font-family: "Courier New", monospace;
+  background-color: #000000;
+  color: #00ff00;
+  border: 2px inset #006600;
+  padding: 3px 8px;
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+.marquee-wrapper {
+  background-color: #000033;
+  border: 2px solid #0088ff;
+  padding: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marquee-scroll 20s linear infinite;
+  color: #ffff00;
+  font-size: 14px;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}
+
+.under-construction {
+  background-color: #111100;
+  border: 3px dashed #ffff00;
+  color: #ffff00;
+  text-align: center;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.temp-hot  { color: #ff4400; font-weight: bold; }
+.temp-warm { color: #ffaa00; font-weight: bold; }
+.temp-cool { color: #00aaff; font-weight: bold; }
+
+.guestbook-link {
+  color: #ff88ff;
+  text-decoration: underline;
+}
+.guestbook-link:visited { color: #cc44cc; }
+.guestbook-link:hover   { color: #ffffff; text-shadow: 0 0 8px #ff88ff; }
+
+.footer-cell {
+  background-color: #0a0022;
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #ff00ff;
+  font-size: 11px;
+  color: #888888;
+}
+
+.sun-icon {
+  font-size: 40px;
+  animation: pulse-sun 2s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes pulse-sun {
+  0%, 100% { transform: scale(1);   filter: brightness(1); }
+  50%       { transform: scale(1.2); filter: brightness(1.5); }
+}
+
+.star {
+  color: #ffff00;
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+</style>
+</head>
+<body>
+
+<!-- MARQUEE BANNER -->
+<div class="marquee-wrapper">
+  <span class="marquee-inner">
+    *** WELCOME TO MY AWESOME WEATHER PAGE *** Sandy UT 84047 *** August 2, 2026 ***
+    HOT HOT HOT summer morning data *** made with &lt;3 in Notepad *** please sign my guestbook!!! ***
+    *** WEATHER IS TOTALLY RADICAL TODAY *** visit often!! ***
+  </span>
+</div>
+
+<br>
+
+<!-- MAIN TABLE LAYOUT (because that's how we roll in '99) -->
+<table class="main-table" cellpadding="10" cellspacing="5">
+  <tr>
+    <td class="header-cell" colspan="2">
+
+      <span class="star">&#9733;</span>
+      <span class="star" style="animation-delay:0.3s">&#9733;</span>
+      <span class="star" style="animation-delay:0.6s">&#9733;</span>
+
+      <h1 class="neon-text" style="font-size:28px; margin:5px 0;">
+        ~*~ Sandy, Utah WeAtHeR ~*~
+      </h1>
+
+      <div class="sun-icon">&#9728;</div>
+
+      <h2 class="fire-text" style="font-size:20px; margin:5px 0;">
+        August 2, 2026
+      </h2>
+
+      <p style="color:#cc88ff; font-size:13px; margin:4px 0;">
+        Zip Code: 84047 &nbsp;|&nbsp; Morning Report: 5am &ndash; 10am MST
+      </p>
+
+      <span class="star" style="animation-delay:0.2s">&#9733;</span>
+      <span class="star" style="animation-delay:0.5s">&#9733;</span>
+      <span class="star" style="animation-delay:0.8s">&#9733;</span>
+
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <hr class="divider">
+    </td>
+  </tr>
+
+  <!-- UNDER CONSTRUCTION NOTICE -->
+  <tr>
+    <td colspan="2">
+      <div class="under-construction">
+        <span class="blink">&#9888;</span>
+        &nbsp; PAGE UNDER CONSTRUCTION &nbsp;
+        <span class="blink">&#9888;</span>
+        &nbsp; More features coming soon!! Adding animated cursor + MIDI music! &nbsp;
+        <span class="blink">&#9888;</span>
+      </div>
+    </td>
+  </tr>
+
+  <!-- WEATHER DATA TABLE -->
+  <tr>
+    <td colspan="2">
+
+      <p style="color:#ffff00; font-size:16px; text-align:center; margin:8px 0;">
+        <span class="rainbow">&#9832; HOURLY MORNING TEMPERATURES &#9832;</span>
+      </p>
+
+      <table class="weather-table" cellpadding="0" cellspacing="0">
+        <tr>
+          <th>&#9200; TIME</th>
+          <th>&#127777; TEMP (&#176;F)</th>
+          <th>&#127783; PRECIP (in)</th>
+          <th>&#127774; CONDITIONS</th>
+        </tr>
+        <tr>
+          <td><b>5:00 AM</b></td>
+          <td class="temp-warm">70 &#176;F</td>
+          <td>0.00&quot;</td>
+          <td>Clear &amp; Calm</td>
+        </tr>
+        <tr>
+          <td><b>6:00 AM</b></td>
+          <td class="temp-warm">73 &#176;F</td>
+          <td>0.00&quot;</td>
+          <td>Clear Skies</td>
+        </tr>
+        <tr>
+          <td><b>7:00 AM</b></td>
+          <td class="temp-warm">77 &#176;F</td>
+          <td>0.00&quot;</td>
+          <td>Sunny</td>
+        </tr>
+        <tr>
+          <td><b>8:00 AM</b></td>
+          <td class="temp-hot">81 &#176;F</td>
+          <td>0.00&quot;</td>
+          <td>Sunny &amp; Hot</td>
+        </tr>
+        <tr>
+          <td><b>9:00 AM</b></td>
+          <td class="temp-hot">85 &#176;F</td>
+          <td>0.00&quot;</td>
+          <td>Hot!!</td>
+        </tr>
+        <tr>
+          <td><b>10:00 AM</b></td>
+          <td class="temp-hot">88 &#176;F</td>
+          <td>0.00&quot;</td>
+          <td>Super Hot!!</td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+
+  <!-- FUN FACTS / SIDEBAR -->
+  <tr>
+    <td style="vertical-align:top; width:55%;">
+
+      <p style="color:#00ffff; font-size:14px; margin-top:14px;">
+        <b class="neon-text">&#187; WEATHER FACT OF THE DAY!! &#171;</b>
+      </p>
+      <p style="color:#aaffaa; font-size:12px;">
+        Sandy Utah is located in the beautiful Salt Lake Valley at
+        4,500 feet elevation! That means the air is THIN and the sun
+        is extra intense!!! Stay hydrated out there dudes!!
+        Drink lots of H<sub>2</sub>O lol :)
+      </p>
+
+      <p style="color:#ff88ff; font-size:12px; margin-top:10px;">
+        <b>&#9658; NO RAIN TODAY!</b><br>
+        August is totally dry in Sandy UT. Zero precipitation!
+        Zero! Nada! The desert doesn't play around!! &#9786;
+      </p>
+
+      <p style="color:#88ffff; font-size:12px; margin-top:10px;">
+        <b>&#9658; SUNRISE:</b> ~6:18 AM MST<br>
+        <b>&#9658; HUMIDITY:</b> Super low (like 20%)<br>
+        <b>&#9658; UV INDEX:</b> Very High by 10am!!<br>
+        <b>&#9658; WIND:</b> Light from the SW
+      </p>
+
+    </td>
+    <td style="vertical-align:top; width:45%; text-align:center;">
+
+      <div style="background-color:#110033; border:2px ridge #ff00ff; padding:12px; margin-top:14px;">
+        <p style="color:#ffff00; font-size:13px; margin:0 0 8px;">
+          <b>~~ TEMPERATURE TREND ~~</b>
+        </p>
+
+        <!-- ASCII art temperature bar chart -->
+        <pre style="color:#00ff00; font-size:11px; text-align:left; font-family:'Courier New',monospace; margin:0;">
+ 10am [88F] ||||||||||||||||||||||||
+  9am [85F] |||||||||||||||||||||||
+  8am [81F] ||||||||||||||||||||||
+  7am [77F] ||||||||||||||||||||
+  6am [73F] |||||||||||||||||||
+  5am [70F] ||||||||||||||||||
+              HOT &gt;&gt;&gt; HOTTER
+        </pre>
+
+        <p style="color:#ffaa00; font-size:11px; margin:6px 0 0;">
+          <span class="blink">&#9650;</span>
+          Rising fast! Stay cool!!
+          <span class="blink">&#9650;</span>
+        </p>
+      </div>
+
+      <div style="margin-top:12px; background-color:#002200; border:2px solid #00ff00; padding:8px;">
+        <p style="color:#00ff00; font-size:12px; margin:0;">
+          <b>BEST VIEWED IN</b><br>
+          <span style="color:#00ffff;">Netscape Navigator 4.0</span><br>
+          <span style="font-size:10px; color:#888888;">
+            800x600 resolution<br>
+            16-bit color recommended
+          </span>
+        </p>
+      </div>
+
+    </td>
+  </tr>
+
+  <!-- DIVIDER -->
+  <tr>
+    <td colspan="2">
+      <hr class="divider">
+    </td>
+  </tr>
+
+  <!-- LINKS / GUESTBOOK -->
+  <tr>
+    <td colspan="2" style="text-align:center;">
+      <p style="font-size:13px; color:#ff88ff;">
+        <a href="mailto:weatherdude99@geocities.com" class="guestbook-link">
+          &#9993; Email the Webmaster
+        </a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#" class="guestbook-link">
+          &#128196; Sign My Guestbook!
+        </a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#" class="guestbook-link">
+          &#128196; View Guestbook
+        </a>
+      </p>
+      <p style="font-size:11px; color:#6666aa;">
+        This page is a member of the <u>Utah Weather Webring</u>
+        &nbsp; &laquo; Prev | Home | Next &raquo;
+      </p>
+    </td>
+  </tr>
+
+  <!-- HIT COUNTER -->
+  <tr>
+    <td colspan="2" style="text-align:center;">
+      <p style="font-size:12px; color:#888888; margin:4px 0;">
+        You are visitor number:
+      </p>
+      <span class="hit-counter">001337</span>
+      <p style="font-size:10px; color:#555555; margin:4px 0;">
+        since August 2, 2026 &nbsp; | &nbsp; Free counter from CountMaster 2000!
+      </p>
+    </td>
+  </tr>
+
+  <!-- FOOTER -->
+  <tr>
+    <td class="footer-cell" colspan="2">
+      <p style="margin:2px 0;">
+        &copy; 1999 Sandy UT Weather Page by WeatherDude99
+        &nbsp;&bull;&nbsp;
+        Hosted FREE on GeoCities!!
+        &nbsp;&bull;&nbsp;
+        <span class="blink" style="color:#ff0000;">NEW!</span>
+        Now with starfield background!
+      </p>
+      <p style="margin:2px 0; font-size:10px; color:#444444;">
+        This site is best experienced with JavaScript enabled and a 56k modem or faster.
+        &nbsp; Last updated: 08/02/2026 &nbsp; | &nbsp;
+        Powered by HTML 4.0 and pure PASSION
+      </p>
+    </td>
+  </tr>
+
+</table>
+
+<br>
+
+<!-- SECOND MARQUEE at bottom -->
+<div class="marquee-wrapper">
+  <span class="marquee-inner" style="animation-duration:15s; color:#ff88ff;">
+    *** THANKS FOR VISITING MY SITE *** Come back tomorrow for more weather!! ***
+    *** If u link 2 me i will link 2 u back!! *** peace out *** WeatherDude99 ***
+    *** Sandy UT weather rules!!! ***
+  </span>
+</div>
+
+</body>
+</html>
