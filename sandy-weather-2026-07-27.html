@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="Notepad">
+<title>Sandy UT Weather - July 27 2026 ::: Your #1 Weather Source!!!</title>
+<style type="text/css">
+body {
+  background-color: #000080;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23ffffff' opacity='0.15'/%3E%3C/svg%3E");
+  color: #ffff00;
+  font-family: "Comic Sans MS", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  width: 780px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Top "toolbar" Windows 98 style */
+.titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  font-family: "Arial", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px outset #d4d0c8;
+  margin-bottom: 4px;
+}
+.titlebar-buttons {
+  display: flex;
+  gap: 2px;
+}
+.titlebar-btn {
+  background: #d4d0c8;
+  border: 2px outset #d4d0c8;
+  color: black;
+  font-size: 9px;
+  font-family: "Arial";
+  font-weight: bold;
+  width: 16px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.main-table {
+  width: 100%;
+  border: 3px ridge #00ffff;
+  background-color: #000040;
+}
+
+.header-cell {
+  background: linear-gradient(to bottom, #ff6600, #cc3300);
+  text-align: center;
+  padding: 8px;
+  border-bottom: 3px solid #ff9900;
+}
+
+.header-cell h1 {
+  font-family: "Comic Sans MS", Impact, Arial;
+  font-size: 28px;
+  color: #ffff00;
+  text-shadow: 2px 2px 0 #ff0000, 4px 4px 0 #cc0000;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.header-cell h2 {
+  font-family: Arial;
+  font-size: 14px;
+  color: #00ffff;
+  margin: 4px 0 0 0;
+}
+
+/* Animated marquee replacement */
+.ticker {
+  background-color: #000000;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  padding: 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border-top: 1px solid #00ff00;
+  border-bottom: 1px solid #00ff00;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: scroll-left 25s linear infinite;
+}
+@keyframes scroll-left {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+.content-area {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.left-sidebar {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Navigation links */
+.navbox {
+  background-color: #003366;
+  border: 2px outset #6699cc;
+  padding: 6px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.navbox a {
+  display: block;
+  color: #00ffff;
+  text-decoration: none;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px;
+  border: 1px solid #336699;
+  margin-bottom: 3px;
+  background-color: #001144;
+}
+.navbox a:hover {
+  background-color: #0044aa;
+  color: #ffff00;
+}
+
+/* Hit counter box */
+.counter-box {
+  background-color: #000000;
+  border: 2px inset #666;
+  padding: 6px;
+  text-align: center;
+  font-family: "Courier New";
+  font-size: 11px;
+  color: #00ff00;
+  margin-bottom: 10px;
+}
+.counter-digits {
+  font-size: 20px;
+  color: #ff6600;
+  font-weight: bold;
+  display: block;
+  letter-spacing: 4px;
+  background: black;
+  padding: 3px;
+  border: 1px solid #333;
+}
+
+/* Under construction */
+.under-construction {
+  text-align: center;
+  padding: 4px;
+  font-size: 11px;
+  color: #ff9900;
+  font-family: Arial;
+}
+
+/* Blinking text */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.blink {
+  animation: blink 1s step-start infinite;
+}
+
+/* Weather data section */
+.weather-box {
+  background-color: #000033;
+  border: 3px outset #6699ff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.weather-box h3 {
+  font-family: "Comic Sans MS", Arial;
+  color: #ff9900;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  text-align: center;
+  border-bottom: 1px dashed #ff6600;
+  padding-bottom: 5px;
+}
+
+.weather-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial;
+  font-size: 13px;
+}
+
+.weather-table th {
+  background-color: #003399;
+  color: #ffffff;
+  padding: 5px 8px;
+  text-align: center;
+  border: 1px solid #6699ff;
+  font-size: 12px;
+}
+
+.weather-table td {
+  padding: 5px 8px;
+  text-align: center;
+  border: 1px solid #336699;
+  color: #ccddff;
+}
+
+.weather-table tr:nth-child(even) td {
+  background-color: #001133;
+}
+
+.weather-table tr:nth-child(odd) td {
+  background-color: #000a22;
+}
+
+.weather-table tr:hover td {
+  background-color: #002266;
+  color: #ffff00;
+}
+
+.temp-hot { color: #ff6600; font-weight: bold; }
+.temp-warm { color: #ffcc00; font-weight: bold; }
+.precip-none { color: #88aaff; }
+
+/* Divider */
+.divider-gif {
+  text-align: center;
+  margin: 8px 0;
+  overflow: hidden;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff0000 0px, #ff6600 10px, #ffff00 20px,
+    #00ff00 30px, #00ffff 40px, #0000ff 50px,
+    #ff00ff 60px, #ff0000 70px
+  );
+}
+
+/* Info boxes */
+.info-box {
+  background-color: #003300;
+  border: 2px ridge #00cc00;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-family: Arial;
+  font-size: 12px;
+  color: #99ffcc;
+}
+
+.info-box b {
+  color: #00ff00;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  text-align: center;
+  padding: 8px;
+  font-family: Arial;
+  font-size: 10px;
+  color: #888888;
+  border-top: 1px solid #336699;
+  margin-top: 10px;
+}
+.bottom-bar a {
+  color: #6699ff;
+}
+
+/* Sun animation */
+.sun-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #ffff00 30%, #ff9900 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #ffcc00;
+  animation: pulse-sun 2s ease-in-out infinite;
+  vertical-align: middle;
+  margin: 5px;
+}
+@keyframes pulse-sun {
+  0%, 100% { box-shadow: 0 0 10px #ffcc00; }
+  50% { box-shadow: 0 0 25px #ffff00, 0 0 40px #ff9900; }
+}
+
+/* Welcome graphic */
+.welcome-graphic {
+  text-align: center;
+  padding: 10px 0 5px 0;
+  font-family: Impact, Arial;
+  font-size: 15px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.zip-badge {
+  display: inline-block;
+  background: linear-gradient(to bottom, #ffcc00, #ff6600);
+  color: #000000;
+  font-family: Impact, Arial;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 2px 10px;
+  border: 3px outset #ffcc00;
+  margin: 0 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- Windows 98 style title bar -->
+  <div class="titlebar">
+    <span>&#127774; Sandy, UT Weather Report - July 27, 2026</span>
+    <div class="titlebar-buttons">
+      <div class="titlebar-btn">_</div>
+      <div class="titlebar-btn">&#9633;</div>
+      <div class="titlebar-btn">X</div>
+    </div>
+  </div>
+
+  <table class="main-table" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="header-cell" colspan="2">
+        <div class="sun-icon"></div>
+        <h1>!!!SANDY UT WEATHER!!!</h1>
+        <h2>Your BEST source for local weather on the WWW &bull; ZIP: <span class="zip-badge">84047</span></h2>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="ticker">
+          <span class="ticker-inner">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *** WEATHER ALERT *** July 27, 2026 &mdash; Sandy, Utah (84047) &mdash; Morning temperatures already climbing!! Clear skies expected thru 10am &mdash; HOT day ahead!!!! &mdash; Drink your H2O!!! &mdash; *** Visit again tomorrow for NEW data!!! *** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; padding: 0;">
+        <div class="content-area">
+
+          <!-- LEFT SIDEBAR -->
+          <div class="left-sidebar">
+            <div class="navbox">
+              <b style="color:#ffff00; font-size:11px;">NAVIGATE THIS SITE</b>
+              <hr style="border-color:#336699;">
+              <a href="#">&#127968; Home</a>
+              <a href="#">&#9729; Forecast</a>
+              <a href="#">&#127961; Radar</a>
+              <a href="#">&#128197; Archive</a>
+              <a href="#">&#9993; Contact</a>
+              <a href="#">&#128279; Fav Links</a>
+            </div>
+
+            <div class="counter-box">
+              <small>YOU ARE VISITOR #</small>
+              <span class="counter-digits">001337</span>
+              <small>since Jan 1998</small>
+            </div>
+
+            <div class="under-construction">
+              <span class="blink" style="color:#ff0000; font-size:16px;">&#9888;</span>
+              <br>
+              <span style="color:#ffff00; font-size:11px; font-weight:bold;">UNDER CONSTRUCTION</span>
+              <br>
+              <span style="color:#aaaaaa; font-size:10px;">Radar page coming SOON!!!</span>
+            </div>
+
+            <div style="text-align:center; margin-top:10px;">
+              <div style="background:#003300; border:1px solid #00cc00; padding:5px; font-size:10px; color:#99ff99; font-family:Arial;">
+                <b>Best viewed in</b><br>
+                Netscape Navigator 4.0<br>
+                or<br>
+                Internet Explorer 4.0<br>
+                <span style="color:#ffff00;">at 800x600</span>
+              </div>
+            </div>
+
+            <div style="margin-top:10px; text-align:center;">
+              <div style="background:#001133; border:2px outset #6699cc; padding:5px; font-size:10px; font-family:Arial; color:#88aaff;">
+                <b style="color:#ffcc00;">LINKS</b><br>
+                <a href="#" style="color:#00ffff; font-size:10px;">Weather Underground</a><br>
+                <a href="#" style="color:#00ffff; font-size:10px;">AltaVista Search</a><br>
+                <a href="#" style="color:#00ffff; font-size:10px;">AccuWeather</a><br>
+                <a href="#" style="color:#00ffff; font-size:10px;">Yahoo Weather</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- MAIN CONTENT -->
+          <div class="main-content">
+
+            <div class="welcome-graphic">
+              ~ Morning Weather Report ~
+            </div>
+
+            <div class="divider-gif"></div>
+
+            <div class="weather-box">
+              <h3>&#127774; Hourly Temps &amp; Precip &mdash; 5AM to 10AM &mdash; July 27, 2026</h3>
+
+              <table class="weather-table" cellpadding="0" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>&#9201; Time</th>
+                    <th>&#127777; Temp (F)</th>
+                    <th>&#127783; Precipitation</th>
+                    <th>&#128065; Conditions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>5:00 AM</b></td>
+                    <td class="temp-warm">73 &deg;F</td>
+                    <td class="precip-none">0.00 in</td>
+                    <td>&#9728; Clear</td>
+                  </tr>
+                  <tr>
+                    <td><b>6:00 AM</b></td>
+                    <td class="temp-warm">72 &deg;F</td>
+                    <td class="precip-none">0.00 in</td>
+                    <td>&#9728; Clear</td>
+                  </tr>
+                  <tr>
+                    <td><b>7:00 AM</b></td>
+                    <td class="temp-warm">75 &deg;F</td>
+                    <td class="precip-none">0.00 in</td>
+                    <td>&#9728; Sunny</td>
+                  </tr>
+                  <tr>
+                    <td><b>8:00 AM</b></td>
+                    <td class="temp-warm">80 &deg;F</td>
+                    <td class="precip-none">0.00 in</td>
+                    <td>&#9728; Sunny</td>
+                  </tr>
+                  <tr>
+                    <td><b>9:00 AM</b></td>
+                    <td class="temp-hot">85 &deg;F</td>
+                    <td class="precip-none">0.00 in</td>
+                    <td>&#127774; Hot &amp; Sunny</td>
+                  </tr>
+                  <tr>
+                    <td><b>10:00 AM</b></td>
+                    <td class="temp-hot">89 &deg;F</td>
+                    <td class="precip-none">0.00 in</td>
+                    <td>&#127774; Hot &amp; Sunny</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="divider-gif"></div>
+
+            <div class="info-box">
+              <b>&#128205; Location:</b> Sandy, Utah &bull; ZIP Code 84047 &bull; Elevation: 4,534 ft<br>
+              <b>&#9728; Forecast:</b> Clear and sunny morning, temps rising fast. Typical high 100&deg;F+ expected today.<br>
+              <b>&#127780; Humidity:</b> Low (15-25%) &mdash; it's the desert, people!!!<br>
+              <b>&#128168; Wind:</b> Light and variable, under 5 mph thru 10am
+            </div>
+
+            <div class="info-box" style="border-color:#ff6600; background-color:#330000;">
+              <b style="color:#ff6600;">&#9888; HEAT ADVISORY!!!</b>
+              <span style="color:#ffaa88; font-size:12px;">
+                Stay hydrated!! Sandy temps may exceed 100&deg;F by afternoon.
+                Don't leave pets or kids in the car!!! Heat index may make it
+                feel even HOTTER outside!!!
+              </span>
+            </div>
+
+            <div style="text-align:center; margin: 10px 0; font-size:11px; color:#888888; font-family:Arial;">
+              <span class="blink" style="color:#ff0000;">NEW!</span>
+              <span style="color:#aaaaaa;">
+                &nbsp;Data updated daily &bull; Last Updated: July 27, 2026 at 4:45 AM MST
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="bottom-bar">
+    <div class="divider-gif" style="margin-bottom:6px;"></div>
+    &copy; 1998 SandyWeather.net &bull; All Rights Reserved &bull;
+    <a href="#">Webmaster</a> &bull;
+    <a href="#">Privacy Policy</a> &bull;
+    <a href="#">Add to Favorites</a>
+    <br>
+    <span style="color:#555555;">
+      This page has been accessed <b style="color:#ff9900;">1,337</b> times &bull;
+      Page created with <b>Notepad</b> &bull;
+      <span class="blink" style="color:#ff0000;">&#9679;</span> Geocities Member Since 1997
+    </span>
+  </div>
+
+</div>
+
+</body>
+</html>
