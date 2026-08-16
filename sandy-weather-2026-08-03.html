@@ -1,0 +1,750 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Sandy Utah morning weather - hourly temps and precip for August 3, 2026" />
+  <meta name="keywords" content="Sandy Utah weather, 84047, temperature, precipitation, morning forecast" />
+  <title>SandyWeather.net &beta; &mdash; Morning Report &bull; August 3, 2026</title>
+  <style type="text/css">
+    /* === Reset === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #e8ecf0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23e8ecf0'/%3E%3Crect width='2' height='2' fill='%23e2e7ec'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23e2e7ec'/%3E%3C/svg%3E");
+      font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+      font-size: 13px;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    /* === Site Header === */
+    #site-header {
+      background: #2e6da4;
+      background: -moz-linear-gradient(top, #4d94d4 0%, #2e6da4 40%, #1f5082 100%);
+      background: linear-gradient(to bottom, #4d94d4 0%, #2e6da4 40%, #1f5082 100%);
+      border-bottom: 3px solid #1a3f63;
+      padding: 0;
+    }
+
+    #site-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 10px 14px;
+      display: table;
+      width: 100%;
+    }
+
+    #site-logo {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    #site-logo h1 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      letter-spacing: -1px;
+    }
+
+    #site-logo h1 .beta {
+      font-size: 12px;
+      font-weight: normal;
+      background: #f90;
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 8px;
+      vertical-align: super;
+      text-shadow: none;
+      letter-spacing: 0;
+    }
+
+    #site-logo p {
+      font-size: 11px;
+      color: #b0ccdf;
+      margin-top: 2px;
+    }
+
+    #site-nav {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: right;
+    }
+
+    #site-nav a {
+      display: inline-block;
+      color: #cce3f5;
+      text-decoration: none;
+      font-size: 12px;
+      margin-left: 14px;
+      padding: 3px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    #site-nav a:hover {
+      color: #ffffff;
+      border-bottom-color: #ffffff;
+    }
+
+    /* === Main layout === */
+    #wrapper {
+      max-width: 860px;
+      margin: 18px auto;
+      padding: 0 14px;
+      display: table;
+      width: 100%;
+    }
+
+    #main {
+      display: table-cell;
+      width: 600px;
+      vertical-align: top;
+      padding-right: 18px;
+    }
+
+    #sidebar {
+      display: table-cell;
+      width: 220px;
+      vertical-align: top;
+    }
+
+    /* === Breadcrumb === */
+    #breadcrumb {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    #breadcrumb a { color: #2e6da4; text-decoration: none; }
+    #breadcrumb a:hover { text-decoration: underline; }
+
+    /* === Post card === */
+    .post-card {
+      background: #ffffff;
+      border: 1px solid #c8d0d8;
+      border-radius: 6px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .post-card-header {
+      background: #f3f7fb;
+      background: linear-gradient(to bottom, #f8fafc 0%, #edf3f9 100%);
+      border-bottom: 1px solid #c8d0d8;
+      padding: 10px 14px;
+    }
+
+    .post-card-header h2 {
+      font-size: 17px;
+      font-weight: bold;
+      color: #1e4a7a;
+      margin-bottom: 3px;
+    }
+
+    .post-meta {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .post-meta .tag {
+      display: inline-block;
+      background: #e1edf8;
+      color: #2e6da4;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      margin-left: 5px;
+      text-decoration: none;
+      border: 1px solid #b8d0e8;
+    }
+
+    .post-meta .tag:hover {
+      background: #2e6da4;
+      color: #fff;
+    }
+
+    .post-card-body {
+      padding: 14px;
+    }
+
+    /* === Weather table === */
+    .weather-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .weather-tbl thead tr {
+      background: #2e6da4;
+      background: linear-gradient(to bottom, #4d94d4 0%, #2e6da4 100%);
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .weather-tbl thead th {
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-right: 1px solid #5090c8;
+    }
+
+    .weather-tbl thead th:last-child { border-right: none; }
+
+    .weather-tbl tbody tr { border-bottom: 1px solid #dde4ea; }
+
+    .weather-tbl tbody tr:last-child { border-bottom: none; }
+
+    .weather-tbl tbody tr:hover { background: #f0f6fc; }
+
+    .weather-tbl tbody td {
+      padding: 7px 10px;
+      color: #333;
+      border-right: 1px solid #e8ecf0;
+    }
+
+    .weather-tbl tbody td:last-child { border-right: none; }
+
+    .weather-tbl tbody tr:nth-child(even) { background: #f7fafc; }
+    .weather-tbl tbody tr:nth-child(even):hover { background: #f0f6fc; }
+
+    .td-time {
+      font-weight: bold;
+      color: #2e6da4;
+      white-space: nowrap;
+    }
+
+    .td-temp {
+      font-size: 15px;
+      font-weight: bold;
+      color: #cc4400;
+    }
+
+    .td-temp.mild { color: #336699; }
+    .td-temp.warm { color: #cc7700; }
+    .td-temp.hot  { color: #cc2200; }
+
+    .td-precip { color: #336699; }
+
+    .td-cond { color: #555; font-size: 12px; }
+
+    /* === Star rating === */
+    .star-rating { color: #f90; font-size: 14px; letter-spacing: -2px; }
+    .star-rating .empty { color: #ccc; }
+
+    /* === Alert banner === */
+    .alert-box {
+      background: #fff8e1;
+      border: 1px solid #ffc107;
+      border-left: 4px solid #ffc107;
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      padding: 8px 12px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: #664d00;
+    }
+
+    /* === Summary bar === */
+    .summary-strip {
+      background: #edf5ec;
+      border: 1px solid #b2d8af;
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      padding: 8px 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #2a5a27;
+    }
+
+    /* === Share bar === */
+    .share-bar {
+      border-top: 1px solid #dde4ea;
+      padding: 8px 14px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .share-btn {
+      display: inline-block;
+      background: #f0f4f8;
+      border: 1px solid #b8c8d8;
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 11px;
+      color: #2e6da4;
+      text-decoration: none;
+      margin-left: 6px;
+      cursor: pointer;
+    }
+
+    .share-btn:hover {
+      background: #2e6da4;
+      color: #fff;
+      border-color: #2e6da4;
+    }
+
+    /* === Sidebar widgets === */
+    .widget {
+      background: #ffffff;
+      border: 1px solid #c8d0d8;
+      border-radius: 6px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .widget-header {
+      background: #e0e8f0;
+      background: linear-gradient(to bottom, #edf3f9 0%, #dde8f2 100%);
+      border-bottom: 1px solid #c8d0d8;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #2e5a8a;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .widget-body {
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    .widget-body p { margin-bottom: 6px; color: #555; }
+    .widget-body a { color: #2e6da4; text-decoration: none; }
+    .widget-body a:hover { text-decoration: underline; }
+
+    .widget-stat {
+      display: table;
+      width: 100%;
+      border-bottom: 1px solid #eef1f4;
+      padding: 5px 0;
+    }
+
+    .widget-stat:last-child { border-bottom: none; }
+
+    .widget-stat-label {
+      display: table-cell;
+      color: #666;
+      font-size: 11px;
+    }
+
+    .widget-stat-value {
+      display: table-cell;
+      text-align: right;
+      font-weight: bold;
+      color: #1e4a7a;
+    }
+
+    .rss-btn {
+      display: inline-block;
+      background: #f60;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .rss-btn:hover { background: #c40; }
+
+    /* === Footer === */
+    #site-footer {
+      border-top: 2px solid #c8d0d8;
+      margin-top: 20px;
+      padding: 12px 14px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+    }
+
+    #site-footer a { color: #2e6da4; text-decoration: none; }
+    #site-footer a:hover { text-decoration: underline; }
+
+    .valid-badges { margin-top: 6px; }
+    .valid-badges img { border: 0; vertical-align: middle; margin: 0 3px; }
+
+    .valid-badge-txt {
+      display: inline-block;
+      border: 1px solid #ccc;
+      font-size: 9px;
+      padding: 1px 4px;
+      color: #666;
+      border-radius: 2px;
+      margin: 0 2px;
+      vertical-align: middle;
+      text-decoration: none;
+    }
+
+    .valid-badge-txt:hover { background: #2e6da4; color: #fff; border-color: #2e6da4; }
+
+    /* === Loading spinner (Ajax era!) === */
+    @keyframes ajax-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #c8d0d8;
+      border-top-color: #2e6da4;
+      border-radius: 50%;
+      animation: ajax-spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<div id="site-header">
+  <div id="site-header-inner">
+    <div id="site-logo">
+      <h1>SandyWeather<span style="color:#7ec8f0;">.net</span> <span class="beta">BETA</span></h1>
+      <p>Your source for Sandy, Utah local weather &bull; Community-powered &bull; Now with AJAX!</p>
+    </div>
+    <div id="site-nav">
+      <a href="#">Home</a>
+      <a href="#">Forecast</a>
+      <a href="#">Radar</a>
+      <a href="#">Archive</a>
+      <a href="#">Community</a>
+      <a href="#">About</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN WRAPPER -->
+<div id="wrapper">
+
+  <!-- MAIN CONTENT -->
+  <div id="main">
+
+    <!-- Breadcrumb -->
+    <div id="breadcrumb">
+      <a href="#">Home</a> &rsaquo;
+      <a href="#">Sandy, UT</a> &rsaquo;
+      <a href="#">Morning Reports</a> &rsaquo;
+      August 3, 2026
+    </div>
+
+    <!-- Alert box -->
+    <div class="alert-box">
+      &#9888; <strong>Heat Advisory:</strong>
+      Temperatures will climb quickly this morning. Stay hydrated and limit outdoor
+      activity during peak afternoon hours. High confidence forecast.
+    </div>
+
+    <!-- Main weather post -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <h2>&#9728; Morning Weather &mdash; Sandy, UT (84047)</h2>
+        <div class="post-meta">
+          Posted by <strong>WeatherBot 2.0</strong>
+          &bull; August 3, 2026, 5:00 AM MDT
+          &bull; <span class="spinner"></span> <em>Data loading&hellip;</em>
+          <a href="#" class="tag">sandy-ut</a>
+          <a href="#" class="tag">morning-weather</a>
+          <a href="#" class="tag">84047</a>
+          <a href="#" class="tag">utah</a>
+        </div>
+      </div>
+
+      <div class="post-card-body">
+
+        <p style="margin-bottom:10px; color:#555; font-size:12px;">
+          Hourly temperature (&deg;F) and precipitation (inches) for Sandy, Utah &mdash;
+          <strong>5:00 AM &ndash; 10:00 AM</strong> Mountain Daylight Time.
+          Lat: 40.5649&deg;N &nbsp;|&nbsp; Lon: 111.8389&deg;W &nbsp;|&nbsp; Elev: ~4,500 ft.
+        </p>
+
+        <table class="weather-tbl">
+          <thead>
+            <tr>
+              <th>Time (MDT)</th>
+              <th>Temp (&deg;F)</th>
+              <th>Feels Like</th>
+              <th>Precip (in)</th>
+              <th>Sky / Conditions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-time">5:00 AM</td>
+              <td class="td-temp mild">70&deg;F</td>
+              <td class="td-temp mild" style="font-size:13px;">70&deg;F</td>
+              <td class="td-precip">0.00&quot;</td>
+              <td class="td-cond">&#9728; Clear</td>
+            </tr>
+            <tr>
+              <td class="td-time">6:00 AM</td>
+              <td class="td-temp mild">72&deg;F</td>
+              <td class="td-temp mild" style="font-size:13px;">71&deg;F</td>
+              <td class="td-precip">0.00&quot;</td>
+              <td class="td-cond">&#9728; Clear &amp; Sunny</td>
+            </tr>
+            <tr>
+              <td class="td-time">7:00 AM</td>
+              <td class="td-temp warm">77&deg;F</td>
+              <td class="td-temp warm" style="font-size:13px;">76&deg;F</td>
+              <td class="td-precip">0.00&quot;</td>
+              <td class="td-cond">&#9729; Mostly Sunny</td>
+            </tr>
+            <tr>
+              <td class="td-time">8:00 AM</td>
+              <td class="td-temp warm">83&deg;F</td>
+              <td class="td-temp warm" style="font-size:13px;">81&deg;F</td>
+              <td class="td-precip">0.00&quot;</td>
+              <td class="td-cond">&#9728; Sunny</td>
+            </tr>
+            <tr>
+              <td class="td-time">9:00 AM</td>
+              <td class="td-temp hot">89&deg;F</td>
+              <td class="td-temp hot" style="font-size:13px;">87&deg;F</td>
+              <td class="td-precip">0.00&quot;</td>
+              <td class="td-cond">&#9728; Sunny &amp; Hot</td>
+            </tr>
+            <tr>
+              <td class="td-time">10:00 AM</td>
+              <td class="td-temp hot">94&deg;F</td>
+              <td class="td-temp hot" style="font-size:13px;">91&deg;F</td>
+              <td class="td-precip">0.00&quot;</td>
+              <td class="td-cond">&#9728; Very Hot</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Summary strip -->
+        <div class="summary-strip">
+          &#10003; <strong>Summary:</strong>
+          A hot, dry Monday morning in Sandy, UT. Temps rise 24&deg;F from 5am&nbsp;(70&deg;F)
+          to 10am&nbsp;(94&deg;F). No precipitation. Humidity low. Skies clear.
+          Stay cool &mdash; it&rsquo;s going to be a scorcher today!
+        </div>
+
+        <!-- Star rating (very Web 2.0) -->
+        <div style="margin-top:10px; font-size:12px; color:#555;">
+          Rate this forecast:
+          <span class="star-rating">&#9733;&#9733;&#9733;&#9733;<span class="empty">&#9733;</span></span>
+          <span style="color:#888; font-size:11px;">(4.0/5 &mdash; 14 votes)</span>
+        </div>
+
+        <!-- Quick stats mini-table -->
+        <table class="weather-tbl" style="margin-top:14px; width:55%;">
+          <thead>
+            <tr>
+              <th colspan="2">Quick Stats (5am&ndash;10am)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Low Temp</td>
+              <td class="td-temp mild" style="font-size:13px; text-align:right;">70&deg;F @ 5:00 AM</td>
+            </tr>
+            <tr>
+              <td>High Temp</td>
+              <td class="td-temp hot" style="font-size:13px; text-align:right;">94&deg;F @ 10:00 AM</td>
+            </tr>
+            <tr>
+              <td>Temp Rise</td>
+              <td style="text-align:right; font-weight:bold; color:#cc4400;">+24&deg;F in 5 hrs</td>
+            </tr>
+            <tr>
+              <td>Total Precip</td>
+              <td class="td-precip" style="text-align:right; font-weight:bold;">0.00&quot;</td>
+            </tr>
+            <tr>
+              <td>Avg Humidity</td>
+              <td style="text-align:right; color:#555;">22%</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div><!-- /post-card-body -->
+
+      <!-- Share bar -->
+      <div class="share-bar">
+        Share this report:
+        <a href="#" class="share-btn">&#8730; Digg it!</a>
+        <a href="#" class="share-btn">del.icio.us</a>
+        <a href="#" class="share-btn">&#8226; Technorati</a>
+        <a href="#" class="share-btn">&#9993; Email</a>
+        <a href="#" class="share-btn">&#128438; Print</a>
+        &nbsp;&nbsp;
+        <a href="#" class="rss-btn">RSS</a>
+      </div>
+
+    </div><!-- /post-card -->
+
+    <!-- Comments widget -->
+    <div class="post-card">
+      <div class="post-card-header">
+        <h2 style="font-size:14px;">&#128172; Comments (3)</h2>
+      </div>
+      <div class="post-card-body" style="font-size:12px; color:#555;">
+        <p><strong>UtahSunset_Fan</strong> <span style="color:#aaa;">8 min ago</span><br>
+        Whoa 94 by 10am?? Not going running today lol</p>
+        <hr style="border:none; border-top:1px solid #eee; margin:8px 0;" />
+        <p><strong>SandyMom2006</strong> <span style="color:#aaa;">5 min ago</span><br>
+        Already felt super hot taking the kids to school this morning. Accurate!</p>
+        <hr style="border:none; border-top:1px solid #eee; margin:8px 0;" />
+        <p><strong>WasatchWeatherNerd</strong> <span style="color:#aaa;">just now</span><br>
+        Bookmarked this page! Great AJAX-powered update speed. Best weather site I&rsquo;ve found.</p>
+        <div style="margin-top:10px;">
+          <a href="#" style="color:#2e6da4; font-size:11px;">Add a comment &rsaquo;</a>
+          &nbsp;&nbsp;
+          <a href="#" style="color:#2e6da4; font-size:11px;">View all comments &rsaquo;</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+
+    <!-- Quick facts widget -->
+    <div class="widget">
+      <div class="widget-header">&#9729; Sandy, UT Facts</div>
+      <div class="widget-body">
+        <div class="widget-stat">
+          <span class="widget-stat-label">ZIP Code</span>
+          <span class="widget-stat-value">84047</span>
+        </div>
+        <div class="widget-stat">
+          <span class="widget-stat-label">County</span>
+          <span class="widget-stat-value">Salt Lake</span>
+        </div>
+        <div class="widget-stat">
+          <span class="widget-stat-label">Elevation</span>
+          <span class="widget-stat-value">~4,500 ft</span>
+        </div>
+        <div class="widget-stat">
+          <span class="widget-stat-label">Timezone</span>
+          <span class="widget-stat-value">MDT (UTC-6)</span>
+        </div>
+        <div class="widget-stat">
+          <span class="widget-stat-label">Population</span>
+          <span class="widget-stat-value">~96,000</span>
+        </div>
+        <div class="widget-stat">
+          <span class="widget-stat-label">Climate</span>
+          <span class="widget-stat-value">Semi-arid</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current conditions widget -->
+    <div class="widget">
+      <div class="widget-header">&#9728; Current (10:00 AM)</div>
+      <div class="widget-body" style="text-align:center;">
+        <div style="font-size:42px; color:#cc2200; font-weight:bold; line-height:1.1;">94&deg;</div>
+        <div style="font-size:12px; color:#888;">Fahrenheit</div>
+        <div style="margin-top:6px; font-size:13px; color:#555;">&#9728; Clear &amp; Sunny</div>
+        <div style="margin-top:4px; font-size:11px; color:#888;">Humidity: 22% &bull; Wind: 6mph SW</div>
+        <div style="margin-top:6px;">
+          <span class="star-rating" style="font-size:12px;">&#9733;&#9733;&#9733;&#9733;<span class="empty">&#9733;</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe widget (very 2006) -->
+    <div class="widget">
+      <div class="widget-header">&#9993; Subscribe &amp; Share</div>
+      <div class="widget-body">
+        <p><a href="#" class="rss-btn">RSS 2.0</a> &nbsp;Subscribe via RSS</p>
+        <p><a href="#">&#9993; Email alerts</a> &mdash; daily morning report</p>
+        <p><a href="#">&#128438; Printer-friendly</a> version</p>
+        <p><a href="#">&#128279; Permalink</a> to this report</p>
+        <p style="margin-top:8px; font-size:11px; color:#aaa;">
+          Blogroll: <a href="#">WasatchWeather</a> &bull;
+          <a href="#">UtahSkies</a> &bull;
+          <a href="#">SLC Metro</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Tags (folksonomy was huge in 2006) -->
+    <div class="widget">
+      <div class="widget-header">&#127991; Tags</div>
+      <div class="widget-body">
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">sandy-ut</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">84047</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">weather</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">utah</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">morning</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">forecast</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">hot</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">summer</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">precipitation</a>
+        <a href="#" class="share-btn" style="margin:2px 2px 2px 0;">temperature</a>
+      </div>
+    </div>
+
+    <!-- About widget -->
+    <div class="widget">
+      <div class="widget-header">&#128101; About This Site</div>
+      <div class="widget-body" style="font-size:11px;">
+        <p>SandyWeather.net is a community-driven local weather resource powered by <strong>AJAX</strong> and <strong>Web 2.0</strong> technology. Data updates automatically &mdash; no page reload needed!</p>
+        <p style="margin-top:6px; color:#aaa;">
+          Powered by <a href="#">WeatherEngine v2.0</a><br>
+          Hosted on <a href="#">DreamHost</a>
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /wrapper -->
+
+<!-- SITE FOOTER -->
+<div id="site-footer">
+  <p>
+    &copy; 2006 SandyWeather.net &mdash; All Rights Reserved &bull;
+    <a href="#">Privacy Policy</a> &bull;
+    <a href="#">Terms of Use</a> &bull;
+    <a href="#">Contact Us</a> &bull;
+    <a href="#">Advertise</a>
+  </p>
+  <p style="margin-top:4px;">
+    Weather data for Sandy, Utah (84047) &bull; Lat: 40.5649&deg;N, Lon: 111.8389&deg;W &bull; Elev: ~4,500 ft
+  </p>
+  <div class="valid-badges">
+    <a href="#" class="valid-badge-txt">Valid XHTML 1.0 Strict</a>
+    <a href="#" class="valid-badge-txt">Valid CSS 2.1</a>
+    <a href="#" class="valid-badge-txt">W3C Compliant</a>
+    <a href="#" class="valid-badge-txt">WCAG AA</a>
+    <a href="#" class="valid-badge-txt">Get Firefox!</a>
+  </div>
+</div>
+
+</body>
+</html>
