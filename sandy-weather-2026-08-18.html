@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>~*~ Sandy UT WeatherZone ~*~ August 18 2026 ~*~</title>
+<meta name="description" content="Sandy Utah weather page for August 18 2026">
+<meta name="keywords" content="Sandy Utah weather temperature precipitation 84047 morning forecast">
+<style type="text/css">
+  body {
+    background-color: #000080;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,128,0.3) 2px,
+      rgba(0,0,128,0.3) 4px
+    );
+    color: #FFFF00;
+    font-family: "Comic Sans MS", "Papyrus", cursive;
+    margin: 0;
+    padding: 8px;
+  }
+
+  a { color: #00FFFF; }
+  a:visited { color: #FF00FF; }
+
+  table { border-collapse: collapse; }
+
+  .outer-table {
+    width: 100%;
+    border: 4px ridge #C0C0C0;
+    background-color: #000080;
+  }
+
+  .header-cell {
+    background-color: #FF0000;
+    text-align: center;
+    padding: 6px;
+    border: 3px ridge #FFFFFF;
+  }
+
+  .blink {
+    animation: blink-anim 0.8s step-start infinite;
+  }
+  @keyframes blink-anim {
+    50% { opacity: 0; }
+  }
+
+  .slow-blink {
+    animation: blink-anim 1.5s step-start infinite;
+  }
+
+  .marquee-wrap {
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #008000;
+    border: 2px inset #00FF00;
+    padding: 3px 0;
+  }
+  .marquee-inner {
+    display: inline-block;
+    animation: marquee-scroll 18s linear infinite;
+  }
+  @keyframes marquee-scroll {
+    0%   { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .section-head {
+    background-color: #800000;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px 8px;
+    border: 3px ridge #FF8080;
+    letter-spacing: 2px;
+  }
+
+  .weather-table {
+    width: 100%;
+    border: 3px ridge #00FF00;
+    background-color: #000040;
+    margin: 8px 0;
+  }
+  .weather-table th {
+    background-color: #004000;
+    color: #00FF00;
+    padding: 4px 8px;
+    border: 1px solid #00FF00;
+    text-align: center;
+    font-size: 14px;
+  }
+  .weather-table td {
+    color: #FFFFFF;
+    padding: 4px 8px;
+    border: 1px solid #004000;
+    text-align: center;
+    font-size: 14px;
+  }
+  .weather-table tr:nth-child(even) td {
+    background-color: #000020;
+  }
+  .weather-table tr:nth-child(odd) td {
+    background-color: #000040;
+  }
+
+  .temp-cool { color: #00FFFF; font-weight: bold; }
+  .temp-warm { color: #FFFF00; font-weight: bold; }
+  .temp-hot  { color: #FF8000; font-weight: bold; }
+
+  .counter-box {
+    background-color: #000000;
+    border: 2px inset #808080;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+    padding: 4px 10px;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+
+  .stars {
+    color: #FFD700;
+    font-size: 22px;
+    letter-spacing: 4px;
+  }
+
+  .under-construction {
+    background-color: #FFFF00;
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    border: 3px dashed #FF0000;
+    padding: 4px;
+    animation: ucblink 1.2s step-start infinite;
+  }
+  @keyframes ucblink {
+    50% { background-color: #FF0000; color: #FFFF00; }
+  }
+
+  hr.fancy {
+    border: none;
+    border-top: 4px double #FF00FF;
+    border-bottom: 2px solid #00FFFF;
+    margin: 6px 0;
+  }
+
+  .rainbow {
+    background: linear-gradient(90deg,
+      #FF0000 0%, #FF7700 16%, #FFFF00 33%,
+      #00FF00 50%, #0000FF 66%, #8B00FF 83%, #FF0000 100%);
+    height: 5px;
+    margin: 6px 0;
+  }
+
+  .spinning-star {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .glow-text {
+    color: #00FF00;
+    text-shadow:
+      0 0 6px #00FF00,
+      0 0 12px #00FF00,
+      0 0 24px #00FF00;
+  }
+
+  .info-box {
+    background-color: #000033;
+    border: 2px ridge #0000FF;
+    padding: 8px;
+    margin: 6px 0;
+    font-size: 13px;
+    color: #FFFFFF;
+  }
+
+  .hotline {
+    color: #FF6600;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .footer-cell {
+    text-align: center;
+    font-size: 11px;
+    color: #C0C0C0;
+    padding: 4px;
+    border-top: 2px solid #808080;
+  }
+
+  .stat-bar-bg {
+    background-color: #333300;
+    border: 1px solid #666600;
+    height: 14px;
+    width: 100%;
+    margin: 2px 0;
+  }
+  .stat-bar-fill {
+    background: linear-gradient(90deg, #00FF00, #FFFF00, #FF8000);
+    height: 100%;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<table class="outer-table" cellpadding="6" cellspacing="0">
+<tr>
+  <td class="header-cell">
+    <div class="stars">&#10022; &#9733; &#10022; &#9733; &#10022; &#9733; &#10022;</div>
+    <p style="font-size:28px; font-weight:bold; color:#FFFF00; text-shadow:3px 3px #FF0000; margin:4px 0;">
+      ~*~ SANDY UT WEATHER ZONE ~*~
+    </p>
+    <p style="font-size:16px; color:#00FFFF; margin:2px 0;">
+      <span class="spinning-star">&#10022;</span>
+      &nbsp; ZIP CODE: 84047 &nbsp;&bull;&nbsp; AUGUST 18, 2026 &nbsp;
+      <span class="spinning-star">&#10022;</span>
+    </p>
+    <p style="font-size:13px; color:#FFFF80; margin:2px 0;">
+      :: YOUR #1 SOURCE FOR SANDY UTAH MORNING WEATHER ON THE WEB ::
+    </p>
+    <div class="stars">&#10022; &#9733; &#10022; &#9733; &#10022; &#9733; &#10022;</div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <div class="marquee-wrap">
+      <span class="marquee-inner" style="color:#00FF00; font-size:14px; font-weight:bold;">
+        &nbsp;&nbsp;&nbsp;&nbsp; *** WELCOME TO SANDY UT WEATHER ZONE - THE HOTTEST (AND COOLEST) WEATHER PAGE IN ALL OF UTAH *** TEMPERATURE RANGE: 68&deg;F to 87&deg;F &nbsp;&nbsp; PRECIPITATION: NONE &nbsp;&nbsp; HUMIDITY: LOW &nbsp;&nbsp; WIND: SW AT 5 MPH &nbsp;&nbsp; HAVE A TOTALLY RADICAL DAY!!! &nbsp;&nbsp;&nbsp;&nbsp;
+      </span>
+    </div>
+  </td>
+</tr>
+
+<tr><td><div class="rainbow"></div></td></tr>
+
+<tr>
+  <td>
+    <div class="under-construction">
+      *** UNDER CONSTRUCTION *** THIS PAGE IS ALWAYS BEING UPDATED!!! *** COME BACK DAILY! ***
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <p class="section-head">&#9658; MORNING WEATHER FORECAST &#9668;</p>
+
+    <p style="font-size:13px; color:#FFFF80; text-align:center; margin:4px 0;">
+      <span class="blink">&#9733;</span>
+      &nbsp;SANDY, UTAH (84047) &mdash; TUESDAY, AUGUST 18, 2026 &mdash; 5 AM to 10 AM MDT&nbsp;
+      <span class="blink">&#9733;</span>
+    </p>
+
+    <table class="weather-table" cellpadding="0" cellspacing="0">
+      <tr>
+        <th>TIME (MDT)</th>
+        <th>TEMP (&deg;F)</th>
+        <th>PRECIP (in)</th>
+        <th>CONDITIONS</th>
+      </tr>
+      <tr>
+        <td>5:00 AM</td>
+        <td class="temp-cool">68&deg;F</td>
+        <td>0.00&quot;</td>
+        <td>Clear &#9728;</td>
+      </tr>
+      <tr>
+        <td>6:00 AM</td>
+        <td class="temp-cool">67&deg;F</td>
+        <td>0.00&quot;</td>
+        <td>Clear &#9728;</td>
+      </tr>
+      <tr>
+        <td>7:00 AM</td>
+        <td class="temp-warm">71&deg;F</td>
+        <td>0.00&quot;</td>
+        <td>Sunny &#9728;</td>
+      </tr>
+      <tr>
+        <td>8:00 AM</td>
+        <td class="temp-warm">76&deg;F</td>
+        <td>0.00&quot;</td>
+        <td>Sunny &#9728;</td>
+      </tr>
+      <tr>
+        <td>9:00 AM</td>
+        <td class="temp-hot">82&deg;F</td>
+        <td>0.00&quot;</td>
+        <td>Hot &amp; Sunny &#9728;</td>
+      </tr>
+      <tr>
+        <td>10:00 AM</td>
+        <td class="temp-hot">87&deg;F</td>
+        <td>0.00&quot;</td>
+        <td>HOT! &#9728;</td>
+      </tr>
+    </table>
+
+    <!-- Temperature bar graph - 1997 style -->
+    <p style="color:#00FFFF; font-size:13px; font-weight:bold; margin:6px 0 2px 0;">
+      &gt;&gt; KEWL TEMPERATURE GRAPH!! &lt;&lt;
+    </p>
+    <table width="100%" cellpadding="2" cellspacing="0" style="font-family:'Courier New',monospace; font-size:12px; color:#FFFF00;">
+      <tr><td width="70">5:00 AM</td><td><div class="stat-bar-bg"><span class="stat-bar-fill" style="width:55%"></span></div></td><td width="50" style="color:#00FFFF;">68&deg;F</td></tr>
+      <tr><td>6:00 AM</td><td><div class="stat-bar-bg"><span class="stat-bar-fill" style="width:54%"></span></div></td><td style="color:#00FFFF;">67&deg;F</td></tr>
+      <tr><td>7:00 AM</td><td><div class="stat-bar-bg"><span class="stat-bar-fill" style="width:58%"></span></div></td><td style="color:#FFFF00;">71&deg;F</td></tr>
+      <tr><td>8:00 AM</td><td><div class="stat-bar-bg"><span class="stat-bar-fill" style="width:63%"></span></div></td><td style="color:#FFFF00;">76&deg;F</td></tr>
+      <tr><td>9:00 AM</td><td><div class="stat-bar-bg"><span class="stat-bar-fill" style="width:72%"></span></div></td><td style="color:#FF8000;">82&deg;F</td></tr>
+      <tr><td>10:00 AM</td><td><div class="stat-bar-bg"><span class="stat-bar-fill" style="width:82%"></span></div></td><td style="color:#FF8000;">87&deg;F</td></tr>
+    </table>
+  </td>
+</tr>
+
+<tr><td><hr class="fancy"></td></tr>
+
+<tr>
+  <td>
+    <p class="section-head">&#9658; WEATHER SUMMARY &amp; FUN FACTS &#9668;</p>
+    <div class="info-box">
+      <p class="hotline">&#9658; TODAY'S SANDY UT WEATHER REPORT:</p>
+      <p>
+        Sandy wakes up to a <strong style="color:#00FFFF;">clear desert morning</strong> with temps starting at
+        <strong style="color:#00FFFF;">67&deg;F</strong> around sunrise and climbing fast to a toasty
+        <strong style="color:#FF8000;">87&deg;F</strong> by 10 AM! Zero precipitation means it's gonna be
+        a <span class="blink" style="color:#FFFF00;">DRY</span> one folks!!!
+        Typical Great Basin high-pressure pattern -- grab your SPF 9000 sunscreen!!!
+      </p>
+      <p style="margin-top:6px;">
+        <span style="color:#FF00FF;">&#9733; Sandy City, UT &bull; Elevation: 4,527 ft &bull; Zip: 84047</span><br>
+        <span style="color:#00FF00;">&#9733; Lat: 40.56&deg;N &bull; Long: 111.83&deg;W &bull; County: Salt Lake</span><br>
+        <span style="color:#FFFF00;">&#9733; Season: Summer &bull; Climate: Semi-arid &bull; Wind: SW 5 mph</span>
+      </p>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <p style="color:#FF00FF; font-size:13px; text-align:center;" class="slow-blink">
+      &lt;&lt; THIS PAGE HAS BEEN VISITED BY: &gt;&gt;
+    </p>
+    <p style="text-align:center; margin:4px 0;">
+      <span class="counter-box">0 0 4 2 1 7</span>
+    </p>
+    <p style="color:#C0C0C0; font-size:11px; text-align:center;">SATISFIED WEB SURFERS SINCE JANUARY 1997!!</p>
+  </td>
+</tr>
+
+<tr><td><div class="rainbow"></div></td></tr>
+
+<tr>
+  <td>
+    <p style="font-size:13px; color:#00FF00; text-align:center;" class="glow-text">
+      *** BOOKMARK THIS PAGE AND COME BACK EVERY DAY FOR FRESH WEATHER DATA!!! ***
+    </p>
+    <p style="color:#FF00FF; font-size:12px; text-align:center;">
+      &#9733; SIGN MY <a href="#">GUESTBOOK</a> &#9733;
+      VIEW MY <a href="#">GUESTBOOK</a> &#9733;
+      <a href="#">AWARDS THIS SITE HAS WON!!</a> &#9733;
+    </p>
+    <p style="color:#808080; font-size:11px; text-align:center; margin:4px 0;">
+      [ <a href="#">HOME</a> ] [ <a href="#">LINKS</a> ] [ <a href="#">ABOUT ME</a> ] [ <a href="#">E-MAIL WEBMASTER</a> ]
+    </p>
+  </td>
+</tr>
+
+<tr>
+  <td class="footer-cell">
+    <p style="color:#FF00FF; font-size:12px;" class="slow-blink">
+      *~* BEST VIEWED IN NETSCAPE NAVIGATOR 3.0 OR HIGHER AT 800x600 16-BIT COLOR *~*
+    </p>
+    <p>
+      &copy; 1997 Sandy UT WeatherZone &bull; All Rights Reserved &bull;
+      Geocities Member Since 1996 &bull; Last Updated: August 18, 2026
+    </p>
+    <p style="color:#808080; margin-top:3px;">
+      Weather data: Sandy, UT (84047) &bull; Mountain Daylight Time (UTC-6)
+    </p>
+  </td>
+</tr>
+
+</table>
+
+</body>
+</html>
