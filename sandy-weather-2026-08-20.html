@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Sandy Utah Morning Weather - Your #1 Source!!">
+<meta name="keywords" content="sandy utah weather temperature precipitation forecast">
+<title>~~*~~ SaNdY uTaH wEaThEr PaGe ~~*~~</title>
+<style type="text/css">
+<!--
+@keyframes blink {
+  0%, 49% { visibility: visible; }
+  50%, 100% { visibility: hidden; }
+}
+@keyframes rainbow {
+  0%   { color: #FF0000; }
+  16%  { color: #FF8800; }
+  33%  { color: #FFFF00; }
+  50%  { color: #00FF00; }
+  66%  { color: #0000FF; }
+  83%  { color: #8800FF; }
+  100% { color: #FF0000; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+body {
+  background-color: #000022;
+  color: #CCCCFF;
+  font-family: "Comic Sans MS", "Arial Black", cursive;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  background-image:
+    radial-gradient(1px 1px at 5%   8%,  #fff, transparent),
+    radial-gradient(1px 1px at 12%  45%, #fff, transparent),
+    radial-gradient(1px 1px at 18%  72%, #fff, transparent),
+    radial-gradient(1px 1px at 23%  15%, #aaf, transparent),
+    radial-gradient(1px 1px at 31%  88%, #fff, transparent),
+    radial-gradient(1px 1px at 37%  33%, #fff, transparent),
+    radial-gradient(2px 2px at 42%  55%, #fff, transparent),
+    radial-gradient(1px 1px at 49%  20%, #aaf, transparent),
+    radial-gradient(1px 1px at 54%  78%, #fff, transparent),
+    radial-gradient(1px 1px at 60%   7%, #fff, transparent),
+    radial-gradient(2px 2px at 65%  40%, #fff, transparent),
+    radial-gradient(1px 1px at 71%  62%, #aaf, transparent),
+    radial-gradient(1px 1px at 77%  91%, #fff, transparent),
+    radial-gradient(1px 1px at 83%  28%, #fff, transparent),
+    radial-gradient(2px 2px at 88%  55%, #fff, transparent),
+    radial-gradient(1px 1px at 94%  13%, #aaf, transparent),
+    radial-gradient(1px 1px at 3%   50%, #fff, transparent),
+    radial-gradient(1px 1px at 9%   85%, #fff, transparent),
+    radial-gradient(1px 1px at 26%  67%, #fff, transparent),
+    radial-gradient(2px 2px at 73%  75%, #fff, transparent);
+}
+
+marquee {
+  background-color: #330066;
+  color: #FF00FF;
+  font-size: 16px;
+  padding: 4px;
+  border: 2px solid #FF00FF;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 32px;
+  color: #FF00FF;
+  text-shadow: 3px 3px #000099, -1px -1px #FF0066;
+  animation: rainbow 3s infinite;
+  margin-bottom: 4px;
+}
+
+h2 {
+  color: #FFFF00;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+h3 {
+  color: #00FFFF;
+  font-size: 16px;
+}
+
+.blink {
+  animation: blink 0.8s step-end infinite;
+  color: #FF0000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.under-construction {
+  display: inline-block;
+  border: 3px dashed #FFFF00;
+  background-color: #440000;
+  padding: 8px 16px;
+  margin: 10px;
+  font-size: 14px;
+  color: #FFFF00;
+}
+
+hr.rainbow-bar {
+  height: 6px;
+  border: none;
+  background: linear-gradient(to right,
+    #FF0000 0%, #FF0000 14%,
+    #FF8800 14%, #FF8800 28%,
+    #FFFF00 28%, #FFFF00 42%,
+    #00FF00 42%, #00FF00 56%,
+    #0099FF 56%, #0099FF 70%,
+    #4400CC 70%, #4400CC 84%,
+    #FF00FF 84%, #FF00FF 100%);
+  margin: 12px 0;
+}
+
+table.weather-table {
+  border: 4px ridge #FF00FF;
+  border-collapse: separate;
+  border-spacing: 2px;
+  background-color: #000044;
+  margin: 0 auto;
+  min-width: 540px;
+}
+
+table.weather-table th {
+  background-color: #6600AA;
+  color: #FFFF00;
+  padding: 8px 14px;
+  font-size: 14px;
+  border: 2px solid #FF00FF;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+table.weather-table td {
+  padding: 7px 14px;
+  color: #00FFFF;
+  border: 1px solid #330066;
+  font-size: 14px;
+}
+
+table.weather-table tr:nth-child(odd) td {
+  background-color: #000055;
+}
+
+table.weather-table tr:nth-child(even) td {
+  background-color: #000033;
+}
+
+.temp-cell {
+  color: #FF8800;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.precip-cell {
+  color: #00FFFF;
+}
+
+.visitor-counter {
+  background-color: #000000;
+  border: 3px inset #888888;
+  padding: 4px 10px;
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  color: #00FF00;
+  letter-spacing: 4px;
+  display: inline-block;
+}
+
+.best-viewed {
+  font-size: 11px;
+  color: #888888;
+  font-family: Arial, sans-serif;
+}
+
+.guestbook-links a {
+  color: #FF00FF;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.star-divider {
+  color: #FFFF00;
+  font-size: 18px;
+  letter-spacing: 6px;
+}
+
+.location-badge {
+  background-color: #003300;
+  border: 2px solid #00FF00;
+  color: #00FF00;
+  padding: 6px 16px;
+  display: inline-block;
+  font-size: 13px;
+  font-family: "Courier New", monospace;
+}
+
+.aol-style {
+  color: #00AAFF;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.spinning-star {
+  display: inline-block;
+  animation: spin 4s linear infinite;
+  font-size: 22px;
+}
+-->
+</style>
+</head>
+<body>
+
+<marquee behavior="scroll" direction="left" scrollamount="4">
+  *** WELCOME TO THE SANDY UTAH WEATHER PAGE *** YOUR #1 SOURCE FOR MORNING WEATHER DATA IN THE SALT LAKE VALLEY *** PLEASE SIGN MY GUESTBOOK!!! *** ADD THIS PAGE TO YOUR FAVORITES!!! ***
+</marquee>
+
+<br>
+
+<div class="spinning-star">&#10024;</div>
+<h1>SaNdY, UtAh WeAtHeR!!!</h1>
+<div class="spinning-star">&#10024;</div>
+
+<h2>:: Thursday, August 20, 2026 ::</h2>
+
+<div class="location-badge">
+  ZIP CODE: 84047 &nbsp;|&nbsp; LAT: 40.5924 N &nbsp;|&nbsp; LON: 111.8389 W
+</div>
+
+<br>
+
+<hr class="rainbow-bar">
+
+<h3>~*~ MoRnInG FoReCaSt: 5 AM - 10 AM ~*~</h3>
+
+<table class="weather-table" cellspacing="2" cellpadding="0">
+  <tr>
+    <th>&#9733; TIME &#9733;</th>
+    <th>&#9728; TEMP (&#176;F) &#9728;</th>
+    <th>&#9730; PRECIP (in) &#9730;</th>
+    <th>&#9729; CONDITIONS &#9729;</th>
+  </tr>
+  <tr>
+    <td align="center"><b>5:00 AM</b></td>
+    <td align="center" class="temp-cell">68 &#176;F</td>
+    <td align="center" class="precip-cell">0.00&quot;</td>
+    <td align="center">&#9733; Clear Skies &#9733;</td>
+  </tr>
+  <tr>
+    <td align="center"><b>6:00 AM</b></td>
+    <td align="center" class="temp-cell">70 &#176;F</td>
+    <td align="center" class="precip-cell">0.00&quot;</td>
+    <td align="center">&#9733; Clear Skies &#9733;</td>
+  </tr>
+  <tr>
+    <td align="center"><b>7:00 AM</b></td>
+    <td align="center" class="temp-cell">73 &#176;F</td>
+    <td align="center" class="precip-cell">0.00&quot;</td>
+    <td align="center">&#9728; Sunny &#9728;</td>
+  </tr>
+  <tr>
+    <td align="center"><b>8:00 AM</b></td>
+    <td align="center" class="temp-cell">77 &#176;F</td>
+    <td align="center" class="precip-cell">0.00&quot;</td>
+    <td align="center">&#9728; Sunny &#9728;</td>
+  </tr>
+  <tr>
+    <td align="center"><b>9:00 AM</b></td>
+    <td align="center" class="temp-cell">81 &#176;F</td>
+    <td align="center" class="precip-cell">0.00&quot;</td>
+    <td align="center">&#9728; Sunny &#9728;</td>
+  </tr>
+  <tr>
+    <td align="center"><b>10:00 AM</b></td>
+    <td align="center" class="temp-cell">85 &#176;F</td>
+    <td align="center" class="precip-cell">0.00&quot;</td>
+    <td align="center">&#9728; Mostly Sunny &#9728;</td>
+  </tr>
+</table>
+
+<br>
+
+<hr class="rainbow-bar">
+
+<div class="star-divider">* * * * * * * * * * *</div>
+
+<br>
+
+<div class="under-construction">
+  <span class="blink">!!! UNDER CONSTRUCTION !!!</span><br>
+  <small>More features coming SOON!!!</small>
+</div>
+
+<br>
+
+<p style="color: #FF00FF; font-size: 14px;">
+  <b>~~ Today's Forecast: Hot &amp; Sunny morning in the Salt Lake Valley! ~~</b><br>
+  <small style="color: #AAAAFF;">No precipitation expected. Typical beautiful Utah summer morning!!</small>
+</p>
+
+<br>
+
+<div class="star-divider">-= VISITORS =-</div>
+
+<p style="color: #CCCCCC; font-size: 13px;">You are visitor number:</p>
+<div class="visitor-counter">0 0 4 8 3 1 2</div>
+
+<br><br>
+
+<hr class="rainbow-bar">
+
+<p class="aol-style">~~ Created with AOL 3.0 and Notepad ~~</p>
+
+<div class="guestbook-links">
+  <a href="#">[Sign My Guestbook!]</a>
+  &nbsp;&nbsp;
+  <a href="#">[View My Guestbook!]</a>
+  &nbsp;&nbsp;
+  <a href="#">[E-Mail the Webmaster]</a>
+</div>
+
+<br>
+
+<p class="best-viewed">
+  *~* Best Viewed in Netscape Navigator 3.0 or Internet Explorer 3.0 *~*<br>
+  Optimized for 640x480 resolution &amp; 256 colors<br>
+  &copy; 1997 Sandy UT Weather Page &mdash; All Rights Reserved
+</p>
+
+<br>
+
+</body>
+</html>
