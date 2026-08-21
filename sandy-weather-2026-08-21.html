@@ -1,0 +1,535 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Sandy Utah Morning Weather - The MOST EXTREME weather page on the WEB!">
+<meta name="keywords" content="sandy utah weather temperature precipitation morning hourly DHTML">
+<title>:: SANDY UTAH WEATHER :: MORNING REPORT :: 08-21-2006 ::</title>
+<style type="text/css">
+body {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23000000'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23050510'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23050510'/%3E%3C/svg%3E");
+  color: #CCCCFF;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a { color: #00CCFF; text-decoration: none; }
+a:hover { color: #FF6600; text-decoration: underline; }
+
+#wrapper {
+  width: 760px;
+  margin: 0 auto;
+}
+
+/* ====== HEADER ====== */
+#header {
+  background: #000033;
+  border: 2px solid #003399;
+  border-top: 4px solid #0066FF;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 8px;
+}
+
+#header h1 {
+  font-family: Impact, Arial Black, sans-serif;
+  font-size: 28px;
+  letter-spacing: 6px;
+  margin: 0;
+  padding: 4px 0;
+  text-transform: uppercase;
+  /* fake glow effect */
+  color: #FFFFFF;
+  text-shadow: 0 0 10px #0099FF, 0 0 20px #0044CC, 0 0 4px #FFFFFF;
+}
+
+#header .subtitle {
+  font-size: 11px;
+  color: #6699CC;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ====== NAV BAR ====== */
+#navbar {
+  background: #000022;
+  border: 1px solid #003399;
+  border-top: 0;
+  padding: 3px 6px;
+  font-size: 11px;
+  color: #6688AA;
+}
+
+#navbar span {
+  color: #0055AA;
+  margin: 0 4px;
+}
+
+/* ====== MARQUEE BAR ====== */
+#scrollbar {
+  background: #000011;
+  border: 1px solid #002266;
+  border-top: 0;
+  padding: 4px 0;
+  font-size: 11px;
+  color: #FF6600;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#scrollbar .inner {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ====== MAIN LAYOUT ====== */
+#content-area {
+  display: table;
+  width: 100%;
+  margin-top: 8px;
+}
+
+#sidebar {
+  display: table-cell;
+  width: 160px;
+  vertical-align: top;
+  padding-right: 8px;
+}
+
+#main {
+  display: table-cell;
+  vertical-align: top;
+}
+
+/* ====== SIDEBAR BOXES ====== */
+.sbox {
+  background: #000022;
+  border: 1px solid #003399;
+  margin-bottom: 8px;
+}
+
+.sbox-title {
+  background: #002266;
+  font-size: 10px;
+  font-weight: bold;
+  color: #99CCFF;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 6px;
+}
+
+.sbox-body {
+  padding: 6px;
+  font-size: 11px;
+  color: #8899BB;
+  line-height: 1.6;
+}
+
+.sbox-body b { color: #CCDDFF; }
+
+/* ====== SECTION TITLE ====== */
+.section-hdr {
+  background: linear-gradient(to right, #001166, #000022);
+  border-left: 4px solid #0066FF;
+  border-bottom: 1px solid #003399;
+  padding: 5px 10px;
+  font-family: Impact, Arial Black, sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #99CCFF;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ====== DATE BOX ====== */
+#datebox {
+  background: #000033;
+  border: 1px solid #0044AA;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #7799BB;
+}
+
+#datebox .date-big {
+  font-family: Impact, Arial Black, sans-serif;
+  font-size: 22px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  display: block;
+}
+
+#datebox .location {
+  font-size: 11px;
+  color: #5577AA;
+  letter-spacing: 1px;
+}
+
+/* ====== WEATHER TABLE ====== */
+#wtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+#wtable th {
+  background: #001155;
+  color: #99BBFF;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  border: 1px solid #003388;
+  text-align: center;
+}
+
+#wtable td {
+  background: #000020;
+  color: #AABBDD;
+  padding: 5px 8px;
+  border: 1px solid #001144;
+  text-align: center;
+  font-size: 12px;
+}
+
+#wtable tr:nth-child(even) td {
+  background: #000030;
+}
+
+#wtable tr:hover td {
+  background: #001040;
+  color: #FFFFFF;
+}
+
+.temp-val {
+  font-family: Impact, Arial Black, sans-serif;
+  font-size: 16px;
+  color: #FF9900;
+}
+
+.temp-cool { color: #66CCFF !important; }
+.temp-warm { color: #FFCC00 !important; }
+.temp-hot  { color: #FF6600 !important; }
+
+.precip-val {
+  font-family: Arial Narrow, Arial, sans-serif;
+  color: #4499FF;
+}
+
+.hour-val {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 13px;
+}
+
+/* ====== LEGEND ====== */
+#legend {
+  margin-top: 8px;
+  background: #000022;
+  border: 1px dashed #003366;
+  padding: 6px 10px;
+  font-size: 10px;
+  color: #5577AA;
+}
+
+/* ====== FOOTER ====== */
+#footer {
+  border-top: 1px solid #002244;
+  margin-top: 12px;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 10px;
+  color: #334466;
+  letter-spacing: 1px;
+}
+
+/* ====== NEW BADGE ====== */
+.new-badge {
+  display: inline-block;
+  background: #FF0000;
+  color: #FFFF00;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 1px 4px;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  animation: pulse 1s step-end infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* ====== STATUS INDICATORS ====== */
+.status-ok   { color: #00FF66; font-size: 10px; }
+.status-warn { color: #FF9900; font-size: 10px; }
+
+/* ====== DIVIDER ====== */
+.divider {
+  border: 0;
+  border-top: 1px solid #001133;
+  margin: 8px 0;
+}
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+
+  <!-- HEADER -->
+  <div id="header">
+    <div class="subtitle">&gt;&gt;&gt; EXTREME WEATHER DATA CENTER &lt;&lt;&lt;</div>
+    <h1>Sandy Utah Weather</h1>
+    <div class="subtitle">:: morning conditions :: zip 84047 :: powered by DHTML ::</div>
+  </div>
+
+  <!-- NAV BAR -->
+  <div id="navbar">
+    [ <a href="#">HOME</a> ]
+    <span>|</span>
+    [ <a href="#">CURRENT</a> ]
+    <span>|</span>
+    [ <a href="#">HOURLY</a> ]
+    <span>|</span>
+    [ <a href="#">WEEKLY</a> ]
+    <span>|</span>
+    [ <a href="#">LINKS</a> ]
+    <span>|</span>
+    [ <a href="#">CONTACT</a> ]
+    &nbsp;&nbsp;&nbsp;
+    <span class="status-ok">&#9679; LIVE DATA</span>
+    &nbsp;|&nbsp;
+    <span>Last Updated: 10:00 AM MDT</span>
+  </div>
+
+  <!-- SCROLLING TICKER -->
+  <div id="scrollbar">
+    <span class="inner">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      *** SANDY UT WEATHER REPORT -- FRIDAY AUG 21 2026 -- CLEAR MORNING -- NO PRECIPITATION EXPECTED -- HIGH TODAY: 96&deg;F -- UV INDEX: VERY HIGH -- DRINK WATER --
+      &nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;
+      MORNING TEMPS RANGE FROM 63&deg;F TO 82&deg;F -- TYPICAL LATE-SUMMER CONDITIONS FOR THE WASATCH FRONT --
+      &nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;
+      THIS SITE BEST VIEWED IN INTERNET EXPLORER 6.0 AT 800x600
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+
+  <!-- MAIN 2-COL LAYOUT -->
+  <div id="content-area">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+
+      <div class="sbox">
+        <div class="sbox-title">:: SITE INFO ::</div>
+        <div class="sbox-body">
+          <b>Location:</b><br>Sandy, UT<br>
+          Zip: 84047<br>
+          <hr class="divider">
+          <b>Coords:</b><br>
+          40.57&deg; N<br>
+          111.89&deg; W<br>
+          <hr class="divider">
+          <b>Elevation:</b><br>
+          4,448 ft
+        </div>
+      </div>
+
+      <div class="sbox">
+        <div class="sbox-title">:: TODAY ::</div>
+        <div class="sbox-body">
+          <b>Date:</b><br>
+          Aug 21, 2026<br>
+          <hr class="divider">
+          <b>Sunrise:</b><br>
+          6:36 AM<br>
+          <b>Sunset:</b><br>
+          8:12 PM<br>
+          <hr class="divider">
+          <b>Conditions:</b><br>
+          Clear / Sunny<br>
+          <hr class="divider">
+          <b>Daily High:</b><br>
+          <span style="color:#FF9900; font-size:14px; font-family:Impact,sans-serif;">96&deg;F</span>
+        </div>
+      </div>
+
+      <div class="sbox">
+        <div class="sbox-title">:: LINKS ::</div>
+        <div class="sbox-body">
+          <a href="#">NWS Salt Lake</a><br>
+          <a href="#">Weather.com</a><br>
+          <a href="#">Sandy City Gov</a><br>
+          <a href="#">NOAA</a><br>
+          <hr class="divider">
+          <span style="font-size:9px; color:#334466;">
+            Visitors:<br>
+            <span style="color:#5577AA; font-family:monospace; font-size:13px;">001,337</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="sbox">
+        <div class="sbox-title">:: SIGN MY ::</div>
+        <div class="sbox-body" style="text-align:center;">
+          <a href="#">[ GUESTBOOK ]</a>
+          <hr class="divider">
+          <span style="font-size:9px; color:#334455;">
+            This site is a member of the<br><b>Utah Weather WebRing</b>
+          </span>
+          <br>
+          <a href="#">&laquo; Prev</a> | <a href="#">Next &raquo;</a>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- MAIN CONTENT -->
+    <div id="main">
+
+      <!-- DATE -->
+      <div id="datebox">
+        <span class="date-big">Friday, August 21, 2026</span>
+        <span class="location">Sandy, Utah (84047) &nbsp;&mdash;&nbsp; Morning Conditions Report</span>
+        &nbsp;&nbsp;
+        <span class="new-badge">NEW!</span>
+      </div>
+
+      <!-- HOURLY TABLE -->
+      <div class="section-hdr">:: Hourly Morning Conditions :: 5 AM &mdash; 10 AM ::</div>
+
+      <table id="wtable" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th>HOUR</th>
+            <th>TEMP (&deg;F)</th>
+            <th>FEELS LIKE</th>
+            <th>PRECIP (in)</th>
+            <th>CONDITIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="hour-val">5:00 AM</td>
+            <td><span class="temp-val temp-cool">64</span></td>
+            <td style="color:#6699BB; font-size:11px;">62&deg;F</td>
+            <td><span class="precip-val">0.00"</span></td>
+            <td style="color:#6688AA; font-size:11px;">Clear</td>
+          </tr>
+          <tr>
+            <td class="hour-val">6:00 AM</td>
+            <td><span class="temp-val temp-cool">63</span></td>
+            <td style="color:#6699BB; font-size:11px;">61&deg;F</td>
+            <td><span class="precip-val">0.00"</span></td>
+            <td style="color:#6688AA; font-size:11px;">Clear</td>
+          </tr>
+          <tr>
+            <td class="hour-val">7:00 AM</td>
+            <td><span class="temp-val temp-cool">67</span></td>
+            <td style="color:#6699BB; font-size:11px;">65&deg;F</td>
+            <td><span class="precip-val">0.00"</span></td>
+            <td style="color:#AABBDD; font-size:11px;">Sunny</td>
+          </tr>
+          <tr>
+            <td class="hour-val">8:00 AM</td>
+            <td><span class="temp-val temp-warm">73</span></td>
+            <td style="color:#AABB88; font-size:11px;">71&deg;F</td>
+            <td><span class="precip-val">0.00"</span></td>
+            <td style="color:#AABBDD; font-size:11px;">Sunny</td>
+          </tr>
+          <tr>
+            <td class="hour-val">9:00 AM</td>
+            <td><span class="temp-val temp-warm">78</span></td>
+            <td style="color:#DDBB55; font-size:11px;">76&deg;F</td>
+            <td><span class="precip-val">0.00"</span></td>
+            <td style="color:#CCAA44; font-size:11px;">Sunny</td>
+          </tr>
+          <tr>
+            <td class="hour-val">10:00 AM</td>
+            <td><span class="temp-val temp-hot">84</span></td>
+            <td style="color:#FF9955; font-size:11px;">82&deg;F</td>
+            <td><span class="precip-val">0.00"</span></td>
+            <td style="color:#FF9944; font-size:11px;">Sunny / Hot</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="legend">
+        <b style="color:#5577AA;">LEGEND:</b>
+        &nbsp;&nbsp;
+        <span style="color:#66CCFF;">&#9608;</span> Cool (below 70&deg;F)
+        &nbsp;&nbsp;
+        <span style="color:#FFCC00;">&#9608;</span> Warm (70&ndash;79&deg;F)
+        &nbsp;&nbsp;
+        <span style="color:#FF6600;">&#9608;</span> Hot (80&deg;F+)
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        Data Source: Climatological Normals / NWS Salt Lake City
+      </div>
+
+      <hr class="divider">
+
+      <!-- SUMMARY -->
+      <div class="section-hdr">:: Morning Summary ::</div>
+      <table width="100%" cellspacing="0" cellpadding="0" style="font-size:12px; color:#8899BB; border:1px solid #001144;">
+        <tr>
+          <td style="padding:8px 12px; background:#000022; border-right:1px solid #001144;" width="50%">
+            <b style="color:#99BBDD;">5-Hour Temp Range:</b><br>
+            <span style="font-size:18px; font-family:Impact,sans-serif; color:#FF9900;">63&deg; &mdash; 84&deg;F</span>
+          </td>
+          <td style="padding:8px 12px; background:#000022;">
+            <b style="color:#99BBDD;">Total Precip (5am&ndash;10am):</b><br>
+            <span style="font-size:18px; font-family:Impact,sans-serif; color:#4499FF;">0.00 inches</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px; background:#000030; border-right:1px solid #001144;">
+            <b style="color:#99BBDD;">Typical for August:</b><br>
+            <span style="color:#7799BB;">Yes &mdash; dry, clear morning before afternoon heat</span>
+          </td>
+          <td style="padding:8px 12px; background:#000030;">
+            <b style="color:#99BBDD;">Monsoon Chance (PM):</b><br>
+            <span style="color:#4488AA;">Low &mdash; 10-15% isolated</span>
+          </td>
+        </tr>
+      </table>
+
+      <!-- UNDER CONSTRUCTION NOTICE -->
+      <div style="margin-top: 12px; border: 1px dashed #333300; background: #111100; padding: 6px 10px; font-size: 10px; color: #665500; text-align: center;">
+        &gt;&gt; UNDER CONSTRUCTION &lt;&lt; &nbsp;&nbsp;
+        Weekly forecast, radar loop, and storm archive pages coming soon!!
+        &nbsp;&nbsp; &gt;&gt; UNDER CONSTRUCTION &lt;&lt;
+      </div>
+
+    </div><!-- /main -->
+
+  </div><!-- /content-area -->
+
+  <!-- FOOTER -->
+  <div id="footer">
+    &copy; 2001 SANDY WEATHER CENTRAL &nbsp;|&nbsp;
+    sandy-weather@hotmail.com &nbsp;|&nbsp;
+    <a href="#">TOP</a> &nbsp;|&nbsp;
+    Best viewed: IE 6.0 &bull; 800&times;600 &bull; 16-bit color
+    <br><br>
+    <span style="font-size:9px; color:#222233;">
+      This page uses DHTML technology. &nbsp;|&nbsp;
+      No frames. No Java. Pure HTML.
+    </span>
+  </div>
+
+</div><!-- /wrapper -->
+
+</body>
+</html>
