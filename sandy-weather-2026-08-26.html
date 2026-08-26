@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="MacWrite 1.0">
+<meta name="description" content="Midvale Utah morning weather report - August 26 2026">
+<title>Weather Desk - Midvale, UT - Aug 26 2026</title>
+<style>
+  /* Classic Macintosh System 1 / 1984 aesthetic - monochrome only */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #AAAAAA; /* Mac desktop gray */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23888888'/%3E%3Crect width='1' height='1' x='1' y='1' fill='%23888888'/%3E%3Crect width='1' height='1' x='1' y='0' fill='%23BBBBBB'/%3E%3Crect width='1' height='1' x='0' y='1' fill='%23BBBBBB'/%3E%3C/svg%3E");
+    font-family: "Chicago", "Geneva", "Helvetica", sans-serif;
+    padding: 0;
+    min-height: 100vh;
+    color: #000000;
+  }
+
+  /* Menu bar */
+  .menu-bar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #000000;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  .menu-bar .apple-logo {
+    font-size: 14px;
+    margin-right: 16px;
+    font-weight: bold;
+  }
+
+  .menu-bar .menu-item {
+    font-size: 12px;
+    margin-right: 14px;
+    cursor: default;
+    font-weight: bold;
+  }
+
+  .menu-bar .clock {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Desktop icons area */
+  .desktop {
+    padding-top: 28px;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Mac window */
+  .mac-window {
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 0;
+    position: relative;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 3px 3px 0px #000000;
+  }
+
+  /* Title bar */
+  .title-bar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #000000;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    user-select: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='4'%3E%3Crect width='1' height='1' y='0' fill='%23000000'/%3E%3Crect width='1' height='1' y='1' fill='%23FFFFFF'/%3E%3Crect width='1' height='1' y='2' fill='%23000000'/%3E%3Crect width='1' height='1' y='3' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  }
+
+  .close-box {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    font-size: 8px;
+    flex-shrink: 0;
+  }
+
+  .title-text {
+    font-size: 12px;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding: 0 4px;
+  }
+
+  .size-box {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6px;
+    flex-shrink: 0;
+  }
+
+  /* Window content */
+  .window-content {
+    padding: 12px 16px;
+  }
+
+  /* Horizontal rule - Mac style */
+  .mac-rule {
+    border: none;
+    border-top: 1px solid #000000;
+    margin: 8px 0;
+  }
+
+  .mac-rule.double {
+    border-top: 3px double #000000;
+  }
+
+  /* Heading */
+  .report-header {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .report-header h1 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .report-header p {
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* Weather table */
+  .weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .weather-table th {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    border: 1px solid #000000;
+  }
+
+  .weather-table td {
+    padding: 5px 8px;
+    text-align: center;
+    border: 1px solid #000000;
+    font-size: 12px;
+    background-color: #FFFFFF;
+  }
+
+  .weather-table tr:nth-child(even) td {
+    /* Mac checkerboard highlight for alternating rows */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23FFFFFF'/%3E%3Crect width='2' height='2' x='0' y='0' fill='%23EEEEEE'/%3E%3Crect width='2' height='2' x='2' y='2' fill='%23EEEEEE'/%3E%3C/svg%3E");
+  }
+
+  /* Status bar at bottom of window */
+  .status-bar {
+    border-top: 1px solid #000000;
+    padding: 4px 8px;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EEEEEE;
+  }
+
+  /* Scroll bar (decorative) */
+  .scroll-bar {
+    width: 16px;
+    background-color: #FFFFFF;
+    border-left: 1px solid #000000;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scroll-arrow {
+    width: 15px;
+    height: 16px;
+    border-bottom: 1px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+  }
+
+  .scroll-arrow.bottom {
+    margin-top: auto;
+    border-bottom: none;
+    border-top: 1px solid #000000;
+  }
+
+  .scroll-thumb {
+    width: 13px;
+    height: 30px;
+    background-color: #888888;
+    border: 1px solid #000000;
+    margin: 2px auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='1' height='1' fill='%23000000'/%3E%3Crect width='1' height='1' x='1' y='1' fill='%23000000'/%3E%3C/svg%3E");
+  }
+
+  /* Disk icon in corner */
+  .desktop-icon {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    text-align: center;
+    width: 64px;
+    cursor: default;
+  }
+
+  .disk-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    position: relative;
+  }
+
+  .disk-icon::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 4px;
+    background: #000;
+    position: absolute;
+    bottom: 6px;
+    right: 3px;
+  }
+
+  .icon-label {
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  /* Footer note */
+  .finder-note {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 10px;
+    color: #000000;
+    font-family: "Geneva", "Helvetica", sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<!-- Mac menu bar -->
+<div class="menu-bar">
+  <span class="apple-logo">&#63743;</span>
+  <span class="menu-item">File</span>
+  <span class="menu-item">Edit</span>
+  <span class="menu-item">View</span>
+  <span class="menu-item">Special</span>
+  <span class="clock">9:14 AM</span>
+</div>
+
+<div class="desktop">
+
+  <!-- Disk icon in top right -->
+  <div class="desktop-icon">
+    <div class="disk-icon">&#128190;</div>
+    <div class="icon-label">Weather<br>Disk</div>
+  </div>
+
+  <!-- Main window: weather report -->
+  <div class="mac-window">
+    <div class="title-bar">
+      <div class="close-box"></div>
+      <div class="title-text">Weather Desk &#8212; Midvale, UT</div>
+      <div class="size-box">&#9633;</div>
+    </div>
+
+    <div class="window-content">
+      <div class="report-header">
+        <h1>MORNING WEATHER REPORT</h1>
+        <hr class="mac-rule double">
+        <p>Midvale, Utah 84047</p>
+        <p>Wednesday, August 26, 2026</p>
+      </div>
+
+      <hr class="mac-rule">
+
+      <table class="weather-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Temp (&#176;F)</th>
+            <th>Precip (in)</th>
+            <th>Conditions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5:00 AM</td>
+            <td>58&#176;</td>
+            <td>0.00</td>
+            <td>Clear</td>
+          </tr>
+          <tr>
+            <td>6:00 AM</td>
+            <td>55&#176;</td>
+            <td>0.00</td>
+            <td>Clear</td>
+          </tr>
+          <tr>
+            <td>7:00 AM</td>
+            <td>60&#176;</td>
+            <td>0.00</td>
+            <td>Sunny</td>
+          </tr>
+          <tr>
+            <td>8:00 AM</td>
+            <td>67&#176;</td>
+            <td>0.00</td>
+            <td>Sunny</td>
+          </tr>
+          <tr>
+            <td>9:00 AM</td>
+            <td>73&#176;</td>
+            <td>0.00</td>
+            <td>Sunny</td>
+          </tr>
+          <tr>
+            <td>10:00 AM</td>
+            <td>79&#176;</td>
+            <td>0.00</td>
+            <td>Sunny</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="mac-rule" style="margin-top:12px;">
+
+      <p style="font-size:11px; margin-top:6px;">
+        &#9632; High today: 87&#176;F &nbsp;&nbsp; Low: 54&#176;F &nbsp;&nbsp; Humidity: Low
+      </p>
+      <p style="font-size:11px; margin-top:4px;">
+        &#9632; Clear skies expected all morning. No precipitation.
+      </p>
+    </div>
+
+    <div class="status-bar">
+      <span>1 item selected</span>
+      <span>84047 / SLC region</span>
+    </div>
+  </div>
+
+  <!-- Second small window: about -->
+  <div class="mac-window" style="max-width:320px; margin-top:8px;">
+    <div class="title-bar">
+      <div class="close-box"></div>
+      <div class="title-text">About Weather Desk</div>
+      <div class="size-box">&#9633;</div>
+    </div>
+    <div class="window-content" style="text-align:center; padding:16px;">
+      <p style="font-size:24px; margin-bottom:8px;">&#9729;</p>
+      <p style="font-size:13px; font-weight:bold;">Weather Desk&#8482;</p>
+      <p style="font-size:11px; margin-top:4px;">Version 1.0</p>
+      <hr class="mac-rule" style="margin:10px 0;">
+      <p style="font-size:11px;">&#169; 1984 Macintosh Weather Corp.</p>
+      <p style="font-size:10px; margin-top:4px;">128K RAM Required</p>
+      <p style="font-size:10px;">3.5&#34; Floppy Disk</p>
+    </div>
+  </div>
+
+  <p class="finder-note">Finder 1.0 &nbsp;&#9632;&nbsp; Macintosh&#8482; Personal Computer</p>
+
+</div>
+
+</body>
+</html>
