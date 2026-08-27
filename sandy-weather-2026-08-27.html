@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="ARPANET Weather Terminal v2.1">
+<meta name="description" content="Midvale Utah morning weather - August 27 2026">
+<title>WEATHER.EXE - MIDVALE UT - AUG 27 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    background: #000000;
+    color: #33ff33;
+    font-family: 'Share Tech Mono', 'Courier New', 'Lucida Console', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* Phosphor CRT scanline effect */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Phosphor glow effect */
+  body {
+    text-shadow:
+      0 0 4px rgba(51, 255, 51, 0.9),
+      0 0 8px rgba(51, 255, 51, 0.5),
+      0 0 12px rgba(51, 255, 51, 0.2);
+  }
+
+  .screen {
+    max-width: 80ch;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+
+  .dim {
+    color: #1a8c1a;
+    text-shadow:
+      0 0 3px rgba(26, 140, 26, 0.6);
+  }
+
+  .bright {
+    color: #66ff66;
+    text-shadow:
+      0 0 6px rgba(102, 255, 102, 1),
+      0 0 14px rgba(51, 255, 51, 0.7),
+      0 0 20px rgba(51, 255, 51, 0.3);
+  }
+
+  .header-block {
+    margin-bottom: 20px;
+  }
+
+  pre {
+    font-family: inherit;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .blink {
+    animation: blink-cursor 1.1s step-end infinite;
+  }
+
+  @keyframes blink-cursor {
+    50% { opacity: 0; }
+  }
+
+  .prompt-line {
+    margin-top: 24px;
+    color: #33ff33;
+  }
+
+  hr.ascii {
+    border: none;
+    color: #1a8c1a;
+    font-size: 14px;
+    text-shadow: 0 0 3px rgba(26, 140, 26, 0.6);
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+
+<pre class="header-block bright">
++==============================================================================+
+|                                                                              |
+|        U.S. DEPT. OF COMMERCE  --  NATIONAL WEATHER SERVICE TERMINAL        |
+|              TIME-SHARING SYSTEM  //  NODE: SLC-01  //  TTY/38              |
+|                                                                              |
+|                         ** CONNECTED: 1972-08-27 **                         |
+|                                                                              |
++==============================================================================+
+</pre>
+
+<pre class="dim">
+LOGON: WXUSER
+PASSWORD: xxxxxxxx
+</pre>
+
+<pre>
+WELCOME TO NWS ARPANET WEATHER RETRIEVAL SYSTEM
+SYSTEM VERSION: 2.1 (C) 1972 U.S. GOVERNMENT
+TERMINAL TYPE: VT-05 / 10 CPS
+LAST LOGON: 1972-08-26 17:42:11
+
+READY.
+</pre>
+
+<pre>
+&gt; RUN WEATHER.EXE ZIP=84047 DATE=1972-08-27 HOURS=0500-1000
+</pre>
+
+<pre class="dim">
+LOADING FORECAST TABLES...
+READING SENSOR ARRAY BUFFER...
+INTERPOLATING SURFACE OBSERVATIONS...
+REPORT GENERATION IN PROGRESS...
+</pre>
+
+<pre class="bright">
++------------------------------------------------------------------------------+
+|  NATIONAL WEATHER SERVICE  //  HOURLY SURFACE OBSERVATIONS                  |
+|  STATION: MIDVALE, UTAH (ZIP 84047)   DATE: 27 AUG 1972 (SIMULATED)        |
+|  REPORTING PERIOD: 0500 - 1000 LOCAL MOUNTAIN TIME                          |
++------------------------------------------------------------------------------+
+|  HOUR  |  TEMP (DEG F)  |  PRECIP (IN)   |  CONDITIONS                     |
++--------+----------------+----------------+---------------------------------+
+|  0500  |     68         |     0.00       |  CLEAR, CALM                    |
+|  0600  |     70         |     0.00       |  CLEAR, CALM                    |
+|  0700  |     74         |     0.00       |  CLEAR, LIGHT BREEZE            |
+|  0800  |     79         |     0.00       |  CLEAR, LIGHT BREEZE            |
+|  0900  |     83         |     0.00       |  CLEAR, GENTLE BREEZE           |
+|  1000  |     86         |     0.00       |  CLEAR, MODERATE BREEZE         |
++--------+----------------+----------------+---------------------------------+
+|  SOURCE: NWS SLC RADIOSONDE + SURFACE NETWORK                               |
+|  OBSERVATION CYCLE: AUTOMATED / 60 MIN                                      |
++------------------------------------------------------------------------------+
+</pre>
+
+<pre>
+SYNOPSIS:
+  HIGH PRESSURE SYSTEM DOMINATING GREAT BASIN. SKIES CLEAR THROUGH
+  THE MORNING HOURS. TEMPERATURES RISING QUICKLY ABOVE SEASONAL
+  NORMALS. NO MEASURABLE PRECIPITATION EXPECTED 0500-1000 LCL.
+  AFTERNOON CONVECTIVE ACTIVITY POSSIBLE OVER WASATCH RANGE.
+
+NORMALS FOR STATION 84047 (AUG 27):
+  MEAN LOW  : 63 DEG F
+  MEAN HIGH : 92 DEG F
+  MEAN PRECIP (MONTHLY): 0.84 IN
+
+END OF REPORT.
+</pre>
+
+<pre class="dim">
++------------------------------------------------------------------------------+
+|  TRANSMITTED VIA ARPANET NODE SLC-01 TO TIP                                 |
+|  PACKET COUNT: 12   //   CHECKSUM: OK   //   RETRANSMITS: 0                 |
+|  REPORT GENERATED: 27 AUG 1972  0500Z                                       |
++------------------------------------------------------------------------------+
+</pre>
+
+<pre class="prompt-line">
+&gt; LOGOUT
+
+CONNECT TIME: 00:00:47
+CORE USAGE:   2.1 KB
+LOGOFF COMPLETE.
+
+<span class="blink">_</span>
+</pre>
+
+</div>
+</body>
+</html>
