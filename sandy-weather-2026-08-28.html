@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MIDVALE UT 84047 -- WEATHER TERMINAL v1.0</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0a0a00;
+    color: #33ff33;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  /* phosphor glow effect */
+  .glow {
+    text-shadow: 0 0 6px #33ff33, 0 0 12px #33ff33;
+  }
+
+  .dim {
+    color: #1a8a1a;
+  }
+
+  .bright {
+    color: #88ff88;
+    text-shadow: 0 0 8px #88ff88;
+  }
+
+  .header-block {
+    border: 1px solid #33ff33;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 8px #33ff3344, inset 0 0 8px #33ff3311;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #1a8a1a;
+    margin: 12px 0;
+  }
+
+  .label {
+    color: #1aaa1a;
+  }
+
+  pre {
+    font-family: inherit;
+  }
+
+  .data-row {
+    display: flex;
+    gap: 0;
+    margin: 4px 0;
+  }
+
+  .data-row .time-col {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .data-row .temp-col {
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .data-row .bar-col {
+    flex: 1;
+  }
+
+  .bar-fill {
+    display: inline-block;
+    color: #33ff33;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.1em;
+    background: #33ff33;
+    box-shadow: 0 0 6px #33ff33;
+    animation: blink 1.1s step-end infinite;
+    vertical-align: text-bottom;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .scanlines {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.08) 3px,
+      rgba(0,0,0,0.08) 4px
+    );
+    z-index: 100;
+  }
+
+  .vignette {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 60%,
+      rgba(0,0,0,0.55) 100%
+    );
+    z-index: 99;
+  }
+
+  .footer {
+    margin-top: 28px;
+    color: #1a6a1a;
+    font-size: 13px;
+  }
+
+  .prompt-line {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<div class="header-block">
+<pre class="glow">
+ ██████████████████████████████████████████████████████
+ ██  NATIONAL WEATHER TERMINAL INTERFACE  v1.0        ██
+ ██  ** AUTHORIZED ACCESS ONLY **                     ██
+ ██████████████████████████████████████████████████████
+</pre>
+</div>
+
+<pre>
+<span class="label">SYSTEM :</span> <span class="bright">WEATHER DATA RETRIEVAL SUBSYSTEM</span>
+<span class="label">DATE   :</span> 28-AUG-2026
+<span class="label">STATION:</span> MIDVALE, UTAH  ZIP:84047
+<span class="label">COORDS :</span> LAT 40.6186 N   LON 111.8996 W
+<span class="label">ELEV   :</span> 4301 FT MSL
+</pre>
+
+<hr class="divider">
+
+<pre>
+<span class="label">QUERY  :</span> HOURLY CONDITIONS  05:00 -- 10:00 LOCAL (MDT)
+<span class="label">UNITS  :</span> TEMP=FAHRENHEIT   PRECIP=INCHES
+</pre>
+
+<hr class="divider">
+
+<pre class="glow">
+ +--------+------------+----------+---------------------+
+ |  TIME  |  TEMP (F)  |  PRECIP  |  TEMP BAR           |
+ +--------+------------+----------+---------------------+</pre>
+
+<div class="data-row">
+  <span class="time-col"> | 05:00  |</span>
+  <span class="temp-col">  <span class="bright">66.1 F</span>      |</span>
+  <span class="bar-col">  0.00 in  | <span class="bar-fill">██████████████████████████████████░░░░░░░░░░░░░░░░░░░</span></span>
+</div>
+<div class="data-row">
+  <span class="time-col"> | 06:00  |</span>
+  <span class="temp-col">  <span class="bright">64.8 F</span>      |</span>
+  <span class="bar-col">  0.00 in  | <span class="bar-fill">█████████████████████████████████░░░░░░░░░░░░░░░░░░░░</span></span>
+</div>
+<div class="data-row">
+  <span class="time-col"> | 07:00  |</span>
+  <span class="temp-col">  <span class="bright">67.4 F</span>      |</span>
+  <span class="bar-col">  0.00 in  | <span class="bar-fill">███████████████████████████████████░░░░░░░░░░░░░░░░░░</span></span>
+</div>
+<div class="data-row">
+  <span class="time-col"> | 08:00  |</span>
+  <span class="temp-col">  <span class="bright">71.2 F</span>      |</span>
+  <span class="bar-col">  0.00 in  | <span class="bar-fill">████████████████████████████████████████░░░░░░░░░░░░░</span></span>
+</div>
+<div class="data-row">
+  <span class="time-col"> | 09:00  |</span>
+  <span class="temp-col">  <span class="bright">76.0 F</span>      |</span>
+  <span class="bar-col">  0.00 in  | <span class="bar-fill">███████████████████████████████████████████░░░░░░░░░░</span></span>
+</div>
+<div class="data-row">
+  <span class="time-col"> | 10:00  |</span>
+  <span class="temp-col">  <span class="bright">81.3 F</span>      |</span>
+  <span class="bar-col">  0.00 in  | <span class="bar-fill">█████████████████████████████████████████████████░░░░</span></span>
+</div>
+
+<pre class="glow">
+ +--------+------------+----------+---------------------+</pre>
+
+<hr class="divider">
+
+<pre>
+<span class="label">SUMMARY:</span>
+  TEMP RANGE  : 64.8 F  TO  81.3 F
+  PRECIP TOTAL: 0.00 IN
+  CONDITIONS  : CLEAR AND DRY / NO PRECIPITATION
+  TREND       : WARMING -- TYPICAL LATE SUMMER MORNING
+
+<span class="label">NOTES  :</span>
+  LOW RELATIVE HUMIDITY EXPECTED. HIGH PRESSURE DOMINANT.
+  MONSOON MOISTURE MINIMAL. SAFE FOR OUTDOOR ACTIVITY.
+</pre>
+
+<hr class="divider">
+
+<div class="footer">
+<pre>
+  ** END OF REPORT **   TRANSMISSION COMPLETE
+  RECORDS STORED IN BUFFER  /WX/MIDVALE/2026-08-28.DAT
+  UPTIME: 9842 HRS   MEMORY: 48K USED / 64K TOTAL
+</pre>
+</div>
+
+<div class="prompt-line">
+<span class="dim">SYS&gt; </span><span class="cursor"></span>
+</div>
+
+</body>
+</html>
