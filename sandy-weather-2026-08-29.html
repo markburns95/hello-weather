@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=800">
+<title>WeatherMash - Midvale UT Morning Forecast</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Lucida Grande", "Trebuchet MS", Arial, sans-serif;
+    background: #d4e4f7;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23c8dbf0'/%3E%3Crect width='2' height='2' fill='%23d4e4f7'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23d4e4f7'/%3E%3C/svg%3E");
+    min-height: 100vh;
+    color: #333;
+  }
+
+  /* Top nav bar */
+  #topbar {
+    background: linear-gradient(to bottom, #5b9bd5 0%, #3a7abf 50%, #2d6aae 51%, #4a8fd4 100%);
+    border-bottom: 1px solid #1c5a9e;
+    padding: 0;
+    height: 44px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  #topbar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 16px;
+    gap: 20px;
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  #logo-icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #ff9900, #ffcc00);
+    border-radius: 6px;
+    border: 1px solid #cc7700;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 3px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  #logo-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    letter-spacing: -0.5px;
+  }
+  #logo-text span {
+    color: #ffdd44;
+  }
+  .beta-badge {
+    background: linear-gradient(to bottom, #ff6600, #cc4400);
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 8px;
+    border: 1px solid #aa3300;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    vertical-align: super;
+    margin-left: 2px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2px;
+    margin-left: auto;
+  }
+  .nav-link {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+  .nav-link:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+  }
+  .nav-link.active {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  /* Page wrapper */
+  #wrapper {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 16px;
+    display: flex;
+    gap: 16px;
+  }
+
+  /* Main content */
+  #main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Sidebar */
+  #sidebar {
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  /* Widget card */
+  .widget {
+    background: #fff;
+    border: 1px solid #b8cfe8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,70,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .widget-header {
+    background: linear-gradient(to bottom, #e8f0fb 0%, #d0e2f8 100%);
+    border-bottom: 1px solid #b8cfe8;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .widget-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #2a5f9e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .widget-body {
+    padding: 14px;
+  }
+
+  /* Hero card */
+  #hero-card {
+    background: linear-gradient(160deg, #1a6ec7 0%, #0d4f9e 40%, #083a7a 100%);
+    border: 1px solid #0a3570;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,80,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+    pointer-events: none;
+  }
+  .hero-location {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .hero-location-pin {
+    width: 10px;
+    height: 10px;
+    background: #ff6600;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: inline-block;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+  }
+  .hero-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    margin-bottom: 14px;
+  }
+  .hero-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    gap: 16px;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .hero-meta-dot {
+    width: 5px;
+    height: 5px;
+    background: #4dc4ff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #4dc4ff;
+  }
+
+  /* Forecast table */
+  .forecast-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+  }
+  .forecast-table thead tr {
+    background: linear-gradient(to bottom, #4a8fd4, #3478bf);
+  }
+  .forecast-table thead th {
+    color: #fff;
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 9px 14px;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    border-bottom: 1px solid #2060a0;
+  }
+  .forecast-table thead th:first-child { border-radius: 0; }
+  .forecast-table tbody tr {
+    transition: background 0.1s;
+  }
+  .forecast-table tbody tr:nth-child(odd) {
+    background: #f4f8fe;
+  }
+  .forecast-table tbody tr:nth-child(even) {
+    background: #eaf1fb;
+  }
+  .forecast-table tbody tr:hover {
+    background: #daeaff;
+  }
+  .forecast-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #d8e8f8;
+    color: #334;
+  }
+  .time-cell {
+    font-weight: bold;
+    color: #2060a8;
+  }
+  .temp-cell {
+    font-size: 15px;
+    font-weight: bold;
+    color: #cc4400;
+  }
+  .precip-cell {
+    color: #2299cc;
+  }
+  .cond-icon {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  /* Temp bar */
+  .temp-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .temp-bar {
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #ff9900, #ff4400);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Tags cloud */
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .tag {
+    background: linear-gradient(to bottom, #f0f5ff, #ddeaff);
+    border: 1px solid #aac4ee;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    color: #3366aa;
+    cursor: pointer;
+  }
+  .tag:hover {
+    background: linear-gradient(to bottom, #ddeaff, #ccd8f8);
+    border-color: #8aaae0;
+  }
+
+  /* Share buttons */
+  .share-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+  .share-btn-digg {
+    background: linear-gradient(to bottom, #e03030, #bb1111);
+    border-color: #991111;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  }
+  .share-btn-del {
+    background: linear-gradient(to bottom, #3388cc, #1166aa);
+    border-color: #0055aa;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  }
+  .share-btn-rss {
+    background: linear-gradient(to bottom, #ff9900, #dd7700);
+    border-color: #bb6600;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  }
+
+  /* Sidebar widgets */
+  .side-widget {
+    background: #fff;
+    border: 1px solid #b8cfe8;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,60,0.09), inset 0 1px 0 rgba(255,255,255,0.8);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .side-widget-header {
+    background: linear-gradient(to bottom, #3478bf, #2260a0);
+    padding: 7px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .side-widget-body {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  /* Stat item */
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #eef3fc;
+    font-size: 12px;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { color: #555; }
+  .stat-val { font-weight: bold; color: #2a5f9e; }
+
+  /* Glossy pill */
+  .glossy-pill {
+    display: inline-block;
+    background: linear-gradient(to bottom, #5bb8ff 0%, #2090ee 45%, #1070cc 50%, #3096ee 100%);
+    border: 1px solid #0060cc;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4);
+    cursor: pointer;
+    margin-top: 4px;
+  }
+
+  /* Footer */
+  #footer {
+    text-align: center;
+    font-size: 10px;
+    color: #88a0c0;
+    padding: 20px 16px 30px;
+    border-top: 1px solid #c8d8f0;
+    margin-top: 10px;
+  }
+  #footer a { color: #6090c0; text-decoration: none; }
+  #footer a:hover { text-decoration: underline; }
+  .footer-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+
+  /* Animated online indicator */
+  .online-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #44cc44;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #44cc44;
+    vertical-align: middle;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Rating stars */
+  .stars {
+    color: #ff9900;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  /* Views counter */
+  .counter-box {
+    display: inline-flex;
+    gap: 2px;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .counter-digit {
+    background: #111;
+    color: #44ff44;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+    text-shadow: 0 0 6px #44ff44;
+  }
+
+  /* Tag line */
+  .tagline {
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    font-size: 11px;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Top navigation bar -->
+<div id="topbar">
+  <div id="topbar-inner">
+    <a id="logo" href="#">
+      <div id="logo-icon">☁</div>
+      <span id="logo-text">Weather<span>Mash</span><sup class="beta-badge">BETA</sup></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link active" href="#">Forecast</a>
+      <a class="nav-link" href="#">Maps</a>
+      <a class="nav-link" href="#">Radar</a>
+      <a class="nav-link" href="#">API</a>
+      <a class="nav-link" href="#">Sign In</a>
+    </div>
+  </div>
+</div>
+
+<div id="wrapper">
+  <!-- Main column -->
+  <div id="main">
+
+    <!-- Hero card -->
+    <div id="hero-card">
+      <div class="hero-location">
+        <span class="hero-location-pin"></span>
+        Midvale, Utah &bull; ZIP 84047 &bull; MST (UTC-7)
+      </div>
+      <div class="hero-title">Morning Forecast &mdash; August 29, 2026</div>
+      <div class="tagline">Mashup-powered hyperlocal weather data. Remixed for you.</div>
+      <div class="hero-meta" style="margin-top:14px;">
+        <div class="hero-meta-item"><span class="hero-meta-dot"></span> 5 AM &ndash; 10 AM</div>
+        <div class="hero-meta-item"><span class="hero-meta-dot"></span> Hourly Resolution</div>
+        <div class="hero-meta-item"><span class="hero-meta-dot"></span> <span class="online-dot"></span>&nbsp;Live</div>
+      </div>
+    </div>
+
+    <!-- Forecast table widget -->
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-title">Hourly Temperature &amp; Precipitation</span>
+        <span style="font-size:11px;color:#6688bb;">Aug 29 &bull; Morning</span>
+      </div>
+      <div class="widget-body" style="padding:0;">
+        <table class="forecast-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Conditions</th>
+              <th>Temp (&deg;F)</th>
+              <th>Precip</th>
+              <th>Heat Meter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell">5:00 AM</td>
+              <td><span class="cond-icon">🌙</span> Clear</td>
+              <td class="temp-cell">67&deg;</td>
+              <td class="precip-cell">0.00&quot;</td>
+              <td>
+                <div class="temp-bar-wrap">
+                  <div class="temp-bar" style="width:52px;"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">6:00 AM</td>
+              <td><span class="cond-icon">🌤</span> Partly Cloudy</td>
+              <td class="temp-cell">65&deg;</td>
+              <td class="precip-cell">0.00&quot;</td>
+              <td>
+                <div class="temp-bar-wrap">
+                  <div class="temp-bar" style="width:50px;"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">7:00 AM</td>
+              <td><span class="cond-icon">🌅</span> Sunrise Clear</td>
+              <td class="temp-cell">70&deg;</td>
+              <td class="precip-cell">0.00&quot;</td>
+              <td>
+                <div class="temp-bar-wrap">
+                  <div class="temp-bar" style="width:60px;"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">8:00 AM</td>
+              <td><span class="cond-icon">☀️</span> Sunny</td>
+              <td class="temp-cell">76&deg;</td>
+              <td class="precip-cell">0.00&quot;</td>
+              <td>
+                <div class="temp-bar-wrap">
+                  <div class="temp-bar" style="width:72px;"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">9:00 AM</td>
+              <td><span class="cond-icon">☀️</span> Sunny</td>
+              <td class="temp-cell">81&deg;</td>
+              <td class="precip-cell">0.00&quot;</td>
+              <td>
+                <div class="temp-bar-wrap">
+                  <div class="temp-bar" style="width:82px;background:linear-gradient(to right,#ff9900,#ff2200);"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">10:00 AM</td>
+              <td><span class="cond-icon">☀️</span> Hot &amp; Sunny</td>
+              <td class="temp-cell">87&deg;</td>
+              <td class="precip-cell">0.00&quot;</td>
+              <td>
+                <div class="temp-bar-wrap">
+                  <div class="temp-bar" style="width:96px;background:linear-gradient(to right,#ff9900,#ff2200);"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Share / social widget -->
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-title">Share This Forecast</span>
+      </div>
+      <div class="widget-body">
+        <p style="font-size:12px;color:#556;margin-bottom:10px;">Found this useful? Bookmark it, digg it, or grab the feed!</p>
+        <div class="share-row">
+          <a class="share-btn share-btn-digg" href="#">&#9651; Digg It</a>
+          <a class="share-btn share-btn-del" href="#">&#9733; del.icio.us</a>
+          <a class="share-btn share-btn-rss" href="#">&#8776; RSS Feed</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags widget -->
+    <div class="widget">
+      <div class="widget-header">
+        <span class="widget-title">Tags</span>
+      </div>
+      <div class="widget-body">
+        <div class="tag-cloud">
+          <span class="tag">midvale</span>
+          <span class="tag">utah</span>
+          <span class="tag">84047</span>
+          <span class="tag">weather</span>
+          <span class="tag">morning</span>
+          <span class="tag">temperature</span>
+          <span class="tag">forecast</span>
+          <span class="tag">sunny</span>
+          <span class="tag">slc</span>
+          <span class="tag">wasatch</span>
+          <span class="tag">summer</span>
+          <span class="tag">mashup</span>
+          <span class="tag">hyperlocal</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+
+    <div class="side-widget">
+      <div class="side-widget-header">Quick Stats</div>
+      <div class="side-widget-body">
+        <div class="stat-row">
+          <span class="stat-label">Low (5am)</span>
+          <span class="stat-val">65&deg;F</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">High (10am)</span>
+          <span class="stat-val">87&deg;F</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Range</span>
+          <span class="stat-val">22&deg; swing</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Precip Total</span>
+          <span class="stat-val">0.00&quot;</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Avg Temp</span>
+          <span class="stat-val">74.3&deg;F</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-widget">
+      <div class="side-widget-header">User Rating</div>
+      <div class="side-widget-body">
+        <p style="color:#666;font-size:11px;margin-bottom:5px;">Rate this forecast:</p>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <p style="font-size:10px;color:#888;margin-top:4px;">4.1 / 5 &bull; 38 votes</p>
+        <div class="glossy-pill">Add Your Vote &raquo;</div>
+      </div>
+    </div>
+
+    <div class="side-widget">
+      <div class="side-widget-header">Page Views</div>
+      <div class="side-widget-body" style="text-align:center;">
+        <div class="counter-box">
+          <span class="counter-digit">0</span>
+          <span class="counter-digit">0</span>
+          <span class="counter-digit">2</span>
+          <span class="counter-digit">4</span>
+          <span class="counter-digit">7</span>
+          <span class="counter-digit">1</span>
+        </div>
+        <p style="font-size:10px;color:#888;margin-top:5px;">visitors since launch</p>
+      </div>
+    </div>
+
+    <div class="side-widget">
+      <div class="side-widget-header">About</div>
+      <div class="side-widget-body">
+        <p style="font-size:11px;color:#555;line-height:1.5;">
+          WeatherMash<sup class="beta-badge" style="font-size:8px;">BETA</sup> is a <em>next-generation</em> mashup that remixes weather data into a social, taggable experience. Built with Ajax &amp; Web 2.0 goodness.
+        </p>
+        <p style="font-size:10px;color:#888;margin-top:8px;">
+          Elevation: 4,334 ft &bull; Zone 6b
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+</div><!-- /wrapper -->
+
+<div id="footer">
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">API</a>
+    <a href="#">Blog</a>
+    <a href="#">Badge Builder</a>
+    <a href="#">Advertise</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </div>
+  &copy; 2006 WeatherMash, Inc. &bull; All rights reserved &bull;
+  Best viewed in Firefox 1.5+ or Internet Explorer 6 &bull;
+  <a href="#">Subscribe via RSS</a><br>
+  <span style="color:#aac0dd;">
+    Data sources: NOAA, NWS &bull;
+    "WeatherMash" is a registered trademark &bull;
+    Made with &hearts; in Utah
+  </span>
+</div>
+
+</body>
+</html>
