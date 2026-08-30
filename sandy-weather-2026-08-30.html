@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WEATHER DATA REPORT - MIDVALE UT - 30 AUG 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f0e0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 23px,
+      rgba(180,165,120,0.25) 23px,
+      rgba(180,165,120,0.25) 24px
+    );
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 13px;
+    color: #1a1008;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #f7f2e3;
+    border: 1px solid #c8b98a;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.25), -1px -1px 4px rgba(0,0,0,0.1);
+    padding: 32px 40px 40px;
+    position: relative;
+  }
+
+  /* Sprocket holes on left and right */
+  .page::before, .page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    background-image: radial-gradient(circle, #c8b98a 6px, transparent 6px);
+    background-size: 24px 36px;
+    background-repeat: repeat-y;
+    background-position: center 18px;
+  }
+  .page::before { left: -28px; }
+  .page::after  { right: -28px; }
+
+  pre {
+    white-space: pre;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  .blink {
+    animation: blink 1.1s step-start infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .col-ruler {
+    color: #9a8a60;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 2px solid #8b1a1a;
+    color: #8b1a1a;
+    padding: 2px 10px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    transform: rotate(-2deg);
+    position: absolute;
+    top: 36px;
+    right: 50px;
+    opacity: 0.75;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="stamp">PROCESSED</div>
+
+<pre class="col-ruler">         1         2         3         4         5         6         7
+1234567890123456789012345678901234567890123456789012345678901234567890123456789</pre>
+
+<pre>
+================================================================================
+    UNIVAC-I WEATHER COMPUTATION CENTER -- BATCH JOB NO. 4782-B
+    PROCESSED: 30 AUG 2026     OPERATOR: J. RICHARDSON
+    INSTALLATION: WEATHER BUREAU FIELD OFFICE, SALT LAKE DIVISION
+================================================================================
+
+    PROGRAM TITLE : MORNING TEMP AND PRECIPITATION EXTRACTION ROUTINE
+    DATA SET      : MIDVALE, UTAH  (ZIP SECTOR 84047)
+    COORDINATES   : LAT 40.619N  LONG 111.900W
+    DATE OF RECORD: 30 AUGUST 2026
+    UNIT SYSTEM   : FAHRENHEIT / INCHES
+
+
+
+    +-----------+-------------+-------------------+---------------------------+
+    | TIME (HR) | TEMP (DEG F)| PRECIP (INCHES)   | REMARKS                   |
+    +-----------+-------------+-------------------+---------------------------+
+    |  0500 HRS |    67 DEG F |       0.00 IN.    | CLEAR, CALM               |
+    |  0600 HRS |    65 DEG F |       0.00 IN.    | CLEAR, CALM               |
+    |  0700 HRS |    68 DEG F |       0.00 IN.    | CLEAR, LIGHT BREEZE       |
+    |  0800 HRS |    73 DEG F |       0.00 IN.    | PARTLY CLOUDY             |
+    |  0900 HRS |    79 DEG F |       0.00 IN.    | MOSTLY CLEAR              |
+    |  1000 HRS |    84 DEG F |       0.00 IN.    | SUNNY, WARMING            |
+    +-----------+-------------+-------------------+---------------------------+
+
+    SUMMARY STATISTICS:
+    -------------------
+    PERIOD LOW  TEMPERATURE  .....  65 DEG F    (AT 0600 HRS)
+    PERIOD HIGH TEMPERATURE  .....  84 DEG F    (AT 1000 HRS)
+    TOTAL PRECIPITATION      .....   0.00 IN.
+    MEAN TEMPERATURE (5-10AM) ....  72.7 DEG F
+
+
+
+    NARRATIVE FORECAST NOTE:
+    HIGH PRESSURE DOMINATES THE WASATCH FRONT.  NO PRECIPITATION EXPECTED.
+    TEMPERATURES WILL RISE STEADILY THROUGH THE MORNING HOURS.  WINDS
+    LIGHT AND VARIABLE FROM THE SOUTH AT 3 TO 7 MILES PER HOUR.
+
+
+
+================================================================================
+    CARD SEQUENCE: 001 THRU 048    RUN TIME: 0.83 SEC    ERRORS: NONE
+    ** END OF REPORT -- PLEASE REMOVE CARDS FROM READER BEFORE NEXT JOB **
+================================================================================
+<span class="blink">_</span>
+</pre>
+
+</div>
+</body>
+</html>
