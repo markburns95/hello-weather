@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WX DATA - MIDVALE UT - 31 AUG 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #c8b89a;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        rgba(120,90,50,0.12) 27px,
+        rgba(120,90,50,0.12) 28px
+      );
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: #1a0d00;
+    padding: 60px 20px;
+    min-height: 100vh;
+  }
+
+  .page-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Paper roll visual */
+  .paper {
+    background: #f5efd5;
+    border-left: 2px solid #d9ccaa;
+    border-right: 2px solid #d9ccaa;
+    padding: 48px 52px 56px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px #c8b98a,
+      3px 3px 18px rgba(0,0,0,0.35),
+      -1px 0 6px rgba(0,0,0,0.1);
+  }
+
+  /* Sprocket holes */
+  .paper::before, .paper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background-image: radial-gradient(circle, #bfaf8a 7px, transparent 7px);
+    background-size: 20px 40px;
+    background-repeat: repeat-y;
+    background-position: center 20px;
+  }
+  .paper::before { left: -24px; }
+  .paper::after  { right: -24px; }
+
+  /* Perforated tear edge top/bottom */
+  .tear {
+    height: 12px;
+    background-image:
+      radial-gradient(circle at 10px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 30px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 50px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 70px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 90px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 110px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 130px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 150px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 170px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 190px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 210px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 230px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 250px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 270px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 290px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 310px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 330px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 350px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 370px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 390px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 410px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 430px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 450px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 470px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 490px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 510px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 530px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 550px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 570px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 590px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 610px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 630px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 650px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 670px 6px, #c8b89a 5px, transparent 5px),
+      radial-gradient(circle at 690px 6px, #c8b89a 5px, transparent 5px);
+    background-color: #f5efd5;
+    border-left: 2px solid #d9ccaa;
+    border-right: 2px solid #d9ccaa;
+  }
+
+  pre, .line {
+    white-space: pre;
+    line-height: 1.85;
+    letter-spacing: 0.06em;
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    font-size: 13.5px;
+  }
+
+  .heavy {
+    font-weight: bold;
+    letter-spacing: 0.10em;
+  }
+
+  .double-strike {
+    text-shadow: 0.4px 0 0 currentColor;
+  }
+
+  .underline-row {
+    border-bottom: 1.5px solid #1a0d00;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 2.5px solid #7a1010;
+    color: #7a1010;
+    padding: 3px 14px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    transform: rotate(-3deg);
+    position: absolute;
+    top: 42px;
+    right: 52px;
+    text-transform: uppercase;
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    background: transparent;
+    opacity: 0.85;
+  }
+
+  .section-gap { height: 18px; }
+  .hairline {
+    border: none;
+    border-top: 1px solid #8a7a5a;
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div class="tear"></div>
+  <div class="paper">
+
+    <div class="stamp">UNCLASSIFIED</div>
+
+<pre class="line">
+NATIONAL WEATHER SERVICE TELETYPE REPORT
+ISSUED BY:  SLC FORECAST OFFICE
+TRANSMISSION NO:  4417-B
+DATE:  31 AUG 2026
+</pre>
+
+<hr class="hairline">
+
+<pre class="line heavy double-strike">
+LOCATION:  MIDVALE  /  ZIP 84047  /  UT
+COORDINATES:  LAT 40.617 N   LON 111.899 W
+ELEVATION:  4285 FT MSL
+</pre>
+
+<hr class="hairline">
+
+<pre class="line">
+HOURLY SURFACE OBSERVATIONS  0500-1000 MST
+
++----------+-------------------+------------------+
+| TIME MST |   TEMP (DEG F)    |  PRECIP (IN/HR)  |
++----------+-------------------+------------------+
+|  0500    |       68          |      0.00        |
+|  0600    |       67          |      0.00        |
+|  0700    |       70          |      0.00        |
+|  0800    |       74          |      0.00        |
+|  0900    |       79          |      0.00        |
+|  1000    |       85          |      0.00        |
++----------+-------------------+------------------+
+</pre>
+
+<div class="section-gap"></div>
+
+<pre class="line">
+REMARKS:  SKY CLEAR.  WINDS LIGHT AND VARIABLE.
+          NO SIGNIFICANT PRECIPITATION EXPECTED.
+          HUMIDITY 28 PCT.  DEWPOINT 42 DEG F.
+
+OUTLOOK THRU NOON:  SUNNY AND WARM.  TEMPS
+CONTINUING TO RISE THROUGH MORNING HOURS.
+MAX TODAY:  APPROX 99 DEG F.
+</pre>
+
+<hr class="hairline">
+
+<pre class="line heavy">
+PREPARED BY OPERATOR:  NWS/SLC TTY UNIT 3
+END OF MESSAGE  //  31AUG2026  0512Z  //
+</pre>
+
+  </div>
+  <div class="tear"></div>
+</div>
+
+</body>
+</html>
