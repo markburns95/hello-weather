@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WEATHER TERMINAL v1.0 -- MIDVALE UT 84047</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    background: #020a02;
+    color: #39ff14;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 15px;
+    line-height: 1.35;
+    margin: 0;
+    padding: 28px 36px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Phosphor glow */
+  body { text-shadow: 0 0 4px #39ff14, 0 0 8px rgba(57,255,20,0.4); }
+
+  /* CRT scanlines overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.18) 3px,
+      rgba(0,0,0,0.18) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* Subtle vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
+    z-index: 998;
+  }
+
+  pre {
+    margin: 0;
+    white-space: pre;
+    font-family: inherit;
+  }
+
+  .dim { color: #1e8c0a; text-shadow: 0 0 3px #1e8c0a; }
+  .bright { color: #b0ffb0; text-shadow: 0 0 6px #b0ffb0, 0 0 14px rgba(57,255,20,0.6); }
+  .amber { color: #ffb000; text-shadow: 0 0 5px #ffb000; }
+
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 1.1em;
+    background: #39ff14;
+    box-shadow: 0 0 6px #39ff14;
+    animation: blink 1.1s step-end infinite;
+    vertical-align: bottom;
+    margin-left: 2px;
+  }
+
+  @keyframes flicker {
+    0%   { opacity: 1; }
+    3%   { opacity: 0.92; }
+    6%   { opacity: 1; }
+    70%  { opacity: 1; }
+    72%  { opacity: 0.95; }
+    74%  { opacity: 1; }
+  }
+  .screen {
+    animation: flicker 8s infinite;
+  }
+
+  table {
+    border-collapse: collapse;
+    font-family: inherit;
+    font-size: inherit;
+    margin-left: 4px;
+  }
+  th, td {
+    padding: 0 18px 0 4px;
+    text-align: left;
+    font-weight: normal;
+  }
+  tr.sep td { border-top: 1px solid #1e8c0a; }
+</style>
+</head>
+<body>
+<div class="screen">
+<pre class="dim">+================================================================================+
+|                                                                                |
+|       <span class="bright">N A T I O N A L   W E A T H E R   S E R V I C E</span>                           |
+|       <span class="bright">M I C R O C O M P U T E R   T E R M I N A L   S Y S T E M</span>                 |
+|                                                                                |
+|            MODEL: TRS-80 / APPLE II COMPATIBLE  --  48K RAM BASIC             |
+|                                                                                |
++================================================================================+
+</pre>
+
+<pre>
+  LOADING WEATHER DATA...
+  SECTOR READ: <span class="dim">...OK</span>
+  CHECKSUM:    <span class="dim">...PASS</span>
+  MODEM LINK:  <span class="dim">...300 BAUD CONNECTED</span>
+
+</pre>
+
+<pre class="dim">+--------------------------------------------------------------------------------+
+|   <span class="bright">LOCATION  :</span>  MIDVALE, UTAH  84047                                            |
+|   <span class="bright">DATE       :</span>  SEPTEMBER 01, 2026  (TUESDAY)                                   |
+|   <span class="bright">REPORT     :</span>  MORNING HOURLY OBSERVATIONS  0500 -- 1000 MST                    |
++--------------------------------------------------------------------------------+
+</pre>
+
+<pre>
+</pre>
+
+<pre class="dim">  +--------+-----------+----------------+----------------------------+
+  |  <span class="bright">TIME</span>  |  <span class="bright">TEMP (F)</span> |  <span class="bright">PRECIP (IN)</span>  |  <span class="bright">CONDITIONS</span>                |
+  +--------+-----------+----------------+----------------------------+
+  |  05:00 |    <span class="bright">68</span>    |     <span class="bright">0.00</span>      |  CLEAR                     |
+  +--------+-----------+----------------+----------------------------+
+  |  06:00 |    <span class="bright">66</span>    |     <span class="bright">0.00</span>      |  CLEAR                     |
+  +--------+-----------+----------------+----------------------------+
+  |  07:00 |    <span class="bright">69</span>    |     <span class="bright">0.00</span>      |  CLEAR                     |
+  +--------+-----------+----------------+----------------------------+
+  |  08:00 |    <span class="bright">74</span>    |     <span class="bright">0.00</span>      |  CLEAR / LIGHT HAZE        |
+  +--------+-----------+----------------+----------------------------+
+  |  09:00 |    <span class="bright">80</span>    |     <span class="bright">0.00</span>      |  PARTLY CLOUDY             |
+  +--------+-----------+----------------+----------------------------+
+  |  10:00 |    <span class="bright">86</span>    |     <span class="bright">0.00</span>      |  PARTLY CLOUDY             |
+  +--------+-----------+----------------+----------------------------+
+</pre>
+
+<pre>
+  <span class="dim">NOTE: TEMPERATURES IN DEGREES FAHRENHEIT.  PRECIP IN INCHES.</span>
+  <span class="dim">      DATA SOURCED VIA 300-BAUD DIALUP RELAY.  MAY CONTAIN ERRORS.</span>
+
+</pre>
+
+<pre class="dim">+--------------------------------------------------------------------------------+
+|                         <span class="bright">SUMMARY STATISTICS</span>                                      |
++--------------------------------------------------------------------------------+
+|   LOW TEMP   (0500-1000):    <span class="bright">66 F</span>              TOTAL PRECIP:  <span class="bright">0.00 IN</span>            |
+|   HIGH TEMP  (0500-1000):    <span class="bright">86 F</span>              HUMIDITY EST:  <span class="bright">LOW</span>                  |
+|   TREND:  WARMING -- TYPICAL LATE SUMMER MORNING                               |
++--------------------------------------------------------------------------------+
+</pre>
+
+<pre>
+
+  <span class="amber">&gt;&gt;&gt; PROGRAM COMPLETE.  DATA LOGGED TO DISK B:MIDVALE.DAT</span>
+
+  READY
+<span class="cursor"></span>
+</pre>
+
+<pre class="dim">
+
+================================================================================
+  SYS: COPYRIGHT (C) 1979  NWS MICROLINK PROGRAM v1.0   FREEWARE -- SHARE IT!
+  PROC: 2 MHZ Z80    MEM: 48K USED / 0K FREE    I/O: SERIAL PORT 1
+================================================================================
+</pre>
+</div>
+</body>
+</html>
