@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEATHER RPT - MIDVALE UT 84047 - 02 SEP 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #b8bca0;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  /* Continuous fanfold paper */
+  .paper {
+    width: 860px;
+    background: #faf9f0;
+    box-shadow: 4px 4px 14px rgba(0,0,0,0.45);
+    position: relative;
+  }
+
+  /* Sprocket margin left */
+  .paper-body {
+    display: flex;
+  }
+
+  .sprocket {
+    width: 36px;
+    flex-shrink: 0;
+    background: #e0dece;
+    border-right: 1px dashed #c4c2b2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 0;
+    gap: 0;
+  }
+  .sprocket.right {
+    border-right: none;
+    border-left: 1px dashed #c4c2b2;
+  }
+
+  .hole {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #b8bca0;
+    border: 1px solid #9fa09c;
+    margin: 6px auto;
+    display: block;
+  }
+
+  /* Green bar alternating rows */
+  .content {
+    flex: 1;
+    padding: 0 12px;
+    overflow-x: auto;
+  }
+
+  .greenbar-wrapper {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      #f0f8ec 0px,
+      #f0f8ec 26px,
+      #faf9f0 26px,
+      #faf9f0 52px
+    );
+    background-size: 100% 52px;
+    padding: 26px 0 26px 0;
+    min-height: 600px;
+  }
+
+  /* Fold line (perforation) every page */
+  .fold {
+    border-top: 2px dashed #c8c9b8;
+    margin: 0;
+    position: relative;
+  }
+  .fold::before {
+    content: '◄ ··· ··· ··· ··· ··· ··· ··· ··· ··· ··· ··· ··· ···►';
+    font-size: 9px;
+    color: #aaa;
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: #faf9f0;
+    padding: 0 6px;
+  }
+
+  pre {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 26px;
+    color: #1a1a18;
+    white-space: pre;
+    tab-size: 8;
+  }
+
+  .header-line {
+    color: #0a0a08;
+    font-weight: 700;
+  }
+
+  .data-line  { color: #1a1a18; }
+  .rule-line  { color: #555548; }
+  .label-line { color: #333328; font-weight: 700; }
+  .footer-line{ color: #444438; }
+
+  /* Page header band */
+  .page-header {
+    background: #2d2d28;
+    color: #f0f0e0;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 4px 12px;
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <div class="page-header">
+    <span>IBM SYSTEM/360 MODEL 50  **  OS/360 MVT  **  JOB CLASS A</span>
+    <span>PAGE  001</span>
+  </div>
+
+  <div class="paper-body">
+
+    <!-- LEFT SPROCKET -->
+    <div class="sprocket">
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+    </div>
+
+    <div class="content">
+      <div class="greenbar-wrapper">
+<pre class="header-line">
+ JOB WXRPT-67009    STEP HOURLY    PROC WXPRT     DATE 02/09/26   TIME 04:00:00
+</pre>
+<pre class="rule-line">
+ ================================================================================
+</pre>
+<pre class="header-line">
+        UNITED STATES METEOROLOGICAL DATA PROCESSING CENTER
+        BATCH WEATHER REPORT  --  TELETYPE TRANSMISSION NO. 2609021
+</pre>
+<pre class="rule-line">
+ ================================================================================
+</pre>
+<pre>
+</pre>
+<pre class="label-line">
+ STATION IDENT : MIDVALE, UTAH                  ZIP CODE   : 84047
+ COUNTY        : SALT LAKE                      ELEVATION  : 4301 FT MSL
+ LAT/LON       : 40.6277N  111.8990W            DATUM      : NAD27
+ REPORT TYPE   : HOURLY SURFACE OBSERVATION     UNIT SYS   : ENGLISH (FPS)
+</pre>
+<pre>
+</pre>
+<pre class="rule-line">
+ --------------------------------------------------------------------------------
+</pre>
+<pre class="label-line">
+   OBSERVATION DATE :  02 SEPTEMBER 1967       ** MORNING PERIOD 0500-1000 HRS **
+</pre>
+<pre class="rule-line">
+ --------------------------------------------------------------------------------
+</pre>
+<pre>
+</pre>
+<pre class="label-line">
+   HR    TIME      DRY BULB    PRECIP      SKY        REMARKS
+         (CST)     TEMP (F)    (INCHES)    COVER
+</pre>
+<pre class="rule-line">
+   --    --------  ----------  ----------  ---------  -------------------------
+</pre>
+<pre class="data-line">
+   05    0500 HRS     67.2       0.00       CLR        CALM / VISIBILITY 10+MI
+</pre>
+<pre class="data-line">
+   06    0600 HRS     68.9       0.00       CLR        CALM / VISIBILITY 10+MI
+</pre>
+<pre class="data-line">
+   07    0700 HRS     72.4       0.00       CLR        S 4KT / VIS 10+MI
+</pre>
+<pre class="data-line">
+   08    0800 HRS     76.8       0.00       CLR        S 6KT / VIS 10+MI
+</pre>
+<pre class="data-line">
+   09    0900 HRS     81.3       0.00       CLR        SSW 7KT / VIS 10+MI
+</pre>
+<pre class="data-line">
+   10    1000 HRS     86.1       0.00       CLR        S 8KT / VIS 10+MI
+</pre>
+<pre class="rule-line">
+   --    --------  ----------  ----------  ---------  -------------------------
+</pre>
+<pre>
+</pre>
+<pre class="label-line">
+   SUMMARY STATISTICS  (0500-1000 LOCAL):
+</pre>
+<pre>
+</pre>
+<pre class="data-line">
+        PERIOD MINIMUM TEMPERATURE  ....   67.2 DEG F    AT 0500 HRS
+        PERIOD MAXIMUM TEMPERATURE  ....   86.1 DEG F    AT 1000 HRS
+        TOTAL PERIOD PRECIPITATION  ....    0.00 INCHES
+        MEAN TEMPERATURE (6-HR)     ....   75.5 DEG F
+        DEW POINT (EST)             ....   38.0 DEG F
+        RELATIVE HUMIDITY (EST)     ....   20 PCT
+</pre>
+<pre>
+</pre>
+<pre class="rule-line">
+ --------------------------------------------------------------------------------
+</pre>
+<pre class="label-line">
+   FORECAST OUTLOOK (ISSUED BY NWS SALT LAKE CITY):
+</pre>
+<pre class="rule-line">
+ --------------------------------------------------------------------------------
+</pre>
+<pre>
+</pre>
+<pre class="data-line">
+        SUNNY AND WARM.  HIGH 97 DEG F.  WINDS S 10-15 MPH.
+        HUMIDITY LOW.  NO PRECIPITATION EXPECTED.
+        VISIBILITY UNRESTRICTED.
+</pre>
+<pre>
+</pre>
+<pre class="rule-line">
+ ================================================================================
+</pre>
+<pre class="footer-line">
+ END OF JOB WXRPT-67009 **  CC=0000  **  ELAPSED CPU TIME = 0.7 SEC
+ CARDS READ : 00042    LINES PRINTED : 00038    PAGES : 001
+ JOB COMPLETED NORMALLY  --  RETURN CODE 0000
+</pre>
+<pre class="rule-line">
+ ================================================================================
+</pre>
+<pre>
+</pre>
+      </div><!-- greenbar -->
+    </div><!-- content -->
+
+    <!-- RIGHT SPROCKET -->
+    <div class="sprocket right">
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+      <span class="hole"></span><span class="hole"></span>
+    </div>
+
+  </div><!-- paper-body -->
+
+  <div class="fold"></div>
+
+</div><!-- paper -->
+</body>
+</html>
