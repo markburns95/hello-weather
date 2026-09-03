@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEATHER - MIDVALE UT 84047 - 03 SEP 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #3333AA;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    color: #7878F8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* CRT scanline overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.08) 3px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .screen {
+    width: 640px;
+    min-height: 100vh;
+    background: #3333AA;
+    padding: 24px 32px 40px;
+    position: relative;
+  }
+
+  .border-top {
+    width: 100%;
+    height: 32px;
+    background: #7878F8;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .border-bottom {
+    width: 100%;
+    height: 32px;
+    background: #7878F8;
+    position: absolute;
+    bottom: 0; left: 0;
+  }
+  .border-left {
+    width: 32px;
+    height: 100%;
+    background: #7878F8;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .border-right {
+    width: 32px;
+    height: 100%;
+    background: #7878F8;
+    position: absolute;
+    top: 0; right: 0;
+  }
+
+  .inner {
+    margin: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cbm-logo {
+    color: #7878F8;
+    font-size: 13px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    white-space: pre;
+  }
+
+  .ready-line {
+    color: #7878F8;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .command-line {
+    color: #7878F8;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .title-block {
+    color: #7878F8;
+    font-size: 14px;
+    margin: 16px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .reverse {
+    background: #7878F8;
+    color: #3333AA;
+    padding: 0 2px;
+    display: inline-block;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 16px;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    color: #3333AA;
+    background: #7878F8;
+    padding: 2px 8px;
+    text-align: left;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .data-table td {
+    color: #7878F8;
+    padding: 2px 8px;
+    border-bottom: 1px solid #5555CC;
+  }
+
+  .data-table tr:nth-child(even) td {
+    color: #AAAAFF;
+  }
+
+  .bar-section {
+    margin: 12px 0;
+    font-size: 12px;
+    color: #7878F8;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
+    gap: 6px;
+  }
+
+  .bar-label {
+    width: 38px;
+    flex-shrink: 0;
+    color: #7878F8;
+    font-size: 12px;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 10px;
+    background: #22229A;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: #7878F8;
+  }
+
+  .bar-val {
+    width: 48px;
+    text-align: right;
+    flex-shrink: 0;
+    color: #AAAAFF;
+    font-size: 12px;
+  }
+
+  .divider {
+    color: #5555CC;
+    font-size: 12px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+  }
+
+  .footer-cmd {
+    color: #7878F8;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: #7878F8;
+    animation: blink 1s step-end infinite;
+    vertical-align: bottom;
+    margin-left: 1px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .poke-note {
+    color: #5555CC;
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  .stars-line {
+    color: #AAAAFF;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin: 4px 0;
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="border-top"></div>
+  <div class="border-bottom"></div>
+  <div class="border-left"></div>
+  <div class="border-right"></div>
+
+  <div class="inner">
+    <div class="cbm-logo">    **** COMMODORE 64 BASIC V2 ****
+
+ 64K RAM SYSTEM  38911 BASIC BYTES FREE</div>
+
+    <div class="ready-line">READY.</div>
+
+    <div class="command-line">LOAD "WEATHER.PRG",8,1</div>
+    <div class="command-line">SEARCHING FOR WEATHER.PRG</div>
+    <div class="command-line">LOADING</div>
+    <div class="command-line">READY.</div>
+    <div class="command-line">RUN</div>
+
+    <div class="divider">================================================</div>
+
+    <div class="title-block">
+      <span class="reverse"> MIDVALE UTAH WEATHER REPORT </span>
+    </div>
+    <div class="stars-line">* * * * * * * * * * * * * * * * * * * * * * * *</div>
+
+    <div class="command-line" style="margin-top:8px;">DATE: 03 SEP 2026</div>
+    <div class="command-line">AREA: MIDVALE, UT  ZIP: 84047</div>
+    <div class="command-line">HOURS: 0500 TO 1000 LOCAL TIME</div>
+
+    <div class="divider" style="margin-top:12px;">================================================</div>
+
+    <div class="title-block" style="margin-top:8px;">
+      <span class="reverse"> HOURLY DATA </span>
+    </div>
+
+    <table class="data-table">
+      <tr>
+        <th>TIME</th>
+        <th>TEMP (F)</th>
+        <th>PRECIP (IN)</th>
+        <th>COND</th>
+      </tr>
+      <tr>
+        <td>05:00</td>
+        <td>59</td>
+        <td>0.00</td>
+        <td>CLEAR</td>
+      </tr>
+      <tr>
+        <td>06:00</td>
+        <td>58</td>
+        <td>0.00</td>
+        <td>CLEAR</td>
+      </tr>
+      <tr>
+        <td>07:00</td>
+        <td>61</td>
+        <td>0.00</td>
+        <td>CLEAR</td>
+      </tr>
+      <tr>
+        <td>08:00</td>
+        <td>65</td>
+        <td>0.00</td>
+        <td>SUNNY</td>
+      </tr>
+      <tr>
+        <td>09:00</td>
+        <td>70</td>
+        <td>0.00</td>
+        <td>SUNNY</td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+        <td>74</td>
+        <td>0.00</td>
+        <td>SUNNY</td>
+      </tr>
+    </table>
+
+    <div class="divider">================================================</div>
+
+    <div class="title-block" style="margin-top:8px;">
+      <span class="reverse"> TEMPERATURE GRAPH </span>
+    </div>
+
+    <div class="bar-section">
+      <div class="bar-row">
+        <span class="bar-label">05:00</span>
+        <div class="bar-track"><div class="bar-fill" style="width:48%"></div></div>
+        <span class="bar-val">59 F</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">06:00</span>
+        <div class="bar-track"><div class="bar-fill" style="width:46%"></div></div>
+        <span class="bar-val">58 F</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">07:00</span>
+        <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+        <span class="bar-val">61 F</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">08:00</span>
+        <div class="bar-track"><div class="bar-fill" style="width:63%"></div></div>
+        <span class="bar-val">65 F</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">09:00</span>
+        <div class="bar-track"><div class="bar-fill" style="width:74%"></div></div>
+        <span class="bar-val">70 F</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">10:00</span>
+        <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+        <span class="bar-val">74 F</span>
+      </div>
+    </div>
+
+    <div class="divider" style="margin-top:8px;">================================================</div>
+
+    <div class="poke-note">POKE 53280,6 : POKE 53281,14</div>
+    <div class="poke-note">SYS 64738 TO RESTART</div>
+
+    <div class="footer-cmd" style="margin-top:14px;">
+      READY.<br>
+      <span class="cursor"></span>
+    </div>
+
+    <div class="stars-line" style="margin-top:20px;">* * * * * * * * * * * * * * * * * * * * * * * *</div>
+    <div class="command-line" style="font-size:11px; color:#5555CC; margin-top:4px;">
+      (C) 1982 COMMODORE BUSINESS MACHINES LTD
+    </div>
+  </div>
+</div>
+</body>
+</html>
