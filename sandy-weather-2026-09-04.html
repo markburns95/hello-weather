@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WEATHER REPORT - MIDVALE UT - 09/04/2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #33ff33;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  /* CRT scanline effect */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* Phosphor glow */
+  .glow {
+    text-shadow: 0 0 6px #33ff33, 0 0 12px #33ff33;
+  }
+
+  pre {
+    white-space: pre;
+    font-family: inherit;
+  }
+
+  .blink {
+    animation: blink-cursor 1s step-end infinite;
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .dim {
+    color: #1a8c1a;
+  }
+
+  .bright {
+    color: #66ff66;
+    text-shadow: 0 0 8px #66ff66;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  td, th {
+    padding: 3px 12px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 16px;
+    color: #33ff33;
+  }
+
+  th {
+    border-bottom: 1px solid #33ff33;
+    color: #66ff66;
+    text-shadow: 0 0 6px #66ff66;
+  }
+
+  tr:hover td {
+    color: #99ff99;
+    text-shadow: 0 0 4px #99ff99;
+    background-color: rgba(51,255,51,0.05);
+  }
+
+  .line {
+    color: #1a8c1a;
+  }
+
+  .header-block {
+    max-width: 640px;
+    margin-bottom: 20px;
+  }
+
+  .prompt {
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-block">
+<pre class="glow">
++----------------------------------------------------------+
+|   APPLE ][ WEATHER INFORMATION SYSTEM  v1.0              |
+|   (C) 1978 MICROSOFT METEOROLOGICAL SOFTWARE             |
++----------------------------------------------------------+
+</pre>
+
+<pre class="dim">
+LOADING WEATHER DATA... DONE
+CONNECTING TO NOAA MAINFRAME... OK
+RETRIEVING FORECAST FOR ZIP: 84047...
+</pre>
+
+<pre>
+
+ LOCATION : MIDVALE, UT  84047
+ DATE     : 09/04/2026
+ REPORT   : HOURLY MORNING CONDITIONS (0500-1000 HRS)
+
+</pre>
+
+<pre class="line">----------------------------------------------------------</pre>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>TIME</th>
+      <th>TEMP (F)</th>
+      <th>PRECIP (IN)</th>
+      <th>CONDITIONS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>05:00</td>
+      <td>63</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>06:00</td>
+      <td>64</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>07:00</td>
+      <td>67</td>
+      <td>0.00</td>
+      <td>PARTLY CLOUDY</td>
+    </tr>
+    <tr>
+      <td>08:00</td>
+      <td>71</td>
+      <td>0.00</td>
+      <td>PARTLY CLOUDY</td>
+    </tr>
+    <tr>
+      <td>09:00</td>
+      <td>75</td>
+      <td>0.00</td>
+      <td>SUNNY</td>
+    </tr>
+    <tr>
+      <td>10:00</td>
+      <td>79</td>
+      <td>0.00</td>
+      <td>SUNNY</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<pre class="line">----------------------------------------------------------</pre>
+
+<pre>
+
+ DAILY SUMMARY:
+   AM LOW  :  63 F  AT 0500 HRS
+   AM HIGH :  79 F  AT 1000 HRS
+   PRECIP  :  0.00 IN (TRACE)
+   OUTLOOK : DRY AND WARMING. NO PRECIPITATION EXPECTED.
+
+</pre>
+
+<pre class="line">----------------------------------------------------------</pre>
+
+<div class="prompt">
+<span class="dim">]</span><span class="bright"> RUN WEATHER.BAS</span><span class="blink">_</span>
+</div>
+
+</div>
+
+</body>
+</html>
