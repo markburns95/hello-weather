@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WEATHER REPORT - MIDVALE UT - 09/05/2026</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #e8e0cc;
+    color: #1a1000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 72ch;
+    margin: 0 auto;
+    background: #f0e8d0;
+    border: 2px solid #8a7a5a;
+    padding: 32px 36px;
+    box-shadow: 4px 4px 0 #c0a870, 8px 8px 0 #a09060;
+  }
+
+  /* Faint horizontal lines like continuous feed paper */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 22px,
+      rgba(160,140,100,0.12) 22px,
+      rgba(160,140,100,0.12) 23px
+    );
+    pointer-events: none;
+  }
+
+  pre {
+    white-space: pre;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 3px double #1a1000;
+    padding: 2px 10px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .sprocket-left,
+  .sprocket-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .sprocket-left  { left: 6px; }
+  .sprocket-right { right: 6px; }
+
+  .hole {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #8a7a5a;
+    background: #e8e0cc;
+  }
+</style>
+</head>
+<body>
+
+<div class="page" style="position:relative;">
+
+  <!-- Sprocket holes (line printer feed holes) -->
+  <div class="sprocket-left">
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+  </div>
+  <div class="sprocket-right">
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+    <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+  </div>
+
+  <div class="header">
+    <div class="stamp">UNIVAC DATA PROCESSING DIVISION</div>
+  </div>
+
+<pre>
+================================================================================
+              U N I V A C   A U T O M A T I C   W E A T H E R
+                         C O M P U T A T I O N   U N I T
+================================================================================
+  REPORT NO.: WX-0905-1951        COMPUTATION DATE:  05 SEPT 2026
+  STATION ID: MIDVALE-UT-84047    RUN INITIATED BY:  OPERATOR J. HAYES
+  GEOGRAPHIC:  40 DEG 37 MIN N    AUTHORIZED BY:     DEPT. OF METEOROLOGY
+               111 DEG 54 MIN W   CLASSIFICATION:    UNCLASSIFIED / ROUTINE
+================================================================================
+
+  MORNING SURFACE OBSERVATIONS  --  MIDVALE, UTAH
+  PERIOD:  0500 HRS TO 1000 HRS  LOCAL MOUNTAIN STANDARD TIME
+  DATE  :  05 SEPTEMBER 2026
+
+  +---------+------------------+----------------------+---------------------+
+  |  TIME   |   TEMPERATURE    |    PRECIPITATION     |   CONDITIONS        |
+  |  (HRS)  |   (DEG. FAHR.)   |    (INCHES/HR)       |                     |
+  +---------+------------------+----------------------+---------------------+
+  |  0500   |       61         |        0.00          |   CLEAR             |
+  |  0600   |       60         |        0.00          |   CLEAR             |
+  |  0700   |       63         |        0.00          |   CLEAR             |
+  |  0800   |       67         |        0.00          |   CLEAR             |
+  |  0900   |       72         |        0.00          |   CLEAR             |
+  |  1000   |       76         |        0.00          |   CLEAR             |
+  +---------+------------------+----------------------+---------------------+
+
+  SUMMARY OF COMPUTED VALUES:
+  ----------------------------
+    MINIMUM TEMP  (0500-1000) :   60 DEG F
+    MAXIMUM TEMP  (0500-1000) :   76 DEG F
+    MEAN TEMP     (0500-1000) :   67 DEG F
+    TOTAL PRECIP  (0500-1000) :    0.00 IN
+    PREVAILING SKY CONDITION  :   CLEAR
+
+  FORECAST REMARKS:
+  -----------------
+    TYPICAL EARLY-AUTUMN DIURNAL CYCLE OBSERVED. HIGH PRESSURE DOMINATES
+    THE GREAT BASIN REGION. EXPECT CONTINUED CLEAR CONDITIONS THROUGH
+    THE MORNING PERIOD. NO PRECIPITATION PROBABILITY.
+
+    VALLEY INVERSION LAYER ABSENT. SURFACE WINDS: CALM TO LIGHT S.
+
+================================================================================
+  MAGNETIC DRUM STORAGE UNIT NO. 3     COMPUTATION TIME: 0.7 MIN
+  PRINTED BY:  HIGH-SPEED LINE PRINTER  PAPER SPEED: 600 LN/MIN
+================================================================================
+  ** END OF REPORT - TEAR ON PERFORATION **
+================================================================================
+</pre>
+
+</div>
+
+</body>
+</html>
