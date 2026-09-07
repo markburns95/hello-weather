@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WEATHER DATA PRINT-OUT — MIDVALE UT — 09/07/2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #f5f0e8;
+    color: #1a1008;
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    background: #faf7f0;
+    border: 1px solid #c8b89a;
+    padding: 40px 48px;
+    box-shadow: 4px 4px 0 #c8b89a, 8px 8px 0 #b0a080;
+    position: relative;
+  }
+
+  /* Sprocket holes to simulate continuous form paper */
+  .page::before,
+  .page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 28px;
+    background-color: #e8e0d0;
+    background-image:
+      radial-gradient(circle, #faf7f0 6px, transparent 6px);
+    background-size: 28px 28px;
+    background-position: center 8px;
+    border: 1px solid #c8b89a;
+  }
+
+  .page::before { left: -30px; }
+  .page::after  { right: -30px; }
+
+  .feed-line {
+    border-top: 1px dashed #b0a080;
+    margin: 0 -48px;
+  }
+
+  .header-block {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-top: 8px;
+  }
+
+  .agency {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #5a4a30;
+    margin-bottom: 2px;
+  }
+
+  .report-title {
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 6px 0 4px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #5a4a30;
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid #1a1008;
+    margin: 12px 0;
+  }
+
+  .divider-thin {
+    border: none;
+    border-top: 1px solid #8a7a60;
+    margin: 10px 0;
+  }
+
+  .meta-block {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3a2a10;
+    margin-bottom: 18px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5a4a30;
+    margin: 16px 0 6px;
+  }
+
+  .data-block {
+    margin: 14px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  th {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    font-weight: normal;
+    border-bottom: 2px solid #1a1008;
+    border-top: 2px solid #1a1008;
+    padding: 5px 8px;
+    text-align: center;
+    color: #1a1008;
+  }
+
+  td {
+    padding: 5px 8px;
+    text-align: center;
+    border-bottom: 1px dashed #c8b89a;
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: 2px solid #1a1008;
+  }
+
+  .bar-cell {
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .bar {
+    display: inline-block;
+    height: 10px;
+    background: #1a1008;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .bar-label {
+    font-size: 10px;
+    vertical-align: middle;
+  }
+
+  .remarks {
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #2a1a08;
+  }
+
+  .remarks p {
+    margin-bottom: 6px;
+  }
+
+  .remarks .field-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #5a4a30;
+  }
+
+  .footer-block {
+    margin-top: 28px;
+    padding-top: 10px;
+    border-top: 2px solid #1a1008;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5a4a30;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 2px solid #8a3a1a;
+    color: #8a3a1a;
+    padding: 4px 12px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+  }
+
+  .page-num {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: #8a7a60;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .handwritten {
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    color: #2255aa;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+
+  .ascii-art {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    text-align: center;
+    color: #8a7a60;
+    line-height: 1.3;
+    margin: 8px 0;
+  }
+
+  .overtype {
+    position: relative;
+    display: inline-block;
+  }
+
+  .overtype::after {
+    content: attr(data-over);
+    position: absolute;
+    left: 0.5px;
+    top: 0.5px;
+    color: #5a4a30;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header-block">
+    <div class="agency">U.S. DEPT. OF COMMERCE &bull; ENVIRONMENTAL SCIENCE SERVICES ADMINISTRATION</div>
+    <div class="agency" style="margin-top:2px;">WEATHER BUREAU &bull; TELETYPE DATA OUTPUT SYSTEM &bull; NODE 7 / UTAH DIV.</div>
+    <hr class="divider" style="margin-top:10px;">
+    <div class="report-title">Hourly Surface Weather Observation</div>
+    <div class="subtitle">Midvale, Utah &nbsp;&bull;&nbsp; Zip Code 84047 &nbsp;&bull;&nbsp; 07 September 2026</div>
+    <hr class="divider" style="margin-bottom:0;">
+  </div>
+
+  <div class="meta-block">
+    <span>Station ID&nbsp;: SLC-MV-07</span>
+    <span>Run Date&nbsp; : 07/SEP/26</span>
+    <span>Tape&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 26-250-A</span>
+  </div>
+
+  <div class="section-label">// Observation Period</div>
+  <div class="data-block">
+    <table>
+      <thead>
+        <tr>
+          <th>TIME (MST)</th>
+          <th>DRY BULB TEMP (°F)</th>
+          <th>PRECIP (IN)</th>
+          <th>CONDITION (CODED)</th>
+          <th>RELATIVE CHART</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0500</td>
+          <td>63</td>
+          <td>0.00</td>
+          <td>SKC</td>
+          <td class="bar-cell"><span class="bar" style="width:63px;"></span><span class="bar-label">63</span></td>
+        </tr>
+        <tr>
+          <td>0600</td>
+          <td>61</td>
+          <td>0.00</td>
+          <td>SKC</td>
+          <td class="bar-cell"><span class="bar" style="width:61px;"></span><span class="bar-label">61</span></td>
+        </tr>
+        <tr>
+          <td>0700</td>
+          <td>64</td>
+          <td>0.00</td>
+          <td>CLR</td>
+          <td class="bar-cell"><span class="bar" style="width:64px;"></span><span class="bar-label">64</span></td>
+        </tr>
+        <tr>
+          <td>0800</td>
+          <td>68</td>
+          <td>0.00</td>
+          <td>CLR</td>
+          <td class="bar-cell"><span class="bar" style="width:68px;"></span><span class="bar-label">68</span></td>
+        </tr>
+        <tr>
+          <td>0900</td>
+          <td>73</td>
+          <td>0.00</td>
+          <td>CLR</td>
+          <td class="bar-cell"><span class="bar" style="width:73px;"></span><span class="bar-label">73</span></td>
+        </tr>
+        <tr>
+          <td>1000</td>
+          <td>78</td>
+          <td>0.00</td>
+          <td>CLR</td>
+          <td class="bar-cell"><span class="bar" style="width:78px;"></span><span class="bar-label">78</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ascii-art">
++--------------------------------------------+
+|  CONDITION CODES: SKC=SKY CLEAR  CLR=CLEAR  |
+|  PRECIP IN INCHES.  0.00 = TRACE OR NONE    |
++--------------------------------------------+
+  </div>
+
+  <hr class="divider-thin">
+
+  <div class="section-label">// Supplemental Remarks</div>
+  <div class="remarks">
+    <p><span class="field-label">Visibility &nbsp;&nbsp;:</span>&nbsp; 10+ MI — UNRESTRICTED</p>
+    <p><span class="field-label">Wind&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>&nbsp; VAR / CALM 0500-0700 &nbsp;|&nbsp; SSW 4 KT 0800-1000</p>
+    <p><span class="field-label">Dewpoint&nbsp;&nbsp;&nbsp;&nbsp;:</span>&nbsp; 38°F (MEAN, 0500-1000)</p>
+    <p><span class="field-label">Pressure&nbsp;&nbsp;&nbsp;&nbsp;:</span>&nbsp; 29.92 IN HG (ALT SETTING)</p>
+    <p><span class="field-label">Sky Cover&nbsp;&nbsp;:</span>&nbsp; 0/10 — CLEAR THROUGHOUT PERIOD</p>
+    <p><span class="field-label">Remarks&nbsp;&nbsp;&nbsp;&nbsp;:</span>&nbsp; TREND WARMING. NO SIGNIFICANT WX.</p>
+    <p class="handwritten">&nbsp;&nbsp;&nbsp;&darr; Manually verified — WT (Duty Obs.)</p>
+  </div>
+
+  <hr class="divider-thin">
+
+  <div class="footer-block">
+    <div>
+      <div>Prepared by&nbsp;: Auto Teletype / ESSA Node 7</div>
+      <div style="margin-top:4px;">Distribution&nbsp;: LOCAL / REGION IV-B</div>
+    </div>
+    <div class="stamp">VERIFIED</div>
+    <div style="text-align:right;">
+      <div>Form WB-1074</div>
+      <div style="margin-top:4px;">Rev. MAR 1966</div>
+    </div>
+  </div>
+
+  <div class="page-num">— PAGE 1 OF 1 — TAPE 26-250-A — END OF TRANSMISSION —</div>
+
+</div>
+
+</body>
+</html>
