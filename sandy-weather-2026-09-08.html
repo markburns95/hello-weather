@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weather Desk</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #ffffff;
+    font-family: 'Chicago', 'Geneva', 'Charcoal', monospace;
+    font-size: 12px;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    image-rendering: pixelated;
+  }
+
+  /* ── Menu Bar ── */
+  #menubar {
+    width: 100%;
+    height: 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    gap: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 100;
+  }
+  #menubar .apple-logo {
+    font-size: 16px;
+    line-height: 1;
+  }
+  #menubar span {
+    cursor: default;
+    padding: 1px 4px;
+  }
+  #menubar span:hover {
+    background: #000;
+    color: #fff;
+  }
+  #clock {
+    margin-left: auto;
+    font-size: 11px;
+  }
+
+  /* ── Desktop ── */
+  #desktop {
+    flex: 1;
+    background: repeating-linear-gradient(
+      45deg,
+      #c0c0c0 0px, #c0c0c0 1px,
+      #d8d8d8 1px, #d8d8d8 6px
+    );
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Mac Window ── */
+  .mac-window {
+    background: #ffffff;
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0 #000000;
+    width: 480px;
+    min-width: 320px;
+  }
+
+  .title-bar {
+    background: #ffffff;
+    border-bottom: 2px solid #000000;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    gap: 6px;
+    position: relative;
+  }
+  .close-box {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid #000;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .title-text {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  /* stripes on title bar */
+  .title-bar::before {
+    content: '';
+    position: absolute;
+    top: 3px; bottom: 3px;
+    left: 30px; right: 30px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #000 0px, #000 1px,
+      transparent 1px, transparent 3px
+    );
+    pointer-events: none;
+    opacity: 0.25;
+  }
+
+  .window-body {
+    padding: 14px 18px 18px;
+  }
+
+  /* ── Header strip ── */
+  .doc-header {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+  .doc-header h1 {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .doc-header .sub {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  .doc-header .icon-row {
+    font-size: 22px;
+    margin: 6px 0 2px;
+  }
+
+  /* ── Table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  thead tr {
+    background: #000000;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 4px 8px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  tbody tr:nth-child(even) {
+    background: #e8e8e8;
+  }
+  tbody tr:nth-child(odd) {
+    background: #ffffff;
+  }
+  tbody td {
+    padding: 4px 8px;
+    border-bottom: 1px dotted #aaa;
+  }
+  .temp-col { font-weight: bold; }
+
+  /* ── Precipitation bar ── */
+  .precip-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .precip-bar {
+    height: 8px;
+    background: #000;
+    display: inline-block;
+  }
+  .precip-val {
+    font-size: 10px;
+  }
+
+  /* ── Footer ── */
+  .doc-footer {
+    margin-top: 14px;
+    border-top: 1px solid #000;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 10px;
+  }
+  .doc-footer .prog-bar-wrap {
+    margin: 6px auto;
+    width: 200px;
+    height: 10px;
+    border: 1.5px solid #000;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .doc-footer .prog-bar-fill {
+    height: 100%;
+    background: #000;
+    width: 82%;
+  }
+
+  /* ── Scroll arrows at bottom of window ── */
+  .scroll-bar {
+    border-top: 2px solid #000;
+    height: 14px;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+    font-size: 9px;
+  }
+  .scroll-arrow {
+    width: 12px;
+    height: 10px;
+    border: 1.5px solid #000;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+  }
+  .scroll-track {
+    flex: 1;
+    height: 6px;
+    margin: 0 4px;
+    background: repeating-linear-gradient(
+      to right, #000 0px, #000 1px, #e0e0e0 1px, #e0e0e0 3px
+    );
+  }
+
+  /* ── Disk icon on desktop ── */
+  .disk-icon {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    text-align: center;
+    font-size: 11px;
+    cursor: default;
+  }
+  .disk-icon .icon-glyph {
+    width: 38px;
+    height: 28px;
+    border: 2px solid #000;
+    background: #fff;
+    margin: 0 auto 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .disk-icon .icon-glyph::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 4px;
+    background: #000;
+  }
+  .disk-label {
+    font-size: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- Menu Bar -->
+<div id="menubar">
+  <span class="apple-logo">&#63743;</span>
+  <span>File</span>
+  <span>Edit</span>
+  <span>View</span>
+  <span>Special</span>
+  <span id="clock">Mon, Sep 8</span>
+</div>
+
+<!-- Desktop -->
+<div id="desktop">
+
+  <!-- Disk icon -->
+  <div class="disk-icon">
+    <div class="icon-glyph">💾</div>
+    <div class="disk-label">Weather HD</div>
+  </div>
+
+  <!-- Mac Window -->
+  <div class="mac-window">
+    <div class="title-bar">
+      <span class="close-box"></span>
+      <span class="title-text">Weather Desk</span>
+    </div>
+
+    <div class="window-body">
+      <div class="doc-header">
+        <div class="icon-row">&#9928; &#9729;</div>
+        <h1>Morning Weather Report</h1>
+        <div class="sub">Midvale, Utah 84047 &nbsp;&#8250;&nbsp; September 8, 2026</div>
+        <div class="sub" style="margin-top:3px;">5:00 AM – 10:00 AM</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>TIME</th>
+            <th>TEMP (°F)</th>
+            <th>PRECIP.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5:00 AM</td>
+            <td class="temp-col">57°F</td>
+            <td>
+              <div class="precip-bar-wrap">
+                <span class="precip-bar" style="width:2px;"></span>
+                <span class="precip-val">0.00 in</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>6:00 AM</td>
+            <td class="temp-col">59°F</td>
+            <td>
+              <div class="precip-bar-wrap">
+                <span class="precip-bar" style="width:2px;"></span>
+                <span class="precip-val">0.00 in</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>7:00 AM</td>
+            <td class="temp-col">62°F</td>
+            <td>
+              <div class="precip-bar-wrap">
+                <span class="precip-bar" style="width:2px;"></span>
+                <span class="precip-val">0.00 in</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>8:00 AM</td>
+            <td class="temp-col">67°F</td>
+            <td>
+              <div class="precip-bar-wrap">
+                <span class="precip-bar" style="width:2px;"></span>
+                <span class="precip-val">0.00 in</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>9:00 AM</td>
+            <td class="temp-col">72°F</td>
+            <td>
+              <div class="precip-bar-wrap">
+                <span class="precip-bar" style="width:2px;"></span>
+                <span class="precip-val">0.00 in</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>10:00 AM</td>
+            <td class="temp-col">76°F</td>
+            <td>
+              <div class="precip-bar-wrap">
+                <span class="precip-bar" style="width:2px;"></span>
+                <span class="precip-val">0.00 in</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="doc-footer">
+        <div>Loading forecast data…</div>
+        <div class="prog-bar-wrap">
+          <div class="prog-bar-fill"></div>
+        </div>
+        <div style="margin-top:4px;">MacWeather™ v1.0 &nbsp;|&nbsp; 128K Memory</div>
+      </div>
+    </div><!-- /window-body -->
+
+    <!-- Scroll bar -->
+    <div class="scroll-bar">
+      <div class="scroll-arrow">▲</div>
+      <div class="scroll-track"></div>
+      <div class="scroll-arrow">▼</div>
+    </div>
+  </div><!-- /mac-window -->
+
+</div><!-- /desktop -->
+
+<script>
+  // Update clock display
+  var now = new Date(2026, 8, 8); // Sep 8 2026
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('clock').textContent =
+    days[now.getDay()] + ', ' + months[now.getMonth()] + ' ' + now.getDate();
+</script>
+</body>
+</html>
