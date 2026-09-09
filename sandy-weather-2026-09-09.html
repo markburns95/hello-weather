@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEATHER.EXE</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #33ff33;
+    --dim-green: #1a7a1a;
+    --bg: #000000;
+    --amber: #ffb000;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    min-height: 100vh;
+    padding: 16px;
+    line-height: 1.4;
+    text-shadow: 0 0 6px rgba(51,255,51,0.7);
+  }
+
+  .screen {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .header-bar {
+    border: 1px solid var(--green);
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(51,255,51,0.3);
+  }
+
+  .sys-info {
+    font-size: 12px;
+    color: var(--dim-green);
+    margin-bottom: 14px;
+    text-shadow: 0 0 4px rgba(51,255,51,0.4);
+  }
+
+  .prompt-line {
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+
+  .prompt-line span.cmd {
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(255,255,255,0.5);
+  }
+
+  .output-block {
+    margin: 10px 0;
+    border-left: 2px solid var(--dim-green);
+    padding-left: 10px;
+  }
+
+  .section-label {
+    color: var(--amber);
+    text-shadow: 0 0 6px rgba(255,176,0,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 12px 0 6px;
+    font-size: 13px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  table th {
+    color: var(--amber);
+    text-shadow: 0 0 6px rgba(255,176,0,0.6);
+    text-align: left;
+    padding: 3px 10px 3px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--dim-green);
+  }
+
+  table td {
+    padding: 4px 10px 4px 0;
+    color: var(--green);
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  .bar-cell {
+    width: 220px;
+  }
+
+  .ascii-bar {
+    display: inline-block;
+    color: var(--green);
+    letter-spacing: -1px;
+    font-size: 13px;
+  }
+
+  .precip-ascii {
+    color: var(--dim-green);
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  .box-top    { color: var(--dim-green); font-size: 12px; }
+  .box-bottom { color: var(--dim-green); font-size: 12px; margin-top: 8px; }
+
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .status-bar {
+    margin-top: 20px;
+    border-top: 1px solid var(--dim-green);
+    padding-top: 8px;
+    font-size: 11px;
+    color: var(--dim-green);
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .scanline-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.03) 0px,
+      rgba(0,0,0,0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    z-index: 9999;
+  }
+</style>
+</head>
+<body>
+<div class="scanline-overlay"></div>
+<div class="screen">
+
+  <div class="header-bar">
+    *** WEATHER.EXE  v2.1 ***
+  </div>
+
+  <div class="sys-info">
+    IBM PC-DOS 2.0 &nbsp;&nbsp;|&nbsp;&nbsp; 64K RAM AVAILABLE &nbsp;&nbsp;|&nbsp;&nbsp; 09/09/26
+  </div>
+
+  <div class="prompt-line">C:\WEATHER&gt; <span class="cmd">FORECAST /CITY:MIDVALE,UT /ZIP:84047 /HOURS:0500-1000</span></div>
+  <div class="prompt-line" style="margin-bottom:10px;">LOADING FORECAST DATA...  <span style="color:var(--amber)">[ OK ]</span></div>
+
+  <div class="output-block">
+
+    <div class="box-top">+-------------------------------------------------------+</div>
+
+    <div class="section-label">  LOCATION : MIDVALE, UT  84047</div>
+    <div class="prompt-line" style="font-size:12px; color:var(--dim-green);">  DATE     : WEDNESDAY, SEPTEMBER 9, 2026</div>
+    <div class="prompt-line" style="font-size:12px; color:var(--dim-green);">  REPORT   : MORNING HOURS (05:00 - 10:00)</div>
+
+    <div class="box-top" style="margin-top:8px;">+-------------------------------------------------------+</div>
+
+    <div class="section-label">  HOURLY CONDITIONS</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>TIME</th>
+          <th>TEMP (F)</th>
+          <th class="bar-cell">TEMP GRAPH</th>
+          <th>PRECIP (IN)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05:00</td>
+          <td>58&deg;F</td>
+          <td class="bar-cell"><span class="ascii-bar">||||||||||||||||||||||||||||</span></td>
+          <td><span class="precip-ascii">0.00</span></td>
+        </tr>
+        <tr>
+          <td>06:00</td>
+          <td>60&deg;F</td>
+          <td class="bar-cell"><span class="ascii-bar">|||||||||||||||||||||||||||||</span></td>
+          <td><span class="precip-ascii">0.00</span></td>
+        </tr>
+        <tr>
+          <td>07:00</td>
+          <td>64&deg;F</td>
+          <td class="bar-cell"><span class="ascii-bar">||||||||||||||||||||||||||||||</span></td>
+          <td><span class="precip-ascii">0.00</span></td>
+        </tr>
+        <tr>
+          <td>08:00</td>
+          <td>69&deg;F</td>
+          <td class="bar-cell"><span class="ascii-bar">||||||||||||||||||||||||||||||||</span></td>
+          <td><span class="precip-ascii">0.00</span></td>
+        </tr>
+        <tr>
+          <td>09:00</td>
+          <td>75&deg;F</td>
+          <td class="bar-cell"><span class="ascii-bar">|||||||||||||||||||||||||||||||||||</span></td>
+          <td><span class="precip-ascii">0.00</span></td>
+        </tr>
+        <tr>
+          <td>10:00</td>
+          <td>80&deg;F</td>
+          <td class="bar-cell"><span class="ascii-bar">|||||||||||||||||||||||||||||||||||||</span></td>
+          <td><span class="precip-ascii">0.00</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box-top" style="margin-top:8px;">+-------------------------------------------------------+</div>
+
+    <div class="section-label" style="margin-top:12px;">  SUMMARY</div>
+    <div class="prompt-line" style="font-size:12px; color:var(--dim-green);">  CONDITIONS : CLEAR AND SUNNY</div>
+    <div class="prompt-line" style="font-size:12px; color:var(--dim-green);">  TREND      : WARMING THROUGH MORNING</div>
+    <div class="prompt-line" style="font-size:12px; color:var(--dim-green);">  PRECIP     : NONE EXPECTED (0.00 IN TOTAL)</div>
+
+    <div class="box-bottom">+-------------------------------------------------------+</div>
+
+  </div>
+
+  <div class="prompt-line" style="margin-top:14px;">
+    C:\WEATHER&gt; <span class="blink">&#9608;</span>
+  </div>
+
+  <div class="status-bar">
+    <span>F1=HELP &nbsp; F3=QUIT &nbsp; F5=REFRESH</span>
+    <span>MEM: 47K FREE</span>
+    <span>09-09-26 &nbsp; 05:00</span>
+  </div>
+
+</div>
+</body>
+</html>
