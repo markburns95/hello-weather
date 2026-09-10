@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WEATHER.BAS - MIDVALE UT 09/10/26</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #33ff33;
+      font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+      font-size: 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    /* CRT scanline effect */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* CRT screen vignette */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center,
+        transparent 60%,
+        rgba(0,0,0,0.7) 100%
+      );
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 680px;
+      padding: 32px 24px;
+    }
+
+    .glow {
+      text-shadow:
+        0 0 4px #33ff33,
+        0 0 8px #33ff33,
+        0 0 12px #00cc00;
+    }
+
+    .dim {
+      color: #1a8a1a;
+      text-shadow: none;
+    }
+
+    h1 {
+      font-size: 1em;
+      font-weight: normal;
+      letter-spacing: 0.08em;
+    }
+
+    .separator {
+      color: #1a8a1a;
+      margin: 4px 0;
+    }
+
+    .boot-text {
+      color: #1a8a1a;
+      font-size: 0.85em;
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    th {
+      text-align: left;
+      padding: 2px 12px 2px 0;
+      color: #1aaa1a;
+      font-weight: normal;
+      border-bottom: 1px solid #1a8a1a;
+    }
+
+    td {
+      padding: 3px 12px 3px 0;
+      color: #33ff33;
+    }
+
+    td.value {
+      color: #66ff66;
+      text-shadow: 0 0 6px #33ff33;
+    }
+
+    td.zero {
+      color: #1a8a1a;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 9px;
+      height: 1.1em;
+      background: #33ff33;
+      vertical-align: text-bottom;
+      animation: blink 1.1s step-end infinite;
+      box-shadow: 0 0 6px #33ff33;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .prompt-line {
+      margin-top: 24px;
+      color: #1a8a1a;
+    }
+
+    .footer {
+      margin-top: 28px;
+      font-size: 0.78em;
+      color: #0d5c0d;
+      border-top: 1px solid #0d5c0d;
+      padding-top: 8px;
+    }
+
+    .highlight-row td {
+      background: rgba(51, 255, 51, 0.06);
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+
+    <div class="boot-text dim">
+      APPLE ][ PLUS — 48K<br>
+      DOS 3.3<br>
+      &nbsp;
+    </div>
+
+    <div class="glow">
+      <h1>]RUN WEATHER.BAS</h1>
+    </div>
+
+    <div class="separator">=====================================</div>
+
+    <div class="section-header glow">
+      ** MIDVALE UTAH WEATHER REPORT **<br>
+      ** ZIP: 84047  DATE: 09/10/2026 **
+    </div>
+
+    <div class="separator">=====================================</div>
+
+    <p class="dim" style="margin-top:10px; font-size:0.85em;">
+      LOADING MORNING DATA ... OK<br>
+      TEMP UNIT : FAHRENHEIT<br>
+      PRECIP    : INCHES
+    </p>
+
+    <div class="section-header" style="margin-top:18px;">
+      -- HOURLY READINGS: 5AM TO 10AM --
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>TIME</th>
+          <th>TEMP (F)</th>
+          <th>PRECIP (IN)</th>
+          <th>CONDITIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05:00 AM</td>
+          <td class="value">61</td>
+          <td class="zero">0.00</td>
+          <td class="dim">CLEAR</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>06:00 AM</td>
+          <td class="value">60</td>
+          <td class="zero">0.00</td>
+          <td class="dim">CLEAR</td>
+        </tr>
+        <tr>
+          <td>07:00 AM</td>
+          <td class="value">62</td>
+          <td class="zero">0.00</td>
+          <td class="dim">CLEAR</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>08:00 AM</td>
+          <td class="value">66</td>
+          <td class="zero">0.00</td>
+          <td class="dim">SUNNY</td>
+        </tr>
+        <tr>
+          <td>09:00 AM</td>
+          <td class="value">71</td>
+          <td class="zero">0.00</td>
+          <td class="dim">SUNNY</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>10:00 AM</td>
+          <td class="value">76</td>
+          <td class="zero">0.00</td>
+          <td class="dim">SUNNY</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="separator" style="margin-top:20px;">-------------------------------------</div>
+
+    <div style="margin-top:8px;" class="dim">
+      RANGE   : 60F - 76F<br>
+      AVG TEMP: 66F<br>
+      TOTAL PRECIP: 0.00 IN<br>
+      HUMIDITY: LOW
+    </div>
+
+    <div class="separator" style="margin-top:16px;">=====================================</div>
+
+    <div class="prompt-line">
+      ]<span class="cursor"></span>
+    </div>
+
+    <div class="footer">
+      WEATHER.BAS V1.2  (C) 1979 &nbsp;|&nbsp; MIDVALE UT 84047
+    </div>
+
+  </div>
+</body>
+</html>
