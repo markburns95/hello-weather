@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WEATHER REPORT -- MIDVALE UT 84047</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background-color: #000;
+      color: #33ff33;
+      font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+      font-size: 14px;
+      line-height: 1.4;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    pre {
+      white-space: pre;
+      font-family: inherit;
+    }
+
+    .screen {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .blink {
+      animation: blink-cursor 1.1s step-end infinite;
+    }
+
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .dim {
+      color: #1a8c1a;
+    }
+
+    .bright {
+      color: #aaff00;
+    }
+  </style>
+</head>
+<body>
+<div class="screen">
+<pre>
+
+BELL LABS WEATHER TERMINAL -- VERSION 1.1
+PDP-11 / UNIX TIME-SHARING SYSTEM
+
+LOGGED IN:  SAT 12 SEP 2026  00:00:01 UTC
+USER:       WEATHER
+TTY:        /dev/tty03
+
+</pre>
+<pre class="dim">
++------------------------------------------------------------------------+
+|                                                                        |
+|   WEATHER INQUIRY SYSTEM                                               |
+|   NATIONAL METEOROLOGICAL SERVICE DATA FEED                           |
+|                                                                        |
++------------------------------------------------------------------------+
+</pre>
+<pre>
+
+$ <span class="bright">wx --zip 84047 --date 1976-09-12 --hours 0500-1000</span>
+
+RETRIEVING DATA...
+STATION:    MIDVALE  UT  84047
+DATE:       SAT  12 SEP  2026
+HOURS:      0500 -- 1000  LOCAL (MST)
+
+</pre>
+<pre class="dim">
++----------+----------+--------------+-------------+
+|  TIME    |  TEMP F  |  PRECIP MM   |  CONDITION  |
++----------+----------+--------------+-------------+
+</pre>
+<pre>
+|  0500    |   61     |    0.00      |  CLEAR      |
+|  0600    |   60     |    0.00      |  CLEAR      |
+|  0700    |   63     |    0.00      |  CLEAR      |
+|  0800    |   67     |    0.00      |  CLEAR      |
+|  0900    |   71     |    0.00      |  CLEAR      |
+|  1000    |   75     |    0.00      |  CLEAR      |
+</pre>
+<pre class="dim">
++----------+----------+--------------+-------------+
+</pre>
+<pre>
+
+  NOTE: ALL PRECIPITATION VALUES BELOW MEASURABLE THRESHOLD.
+        DRY CONDITIONS EXPECTED THROUGH 1200 LOCAL.
+
+  HIGH TODAY:    91 F    (FORECAST)
+  LOW TONIGHT:   57 F    (FORECAST)
+  HUMIDITY:      18 PCT  (AT 0700)
+  WIND:          NNW AT 4 MPH  (0700 SURFACE OBS)
+
+QUERY COMPLETE.
+CPU TIME: 0.003 SEC
+MEMORY:   4K WORDS
+
+$ <span class="blink">_</span>
+</pre>
+<pre class="dim">
+
+------------------------------------------------------------------------
+  BELL LABS / MURRAY HILL  --  UNIX WEATHER SYSTEM  --  PDP-11/45
+  FOR SYSTEM PROBLEMS CONTACT OPERATOR ON DUTY  EXT 7-2100
+------------------------------------------------------------------------
+
+</pre>
+</div>
+</body>
+</html>
