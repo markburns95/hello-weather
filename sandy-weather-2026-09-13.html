@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIDVALE UT WX REPORT -- 13 SEP 2026</title>
+<style>
+  /* 1968 CRT time-sharing terminal aesthetic */
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #0a0a00;
+    color: #39ff14;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 24px 16px 40px;
+  }
+
+  /* phosphor glow */
+  .glow {
+    text-shadow:
+      0 0 4px #39ff14,
+      0 0 10px #39ff1488,
+      0 0 20px #39ff1444;
+  }
+
+  /* scanline overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.18) 2px,
+      rgba(0, 0, 0, 0.18) 4px
+    );
+    z-index: 100;
+  }
+
+  /* CRT vignette */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.65) 100%
+    );
+    z-index: 99;
+  }
+
+  pre, .term {
+    white-space: pre;
+    word-wrap: normal;
+    max-width: 680px;
+    width: 100%;
+  }
+
+  .blink {
+    animation: blink 1.1s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .dim { opacity: 0.55; }
+  .bright { filter: brightness(1.4); }
+
+  table {
+    border-collapse: collapse;
+    max-width: 680px;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #39ff14;
+    padding: 4px 12px;
+    text-align: left;
+    letter-spacing: 0.04em;
+  }
+  th {
+    background: #003300;
+    text-shadow: 0 0 6px #39ff14;
+  }
+  tr:nth-child(even) td {
+    background: #001a00;
+  }
+
+  .section-gap { height: 1.6em; }
+</style>
+</head>
+<body>
+
+<pre class="term glow">
++----------------------------------------------------------------------+
+|  MIDVALE COMPUTING CENTER -- TIME-SHARING SYSTEM v2.4               |
+|  JOB  : WX-REPORT    USER: ANON    TERM: TTY-07    DATE: 13SEP2026  |
++----------------------------------------------------------------------+
+</pre>
+
+<div class="section-gap"></div>
+
+<pre class="term dim">
+** SYSTEM NOTICE: CPU UTILISATION 38PCT -- SHARED QUEUE NOMINAL      **
+** THIS SESSION WILL BE BILLED TO ACCOUNT NWS-REGIONAL-84047         **
+</pre>
+
+<div class="section-gap"></div>
+
+<pre class="term glow bright">
+  WEATHER DATA RETRIEVAL REQUEST
+  --------------------------------
+  STATION  : MIDVALE MUNICIPAL OBSERVATION POST
+  ZIP CODE : 84047
+  STATE    : UTAH / SALT LAKE CO.
+  LAT/LONG : 40.619 N  /  111.899 W
+  DATE     : SUNDAY, 13 SEPTEMBER 2026
+  RANGE    : 0500 HRS -- 1000 HRS LOCAL (MST-7)
+  UNITS    : TEMPERATURE=DEG-F   PRECIPITATION=INCHES
+</pre>
+
+<div class="section-gap"></div>
+
+<pre class="term dim">QUERY SUBMITTED ... PROCESSING ... DATA RETRIEVED FROM NWS TAPE STORE</pre>
+
+<div class="section-gap"></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>TIME (LST)</th>
+      <th>TEMP (DEG F)</th>
+      <th>PRECIP (IN)</th>
+      <th>CONDITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0500</td>
+      <td>60</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>0600</td>
+      <td>59</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>0700</td>
+      <td>62</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>0800</td>
+      <td>67</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>0900</td>
+      <td>73</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+    <tr>
+      <td>1000</td>
+      <td>79</td>
+      <td>0.00</td>
+      <td>CLEAR</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-gap"></div>
+
+<pre class="term glow">
+  SUMMARY STATISTICS (0500-1000 LST):
+    LOW  TEMP : 59 DEG F   AT 0600
+    HIGH TEMP : 79 DEG F   AT 1000
+    TOT PRECIP: 0.00 INCHES
+    TREND     : WARMING  (+20 DEG F OVER PERIOD)
+    SKY COVER : CLEAR / SUNNY
+</pre>
+
+<div class="section-gap"></div>
+
+<pre class="term dim">
+  CLIMATOLOGICAL NOTE:
+    SEP NORMAL LOW  FOR 84047 : 55 DEG F
+    SEP NORMAL HIGH FOR 84047 : 81 DEG F
+    TODAY WITHIN NORMAL RANGE : YES
+
+  DATA SOURCE: NWS-SALT LAKE CITY  TAPE ARCHIVE
+  INTERPOLATION METHOD       : LINEAR (6-HR SOUNDINGS)
+  CONFIDENCE LEVEL           : HIGH
+</pre>
+
+<div class="section-gap"></div>
+
+<pre class="term glow">
++----------------------------------------------------------------------+
+|  END OF REPORT -- MIDVALE UT 84047 -- 13 SEP 2026 -- WX-REPORT     |
+|  RUN TIME: 0.003 SEC    CORE USED: 4K WORDS    BILLED UNITS: 0.01  |
++----------------------------------------------------------------------+
+  READY<span class="blink">_</span>
+</pre>
+
+</body>
+</html>
