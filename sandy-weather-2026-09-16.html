@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WXTERMINAL V2.3</title>
+<style>
+  /* 1979 TRS-80 Model II / CP/M phosphor-green CRT terminal */
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #000;
+    min-height: 100vh;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #33ff33;
+    padding: 20px;
+    /* Phosphor screen glow effect */
+    text-shadow: 0 0 6px #33ff33, 0 0 2px #00ff00;
+  }
+
+  /* CRT scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.18) 2px,
+      rgba(0,0,0,0.18) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* Screen edge vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.4);
+    pointer-events: none;
+    z-index: 998;
+  }
+
+  .terminal {
+    max-width: 80ch;
+    margin: 0 auto;
+  }
+
+  .line {
+    white-space: pre;
+    letter-spacing: 0.05em;
+  }
+
+  .dim {
+    color: #1a991a;
+    text-shadow: 0 0 3px #1a991a;
+  }
+
+  .bright {
+    color: #66ff66;
+    text-shadow: 0 0 8px #66ff66, 0 0 3px #00ff00;
+  }
+
+  .blink {
+    animation: blink 1.2s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  table.wx {
+    border-collapse: collapse;
+    margin: 0;
+    font-family: inherit;
+    color: inherit;
+    text-shadow: inherit;
+  }
+  table.wx td {
+    padding: 0 2ch 0 0;
+    white-space: pre;
+    vertical-align: top;
+  }
+</style>
+</head>
+<body>
+<div class="terminal">
+
+<div class="line dim">================================================================================</div>
+<div class="line bright">  TANDY / RADIO SHACK WEATHER TERMINAL  --  WXTERMINAL V2.3</div>
+<div class="line bright">  SERIAL PORT: COM1  BAUD: 300  PARITY: NONE  DATABITS: 8  STOP: 1</div>
+<div class="line dim">================================================================================</div>
+<div class="line">&nbsp;</div>
+
+<div class="line">SYSTEM DATE: 09/16/2026        SYSTEM TIME: 06:00:00</div>
+<div class="line dim">LOADED: WEATHER.COM  (C) 1979 METEOROLOGICAL SYSTEMS INC.</div>
+<div class="line">&nbsp;</div>
+
+<div class="line dim">*  REQUESTING DATA FROM NATIONAL WEATHER SERVICE RELAY NODE  *</div>
+<div class="line dim">*  STATION: MIDVALE / SALT LAKE CO., UTAH  84047             *</div>
+<div class="line dim">*  COORDINATES: 40.61N  111.90W  ELEV: 4396 FT MSL           *</div>
+<div class="line">&nbsp;</div>
+
+<div class="line dim">DATA RECEIVED. CHECKSUM OK.</div>
+<div class="line">&nbsp;</div>
+
+<div class="line dim">--------------------------------------------------------------------------------</div>
+<div class="line bright">  MORNING WEATHER SUMMARY -- MIDVALE, UT -- 16-SEP-2026</div>
+<div class="line dim">--------------------------------------------------------------------------------</div>
+<div class="line">&nbsp;</div>
+
+<div class="line bright">  TIME    TEMP (F)    PRECIP (IN)    CONDITION</div>
+<div class="line dim">  ----    --------    -----------    ---------</div>
+
+<div class="line">  0500      59          0.00           CLEAR  </div>
+<div class="line">  0600      57          0.00           CLEAR  </div>
+<div class="line">  0700      59          0.00           CLEAR  </div>
+<div class="line">  0800      64          0.00           CLEAR  </div>
+<div class="line">  0900      69          0.00           MOSTLY CLR</div>
+<div class="line">  1000      74          0.00           MOSTLY CLR</div>
+
+<div class="line">&nbsp;</div>
+<div class="line dim">--------------------------------------------------------------------------------</div>
+<div class="line">&nbsp;</div>
+
+<div class="line">  SUMMARY:</div>
+<div class="line">&nbsp;</div>
+<div class="line">    LOW  (5-10AM):   57 DEG F</div>
+<div class="line">    HIGH (5-10AM):   74 DEG F</div>
+<div class="line">    TOTAL PRECIP  :   0.00 IN</div>
+<div class="line">    SKY COND.     :   MOSTLY CLEAR</div>
+<div class="line">    WIND          :   LIGHT AND VARIABLE 3-6 MPH</div>
+<div class="line">    HUMIDITY      :   38 PCT</div>
+<div class="line">&nbsp;</div>
+<div class="line">  SEASONAL NOTE: TYPICAL EARLY AUTUMN MORNING FOR SALT LAKE VALLEY.</div>
+<div class="line">  INVERSION POTENTIAL: LOW.</div>
+<div class="line">&nbsp;</div>
+
+<div class="line dim">--------------------------------------------------------------------------------</div>
+<div class="line">&nbsp;</div>
+
+<div class="line dim">  ** EXTENDED FORECAST REQUIRES LEVEL 2 ACCESS -- CALL (801) 555-0120 **</div>
+<div class="line">&nbsp;</div>
+<div class="line dim">  PRESS &lt;BREAK&gt; TO RETURN TO MAIN MENU</div>
+<div class="line dim">  PRESS &lt;ENTER&gt; TO REFRESH DATA</div>
+<div class="line">&nbsp;</div>
+<div class="line dim">================================================================================</div>
+<div class="line dim">  (C) 1979 METEOROLOGICAL SYSTEMS INC.  ALL RIGHTS RESERVED.</div>
+<div class="line dim">  LICENSED FOR USE ON TRS-80 MODEL II / III AND COMPATIBLE SYSTEMS.</div>
+<div class="line dim">================================================================================</div>
+<div class="line">&nbsp;</div>
+<div class="line">READY<span class="blink">_</span></div>
+
+</div>
+</body>
+</html>
