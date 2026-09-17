@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NWS WEATHER REPORT -- MIDVALE UT -- 17 SEP 2026</title>
+<style>
+  /* 1961 IBM 1401 / ASR-33 Teletype Line Printer Simulation */
+  /* Inspired by IBM chain printer output on green-bar or plain fanfold paper */
+
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    background: #bfbfbf;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 32px 0;
+  }
+
+  body {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1a1208;
+    background: #f5f0e8;
+    width: 760px;
+    min-height: 100%;
+    /* Tractor feed holes on left and right */
+    border-left: 28px solid #d4cfc6;
+    border-right: 28px solid #d4cfc6;
+    position: relative;
+    padding: 20px 32px 40px 32px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.35);
+  }
+
+  /* Tractor feed punch holes - left side */
+  body::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 100%;
+    background-image: radial-gradient(circle, #bfbfbf 7px, transparent 7px);
+    background-size: 28px 24px;
+    background-position: center 12px;
+    background-repeat: repeat-y;
+  }
+
+  /* Tractor feed punch holes - right side */
+  body::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
+    height: 100%;
+    background-image: radial-gradient(circle, #bfbfbf 7px, transparent 7px);
+    background-size: 28px 24px;
+    background-position: center 12px;
+    background-repeat: repeat-y;
+  }
+
+  /* Subtle horizontal bands -- green-bar fanfold effect */
+  .greenbar {
+    position: absolute;
+    left: 0; right: 0;
+    height: 36px;  /* 3 lines at 12px line height */
+    background: rgba(180, 220, 180, 0.18);
+    pointer-events: none;
+  }
+
+  pre, .report {
+    white-space: pre;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .report {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ink-faint {
+    color: #3a3020;
+    opacity: 0.70;
+  }
+
+  .page-number {
+    text-align: right;
+    font-size: 11px;
+    color: #5a5040;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- Green bar bands at every 3-line interval -->
+<div class="greenbar" style="top:76px"></div>
+<div class="greenbar" style="top:130px"></div>
+<div class="greenbar" style="top:184px"></div>
+<div class="greenbar" style="top:238px"></div>
+<div class="greenbar" style="top:292px"></div>
+<div class="greenbar" style="top:346px"></div>
+<div class="greenbar" style="top:400px"></div>
+<div class="greenbar" style="top:454px"></div>
+<div class="greenbar" style="top:508px"></div>
+<div class="greenbar" style="top:562px"></div>
+<div class="greenbar" style="top:616px"></div>
+
+<div class="page-number">PAGE  001 OF  001</div>
+
+<pre class="report">
+================================================================================
+   IBM 1401 DATA PROCESSING SYSTEM -- UNITED STATES WEATHER BUREAU
+   NATIONAL METEOROLOGICAL CENTER -- SUITLAND MD
+   OUTPUT VIA HIGH-SPEED LINE PRINTER -- 600 LPM CHAIN PRINTER
+================================================================================
+
+   RUN DATE:  17 SEP 1961          JOB NO:  WB-4417          TIME: 06:12:00
+
+   STATION IDENT:  MIDVALE UTAH         ZIP:  84047
+   LAT:  40 DEG 37 MIN N    LONG:  111 DEG 53 MIN W    ELEV:  4327 FT
+
+   FORECAST PERIOD:  0500 LOCAL THRU 1000 LOCAL
+
+   SOURCE:  NWS TELETYPE CIRCUIT WB-7 / SALT LAKE CITY RELAY STATION
+   COMPUTED BY:  IBM 1401 PROCESSOR -- CORE STORAGE 16K CHARACTERS
+
+================================================================================
+   MORNING HOURLY SURFACE ANALYSIS -- MIDVALE UT -- 17 SEP 2026
+================================================================================
+
+   HOUR    LOCAL TIME    TEMP (DEG F)    PRECIP (INCHES)    SKY COND
+   ----    ----------    ------------    ---------------    --------
+    1      0500 MST           58              0.00          CLEAR
+    2      0600 MST           57              0.00          CLEAR
+    3      0700 MST           59              0.00          CLEAR
+    4      0800 MST           65              0.00          CLEAR
+    5      0900 MST           71              0.00          CLEAR
+    6      1000 MST           77              0.00          CLEAR
+
+================================================================================
+   SUMMARY STATISTICS
+================================================================================
+
+   PERIOD LOW  TEMPERATURE  :   57 DEG F   (0600 MST)
+   PERIOD HIGH TEMPERATURE  :   77 DEG F   (1000 MST)
+   TOTAL PRECIPITATION      :    0.00 IN
+   PREDOMINANT SKY          :   CLEAR
+   WIND                     :   LIGHT AND VARIABLE
+
+================================================================================
+   REMARKS
+================================================================================
+
+   NO PRECIPITATION EXPECTED THROUGH REMAINDER OF PERIOD.
+   TYPICAL EARLY AUTUMN CONDITIONS FOR THE WASATCH FRONT.
+   FIRE WEATHER WATCH IN EFFECT FOR SURROUNDING ELEVATIONS.
+
+   ** END OF REPORT -- REMOVE FROM PRINTER AND FILE APPROPRIATELY **
+
+================================================================================
+   COMPUTER TIME USED:  0.4 SECONDS     CARDS READ:  12     LINES PRINTED:  52
+================================================================================
+</pre>
+
+</body>
+</html>
