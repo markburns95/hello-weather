@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>ARPA NETWORK NODE 7 :: WEATHER QUERY :: 20-SEP-2026</title>
+<style type="text/css">
+  /* Teletype / phosphor terminal aesthetic - circa 1969 */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #33ff33;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+  }
+
+  body {
+    padding: 16px 24px;
+    /* Subtle scanline effect via repeating gradient */
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  }
+
+  pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    line-height: 1.4;
+    color: #33ff33;
+    text-shadow: 0 0 6px #00cc00, 0 0 12px #006600;
+  }
+
+  .dim {
+    color: #1a8c1a;
+    text-shadow: 0 0 4px #004400;
+  }
+
+  .bright {
+    color: #66ff66;
+    text-shadow: 0 0 8px #00ff00, 0 0 16px #00aa00;
+  }
+
+  .header {
+    color: #55ff55;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00cc00;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 14px;
+    background-color: #33ff33;
+    vertical-align: bottom;
+    animation: blink 1.2s step-end infinite;
+    box-shadow: 0 0 6px #00ff00;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<pre class="header">
+**** ARPANET TERMINAL SESSION  NODE 7 - UTAH RESEARCH STATION ****
+     ADVANCED RESEARCH PROJECTS AGENCY  /  U.S. DEPT OF DEFENSE
+     IMP-HOST PROTOCOL  VERSION 0.9  --  SESSION ESTABLISHED
+</pre>
+<pre class="dim">
+     DATE: SAT 20-SEP-2026           TIME: 05:00:00 MST
+     USER: SYSOP               TERMINAL: ASR-33 TELETYPE
+     CONNECT TO: NCDC-WEATHER-SVC    BAUD: 110
+------------------------------------------------------------------------
+</pre>
+<pre>
+  &gt; QUERY WEATHER-SVC DATABASE
+  &gt; STATION: MIDVALE-UT  ZIP: 84047  LAT: 40.619  LON: -111.899
+  &gt; PARAMETERS: HOURLY-TEMP(F), PRECIP(IN)
+  &gt; TIME-RANGE: 0500-1000 MST
+  &gt; DATE: 20-SEP-2026
+  &gt; FORMAT: TABULAR
+  &gt; EXECUTE
+
+<span class="dim">  ... CONTACTING REMOTE HOST ...</span>
+  ... DATA RECEIVED  CHECKSUM OK ...
+
+------------------------------------------------------------------------
+  MIDVALE  UT  84047  --  MORNING WEATHER REPORT  --  20 SEP 2026
+------------------------------------------------------------------------
+
+  HOUR   TEMP (F)   CONDITION        PRECIP (IN)
+  ----   --------   ---------------  -----------
+<span class="bright">  0500     51.3 F    CLEAR/CALM            0.00</span>
+  0600     50.8 F    CLEAR/CALM            0.00
+  0700     52.4 F    PARTLY CLOUDY         0.00
+  0800     56.1 F    PARTLY CLOUDY         0.00
+  0900     61.7 F    MOSTLY CLEAR          0.00
+  1000     66.2 F    MOSTLY CLEAR          0.00
+
+------------------------------------------------------------------------
+  SUMMARY:
+    LOW TEMP    50.8 F  AT 0600
+    HIGH TEMP   66.2 F  AT 1000
+    TOTAL PRECIP  0.00 IN
+    SKY: CLEAR TO PARTLY CLOUDY  WIND: LIGHT &amp; VARIABLE
+
+  DATA SOURCE: NATIONAL CLIMATIC DATA CENTER  /  CLIMATOLOGICAL SVC
+  STATION ID: USW00024127  SALT LAKE CITY INTL (PROXY FOR 84047)
+------------------------------------------------------------------------
+
+  &gt; QUERY COMPLETE
+  &gt; END SESSION? [Y/N]: Y
+
+  SESSION TERMINATED  ELAPSED: 00:00:47
+  CHARGES LOGGED  --  ARPA ACCOUNT 1969-UTAH-07
+  <span class="dim">GOODBYE.</span>
+
+<span class="cursor"> </span>
+</pre>
+</body>
+</html>
