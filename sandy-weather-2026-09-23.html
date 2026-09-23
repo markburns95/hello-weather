@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midvale Weather · 禅石</title>
+<style>
+  :root {
+    --sand: #E4CC99;
+    --sand-mid: #D4B87A;
+    --sand-dark: #B89A5A;
+    --ink: #241A0C;
+    --ink-soft: #5A3E22;
+    --moss: #4A5E3A;
+    --water: #5A7A8C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--sand);
+    font-family: Georgia, 'Times New Roman', 'Hiragino Mincho Pro', serif;
+    overflow-x: hidden;
+  }
+
+  /* Layered sand texture via multiple radial + linear gradients */
+  .garden-bg {
+    min-height: 100vh;
+    padding: 0 0 60px;
+    background-color: var(--sand);
+    background-image:
+      /* fine grain */
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    position: relative;
+  }
+
+  /* Raked-sand SVG inlined as background */
+  .rake-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    padding: 52px 20px 36px;
+  }
+
+  .title-jp {
+    font-size: 13px;
+    letter-spacing: 0.45em;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    opacity: 0.75;
+  }
+
+  h1 {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: normal;
+    color: var(--ink);
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .meta {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.25em;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  .brush-line {
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--ink-soft), transparent);
+    margin: 24px auto;
+    opacity: 0.5;
+  }
+
+  /* ── Stone Row ── */
+  .stones-section {
+    padding: 30px 16px 50px;
+  }
+
+  .stones-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(20px, 3vw, 44px);
+    flex-wrap: wrap;
+  }
+
+  .stone-unit-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* The stone SVG container */
+  .stone-svg-wrap {
+    position: relative;
+    width: 110px;
+    height: 96px;
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.4s ease;
+    filter: drop-shadow(4px 7px 14px rgba(30,18,6,0.32))
+            drop-shadow(1px 2px 3px rgba(30,18,6,0.18));
+  }
+  .stone-svg-wrap:hover {
+    transform: translateY(-6px) rotate(-1.5deg);
+    filter: drop-shadow(6px 12px 22px rgba(30,18,6,0.35))
+            drop-shadow(2px 3px 5px rgba(30,18,6,0.2));
+  }
+
+  .stone-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    pointer-events: none;
+  }
+  .stone-temp-val {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 26px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.93);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 0 12px rgba(0,0,0,0.25);
+    line-height: 1;
+  }
+  .stone-temp-unit {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.72);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+    margin-top: 3px;
+    letter-spacing: 0.1em;
+  }
+
+  .stone-time-wrap {
+    text-align: center;
+  }
+  .stone-time-en {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    display: block;
+  }
+  .stone-time-jp {
+    font-size: 11px;
+    color: var(--ink-soft);
+    opacity: 0.55;
+    margin-top: 3px;
+    display: block;
+  }
+
+  /* ── Precipitation band ── */
+  .precip-band {
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 480px;
+    padding: 14px 24px;
+    border-top: 1px solid rgba(90,62,34,0.2);
+    border-bottom: 1px solid rgba(90,62,34,0.2);
+  }
+  .precip-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--ink-soft);
+    opacity: 0.65;
+  }
+  .precip-jp {
+    font-size: 12px;
+    color: var(--ink-soft);
+    opacity: 0.5;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ── Haiku Footer ── */
+  footer {
+    text-align: center;
+    padding: 48px 20px 20px;
+  }
+  .haiku {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 2.2;
+    font-style: italic;
+    opacity: 0.6;
+    margin-bottom: 32px;
+  }
+  .footer-seal {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--ink-soft);
+    opacity: 0.45;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  /* ── Hover tooltip ── */
+  .stone-svg-wrap::after {
+    content: attr(data-precip);
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9.5px;
+    color: var(--water);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+  .stone-svg-wrap:hover::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .stones-row { gap: 16px; }
+    .stone-svg-wrap { width: 88px; height: 76px; }
+    .stone-temp-val { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Raked sand SVG — drawn behind everything -->
+<svg class="rake-bg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice"
+     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <!-- Stone-centered concentric arcs will be added inline per stone position;
+         here we define the ambient sand-rake pattern across the whole field -->
+
+    <!-- Long sinusoidal raked lines crossing the garden -->
+    <path id="rake" fill="none" stroke="rgba(160,120,60,0.10)" stroke-width="1.2"/>
+  </defs>
+
+  <!-- Horizontal raked-sand lines (evenly spaced waves) -->
+  <g id="rakes">
+    <!-- lines at intervals of 18px from top, slightly wavy -->
+    <script type="application/json" id="no-script-flag"></script>
+  </g>
+
+  <!-- We draw them statically for max compat -->
+  <!-- 50 rows of wavy rake lines covering 900px height -->
+  <g fill="none" stroke="rgba(150,112,55,0.09)" stroke-width="1">
+    <path d="M0,18 Q300,14 600,18 T1200,18"/>
+    <path d="M0,36 Q300,32 600,36 T1200,36"/>
+    <path d="M0,54 Q300,50 600,54 T1200,54"/>
+    <path d="M0,72 Q300,68 600,72 T1200,72"/>
+    <path d="M0,90 Q300,86 600,90 T1200,90"/>
+    <path d="M0,108 Q300,104 600,108 T1200,108"/>
+    <path d="M0,126 Q300,122 600,126 T1200,126"/>
+    <path d="M0,144 Q300,140 600,144 T1200,144"/>
+    <path d="M0,162 Q300,158 600,162 T1200,162"/>
+    <path d="M0,180 Q300,176 600,180 T1200,180"/>
+    <path d="M0,198 Q300,194 600,198 T1200,198"/>
+    <path d="M0,216 Q300,212 600,216 T1200,216"/>
+    <path d="M0,234 Q300,230 600,234 T1200,234"/>
+    <path d="M0,252 Q300,248 600,252 T1200,252"/>
+    <path d="M0,270 Q300,266 600,270 T1200,270"/>
+    <path d="M0,288 Q300,284 600,288 T1200,288"/>
+    <path d="M0,306 Q300,302 600,306 T1200,306"/>
+    <path d="M0,324 Q300,320 600,324 T1200,324"/>
+    <path d="M0,342 Q300,338 600,342 T1200,342"/>
+    <path d="M0,360 Q300,356 600,360 T1200,360"/>
+    <path d="M0,378 Q300,374 600,378 T1200,378"/>
+    <path d="M0,396 Q300,392 600,396 T1200,396"/>
+    <path d="M0,414 Q300,410 600,414 T1200,414"/>
+    <path d="M0,432 Q300,428 600,432 T1200,432"/>
+    <path d="M0,450 Q300,446 600,450 T1200,450"/>
+    <path d="M0,468 Q300,464 600,468 T1200,468"/>
+    <path d="M0,486 Q300,482 600,486 T1200,486"/>
+    <path d="M0,504 Q300,500 600,504 T1200,504"/>
+    <path d="M0,522 Q300,518 600,522 T1200,522"/>
+    <path d="M0,540 Q300,536 600,540 T1200,540"/>
+    <path d="M0,558 Q300,554 600,558 T1200,558"/>
+    <path d="M0,576 Q300,572 600,576 T1200,576"/>
+    <path d="M0,594 Q300,590 600,594 T1200,594"/>
+    <path d="M0,612 Q300,608 600,612 T1200,612"/>
+    <path d="M0,630 Q300,626 600,630 T1200,630"/>
+    <path d="M0,648 Q300,644 600,648 T1200,648"/>
+    <path d="M0,666 Q300,662 600,666 T1200,666"/>
+    <path d="M0,684 Q300,680 600,684 T1200,684"/>
+    <path d="M0,702 Q300,698 600,702 T1200,702"/>
+    <path d="M0,720 Q300,716 600,720 T1200,720"/>
+    <path d="M0,738 Q300,734 600,738 T1200,738"/>
+    <path d="M0,756 Q300,752 600,756 T1200,756"/>
+    <path d="M0,774 Q300,770 600,774 T1200,774"/>
+    <path d="M0,792 Q300,788 600,792 T1200,792"/>
+    <path d="M0,810 Q300,806 600,810 T1200,810"/>
+    <path d="M0,828 Q300,824 600,828 T1200,828"/>
+    <path d="M0,846 Q300,842 600,846 T1200,846"/>
+    <path d="M0,864 Q300,860 600,864 T1200,864"/>
+    <path d="M0,882 Q300,878 600,882 T1200,882"/>
+    <path d="M0,900 Q300,896 600,900 T1200,900"/>
+  </g>
+
+  <!-- Concentric arc ripples around the six stone positions -->
+  <!-- Each stone is at roughly x: 145,265,390,520,650,770 in a 1200-wide view, y~390 -->
+  <g fill="none" stroke="rgba(140,105,48,0.13)" stroke-width="1">
+    <!-- Stone 1 ripples -->
+    <ellipse cx="145" cy="390" rx="75" ry="58"/>
+    <ellipse cx="145" cy="390" rx="100" ry="78"/>
+    <ellipse cx="145" cy="390" rx="128" ry="100"/>
+    <!-- Stone 2 ripples -->
+    <ellipse cx="305" cy="390" rx="75" ry="58"/>
+    <ellipse cx="305" cy="390" rx="100" ry="78"/>
+    <ellipse cx="305" cy="390" rx="128" ry="100"/>
+    <!-- Stone 3 ripples -->
+    <ellipse cx="470" cy="390" rx="75" ry="58"/>
+    <ellipse cx="470" cy="390" rx="100" ry="78"/>
+    <ellipse cx="470" cy="390" rx="128" ry="100"/>
+    <!-- Stone 4 ripples -->
+    <ellipse cx="635" cy="390" rx="75" ry="58"/>
+    <ellipse cx="635" cy="390" rx="100" ry="78"/>
+    <ellipse cx="635" cy="390" rx="128" ry="100"/>
+    <!-- Stone 5 ripples -->
+    <ellipse cx="800" cy="390" rx="75" ry="58"/>
+    <ellipse cx="800" cy="390" rx="100" ry="78"/>
+    <ellipse cx="800" cy="390" rx="128" ry="100"/>
+    <!-- Stone 6 ripples -->
+    <ellipse cx="960" cy="390" rx="75" ry="58"/>
+    <ellipse cx="960" cy="390" rx="100" ry="78"/>
+    <ellipse cx="960" cy="390" rx="128" ry="100"/>
+  </g>
+
+  <!-- Scattered pebbles / sand accents -->
+  <g fill="rgba(160,125,60,0.12)">
+    <ellipse cx="80" cy="200" rx="5" ry="3.5" transform="rotate(-20,80,200)"/>
+    <ellipse cx="1100" cy="560" rx="6" ry="4" transform="rotate(15,1100,560)"/>
+    <ellipse cx="900" cy="140" rx="4" ry="2.8" transform="rotate(40,900,140)"/>
+    <ellipse cx="200" cy="700" rx="7" ry="4.5" transform="rotate(-10,200,700)"/>
+    <ellipse cx="1050" cy="760" rx="5" ry="3.2" transform="rotate(30,1050,760)"/>
+    <ellipse cx="50" cy="480" rx="4" ry="2.5" transform="rotate(-35,50,480)"/>
+    <ellipse cx="550" cy="150" rx="8" ry="5" transform="rotate(10,550,150)"/>
+    <ellipse cx="350" cy="680" rx="5" ry="3" transform="rotate(-15,350,680)"/>
+  </g>
+</svg>
+
+<div class="garden-bg">
+<div class="content">
+
+  <header>
+    <p class="title-jp">禅石気象 · ミドヴェール</p>
+    <h1>Morning Weather</h1>
+    <p class="meta">MIDVALE · UTAH · 84047 &nbsp;·&nbsp; 2026.09.23</p>
+    <span class="brush-line"></span>
+  </header>
+
+  <section class="stones-section">
+    <div class="stones-row">
+
+      <!-- 5 AM · 52°F -->
+      <div class="stone-unit-wrap">
+        <div class="stone-svg-wrap" data-precip="0.00″ precip">
+          <svg viewBox="0 0 110 96" xmlns="http://www.w3.org/2000/svg" width="110" height="96" aria-label="5 AM stone, 52°F">
+            <defs>
+              <radialGradient id="s1" cx="38%" cy="32%" r="65%">
+                <stop offset="0%"  stop-color="#9BBDD0"/>
+                <stop offset="55%" stop-color="#6A95AE"/>
+                <stop offset="100%" stop-color="#3E6880"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="55" cy="50" rx="50" ry="43" fill="url(#s1)"/>
+            <!-- surface highlight -->
+            <ellipse cx="40" cy="30" rx="18" ry="10" fill="white" opacity="0.12" transform="rotate(-18,40,30)"/>
+          </svg>
+          <div class="stone-label">
+            <span class="stone-temp-val">52</span>
+            <span class="stone-temp-unit">°F</span>
+          </div>
+        </div>
+        <div class="stone-time-wrap">
+          <span class="stone-time-en">5:00 AM</span>
+          <span class="stone-time-jp">午前五時</span>
+        </div>
+      </div>
+
+      <!-- 6 AM · 50°F -->
+      <div class="stone-unit-wrap">
+        <div class="stone-svg-wrap" data-precip="0.00″ precip">
+          <svg viewBox="0 0 110 96" xmlns="http://www.w3.org/2000/svg" width="110" height="96" aria-label="6 AM stone, 50°F">
+            <defs>
+              <radialGradient id="s2" cx="38%" cy="32%" r="65%">
+                <stop offset="0%"  stop-color="#8BB0C8"/>
+                <stop offset="55%" stop-color="#5A88A4"/>
+                <stop offset="100%" stop-color="#305E7A"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="55" cy="50" rx="50" ry="43" fill="url(#s2)"/>
+            <ellipse cx="38" cy="28" rx="17" ry="9" fill="white" opacity="0.11" transform="rotate(-15,38,28)"/>
+          </svg>
+          <div class="stone-label">
+            <span class="stone-temp-val">50</span>
+            <span class="stone-temp-unit">°F</span>
+          </div>
+        </div>
+        <div class="stone-time-wrap">
+          <span class="stone-time-en">6:00 AM</span>
+          <span class="stone-time-jp">午前六時</span>
+        </div>
+      </div>
+
+      <!-- 7 AM · 51°F -->
+      <div class="stone-unit-wrap">
+        <div class="stone-svg-wrap" data-precip="0.00″ precip">
+          <svg viewBox="0 0 110 96" xmlns="http://www.w3.org/2000/svg" width="110" height="96" aria-label="7 AM stone, 51°F">
+            <defs>
+              <radialGradient id="s3" cx="38%" cy="32%" r="65%">
+                <stop offset="0%"  stop-color="#98B8C5"/>
+                <stop offset="55%" stop-color="#6A90A0"/>
+                <stop offset="100%" stop-color="#456880"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="55" cy="50" rx="50" ry="43" fill="url(#s3)"/>
+            <ellipse cx="40" cy="30" rx="18" ry="10" fill="white" opacity="0.12" transform="rotate(-20,40,30)"/>
+          </svg>
+          <div class="stone-label">
+            <span class="stone-temp-val">51</span>
+            <span class="stone-temp-unit">°F</span>
+          </div>
+        </div>
+        <div class="stone-time-wrap">
+          <span class="stone-time-en">7:00 AM</span>
+          <span class="stone-time-jp">午前七時</span>
+        </div>
+      </div>
+
+      <!-- 8 AM · 57°F -->
+      <div class="stone-unit-wrap">
+        <div class="stone-svg-wrap" data-precip="0.00″ precip">
+          <svg viewBox="0 0 110 96" xmlns="http://www.w3.org/2000/svg" width="110" height="96" aria-label="8 AM stone, 57°F">
+            <defs>
+              <radialGradient id="s4" cx="38%" cy="32%" r="65%">
+                <stop offset="0%"  stop-color="#B0B0A0"/>
+                <stop offset="55%" stop-color="#888878"/>
+                <stop offset="100%" stop-color="#626258"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="55" cy="50" rx="50" ry="43" fill="url(#s4)"/>
+            <ellipse cx="40" cy="30" rx="17" ry="9.5" fill="white" opacity="0.13" transform="rotate(-16,40,30)"/>
+          </svg>
+          <div class="stone-label">
+            <span class="stone-temp-val">57</span>
+            <span class="stone-temp-unit">°F</span>
+          </div>
+        </div>
+        <div class="stone-time-wrap">
+          <span class="stone-time-en">8:00 AM</span>
+          <span class="stone-time-jp">午前八時</span>
+        </div>
+      </div>
+
+      <!-- 9 AM · 63°F -->
+      <div class="stone-unit-wrap">
+        <div class="stone-svg-wrap" data-precip="0.00″ precip">
+          <svg viewBox="0 0 110 96" xmlns="http://www.w3.org/2000/svg" width="110" height="96" aria-label="9 AM stone, 63°F">
+            <defs>
+              <radialGradient id="s5" cx="38%" cy="32%" r="65%">
+                <stop offset="0%"  stop-color="#C4AA80"/>
+                <stop offset="55%" stop-color="#A08258"/>
+                <stop offset="100%" stop-color="#7C5E38"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="55" cy="50" rx="50" ry="43" fill="url(#s5)"/>
+            <ellipse cx="40" cy="30" rx="18" ry="10" fill="white" opacity="0.12" transform="rotate(-18,40,30)"/>
+          </svg>
+          <div class="stone-label">
+            <span class="stone-temp-val">63</span>
+            <span class="stone-temp-unit">°F</span>
+          </div>
+        </div>
+        <div class="stone-time-wrap">
+          <span class="stone-time-en">9:00 AM</span>
+          <span class="stone-time-jp">午前九時</span>
+        </div>
+      </div>
+
+      <!-- 10 AM · 69°F -->
+      <div class="stone-unit-wrap">
+        <div class="stone-svg-wrap" data-precip="0.00″ precip">
+          <svg viewBox="0 0 110 96" xmlns="http://www.w3.org/2000/svg" width="110" height="96" aria-label="10 AM stone, 69°F">
+            <defs>
+              <radialGradient id="s6" cx="38%" cy="32%" r="65%">
+                <stop offset="0%"  stop-color="#D4A860"/>
+                <stop offset="55%" stop-color="#B08038"/>
+                <stop offset="100%" stop-color="#885C18"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="55" cy="50" rx="50" ry="43" fill="url(#s6)"/>
+            <ellipse cx="40" cy="30" rx="19" ry="10.5" fill="white" opacity="0.13" transform="rotate(-20,40,30)"/>
+          </svg>
+          <div class="stone-label">
+            <span class="stone-temp-val">69</span>
+            <span class="stone-temp-unit">°F</span>
+          </div>
+        </div>
+        <div class="stone-time-wrap">
+          <span class="stone-time-en">10:00 AM</span>
+          <span class="stone-time-jp">午前十時</span>
+        </div>
+      </div>
+
+    </div><!-- /.stones-row -->
+  </section>
+
+  <!-- Precipitation note -->
+  <div class="precip-band">
+    <span class="precip-label">PRECIPITATION · 0.00" ALL HOURS</span>
+    <span class="precip-jp">無降水 — clear morning, first day of autumn</span>
+  </div>
+
+  <footer>
+    <span class="brush-line"></span>
+    <p class="haiku">
+      "cool stones in pale sand —<br>
+      warmth returns by ten o'clock,<br>
+      autumn's first sunrise"
+    </p>
+    <p class="footer-seal">禅石気象 &nbsp;·&nbsp; ZEN STONE WEATHER &nbsp;·&nbsp; ✦ &nbsp;·&nbsp; MIDVALE UT 84047</p>
+  </footer>
+
+</div><!-- /.content -->
+</div><!-- /.garden-bg -->
+
+</body>
+</html>
