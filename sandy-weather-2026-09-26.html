@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midvale Weather — September 26, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Playfair+Display:ital@1&display=swap');
+
+  :root {
+    --abyss:    #040810;
+    --deep:     #060d1f;
+    --mid:      #091428;
+    --glow-b:   #00c8ff;
+    --glow-v:   #7b2fff;
+    --glow-t:   #00ffcc;
+    --glow-m:   #ff44cc;
+    --text:     #c8e8f8;
+    --text-dim: #5a8aaa;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--abyss);
+    font-family: 'Raleway', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* Ocean depth gradient */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 40% at 50% 0%,   rgba(0,40,80,0.7) 0%, transparent 60%),
+      radial-gradient(ellipse 80%  60% at 20% 80%,  rgba(0,80,120,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse 80%  60% at 80% 90%,  rgba(60,0,120,0.15) 0%, transparent 55%),
+      linear-gradient(180deg, #040d1e 0%, #020810 50%, #000408 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Caustic light shimmer on surface */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 220px;
+    background:
+      repeating-linear-gradient(
+        73deg,
+        transparent 0px, transparent 22px,
+        rgba(0,180,255,0.025) 22px, rgba(0,180,255,0.025) 24px
+      ),
+      repeating-linear-gradient(
+        -47deg,
+        transparent 0px, transparent 18px,
+        rgba(0,200,240,0.02) 18px, rgba(0,200,240,0.02) 20px
+      );
+    animation: caustic 8s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @keyframes caustic {
+    0%   { opacity: 0.4; transform: scaleX(1); }
+    100% { opacity: 1;   transform: scaleX(1.04); }
+  }
+
+  /* Particle drift */
+  .particle {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(0, 200, 255, 0.6);
+    animation: drift linear infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @keyframes drift {
+    0%   { transform: translateY(100vh) translateX(0)   scale(1);   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(30px) scale(0.5); opacity: 0; }
+  }
+
+  /* Layout */
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .depth-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    color: var(--glow-b);
+    text-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,150,200,0.3);
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Jellyfish grid */
+  .ocean {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px 24px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  /* One hour card */
+  .hour-pod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    position: relative;
+  }
+
+  .hour-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  /* The jellyfish bell */
+  .jelly {
+    position: relative;
+    width: 110px;
+    height: 80px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scaleY(1)   scaleX(1);   filter: brightness(1); }
+    50%       { transform: scaleY(0.94) scaleX(1.03); filter: brightness(1.15); }
+  }
+
+  .bell {
+    width: 110px;
+    height: 80px;
+    border-radius: 55px 55px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  /* Inner glow ring */
+  .bell::before {
+    content: '';
+    position: absolute;
+    inset: 8px 12px 20px;
+    border-radius: 45px 45px 0 0;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* Outer glow */
+  .bell::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 60px 60px 0 0;
+    opacity: 0.4;
+    animation: glow-pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 0.65; }
+  }
+
+  .temp-display {
+    position: relative;
+    z-index: 2;
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    padding-top: 8px;
+  }
+
+  .temp-unit {
+    font-size: 0.7rem;
+    vertical-align: super;
+    opacity: 0.7;
+  }
+
+  /* Tentacles container */
+  .tentacles {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding-top: 2px;
+    width: 110px;
+  }
+
+  .tentacle {
+    width: 3px;
+    border-radius: 0 0 3px 3px;
+    animation: sway 3s ease-in-out infinite;
+    transform-origin: top center;
+  }
+
+  /* Stagger tentacle sway */
+  .tentacle:nth-child(odd)  { animation-delay: 0s; }
+  .tentacle:nth-child(even) { animation-delay: 1.5s; }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-4deg) scaleY(1); }
+    50%       { transform: rotate(4deg)  scaleY(0.96); }
+  }
+
+  /* Precipitation droplets below tentacles */
+  .precip-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    min-height: 18px;
+  }
+
+  .drop {
+    width: 5px;
+    height: 7px;
+    border-radius: 50% 50% 60% 60% / 40% 40% 60% 60%;
+    background: rgba(120,200,255,0.75);
+    box-shadow: 0 0 6px rgba(0,200,255,0.5);
+    animation: drop-fall 2.5s ease-in infinite;
+  }
+
+  @keyframes drop-fall {
+    0%   { transform: translateY(-4px); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: translateY(8px);  opacity: 0; }
+  }
+
+  .precip-none {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(90,120,150,0.6);
+  }
+
+  .precip-label {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Color themes per hour */
+  .c0 { --jc: #00aaff; --jg: rgba(0,170,255,0.25); --jd: rgba(0,100,200,0.5); }
+  .c1 { --jc: #0077dd; --jg: rgba(0,120,220,0.22); --jd: rgba(0,60,180,0.5);  }
+  .c2 { --jc: #22ccdd; --jg: rgba(30,200,220,0.25); --jd: rgba(10,130,180,0.5); }
+  .c3 { --jc: #44aaff; --jg: rgba(50,180,255,0.28); --jd: rgba(20,120,220,0.5); }
+  .c4 { --jc: #66ccff; --jg: rgba(80,200,255,0.3);  --jd: rgba(30,150,240,0.5); }
+  .c5 { --jc: #99ddff; --jg: rgba(120,220,255,0.35); --jd: rgba(50,170,255,0.5); }
+
+  .bell {
+    background: radial-gradient(ellipse at 40% 35%, var(--jg, rgba(0,160,255,0.25)) 0%, var(--jd, rgba(0,80,180,0.45)) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+      0 0 20px var(--jg, rgba(0,150,255,0.2)),
+      inset 0 0 18px rgba(255,255,255,0.04);
+  }
+
+  .bell::after {
+    box-shadow: 0 0 35px 8px var(--jg, rgba(0,150,255,0.2));
+  }
+
+  .temp-display {
+    color: var(--jc, #00ccff);
+    text-shadow: 0 0 12px var(--jc, #00ccff), 0 0 25px var(--jg, rgba(0,150,255,0.4));
+  }
+
+  .tentacle {
+    background: linear-gradient(to bottom, var(--jc, #00aaff), transparent);
+    box-shadow: 0 0 4px var(--jg, rgba(0,150,255,0.3));
+  }
+
+  /* Depth scale on left */
+  .depth-scale {
+    position: fixed;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    z-index: 2;
+  }
+
+  .depth-mark {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(90,140,180,0.4);
+  }
+
+  .depth-mark::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: rgba(90,140,180,0.25);
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 56px;
+    text-align: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: rgba(80,120,160,0.45);
+    text-transform: uppercase;
+  }
+
+  /* Dividing wave line */
+  .wave-line {
+    width: 100%;
+    max-width: 600px;
+    height: 2px;
+    margin: 36px auto 0;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,160,255,0.15) 20%,
+      rgba(0,200,255,0.35) 50%,
+      rgba(0,160,255,0.15) 80%,
+      transparent 100%
+    );
+    position: relative;
+  }
+
+  .wave-line::before {
+    content: '≋';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    color: rgba(0,180,255,0.4);
+    letter-spacing: 0.4em;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- Drifting bioluminescent particles -->
+<div class="particle" style="width:2px;height:2px;left:12%;animation-duration:22s;animation-delay:0s;background:rgba(0,200,255,0.8)"></div>
+<div class="particle" style="width:1px;height:1px;left:27%;animation-duration:31s;animation-delay:5s;background:rgba(120,80,255,0.9)"></div>
+<div class="particle" style="width:2px;height:2px;left:44%;animation-duration:18s;animation-delay:2s;"></div>
+<div class="particle" style="width:1px;height:1px;left:61%;animation-duration:26s;animation-delay:9s;background:rgba(0,240,200,0.8)"></div>
+<div class="particle" style="width:3px;height:3px;left:73%;animation-duration:35s;animation-delay:1s;background:rgba(0,180,255,0.5)"></div>
+<div class="particle" style="width:1px;height:1px;left:88%;animation-duration:20s;animation-delay:13s;background:rgba(180,100,255,0.8)"></div>
+<div class="particle" style="width:2px;height:2px;left:35%;animation-duration:28s;animation-delay:7s;background:rgba(0,220,180,0.7)"></div>
+<div class="particle" style="width:1px;height:1px;left:55%;animation-duration:24s;animation-delay:4s;background:rgba(80,160,255,0.9)"></div>
+<div class="particle" style="width:2px;height:2px;left:8%;animation-duration:33s;animation-delay:16s;"></div>
+<div class="particle" style="width:1px;height:1px;left:92%;animation-duration:19s;animation-delay:11s;background:rgba(0,200,255,0.7)"></div>
+
+<!-- Side depth scale -->
+<nav class="depth-scale" aria-hidden="true">
+  <div class="depth-mark">SURFACE</div>
+  <div class="depth-mark">−20m</div>
+  <div class="depth-mark">−40m</div>
+  <div class="depth-mark">−80m</div>
+  <div class="depth-mark">−200m</div>
+</nav>
+
+<div class="page-wrap">
+  <header>
+    <p class="depth-label">Bioluminescent Telemetry Array · Node 84047</p>
+    <h1>Morning Tide — Midvale, Utah</h1>
+    <p class="subtitle">September 26, 2026 &nbsp;·&nbsp; 5 AM – 10 AM</p>
+    <div class="wave-line"></div>
+  </header>
+
+  <section class="ocean" aria-label="Hourly weather jellyfish">
+
+    <!-- 5 AM — 53°F — 0.00 in -->
+    <div class="hour-pod c0">
+      <div class="hour-label">5 : 00 am</div>
+      <div class="jelly" style="animation-delay:0s">
+        <div class="bell">
+          <div class="temp-display">53<span class="temp-unit">°F</span></div>
+        </div>
+        <div class="tentacles">
+          <div class="tentacle" style="height:28px;animation-delay:0.0s"></div>
+          <div class="tentacle" style="height:36px;animation-delay:0.4s"></div>
+          <div class="tentacle" style="height:22px;animation-delay:0.8s"></div>
+          <div class="tentacle" style="height:40px;animation-delay:0.2s"></div>
+          <div class="tentacle" style="height:26px;animation-delay:0.6s"></div>
+          <div class="tentacle" style="height:34px;animation-delay:1.0s"></div>
+          <div class="tentacle" style="height:20px;animation-delay:0.3s"></div>
+          <div class="tentacle" style="height:32px;animation-delay:0.7s"></div>
+        </div>
+      </div>
+      <div class="precip-row">
+        <span class="precip-none">calm</span>
+      </div>
+      <div class="precip-label">0.00 in</div>
+    </div>
+
+    <!-- 6 AM — 52°F — 0.00 in -->
+    <div class="hour-pod c1">
+      <div class="hour-label">6 : 00 am</div>
+      <div class="jelly" style="animation-delay:0.6s">
+        <div class="bell">
+          <div class="temp-display">52<span class="temp-unit">°F</span></div>
+        </div>
+        <div class="tentacles">
+          <div class="tentacle" style="height:32px;animation-delay:0.1s"></div>
+          <div class="tentacle" style="height:24px;animation-delay:0.5s"></div>
+          <div class="tentacle" style="height:38px;animation-delay:0.9s"></div>
+          <div class="tentacle" style="height:28px;animation-delay:0.3s"></div>
+          <div class="tentacle" style="height:42px;animation-delay:0.7s"></div>
+          <div class="tentacle" style="height:22px;animation-delay:0.1s"></div>
+          <div class="tentacle" style="height:30px;animation-delay:0.8s"></div>
+          <div class="tentacle" style="height:36px;animation-delay:0.4s"></div>
+        </div>
+      </div>
+      <div class="precip-row">
+        <span class="precip-none">calm</span>
+      </div>
+      <div class="precip-label">0.00 in</div>
+    </div>
+
+    <!-- 7 AM — 55°F — 0.00 in -->
+    <div class="hour-pod c2">
+      <div class="hour-label">7 : 00 am</div>
+      <div class="jelly" style="animation-delay:1.2s">
+        <div class="bell">
+          <div class="temp-display">55<span class="temp-unit">°F</span></div>
+        </div>
+        <div class="tentacles">
+          <div class="tentacle" style="height:26px;animation-delay:0.2s"></div>
+          <div class="tentacle" style="height:38px;animation-delay:0.6s"></div>
+          <div class="tentacle" style="height:30px;animation-delay:0.0s"></div>
+          <div class="tentacle" style="height:44px;animation-delay:0.9s"></div>
+          <div class="tentacle" style="height:24px;animation-delay:0.4s"></div>
+          <div class="tentacle" style="height:36px;animation-delay:0.8s"></div>
+          <div class="tentacle" style="height:28px;animation-delay:0.2s"></div>
+          <div class="tentacle" style="height:40px;animation-delay:0.5s"></div>
+        </div>
+      </div>
+      <div class="precip-row">
+        <span class="precip-none">calm</span>
+      </div>
+      <div class="precip-label">0.00 in</div>
+    </div>
+
+    <!-- 8 AM — 59°F — 0.00 in -->
+    <div class="hour-pod c3">
+      <div class="hour-label">8 : 00 am</div>
+      <div class="jelly" style="animation-delay:1.8s">
+        <div class="bell">
+          <div class="temp-display">59<span class="temp-unit">°F</span></div>
+        </div>
+        <div class="tentacles">
+          <div class="tentacle" style="height:34px;animation-delay:0.3s"></div>
+          <div class="tentacle" style="height:26px;animation-delay:0.7s"></div>
+          <div class="tentacle" style="height:40px;animation-delay:0.1s"></div>
+          <div class="tentacle" style="height:30px;animation-delay:0.5s"></div>
+          <div class="tentacle" style="height:46px;animation-delay:0.9s"></div>
+          <div class="tentacle" style="height:22px;animation-delay:0.3s"></div>
+          <div class="tentacle" style="height:38px;animation-delay:0.6s"></div>
+          <div class="tentacle" style="height:28px;animation-delay:0.0s"></div>
+        </div>
+      </div>
+      <div class="precip-row">
+        <span class="precip-none">calm</span>
+      </div>
+      <div class="precip-label">0.00 in</div>
+    </div>
+
+    <!-- 9 AM — 64°F — 0.00 in -->
+    <div class="hour-pod c4">
+      <div class="hour-label">9 : 00 am</div>
+      <div class="jelly" style="animation-delay:2.4s">
+        <div class="bell">
+          <div class="temp-display">64<span class="temp-unit">°F</span></div>
+        </div>
+        <div class="tentacles">
+          <div class="tentacle" style="height:30px;animation-delay:0.4s"></div>
+          <div class="tentacle" style="height:44px;animation-delay:0.8s"></div>
+          <div class="tentacle" style="height:24px;animation-delay:0.2s"></div>
+          <div class="tentacle" style="height:38px;animation-delay:0.6s"></div>
+          <div class="tentacle" style="height:28px;animation-delay:0.0s"></div>
+          <div class="tentacle" style="height:48px;animation-delay:0.4s"></div>
+          <div class="tentacle" style="height:32px;animation-delay:0.7s"></div>
+          <div class="tentacle" style="height:36px;animation-delay:0.1s"></div>
+        </div>
+      </div>
+      <div class="precip-row">
+        <span class="precip-none">calm</span>
+      </div>
+      <div class="precip-label">0.00 in</div>
+    </div>
+
+    <!-- 10 AM — 69°F — 0.00 in -->
+    <div class="hour-pod c5">
+      <div class="hour-label">10 : 00 am</div>
+      <div class="jelly" style="animation-delay:3.0s">
+        <div class="bell">
+          <div class="temp-display">69<span class="temp-unit">°F</span></div>
+        </div>
+        <div class="tentacles">
+          <div class="tentacle" style="height:38px;animation-delay:0.5s"></div>
+          <div class="tentacle" style="height:28px;animation-delay:0.9s"></div>
+          <div class="tentacle" style="height:46px;animation-delay:0.3s"></div>
+          <div class="tentacle" style="height:32px;animation-delay:0.7s"></div>
+          <div class="tentacle" style="height:24px;animation-delay:0.1s"></div>
+          <div class="tentacle" style="height:42px;animation-delay:0.5s"></div>
+          <div class="tentacle" style="height:30px;animation-delay:0.8s"></div>
+          <div class="tentacle" style="height:50px;animation-delay:0.2s"></div>
+        </div>
+      </div>
+      <div class="precip-row">
+        <span class="precip-none">calm</span>
+      </div>
+      <div class="precip-label">0.00 in</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>Midvale, UT 84047 &nbsp;·&nbsp; 40.619°N 111.900°W &nbsp;·&nbsp; Mesophotic Zone Display</p>
+    <p style="margin-top:6px;opacity:0.5">Bell diameter reflects relative temperature &nbsp;·&nbsp; Tentacle length varies by heat gradient &nbsp;·&nbsp; Droplets indicate precipitation</p>
+  </footer>
+</div>
+
+</body>
+</html>
