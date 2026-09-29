@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mycelium Weather — Midvale, UT · Sept 29, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=VT323&family=Crimson+Pro:ital,wght@0,300;1,300&display=swap');
+
+  :root {
+    --spore-1: #c8f77a;
+    --spore-2: #7affc8;
+    --spore-3: #a87aff;
+    --spore-4: #ffca7a;
+    --earth: #0d0a07;
+    --humus: #1a1208;
+    --mycel: #2a1f0f;
+    --glow: rgba(200, 247, 122, 0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%; overflow-x: hidden;
+    background: var(--earth);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    color: #d4c9a8;
+  }
+
+  /* Animated spore dust */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(168,122,255,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 20%, rgba(122,255,200,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 30% at 50% 50%, rgba(200,247,122,0.04) 0%, transparent 80%);
+    pointer-events: none;
+  }
+
+  /* SVG mycelium network background */
+  .mycel-bg {
+    position: fixed; inset: 0; z-index: 0;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2.5rem;
+  }
+
+  /* Header fruiting body */
+  .header-node {
+    text-align: center;
+    position: relative;
+  }
+
+  .header-node::before {
+    content: '⊕';
+    display: block;
+    font-size: 2rem;
+    color: var(--spore-1);
+    opacity: 0.7;
+    animation: pulse-node 4s ease-in-out infinite;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--spore-2);
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 30px rgba(122,255,200,0.4), 0 0 60px rgba(122,255,200,0.2);
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a6e5a;
+    margin-top: 0.4rem;
+  }
+
+  /* Network threads connecting nodes */
+  .network {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .network::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+      transparent,
+      rgba(200,247,122,0.15) 10%,
+      rgba(200,247,122,0.25) 50%,
+      rgba(200,247,122,0.15) 90%,
+      transparent);
+    animation: pulse-thread 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Individual hour node (fruiting body) */
+  .hour-node {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    position: relative;
+    cursor: default;
+    transition: all 0.4s ease;
+  }
+
+  .hour-node:nth-child(odd) { flex-direction: row; }
+  .hour-node:nth-child(even) { flex-direction: row-reverse; }
+
+  .hour-node:hover { transform: scale(1.02); }
+
+  /* The spore cap / fruiting body */
+  .spore-cap {
+    flex-shrink: 0;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  .hour-node:nth-child(1) .spore-cap {
+    background: radial-gradient(circle at 35% 35%, rgba(200,247,122,0.25), rgba(200,247,122,0.05));
+    border: 1px solid rgba(200,247,122,0.3);
+    box-shadow: 0 0 20px rgba(200,247,122,0.15), inset 0 0 30px rgba(200,247,122,0.05);
+    animation-delay: 0s;
+  }
+  .hour-node:nth-child(2) .spore-cap {
+    background: radial-gradient(circle at 35% 35%, rgba(122,255,200,0.25), rgba(122,255,200,0.05));
+    border: 1px solid rgba(122,255,200,0.3);
+    box-shadow: 0 0 20px rgba(122,255,200,0.15), inset 0 0 30px rgba(122,255,200,0.05);
+    animation-delay: -1s;
+  }
+  .hour-node:nth-child(3) .spore-cap {
+    background: radial-gradient(circle at 35% 35%, rgba(168,122,255,0.25), rgba(168,122,255,0.05));
+    border: 1px solid rgba(168,122,255,0.3);
+    box-shadow: 0 0 20px rgba(168,122,255,0.15), inset 0 0 30px rgba(168,122,255,0.05);
+    animation-delay: -2s;
+  }
+  .hour-node:nth-child(4) .spore-cap {
+    background: radial-gradient(circle at 35% 35%, rgba(255,202,122,0.25), rgba(255,202,122,0.05));
+    border: 1px solid rgba(255,202,122,0.3);
+    box-shadow: 0 0 20px rgba(255,202,122,0.15), inset 0 0 30px rgba(255,202,122,0.05);
+    animation-delay: -3s;
+  }
+  .hour-node:nth-child(5) .spore-cap {
+    background: radial-gradient(circle at 35% 35%, rgba(255,122,178,0.25), rgba(255,122,178,0.05));
+    border: 1px solid rgba(255,122,178,0.3);
+    box-shadow: 0 0 20px rgba(255,122,178,0.15), inset 0 0 30px rgba(255,122,178,0.05);
+    animation-delay: -4s;
+  }
+  .hour-node:nth-child(6) .spore-cap {
+    background: radial-gradient(circle at 35% 35%, rgba(122,200,255,0.25), rgba(122,200,255,0.05));
+    border: 1px solid rgba(122,200,255,0.3);
+    box-shadow: 0 0 20px rgba(122,200,255,0.15), inset 0 0 30px rgba(122,200,255,0.05);
+    animation-delay: -5s;
+  }
+
+  /* Tiny rhizomorph tendrils on spore cap */
+  .spore-cap::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px dashed currentColor;
+    opacity: 0.2;
+    animation: rotate-slow 20s linear infinite;
+  }
+  .spore-cap::after {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    border: 1px dotted currentColor;
+    opacity: 0.1;
+    animation: rotate-slow 35s linear infinite reverse;
+  }
+
+  .temp-value {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    line-height: 1;
+    color: inherit;
+    text-shadow: 0 0 15px currentColor;
+  }
+
+  .temp-unit {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+
+  /* Mycelium data card */
+  .data-card {
+    flex: 1;
+    background: rgba(26, 18, 8, 0.6);
+    border: 1px solid rgba(200,247,122,0.08);
+    border-radius: 2px;
+    padding: 1rem 1.4rem;
+    backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,247,122,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hour-label {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    color: #7a6e5a;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .precip-bar-wrap {
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-top: 0.5rem;
+  }
+
+  .precip-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5a5040;
+    white-space: nowrap;
+  }
+
+  .precip-bar {
+    flex: 1; height: 3px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .precip-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(to right, rgba(122,200,255,0.6), rgba(122,255,200,0.8));
+    box-shadow: 0 0 6px rgba(122,200,255,0.5);
+    transition: width 1s ease;
+  }
+
+  .precip-value {
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    color: #5a8070;
+    white-space: nowrap;
+  }
+
+  .condition-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #8a7d60;
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  /* Thread connector dot at center */
+  .center-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--spore-1);
+    flex-shrink: 0;
+    box-shadow: 0 0 12px var(--spore-1);
+    animation: pulse-node 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hour-node:nth-child(2) .center-dot { background: var(--spore-2); box-shadow: 0 0 12px var(--spore-2); }
+  .hour-node:nth-child(3) .center-dot { background: var(--spore-3); box-shadow: 0 0 12px var(--spore-3); }
+  .hour-node:nth-child(4) .center-dot { background: var(--spore-4); box-shadow: 0 0 12px var(--spore-4); }
+  .hour-node:nth-child(5) .center-dot { background: #ff7ab2; box-shadow: 0 0 12px #ff7ab2; }
+  .hour-node:nth-child(6) .center-dot { background: #7ac8ff; box-shadow: 0 0 12px #7ac8ff; }
+
+  /* Floating spore particles */
+  .spores {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; overflow: hidden;
+  }
+
+  .spore-particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    border-radius: 50%;
+    background: var(--spore-1);
+    opacity: 0;
+    animation: float-spore linear infinite;
+  }
+
+  /* Footer */
+  .footer-hyphae {
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #3d3527;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(200,247,122,0.06);
+    width: 100%;
+  }
+
+  /* Keyframes */
+  @keyframes pulse-node {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse-thread {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes float-spore {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-20px) translateX(var(--drift)); opacity: 0; }
+  }
+
+  /* Color inheritance for spore cap children */
+  .hour-node:nth-child(1) .spore-cap,
+  .hour-node:nth-child(1) .spore-cap .temp-value { color: var(--spore-1); }
+  .hour-node:nth-child(2) .spore-cap,
+  .hour-node:nth-child(2) .spore-cap .temp-value { color: var(--spore-2); }
+  .hour-node:nth-child(3) .spore-cap,
+  .hour-node:nth-child(3) .spore-cap .temp-value { color: var(--spore-3); }
+  .hour-node:nth-child(4) .spore-cap,
+  .hour-node:nth-child(4) .spore-cap .temp-value { color: var(--spore-4); }
+  .hour-node:nth-child(5) .spore-cap,
+  .hour-node:nth-child(5) .spore-cap .temp-value { color: #ff7ab2; }
+  .hour-node:nth-child(6) .spore-cap,
+  .hour-node:nth-child(6) .spore-cap .temp-value { color: #7ac8ff; }
+
+  @media (max-width: 600px) {
+    .hour-node { flex-direction: column !important; align-items: flex-start; }
+    .spore-cap { width: 80px; height: 80px; }
+    .network::before { left: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating spore particles -->
+<div class="spores" id="spores"></div>
+
+<!-- Mycelium SVG background -->
+<svg class="mycel-bg" viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- Primary hyphae threads -->
+  <path d="M 100 700 Q 200 500 450 350 Q 600 250 700 100" stroke="#c8f77a" stroke-width="0.8" fill="none" opacity="0.4" filter="url(#glow)"/>
+  <path d="M 0 400 Q 150 380 300 300 Q 450 220 550 50" stroke="#7affc8" stroke-width="0.6" fill="none" opacity="0.3" filter="url(#glow)"/>
+  <path d="M 900 600 Q 750 500 600 400 Q 450 300 200 200" stroke="#a87aff" stroke-width="0.5" fill="none" opacity="0.25" filter="url(#glow)"/>
+  <path d="M 50 100 Q 250 200 400 350 Q 500 450 800 550" stroke="#ffca7a" stroke-width="0.4" fill="none" opacity="0.2" filter="url(#glow)"/>
+  <!-- Secondary branching -->
+  <path d="M 450 350 Q 380 420 300 500 Q 250 550 150 600" stroke="#c8f77a" stroke-width="0.4" fill="none" opacity="0.25"/>
+  <path d="M 450 350 Q 520 320 600 250 Q 680 200 800 180" stroke="#7affc8" stroke-width="0.4" fill="none" opacity="0.2"/>
+  <path d="M 300 300 Q 320 380 350 450 Q 380 520 400 620" stroke="#a87aff" stroke-width="0.3" fill="none" opacity="0.2"/>
+  <path d="M 600 400 Q 650 350 720 320 Q 800 290 870 260" stroke="#ffca7a" stroke-width="0.3" fill="none" opacity="0.15"/>
+  <!-- Tertiary fine filaments -->
+  <path d="M 200 200 Q 220 280 210 350 Q 200 400 180 470" stroke="#c8f77a" stroke-width="0.2" fill="none" opacity="0.15"/>
+  <path d="M 700 100 Q 680 180 720 240 Q 750 300 740 380" stroke="#7affc8" stroke-width="0.2" fill="none" opacity="0.15"/>
+  <!-- Node intersection blobs -->
+  <circle cx="450" cy="350" r="4" fill="#c8f77a" opacity="0.4" filter="url(#glow)"/>
+  <circle cx="300" cy="300" r="3" fill="#7affc8" opacity="0.35" filter="url(#glow)"/>
+  <circle cx="600" cy="400" r="3" fill="#a87aff" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="200" cy="200" r="2.5" fill="#ffca7a" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="700" cy="100" r="2" fill="#ff7ab2" opacity="0.25" filter="url(#glow)"/>
+</svg>
+
+<div class="container">
+
+  <header class="header-node">
+    <h1>Mycelium Weather Node<br><em>Midvale, Utah · 84047</em></h1>
+    <p class="subtitle">September 29, 2026 &nbsp;·&nbsp; 5 am – 10 am &nbsp;·&nbsp; Fruiting Body Network v∞</p>
+  </header>
+
+  <section class="network" role="list" aria-label="Hourly weather">
+
+    <!-- 5 AM -->
+    <article class="hour-node" role="listitem">
+      <div class="spore-cap" aria-hidden="true">
+        <div class="temp-value">50°</div>
+        <div class="temp-unit">Fahrenheit</div>
+      </div>
+      <div class="center-dot"></div>
+      <div class="data-card">
+        <div class="hour-label">05:00 · Dawn Spore</div>
+        <div class="precip-bar-wrap">
+          <span class="precip-label">Precip</span>
+          <div class="precip-bar"><div class="precip-fill" style="width:0%"></div></div>
+          <span class="precip-value">0.00″</span>
+        </div>
+        <p class="condition-text">The network sleeps. Hyphae cool in the pre-dawn stillness, exchanging mineral whispers through the mycelium mat.</p>
+      </div>
+    </article>
+
+    <!-- 6 AM -->
+    <article class="hour-node" role="listitem">
+      <div class="spore-cap" aria-hidden="true">
+        <div class="temp-value">49°</div>
+        <div class="temp-unit">Fahrenheit</div>
+      </div>
+      <div class="center-dot"></div>
+      <div class="data-card">
+        <div class="hour-label">06:00 · Frost Hyphae</div>
+        <div class="precip-bar-wrap">
+          <span class="precip-label">Precip</span>
+          <div class="precip-bar"><div class="precip-fill" style="width:0%"></div></div>
+          <span class="precip-value">0.00″</span>
+        </div>
+        <p class="condition-text">Coldest node of the morning network. Spore capsules remain sealed. Atmospheric moisture: trace only.</p>
+      </div>
+    </article>
+
+    <!-- 7 AM -->
+    <article class="hour-node" role="listitem">
+      <div class="spore-cap" aria-hidden="true">
+        <div class="temp-value">53°</div>
+        <div class="temp-unit">Fahrenheit</div>
+      </div>
+      <div class="center-dot"></div>
+      <div class="data-card">
+        <div class="hour-label">07:00 · Signal Bloom</div>
+        <div class="precip-bar-wrap">
+          <span class="precip-label">Precip</span>
+          <div class="precip-bar"><div class="precip-fill" style="width:0%"></div></div>
+          <span class="precip-value">0.00″</span>
+        </div>
+        <p class="condition-text">First light triggers phototropic signaling. The network awakens node by node, routing warmth upward through rhizomorphs.</p>
+      </div>
+    </article>
+
+    <!-- 8 AM -->
+    <article class="hour-node" role="listitem">
+      <div class="spore-cap" aria-hidden="true">
+        <div class="temp-value">57°</div>
+        <div class="temp-unit">Fahrenheit</div>
+      </div>
+      <div class="center-dot"></div>
+      <div class="data-card">
+        <div class="hour-label">08:00 · Nutrient Flush</div>
+        <div class="precip-bar-wrap">
+          <span class="precip-label">Precip</span>
+          <div class="precip-bar"><div class="precip-fill" style="width:3%"></div></div>
+          <span class="precip-value">0.00″</span>
+        </div>
+        <p class="condition-text">Thermal gradient accelerates cytoplasmic streaming. Dry air maintains spore viability across the network substrate.</p>
+      </div>
+    </article>
+
+    <!-- 9 AM -->
+    <article class="hour-node" role="listitem">
+      <div class="spore-cap" aria-hidden="true">
+        <div class="temp-value">61°</div>
+        <div class="temp-unit">Fahrenheit</div>
+      </div>
+      <div class="center-dot"></div>
+      <div class="data-card">
+        <div class="hour-label">09:00 · Fruiting Surge</div>
+        <div class="precip-bar-wrap">
+          <span class="precip-label">Precip</span>
+          <div class="precip-bar"><div class="precip-fill" style="width:2%"></div></div>
+          <span class="precip-value">0.00″</span>
+        </div>
+        <p class="condition-text">Peak morning metabolic activity. Fruiting bodies expand as radiant energy floods the network. Conditions: ideal for sporulation.</p>
+      </div>
+    </article>
+
+    <!-- 10 AM -->
+    <article class="hour-node" role="listitem">
+      <div class="spore-cap" aria-hidden="true">
+        <div class="temp-value">65°</div>
+        <div class="temp-unit">Fahrenheit</div>
+      </div>
+      <div class="center-dot"></div>
+      <div class="data-card">
+        <div class="hour-label">10:00 · Dispersal Node</div>
+        <div class="precip-bar-wrap">
+          <span class="precip-label">Precip</span>
+          <div class="precip-bar"><div class="precip-fill" style="width:0%"></div></div>
+          <span class="precip-value">0.00″</span>
+        </div>
+        <p class="condition-text">The network reaches thermal equilibrium. Warm, dry winds carry spore clouds east toward the Wasatch foothills. Humidity: low.</p>
+      </div>
+    </article>
+
+  </section>
+
+  <footer class="footer-hyphae">
+    <span>Mycelium Network Interface &nbsp;·&nbsp; Midvale, UT 84047 &nbsp;·&nbsp; 2026-09-29</span><br>
+    <span style="color:#2a2218; margin-top:0.3rem; display:block;">All nodes nominal · No precipitation detected · Substrates dry</span>
+  </footer>
+
+</div>
+
+<script>
+  // Generate floating spore particles
+  const sporesContainer = document.getElementById('spores');
+  const colors = ['#c8f77a','#7affc8','#a87aff','#ffca7a','#ff7ab2','#7ac8ff'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'spore-particle';
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const left = Math.random() * 100;
+    const drift = (Math.random() - 0.5) * 120;
+    const dur = 8 + Math.random() * 16;
+    const delay = -Math.random() * dur;
+    p.style.cssText = `
+      left: ${left}%; bottom: 0;
+      background: ${color};
+      box-shadow: 0 0 4px ${color};
+      --drift: ${drift}px;
+      animation-duration: ${dur}s;
+      animation-delay: ${delay}s;
+      width: ${1 + Math.random() * 2}px;
+      height: ${1 + Math.random() * 2}px;
+      opacity: 0;
+    `;
+    sporesContainer.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
