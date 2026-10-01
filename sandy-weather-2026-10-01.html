@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split-Flap Departures — Midvale, UT · Oct 1, 2026</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#0c0d10; color:#f2c94c; font-family:'Courier New',monospace; padding:16px; min-height:100vh; }
+  .board { max-width:860px; margin:0 auto; background:#15171c; border:6px solid #2a2d35; border-radius:10px; padding:16px; box-shadow:0 18px 50px #000; }
+  h1 { font-size:1.2rem; letter-spacing:.3em; text-transform:uppercase; color:#fff; display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+  .sub { font-size:.8rem; color:#8b93a1; margin:4px 0 14px; letter-spacing:.1em; }
+  .head, .row { display:grid; grid-template-columns:90px 1fr 110px 110px; gap:8px; align-items:center; }
+  .head { font-size:.7rem; color:#8b93a1; letter-spacing:.2em; padding:0 4px 6px; border-bottom:2px solid #2a2d35; }
+  .row { padding:8px 4px; border-bottom:1px solid #22252c; }
+  .word { display:flex; gap:3px; flex-wrap:wrap; }
+  .flap { width:1.6em; height:2.2em; line-height:2.2em; text-align:center; background:linear-gradient(#262a32 49%,#0a0b0d 49%,#0a0b0d 51%,#1d2027 51%);
+    border-radius:3px; font-weight:700; font-size:1.1rem; color:#f2c94c; display:inline-block; }
+  .flap.w { color:#fff; }
+  .flap.spin { animation:flip .12s linear infinite; }
+  @keyframes flip { 0%{transform:rotateX(0)} 50%{transform:rotateX(90deg)} 100%{transform:rotateX(0)} }
+  .status { font-size:.85rem; text-transform:uppercase; letter-spacing:.1em; }
+  .ok { color:#6fe39a; } .wet { color:#6cb8ff; }
+  button { margin-top:14px; background:#2a2d35; color:#fff; border:1px solid #4a4f5c; padding:8px 14px; font:inherit; cursor:pointer; border-radius:4px; }
+  .note { margin-top:12px; font-size:.7rem; color:#6d7482; }
+  @media (max-width:620px){ .head,.row{grid-template-columns:70px 1fr 70px} .head span:last-child,.row .status{display:none} .flap{font-size:.85rem} }
+</style>
+</head>
+<body>
+<div class="board">
+  <h1><span>Departures</span><span>Gate 84047</span></h1>
+  <p class="sub">MIDVALE, UT · THURSDAY, OCT 1, 2026 · 5 AM – 10 AM</p>
+  <div class="head"><span>TIME</span><span>FLIGHT TEMP</span><span>PRECIP</span><span>STATUS</span></div>
+  <div id="rows"></div>
+  <button id="re">↻ Refresh board</button>
+  <p class="note">Values are estimates based on partial early-October forecast data (about 30°F pre-dawn warming to the mid-40s by afternoon, no precipitation expected); an hourly feed was unavailable when this page was generated.</p>
+</div>
+<script>
+const hours = [["5 AM",30,0],["6 AM",30,0],["7 AM",31,0],["8 AM",34,0],["9 AM",37,0],["10 AM",40,0]];
+const rows = document.getElementById('rows');
+function word(t,cls){ return t.split('').map(c=>`<span class="flap ${cls||''}" data-c="${c}">${c===' '?'&nbsp;':c}</span>`).join(''); }
+function render(){
+  rows.innerHTML = hours.map(([t,f,p])=>`<div class="row">
+    <div class="word">${word(t.replace(' ',''),'w')}</div>
+    <div class="word">${word(f+'°F')}</div>
+    <div class="word">${word(p.toFixed(2)+'"')}</div>
+    <div class="status ${p?'wet':'ok'}">${p?'Delayed · wet':'On time · dry'}</div></div>`).join('');
+  const chars=[...document.querySelectorAll('.flap')];
+  const set='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789°.\"';
+  chars.forEach((el,i)=>{ const fin=el.dataset.c; el.classList.add('spin'); let n=0;
+    const id=setInterval(()=>{ el.textContent=set[Math.floor(Math.random()*set.length)];
+      if(++n>6+i%12){ clearInterval(id); el.textContent=fin; el.classList.remove('spin'); } },60); });
+}
+document.getElementById('re').onclick=render; render();
+</script>
+</body>
+</html>
