@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermal Receipt — Midvale, UT · Oct 5, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;padding:32px 12px 80px;background:#2b2d31;background-image:repeating-linear-gradient(90deg,#2b2d31 0 6px,#303236 6px 7px);font-family:"Courier New",Courier,monospace;color:#222;display:flex;justify-content:center}
+.slot{position:fixed;top:0;left:0;right:0;height:14px;background:#111;box-shadow:0 4px 12px #000}
+.wrap{width:100%;max-width:360px;margin-top:10px}
+.receipt{background:#fbfaf4;padding:26px 22px 34px;box-shadow:0 10px 30px #0008;position:relative;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),97% 100%,94% calc(100% - 10px),91% 100%,88% calc(100% - 10px),85% 100%,82% calc(100% - 10px),79% 100%,76% calc(100% - 10px),73% 100%,70% calc(100% - 10px),67% 100%,64% calc(100% - 10px),61% 100%,58% calc(100% - 10px),55% 100%,52% calc(100% - 10px),49% 100%,46% calc(100% - 10px),43% 100%,40% calc(100% - 10px),37% 100%,34% calc(100% - 10px),31% 100%,28% calc(100% - 10px),25% 100%,22% calc(100% - 10px),19% 100%,16% calc(100% - 10px),13% 100%,10% calc(100% - 10px),7% 100%,4% calc(100% - 10px),1% 100%,0 calc(100% - 10px));
+  animation:print 2.4s steps(24) both;overflow:hidden}
+@keyframes print{from{max-height:0}to{max-height:1400px}}
+.c{text-align:center}
+h1{font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase}
+.sm{font-size:.72rem;color:#555}
+.dash{border:0;border-top:2px dashed #999;margin:14px 0}
+.row{display:flex;justify-content:space-between;gap:8px;font-size:.92rem;padding:3px 0}
+.row .dots{flex:1;border-bottom:2px dotted #aaa;transform:translateY(-5px)}
+.item{margin:10px 0}
+.item .name{font-weight:700;display:flex;justify-content:space-between}
+.item .sub{font-size:.75rem;color:#666;padding-left:12px}
+.total{font-size:1.05rem;font-weight:700}
+.bar{font-size:.8rem;letter-spacing:-.5px;overflow:hidden;white-space:nowrap}
+.barcode{height:46px;margin:14px auto 4px;background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px,#111 4px 5px,transparent 5px 8px,#111 8px 11px,transparent 11px 12px);width:85%}
+.note{font-size:.7rem;color:#666;text-align:center;margin-top:10px;line-height:1.4}
+</style></head><body>
+<div class="slot"></div>
+<div class="wrap"><div class="receipt">
+  <div class="c">
+    <h1>★ Sky &amp; Sundry ★</h1>
+    <div class="sm">Weather Counter #84047</div>
+    <div class="sm">Midvale, Utah</div>
+    <div class="sm">Mon Oct 05 2026 · Order #1005</div>
+  </div>
+  <hr class="dash">
+  <div class="row"><span>CASHIER: Morning Desk</span><span>REG 01</span></div>
+  <div class="row"><span>WINDOW: 5AM–10AM</span><span>QTY 6</span></div>
+  <hr class="dash">
+
+  <div class="item"><div class="name"><span>05:00 AM</span><span>51°F</span></div><div class="sub">precip chance 0% · 0.00 in</div><div class="bar">▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯</div></div>
+  <div class="item"><div class="name"><span>06:00 AM</span><span>50°F</span></div><div class="sub">precip chance 0% · 0.00 in</div><div class="bar">▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯</div></div>
+  <div class="item"><div class="name"><span>07:00 AM</span><span>52°F</span></div><div class="sub">precip chance 0% · 0.00 in</div><div class="bar">▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯</div></div>
+  <div class="item"><div class="name"><span>08:00 AM</span><span>57°F</span></div><div class="sub">precip chance 0% · 0.00 in</div><div class="bar">▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯</div></div>
+  <div class="item"><div class="name"><span>09:00 AM</span><span>62°F</span></div><div class="sub">precip chance 0% · 0.00 in</div><div class="bar">▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯</div></div>
+  <div class="item"><div class="name"><span>10:00 AM</span><span>66°F</span></div><div class="sub">precip chance 0% · 0.00 in</div><div class="bar">▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯</div></div>
+
+  <hr class="dash">
+  <div class="row"><span>SUBTOTAL WARMTH</span><span class="dots"></span><span>+16°F</span></div>
+  <div class="row"><span>RAIN CHARGE</span><span class="dots"></span><span>$0.00</span></div>
+  <div class="row"><span>SKY TAX</span><span class="dots"></span><span>CLEAR</span></div>
+  <hr class="dash">
+  <div class="row total"><span>TOTAL PRECIP</span><span>0.00 in</span></div>
+  <hr class="dash">
+  <div class="c sm">CARD: ****-5-10<br>APPROVED · NO UMBRELLA REQUIRED</div>
+  <div class="barcode"></div>
+  <div class="c sm">8 4 0 4 7 1 0 0 5 2 0 2 6</div>
+  <div class="note">THANK YOU FOR CHECKING THE FORECAST!<br>NO REFUNDS ON WEATHER.<br><br>Values are estimates — live forecast data was unreachable when this receipt was printed.</div>
+</div></div>
+</body></html>
