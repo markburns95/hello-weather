@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pocket Handset LCD — Midvale, UT · Oct 6, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 12px;background:#1d2a2e;font-family:"Courier New",monospace}
+.phone{width:100%;max-width:340px;background:linear-gradient(160deg,#3b5a8c,#27406b);border-radius:48px 48px 64px 64px;padding:28px 24px 30px;box-shadow:0 20px 40px #000a,inset 0 2px 4px #fff3}
+.brand{text-align:center;color:#cfe0ff;letter-spacing:6px;font-size:13px;margin-bottom:12px}
+.bezel{background:#0f1a2b;border-radius:14px 14px 40px 40px;padding:14px}
+.lcd{background:#a9c28a;color:#1f2b17;padding:10px 12px;min-height:250px;box-shadow:inset 0 0 12px #4a5e3366;text-shadow:1px 1px 0 #8fa872}
+.bar{display:flex;justify-content:space-between;font-size:12px;border-bottom:2px solid #1f2b17;padding-bottom:4px;margin-bottom:8px}
+h1{font-size:15px;margin-bottom:8px;letter-spacing:1px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:4px 6px;font-size:16px;font-weight:bold}
+.row.sel{background:#1f2b17;color:#a9c28a;text-shadow:none}
+.row small{font-size:11px;font-weight:normal}
+.foot{margin-top:10px;font-size:10px;border-top:1px solid #1f2b17;padding-top:4px;line-height:1.3}
+.soft{display:flex;justify-content:space-between;margin-top:14px}
+.soft button{width:96px;height:32px;border:0;border-radius:16px;background:#2a3f66;color:#cfe0ff;font:inherit;font-size:12px;box-shadow:0 3px 0 #16253f;cursor:pointer}
+.soft button:active{transform:translateY(2px);box-shadow:0 1px 0 #16253f}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.keys span{background:#e8eefc;color:#27406b;text-align:center;border-radius:18px;padding:7px 0;font-size:14px;font-weight:bold;box-shadow:0 2px 0 #9fb0d4}
+</style></head><body>
+<div class="phone">
+ <div class="brand">NOKIA-ISH</div>
+ <div class="bezel"><div class="lcd">
+  <div class="bar"><span>▂▄▆█ MIDVALE</span><span id="clock">06:00</span></div>
+  <h1>MENU 4-2: MORNING</h1>
+  <div id="list"></div>
+  <div class="foot">Oct 6, 2026 · ZIP 84047<br>Values are estimates — live forecast data was unreachable.</div>
+ </div></div>
+ <div class="soft"><button id="up">▲ PREV</button><button id="down">NEXT ▼</button></div>
+ <div class="keys"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+</div>
+<script>
+const d=[["5:00 AM",46,0],["6:00 AM",45,0],["7:00 AM",45,0],["8:00 AM",49,0],["9:00 AM",54,0],["10:00 AM",59,0]];
+let i=0;
+function draw(){
+ document.getElementById('list').innerHTML=d.map((r,k)=>`<div class="row${k===i?' sel':''}"><span>${k+1}. ${r[0]}</span><span>${r[1]}°F <small>${r[2].toFixed(2)}in</small></span></div>`).join('');
+ document.getElementById('clock').textContent=d[i][0].replace(/ (AM|PM)/,'').padStart(5,'0');
+}
+document.getElementById('up').onclick=()=>{i=(i+d.length-1)%d.length;draw()};
+document.getElementById('down').onclick=()=>{i=(i+1)%d.length;draw()};
+draw();
+</script></body></html>
