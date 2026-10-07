@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nixie Tube Console — Midvale, UT · Oct 7, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;padding:24px 14px 60px;background:radial-gradient(circle at 50% 0,#3a2b20,#120d09 70%);font-family:"Courier New",monospace;color:#c9a679}
+h1{text-align:center;letter-spacing:.3em;font-size:1.1rem;color:#e8c89a;text-transform:uppercase}
+.sub{text-align:center;font-size:.75rem;letter-spacing:.2em;margin:6px 0 22px;color:#8a6d4b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;max-width:760px;margin:0 auto}
+.panel{background:linear-gradient(#2a2118,#1b1510);border:2px solid #5b4630;border-radius:8px;padding:14px 10px;text-align:center;box-shadow:inset 0 0 20px #000,0 4px 14px #000a}
+.lab{font-size:.75rem;letter-spacing:.2em;color:#b8935f}.dim{color:#7a6446;margin-top:8px}
+.tubes{display:flex;justify-content:center;align-items:flex-end;gap:6px;margin:10px 0}
+.tube{width:44px;height:70px;border-radius:22px 22px 8px 8px;background:radial-gradient(#1c0e05,#050200);border:2px solid #6b5a48;display:flex;align-items:center;justify-content:center;font-size:2.6rem;color:#ff8a2a;text-shadow:0 0 6px #ff6a00,0 0 18px #ff4500;animation:flick 3s infinite}
+.tube:nth-child(2){animation-delay:.7s}
+.small .tube{width:30px;height:46px;font-size:1.7rem;border-radius:15px 15px 6px 6px}
+.unit{font-size:.75rem;color:#ff9a4a;text-shadow:0 0 6px #ff6a00;align-self:center;margin-left:4px}
+@keyframes flick{0%,92%,100%{opacity:1}94%{opacity:.75}96%{opacity:1}98%{opacity:.85}}
+.note{max-width:560px;margin:26px auto 0;text-align:center;font-size:.7rem;color:#7a6446;line-height:1.5}
+</style></head><body>
+<h1>Nixie Weather Console</h1>
+<div class="sub">MIDVALE, UTAH · 84047 · WED OCT 07 2026 · 05:00–10:00</div>
+<div class="grid">
+<div class="panel"><div class="lab">05:00 AM</div>
+<div class="tubes"><span class="tube">4</span><span class="tube">7</span><span class="unit">°F</span></div>
+<div class="tubes small"><span class="tube">2</span><span class="tube">0</span><span class="unit">% PRECIP</span></div>
+<div class="lab dim">0.00 IN</div></div>
+<div class="panel"><div class="lab">06:00 AM</div>
+<div class="tubes"><span class="tube">4</span><span class="tube">6</span><span class="unit">°F</span></div>
+<div class="tubes small"><span class="tube">2</span><span class="tube">0</span><span class="unit">% PRECIP</span></div>
+<div class="lab dim">0.00 IN</div></div>
+<div class="panel"><div class="lab">07:00 AM</div>
+<div class="tubes"><span class="tube">4</span><span class="tube">7</span><span class="unit">°F</span></div>
+<div class="tubes small"><span class="tube">1</span><span class="tube">5</span><span class="unit">% PRECIP</span></div>
+<div class="lab dim">0.00 IN</div></div>
+<div class="panel"><div class="lab">08:00 AM</div>
+<div class="tubes"><span class="tube">5</span><span class="tube">2</span><span class="unit">°F</span></div>
+<div class="tubes small"><span class="tube">1</span><span class="tube">0</span><span class="unit">% PRECIP</span></div>
+<div class="lab dim">0.00 IN</div></div>
+<div class="panel"><div class="lab">09:00 AM</div>
+<div class="tubes"><span class="tube">5</span><span class="tube">7</span><span class="unit">°F</span></div>
+<div class="tubes small"><span class="tube">1</span><span class="tube">0</span><span class="unit">% PRECIP</span></div>
+<div class="lab dim">0.00 IN</div></div>
+<div class="panel"><div class="lab">10:00 AM</div>
+<div class="tubes"><span class="tube">6</span><span class="tube">1</span><span class="unit">°F</span></div>
+<div class="tubes small"><span class="tube">0</span><span class="tube">5</span><span class="unit">% PRECIP</span></div>
+<div class="lab dim">0.00 IN</div></div>
+</div>
+<div class="note">Values are estimates — live forecast data was unreachable when this page was generated.</div>
+</body></html>
