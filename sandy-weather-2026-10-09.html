@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split-Flap Departures — Midvale, UT · Oct 9, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#0c0c0e;color:#f2c230;font-family:"Courier New",monospace;padding:20px 12px 50px}
+.board{max-width:760px;margin:0 auto;background:#17171a;border:6px solid #2a2a2f;border-radius:6px;padding:16px;box-shadow:0 10px 40px #000}
+h1{font-size:1.05rem;letter-spacing:.25em;text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:2px solid #f2c230;padding-bottom:10px;margin-bottom:12px}
+.head,.row{display:grid;grid-template-columns:1.1fr 1.2fr 1.2fr 1fr;gap:6px;align-items:center}
+.head{font-size:.7rem;letter-spacing:.2em;color:#8a8a90;margin-bottom:6px}
+.row{margin-bottom:6px}
+.cell{display:flex;gap:2px;flex-wrap:nowrap}
+.f{position:relative;width:1.5em;height:2.1em;background:#222226;color:#f2c230;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.15rem;border-radius:3px;overflow:hidden;animation:flip .5s ease-out both;animation-delay:calc(var(--i)*.06s)}
+.f::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:#0c0c0e}
+.sp{background:transparent}.sp::after{display:none}
+.row:nth-child(odd) .f{background:#26262b}
+@keyframes flip{0%{transform:rotateX(90deg);opacity:0}60%{transform:rotateX(-15deg);opacity:1}100%{transform:rotateX(0)}}
+.status{color:#7ad77a}.wet{color:#6bb7ff}
+p{margin-top:14px;font-size:.72rem;color:#8a8a90;letter-spacing:.08em;line-height:1.5}
+@media(max-width:520px){.f{font-size:.8rem;width:1.35em}.head{font-size:.55rem}}
+</style></head><body>
+<div class="board">
+<h1><span>Departures · MVL</span><span>Fri 09 Oct 2026</span></h1>
+<div class="head"><span>TIME</span><span>TEMP</span><span>PRECIP</span><span>STATUS</span></div>
+<div id="rows"></div>
+<p>GATE: MIDVALE UT 84047 · FLIGHT PATH 5AM–10AM · VALUES ARE SEASONAL ESTIMATES (LIVE FEED UNAVAILABLE)</p>
+</div>
+<script>
+var d=[["05:00","41°F","5%","DELAYED","CHILL"],["06:00","40°F","5%","ON TIME","CHILL"],["07:00","41°F","5%","ON TIME","CHILL"],["08:00","46°F","5%","ON TIME","BOARDING"],["09:00","52°F","5%","ON TIME","BOARDING"],["10:00","57°F","5%","ON TIME","BOARDING"]];
+var n=0;
+function cell(s,cls){var h='<div class="cell '+(cls||'')+'">';s.split('').forEach(function(c){h+='<span class="f'+(c==' '?' sp':'')+'" style="--i:'+(n++)+'">'+c+'</span>'});return h+'</div>'}
+var out='';
+d.forEach(function(r){out+='<div class="row">'+cell(r[0])+cell(r[1])+cell(r[2]+" 0.00IN",'wet')+cell(r[3]==="DELAYED"?"COLD":"CLEAR",'status')+'</div>'});
+document.getElementById('rows').innerHTML=out;
+</script></body></html>
