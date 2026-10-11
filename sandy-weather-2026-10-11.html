@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevator Panel — Midvale, UT · Oct 11, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:radial-gradient(#3a3631,#14120f);font-family:"Trebuchet MS",Verdana,sans-serif;color:#e9dcc0;display:flex;justify-content:center;padding:24px 12px 50px}
+.panel{width:100%;max-width:440px;background:linear-gradient(135deg,#c9a85c,#8c6d2c 45%,#b8963f);border:4px solid #5b4416;border-radius:14px;padding:18px;box-shadow:0 10px 30px #000a,inset 0 0 18px #fff4}
+.top{background:#120d06;border:3px solid #4a3711;border-radius:8px;padding:12px;text-align:center}
+.top small{display:block;letter-spacing:.3em;font-size:.65rem;color:#c9a85c;text-transform:uppercase}
+#floor{font:700 3.2rem "Courier New",monospace;color:#ff5a2a;text-shadow:0 0 12px #ff5a2a;line-height:1.1}
+#readout{font:700 1.15rem "Courier New",monospace;color:#ffb347;text-shadow:0 0 8px #ff8a1a}
+h1{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;margin:14px 0 12px;color:#2c1f06}
+.btns{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+button{cursor:pointer;display:flex;align-items:center;gap:12px;background:linear-gradient(#e8e2d2,#b9b19c);border:3px solid #5b4416;border-radius:50px;padding:10px 14px;color:#2c1f06;text-align:left;font:inherit;box-shadow:0 3px 0 #4a3711}
+button:active,button.on{transform:translateY(2px);box-shadow:0 1px 0 #4a3711}
+button .n{flex:none;width:44px;height:44px;border-radius:50%;background:#1c150a;color:#e9dcc0;display:grid;place-items:center;font:700 1.3rem "Courier New",monospace;border:2px solid #7a5c1c}
+button.on .n{background:#ffb347;color:#2c1f06;box-shadow:0 0 14px #ffb347}
+button b{display:block;font-size:1.05rem}button span{font-size:.7rem}
+.foot{margin-top:14px;font-size:.68rem;text-align:center;color:#2c1f06}
+</style></head><body>
+<main class="panel">
+<div class="top"><small>Midvale · 84047 · Sun Oct 11</small><div id="floor">5</div><div id="readout">41°F · 0.00 in</div></div>
+<h1>Select your hour</h1>
+<div class="btns" id="btns"></div>
+<p class="foot">Hours 5 AM – 10 AM shown as floors 5–10. Figures are seasonal estimates; the live weather feed was unreachable when this page was built.</p>
+</main>
+<script>
+const H=[[5,41,0],[6,40,0],[7,40,0],[8,43,0],[9,48,0],[10,53,0]];
+const b=document.getElementById('btns');
+function pick(i){
+  const [h,t,p]=H[i];
+  document.getElementById('floor').textContent=h;
+  document.getElementById('readout').textContent=t+'°F · '+p.toFixed(2)+' in';
+  [...b.children].forEach((e,j)=>e.classList.toggle('on',j===i));
+}
+H.forEach((r,i)=>{
+  const e=document.createElement('button');
+  e.innerHTML='<div class="n">'+r[0]+'</div><div><b>'+r[1]+'°F</b><span>'+(r[2]?r[2].toFixed(2)+' in precip':'no precipitation')+'</span></div>';
+  e.onclick=()=>pick(i);b.appendChild(e);
+});
+pick(0);
+let i=0;const t=setInterval(()=>{i++;if(i>=H.length){clearInterval(t);return}pick(i)},700);
+b.addEventListener('click',()=>clearInterval(t));
+</script>
+</body></html>
