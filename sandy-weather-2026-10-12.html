@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cassette Deck — Midvale, UT · Oct 12, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#2b2a33;background-image:repeating-linear-gradient(45deg,#00000014 0 2px,transparent 2px 6px);font-family:"Helvetica Neue",Arial,sans-serif;color:#2a2018;display:flex;justify-content:center;padding:24px 12px 50px}
+.deck{width:100%;max-width:460px}
+.tape{background:#e9e0c8;border-radius:12px;border:3px solid #1d1b22;box-shadow:0 10px 0 #0006;padding:14px}
+.jcard{background:#fffaf0;border:2px solid #c8442f;padding:10px 12px;border-radius:4px}
+.jcard small{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#c8442f;font-weight:700}
+.jcard h1{font:italic 700 1.5rem Georgia,serif;margin-top:2px}
+.window{margin:12px 0;background:#15131a;border-radius:8px;padding:10px;display:flex;justify-content:space-around;align-items:center;border:3px solid #6b6470}
+.reel{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#e9e0c8 0 14px,#5a3a22 15px);position:relative;animation:spin 3s linear infinite}
+.reel:before{content:"";position:absolute;inset:22px;border:3px dotted #15131a;border-radius:50%}
+.reel.r{animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lcd{font:700 1.4rem "Courier New",monospace;color:#7dff9a;text-align:center;text-shadow:0 0 8px #7dff9a88}
+.lcd small{display:block;font-size:.6rem;color:#4fae66;letter-spacing:.2em}
+.tracks{list-style:none;background:#fffaf0;border:2px solid #c8442f;border-radius:4px}
+.tracks li{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;padding:9px 12px;border-bottom:1px dashed #c8442f55;cursor:pointer}
+.tracks li:last-child{border:0}
+.tracks li.on{background:#c8442f;color:#fffaf0}
+.n{font:700 .8rem "Courier New",monospace}
+.t b{display:block;font-size:1rem}
+.t i{font-size:.72rem;opacity:.8}
+.len{font:700 1.2rem "Courier New",monospace}
+.ctl{display:flex;gap:8px;margin-top:12px}
+.ctl button{flex:1;padding:10px;font:700 1rem inherit;background:linear-gradient(#cfc7b4,#9b937f);border:2px solid #1d1b22;border-radius:4px;cursor:pointer;box-shadow:0 3px 0 #1d1b22}
+.ctl button:active{transform:translateY(3px);box-shadow:none}
+.foot{margin-top:10px;font-size:.62rem;text-align:center;color:#6b6470}
+</style></head><body>
+<div class="deck"><div class="tape">
+<div class="jcard"><small>Side A · Morning Mix · 5–10 AM</small><h1>Midvale, UT 84047 — Oct 12, 2026</h1></div>
+<div class="window"><div class="reel"></div>
+<div class="lcd"><small id="lbl">NOW PLAYING</small><span id="rd">--</span></div>
+<div class="reel r"></div></div>
+<ul class="tracks" id="tr"></ul>
+<div class="ctl"><button id="prev">⏮</button><button id="play">⏯</button><button id="next">⏭</button></div>
+</div>
+<p class="foot">Track length = temperature · Liner notes = precipitation. Values are estimates for the morning window (live forecast feed unavailable).</p></div>
+<script>
+var D=[[5,41,0,"0%"],[6,40,0,"0%"],[7,42,0,"5%"],[8,46,0,"5%"],[9,51,0,"10%"],[10,55,0,"10%"]];
+var tr=document.getElementById("tr"),rd=document.getElementById("rd"),cur=0,pl=true;
+function f(h){return (h>12?h-12:h)+":00 AM"}
+D.forEach(function(d,i){var li=document.createElement("li");
+li.innerHTML='<span class="n">0'+(i+1)+'</span><span class="t"><b>'+f(d[0])+'</b><i>precip '+d[2].toFixed(2)+' in · chance '+d[3]+'</i></span><span class="len">'+d[1]+'°F</span>';
+li.onclick=function(){sel(i)};tr.appendChild(li)});
+function sel(i){cur=(i+D.length)%D.length;[].forEach.call(tr.children,function(l,k){l.className=k==cur?"on":""});
+rd.textContent=f(D[cur][0])+" "+D[cur][1]+"°F"}
+document.getElementById("prev").onclick=function(){sel(cur-1)};
+document.getElementById("next").onclick=function(){sel(cur+1)};
+document.getElementById("play").onclick=function(){pl=!pl;[].forEach.call(document.querySelectorAll(".reel"),function(r){r.style.animationPlayState=pl?"running":"paused"})};
+sel(0);
+</script></body></html>
