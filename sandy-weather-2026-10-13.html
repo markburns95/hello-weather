@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teletext 450 — Midvale, UT · Oct 13, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111;min-height:100vh;display:flex;justify-content:center;padding:16px 8px;font-family:"Courier New",monospace;color:#fff}
+.screen{width:100%;max-width:560px;background:#000;border:10px solid #222;border-radius:18px;padding:10px 12px 14px;box-shadow:0 0 40px #0af4;font-size:clamp(14px,3.6vw,20px);line-height:1.5;letter-spacing:.5px;text-transform:uppercase}
+.bar{display:flex;justify-content:space-between;background:#00f;padding:0 8px}
+.bar b{color:#ff0}
+.title{background:#f0f;color:#000;padding:2px 8px;margin:6px 0;font-weight:bold;font-size:1.3em;letter-spacing:3px}
+.sub{color:#0ff}
+.row{display:grid;grid-template-columns:5.5ch 5ch 1fr 5ch;gap:0 1ch;align-items:center}
+.hd{color:#ff0;border-bottom:2px solid #0f0;margin-top:8px}
+.row .t{color:#0f0}
+.row .deg{color:#fff;text-align:right}
+.blocks{color:#0ff;white-space:nowrap;overflow:hidden}
+.p{color:#f0f;text-align:right}
+.note{color:#0f0;margin-top:10px;font-size:.8em}
+.keys{display:flex;margin-top:10px;font-weight:bold;color:#000;text-align:center}
+.keys span{flex:1;padding:2px}
+.r{background:#f00;color:#fff}.g{background:#0f0}.y{background:#ff0}.c{background:#0ff}
+.blink{animation:b 1s steps(1) infinite}@keyframes b{50%{opacity:0}}
+</style></head><body>
+<div class="screen">
+<div class="bar"><span>P<b>450</b></span><span>TELEWEATHER</span><span class="blink">TUE 13 OCT</span></div>
+<div class="title">MIDVALE UT 84047</div>
+<div class="sub">MORNING OUTLOOK 5AM - 10AM</div>
+<div class="row hd"><span>TIME</span><span>TEMP</span><span>GRAPH</span><span>PRCP</span></div>
+<div id="rows"></div>
+<div class="note">&#9632; ESTIMATES FOR THE MORNING WINDOW (LIVE FORECAST FEED UNAVAILABLE). &#9632; PRCP = CHANCE OF RAIN</div>
+<div class="keys"><span class="r">WEATHER</span><span class="g">TRAVEL</span><span class="y">SKI</span><span class="c">INDEX</span></div>
+</div>
+<script>
+var d=[["5AM",41,5],["6AM",40,5],["7AM",42,5],["8AM",47,10],["9AM",52,10],["10AM",57,10]];
+document.getElementById("rows").innerHTML=d.map(function(x){
+ return '<div class="row"><span class="t">'+x[0]+'</span><span class="deg">'+x[1]+'&deg;F</span><span class="blocks">'+"&#9608;".repeat(Math.round((x[1]-30)/1.5))+'</span><span class="p">'+x[2]+'%</span></div>';
+}).join("");
+</script>
+</body></html>
