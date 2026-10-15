@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevator Panel — Midvale, UT · Oct 15, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#2b2b2e;min-height:100vh;display:flex;justify-content:center;padding:20px 12px;font-family:Helvetica,Arial,sans-serif;color:#ddd}
+main{width:100%;max-width:440px}
+input{position:absolute;opacity:0}
+.cab{background:linear-gradient(90deg,#9a9a9e,#d6d6da 30%,#b8b8bc 60%,#8c8c90);border:3px solid #555;border-radius:8px;padding:18px;color:#222;box-shadow:inset 0 0 30px #0006,0 10px 30px #000a}
+.cab h1{font-size:.8rem;letter-spacing:3px;text-align:center;margin-bottom:12px}
+.disp{background:#150500;border:4px solid #333;border-radius:4px;height:110px;margin-bottom:16px;position:relative;font-family:"Courier New",monospace;color:#ff6a1a;text-shadow:0 0 8px #f50}
+.v{display:none;padding:10px 14px}
+.fl{font-size:3.2rem;float:left;margin-right:18px;line-height:1.1}
+.tp{display:block;font-size:2.2rem}
+.pr{display:block;font-size:.85rem}
+.btns{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:200px;margin:0 auto}
+label{height:56px;border-radius:50%;background:radial-gradient(#eee,#aaa);border:3px solid #666;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:bold;cursor:pointer;box-shadow:0 3px 4px #0006}
+#f5:checked~.cab label[for=f5],#f6:checked~.cab label[for=f6],#f7:checked~.cab label[for=f7],#f8:checked~.cab label[for=f8],#f9:checked~.cab label[for=f9],#f10:checked~.cab label[for=f10]{background:radial-gradient(#fff4c0,#ffb300);box-shadow:0 0 14px #ffb300}
+#f5:checked~.cab .disp .v5{display:block}#f6:checked~.cab .disp .v6{display:block}#f7:checked~.cab .disp .v7{display:block}#f8:checked~.cab .disp .v8{display:block}#f9:checked~.cab .disp .v9{display:block}#f10:checked~.cab .disp .v10{display:block}
+.dir{margin-top:18px;background:#1c1c1e;border:2px solid #c9a54b;padding:10px;font-size:.8rem}
+.dir h2{color:#c9a54b;letter-spacing:2px;font-size:.85rem;margin-bottom:6px;text-align:center}
+table{width:100%;border-collapse:collapse}td{padding:4px;border-top:1px solid #444}
+.note{margin-top:10px;font-size:.7rem;color:#999}
+</style></head><body>
+<main>
+<input type="radio" name="f" id="f5" checked><label for="f5">5</label><input type="radio" name="f" id="f6"><label for="f6">6</label><input type="radio" name="f" id="f7"><label for="f7">7</label><input type="radio" name="f" id="f8"><label for="f8">8</label><input type="radio" name="f" id="f9"><label for="f9">9</label><input type="radio" name="f" id="f10"><label for="f10">10</label>
+<section class="cab"><h1>MIDVALE TOWER &middot; 84047 &middot; THU OCT 15 2026</h1>
+<div class="disp"><div class="v v5"><span class="fl">5</span><span class="tp">41&deg;F</span><span class="pr">PRECIP 0% &middot; 0.00 in</span></div><div class="v v6"><span class="fl">6</span><span class="tp">40&deg;F</span><span class="pr">PRECIP 0% &middot; 0.00 in</span></div><div class="v v7"><span class="fl">7</span><span class="tp">40&deg;F</span><span class="pr">PRECIP 0% &middot; 0.00 in</span></div><div class="v v8"><span class="fl">8</span><span class="tp">43&deg;F</span><span class="pr">PRECIP 0% &middot; 0.00 in</span></div><div class="v v9"><span class="fl">9</span><span class="tp">48&deg;F</span><span class="pr">PRECIP 0% &middot; 0.00 in</span></div><div class="v v10"><span class="fl">10</span><span class="tp">53&deg;F</span><span class="pr">PRECIP 0% &middot; 0.00 in</span></div></div>
+<div class="btns"><label for="f10">10</label><label for="f9">9</label><label for="f8">8</label><label for="f7">7</label><label for="f6">6</label><label for="f5">5</label></div></section>
+<section class="dir"><h2>BUILDING DIRECTORY</h2><table><tr><td>5 AM</td><td>Floor 5 &mdash; Temperature</td><td>41&deg;F</td><td>0% / 0.00 in</td></tr><tr><td>6 AM</td><td>Floor 6 &mdash; Temperature</td><td>40&deg;F</td><td>0% / 0.00 in</td></tr><tr><td>7 AM</td><td>Floor 7 &mdash; Temperature</td><td>40&deg;F</td><td>0% / 0.00 in</td></tr><tr><td>8 AM</td><td>Floor 8 &mdash; Temperature</td><td>43&deg;F</td><td>0% / 0.00 in</td></tr><tr><td>9 AM</td><td>Floor 9 &mdash; Temperature</td><td>48&deg;F</td><td>0% / 0.00 in</td></tr><tr><td>10 AM</td><td>Floor 10 &mdash; Temperature</td><td>53&deg;F</td><td>0% / 0.00 in</td></tr></table>
+<p class="note">Floor = hour of day (5 AM&ndash;10 AM). Live forecast feed was unreachable when this page was generated; values are seasonal estimates for the Salt Lake Valley, not an observed or forecast reading.</p></section>
+</main></body></html>
