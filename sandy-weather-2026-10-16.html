@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tube Radio Dial — Midvale, UT · Oct 16, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(#4a3322,#1c120a);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px 12px;font-family:Georgia,serif;color:#f3e2c2}
+main{width:100%;max-width:460px}
+input{position:absolute;opacity:0}
+.set{background:linear-gradient(#8a5a2b,#5a3417);border:4px solid #2e1a0a;border-radius:90px 90px 14px 14px;padding:28px 20px 20px;box-shadow:inset 0 0 25px #000a,0 14px 30px #000b}
+h1{font-size:.75rem;letter-spacing:4px;text-align:center;color:#e9c987;margin-bottom:14px;font-weight:normal}
+.glass{background:linear-gradient(#f0d9a0,#d2b06b);border:5px solid #2e1a0a;border-radius:8px;height:170px;position:relative;color:#3a2410;overflow:hidden;box-shadow:inset 0 0 20px #0008}
+.scale{position:absolute;top:10px;left:0;right:0;height:22px;background:repeating-linear-gradient(90deg,#3a2410 0 1px,transparent 1px 7%);border-bottom:1px solid #3a2410;opacity:.7}
+.needle{position:absolute;top:0;bottom:0;width:2px;background:#b3200f;box-shadow:0 0 6px #b3200f;transition:left .5s}
+.v{display:none;position:absolute;top:40px;left:0;right:0;text-align:center}
+.big{font-size:3.6rem;line-height:1}.big small{font-size:1.2rem}
+.sub{font-size:.8rem;letter-spacing:2px;margin-top:6px}
+.freq{font-size:.75rem;margin-top:8px;font-style:italic}
+.btns{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:18px}
+label{background:linear-gradient(#f3e2c2,#c9a56a);color:#3a2410;border:2px solid #2e1a0a;border-radius:5px;padding:14px 0;text-align:center;font-size:.72rem;cursor:pointer;box-shadow:0 4px 0 #2e1a0a;transition:.1s}
+.grille{height:26px;margin-top:16px;background:repeating-linear-gradient(90deg,#2e1a0a 0 3px,#6b4421 3px 8px);border-radius:4px}
+.note{font-size:.65rem;text-align:center;margin-top:14px;color:#c9a56a;line-height:1.4}
+#s1:checked~.set .v1{display:block}#s1:checked~.set .p1{background:#7a1f12;color:#ffd9a0;transform:translateY(3px)}#s1:checked~.set .needle{left:6.0%}
+#s2:checked~.set .v2{display:block}#s2:checked~.set .p2{background:#7a1f12;color:#ffd9a0;transform:translateY(3px)}#s2:checked~.set .needle{left:23.5%}
+#s3:checked~.set .v3{display:block}#s3:checked~.set .p3{background:#7a1f12;color:#ffd9a0;transform:translateY(3px)}#s3:checked~.set .needle{left:41.0%}
+#s4:checked~.set .v4{display:block}#s4:checked~.set .p4{background:#7a1f12;color:#ffd9a0;transform:translateY(3px)}#s4:checked~.set .needle{left:58.5%}
+#s5:checked~.set .v5{display:block}#s5:checked~.set .p5{background:#7a1f12;color:#ffd9a0;transform:translateY(3px)}#s5:checked~.set .needle{left:76.0%}
+#s6:checked~.set .v6{display:block}#s6:checked~.set .p6{background:#7a1f12;color:#ffd9a0;transform:translateY(3px)}#s6:checked~.set .needle{left:93.5%}
+</style></head><body><main>
+<input type="radio" name="s" id="s1" checked>
+<input type="radio" name="s" id="s2">
+<input type="radio" name="s" id="s3">
+<input type="radio" name="s" id="s4">
+<input type="radio" name="s" id="s5">
+<input type="radio" name="s" id="s6">
+<div class="set"><h1>MIDVALE · UT 84047 · OCT 16, 2026</h1>
+<div class="glass"><div class="scale"></div><div class="needle"></div><div class="v v1"><div class="big">41<small>°F</small></div><div class="sub">PRECIP CHANCE 0% &middot; 0.00 IN</div><div class="freq">540 kHz</div></div><div class="v v2"><div class="big">40<small>°F</small></div><div class="sub">PRECIP CHANCE 0% &middot; 0.00 IN</div><div class="freq">600 kHz</div></div><div class="v v3"><div class="big">41<small>°F</small></div><div class="sub">PRECIP CHANCE 5% &middot; 0.00 IN</div><div class="freq">700 kHz</div></div><div class="v v4"><div class="big">45<small>°F</small></div><div class="sub">PRECIP CHANCE 5% &middot; 0.00 IN</div><div class="freq">800 kHz</div></div><div class="v v5"><div class="big">50<small>°F</small></div><div class="sub">PRECIP CHANCE 5% &middot; 0.00 IN</div><div class="freq">1000 kHz</div></div><div class="v v6"><div class="big">55<small>°F</small></div><div class="sub">PRECIP CHANCE 0% &middot; 0.00 IN</div><div class="freq">1400 kHz</div></div></div>
+<div class="btns"><label for="s1" class="p1">5 AM</label><label for="s2" class="p2">6 AM</label><label for="s3" class="p3">7 AM</label><label for="s4" class="p4">8 AM</label><label for="s5" class="p5">9 AM</label><label for="s6" class="p6">10 AM</label></div><div class="grille"></div>
+<p class="note">Press a preset to tune the hour. Live forecast feed was unreachable when this page was generated; values are seasonal estimates for the Salt Lake Valley, not an observed or forecast reading.</p></div></main></body></html>
