@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinball Dot-Matrix — Midvale, UT · Oct 19, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#14081f;color:#ffb347;font-family:"Courier New",monospace;min-height:100vh;display:flex;justify-content:center;padding:18px 12px;background-image:radial-gradient(circle at 50% 0,#3a1260 0,#14081f 60%)}
+.cab{width:100%;max-width:560px;border:4px solid #c2185b;border-radius:14px;background:#0a0410;padding:14px;box-shadow:0 0 30px #c2185b88,inset 0 0 20px #000}
+.marquee{text-align:center;font-weight:bold;letter-spacing:4px;color:#ff4fa3;text-shadow:0 0 8px #ff4fa3;font-size:1.05rem;margin-bottom:10px}
+.dmd{background:#150800;border:3px solid #2a1200;border-radius:6px;padding:14px 10px;text-align:center;
+ background-image:radial-gradient(#ff8a00 28%,transparent 32%);background-size:6px 6px;background-blend-mode:multiply;position:relative}
+.dmd::before{content:"";position:absolute;inset:0;background:#150800d8;border-radius:4px}
+.dmd>*{position:relative}
+.big{font-size:2.2rem;font-weight:bold;letter-spacing:3px;color:#ff9f1a;text-shadow:0 0 10px #ff8a00}
+.small{font-size:.75rem;letter-spacing:2px;color:#ffcc66}
+.blink{animation:b 1s steps(2,start) infinite}@keyframes b{to{visibility:hidden}}
+.rounds{display:grid;gap:8px;margin-top:14px}
+.round{display:grid;grid-template-columns:70px 1fr 90px;align-items:center;gap:10px;background:#1a0b2e;border:2px solid #5a2a8a;border-radius:8px;padding:8px 10px}
+.round .t{color:#6df0ff;text-shadow:0 0 6px #6df0ff;font-weight:bold}
+.bar{height:12px;background:#0a0410;border:1px solid #5a2a8a;border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#ff4fa3,#ffb347)}
+.bar.rain i{background:linear-gradient(90deg,#2a7bff,#6df0ff)}
+.val{text-align:right;font-size:1.3rem;font-weight:bold;color:#ffb347;text-shadow:0 0 6px #ff8a00}
+.val small{display:block;font-size:.65rem;color:#6df0ff;font-weight:normal}
+.lights{display:flex;justify-content:space-around;margin:12px 0 4px}
+.lights b{width:14px;height:14px;border-radius:50%;background:#ff4fa3;box-shadow:0 0 10px #ff4fa3;animation:p 1.2s infinite}
+.lights b:nth-child(even){background:#6df0ff;box-shadow:0 0 10px #6df0ff;animation-delay:.6s}
+@keyframes p{50%{opacity:.25}}
+.foot{text-align:center;font-size:.65rem;color:#8d6fb0;margin-top:10px;letter-spacing:1px}
+</style></head><body>
+<main class="cab">
+ <div class="marquee">★ MIDVALE MORNING MULTIBALL ★</div>
+ <div class="lights"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+ <div class="dmd">
+  <div class="small">PLAYER 1 · ZIP 84047</div>
+  <div class="big">OCT 19 2026</div>
+  <div class="small blink">— 5AM TO 10AM BONUS ROUNDS —</div>
+ </div>
+ <div class="rounds">
+  <div class="round"><span class="t">5 AM</span><div class="bar"><i style="width:41%"></i></div><span class="val">41°F<small>5% · 0.00 in</small></span></div>
+  <div class="round"><span class="t">6 AM</span><div class="bar"><i style="width:40%"></i></div><span class="val">40°F<small>5% · 0.00 in</small></span></div>
+  <div class="round"><span class="t">7 AM</span><div class="bar"><i style="width:42%"></i></div><span class="val">42°F<small>10% · 0.00 in</small></span></div>
+  <div class="round"><span class="t">8 AM</span><div class="bar"><i style="width:46%"></i></div><span class="val">46°F<small>10% · 0.00 in</small></span></div>
+  <div class="round"><span class="t">9 AM</span><div class="bar"><i style="width:50%"></i></div><span class="val">50°F<small>15% · 0.00 in</small></span></div>
+  <div class="round"><span class="t">10 AM</span><div class="bar"><i style="width:54%"></i></div><span class="val">54°F<small>15% · 0.00 in</small></span></div>
+ </div>
+ <div class="lights"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+ <div class="foot">TEMP BAR = DEGREES F · SUB-LABEL = CHANCE OF PRECIP · INCHES<br>ESTIMATED SEASONAL VALUES — LIVE FEED UNAVAILABLE · INSERT COIN</div>
+</main>
+</body></html>
