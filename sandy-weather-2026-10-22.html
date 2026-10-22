@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Departures Board — Midvale, UT · Oct 22, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0e0f12;color:#f2c230;font-family:"Courier New",monospace;min-height:100vh;padding:20px 12px;display:flex;justify-content:center}
+.board{width:100%;max-width:640px;background:#1a1c21;border:6px solid #2b2e36;border-radius:10px;padding:16px;box-shadow:0 20px 50px #000a}
+header{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #2b2e36;padding-bottom:10px;margin-bottom:12px;letter-spacing:.15em;font-size:.85rem;color:#c9ccd4}
+header b{color:#f2c230;font-size:1.1rem}
+.cols,.row{display:grid;grid-template-columns:70px 1fr 90px 90px;gap:8px;align-items:center}
+.cols{font-size:.7rem;color:#7d828f;letter-spacing:.15em;margin-bottom:6px}
+.row{padding:8px 0;border-bottom:1px dashed #2b2e36}
+.flap{display:inline-flex;gap:2px}
+.f{width:1.15ch;min-width:18px;height:30px;background:linear-gradient(#25272e 49%,#0b0c0e 50%,#25272e 51%);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:bold;color:#f2c230;animation:flip .5s ease-out both}
+@keyframes flip{0%{transform:rotateX(90deg);opacity:0}100%{transform:rotateX(0);opacity:1}}
+.dest{font-size:.8rem;color:#c9ccd4;letter-spacing:.08em}
+.status{font-size:.7rem;text-align:right;letter-spacing:.1em}
+.ok{color:#4ade80}.wet{color:#60a5fa}
+footer{margin-top:14px;font-size:.7rem;color:#7d828f;text-align:center;letter-spacing:.1em}
+@media(max-width:480px){.cols,.row{grid-template-columns:56px 1fr 70px 70px}.f{min-width:14px;height:26px;font-size:1rem}}
+</style></head><body>
+<main class="board">
+<header><b>SANDY / MIDVALE DEPARTURES</b><span>THU 22 OCT 2026</span></header>
+<div class="cols"><span>TIME</span><span>DESTINATION</span><span>TEMP °F</span><span>PRECIP</span></div>
+<div id="rows"></div>
+<footer>ZIP 84047 · ESTIMATED CONDITIONS · ALL TIMES MDT</footer>
+</main>
+<script>
+const data=[
+["05:00","Frosty Platform",38,"0%","0.00\""],
+["06:00","Coat Junction",38,"0%","0.00\""],
+["07:00","Sunrise Terminal",40,"5%","0.00\""],
+["08:00","Mitten Express",44,"10%","0.00\""],
+["09:00","Sweater Central",48,"10%","0.00\""],
+["10:00","Light Jacket Line",52,"5%","0.00\""]];
+const rows=document.getElementById("rows");
+const flaps=(s,d)=>'<span class="flap">'+[...String(s)].map((c,i)=>`<span class="f" style="animation-delay:${d+i*60}ms">${c===" "?"&nbsp;":c}</span>`).join("")+'</span>';
+data.forEach((r,i)=>{const d=i*250;
+rows.insertAdjacentHTML("beforeend",`<div class="row"><div>${flaps(r[0],d)}</div><div class="dest">${r[1].toUpperCase()}</div><div>${flaps(r[2]+"°",d+100)}</div><div class="status ${parseInt(r[3])>20?"wet":"ok"}">${r[3]}<br>${r[4]}</div></div>`)});
+</script></body></html>
