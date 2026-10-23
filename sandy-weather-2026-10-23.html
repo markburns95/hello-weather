@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Party Status — Midvale, UT · Oct 23, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#05051a;color:#fff;font-family:"Courier New",monospace;min-height:100vh;padding:20px 12px;display:flex;justify-content:center;align-items:flex-start}
+.win{width:100%;max-width:560px;background:linear-gradient(#1c2fb0,#0a1260);border:4px solid #fff;border-radius:10px;box-shadow:0 0 0 4px #0a1260,0 0 0 8px #fff,6px 10px 0 8px #000a;padding:18px;text-shadow:2px 2px 0 #000}
+h1{font-size:1.1rem;letter-spacing:.12em;margin-bottom:4px}
+.sub{font-size:.75rem;color:#9fb4ff;margin-bottom:14px}
+.m{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center;padding:10px 0;border-top:2px dashed #5b73ff66}
+.face{width:56px;height:56px;border:3px solid #fff;background:#0a1260;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:inset 0 0 0 2px #1c2fb0}
+.name{font-size:.9rem;margin-bottom:6px}
+.name span{color:#ffe34d}
+.bar{display:grid;grid-template-columns:34px 1fr 64px;gap:6px;align-items:center;font-size:.75rem;margin-top:3px}
+.track{height:10px;background:#000;border:2px solid #fff}
+.fill{height:100%}
+.hp{background:linear-gradient(#7dff7d,#1fa81f)}
+.mp{background:linear-gradient(#7dd0ff,#1f6fa8)}
+.val{text-align:right}
+.cursor{display:inline-block;animation:b 1s steps(2) infinite}
+@keyframes b{50%{opacity:0}}
+footer{margin-top:12px;border-top:2px solid #fff;padding-top:10px;font-size:.75rem;color:#9fb4ff}
+</style></head><body>
+<main class="win">
+<h1>PARTY STATUS</h1>
+<div class="sub">Midvale, UT 84047 · Fri 23 Oct 2026 · HP = temperature, MP = chance of precipitation</div>
+<div id="party"></div>
+<footer><span class="cursor">▶</span> Values are seasonal estimates for late October; live weather sources were unreachable when this page was generated.</footer>
+</main>
+<script>
+const d=[["5 AM","🌙","Dawn Watch",37,"0%","0.00\""],["6 AM","🌌","Frost Scout",37,"0%","0.00\""],["7 AM","🌅","Sunrise Knight",39,"5%","0.00\""],["8 AM","🧣","Scarf Mage",43,"5%","0.00\""],["9 AM","🧥","Jacket Ranger",47,"10%","0.00\""],["10 AM","☀️","Daylight Cleric",51,"5%","0.00\""]];
+document.getElementById("party").innerHTML=d.map(r=>`<div class="m"><div class="face">${r[1]}</div><div><div class="name">${r[2]} <span>Lv.${r[0]}</span></div>
+<div class="bar">HP<div class="track"><div class="fill hp" style="width:${r[3]/60*100}%"></div></div><div class="val">${r[3]}°F</div></div>
+<div class="bar">MP<div class="track"><div class="fill mp" style="width:${parseInt(r[4])}%"></div></div><div class="val">${r[4]} · ${r[5]}</div></div></div></div>`).join("");
+</script></body></html>
