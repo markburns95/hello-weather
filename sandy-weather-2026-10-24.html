@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Departures — Midvale, UT · Oct 24, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#111;color:#f2e6b8;font-family:"Courier New",monospace;min-height:100vh;padding:20px 12px;display:flex;justify-content:center;align-items:flex-start}
+.board{width:100%;max-width:640px;background:#1b1b1b;border:3px solid #333;border-radius:8px;padding:16px;box-shadow:0 12px 40px #000}
+h1{font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:#f5b400;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.sub{font-size:11px;letter-spacing:.2em;color:#888;margin-bottom:14px;text-transform:uppercase}
+.head,.row{display:grid;grid-template-columns:1.1fr 1.3fr 1fr 1.4fr;gap:6px;align-items:center}
+.head{font-size:10px;letter-spacing:.2em;color:#888;padding:0 2px 6px;text-transform:uppercase}
+.row{margin-bottom:6px}
+.cell{display:flex;gap:2px;flex-wrap:nowrap}
+.f{display:inline-block;width:1.15em;height:1.7em;line-height:1.7em;text-align:center;background:linear-gradient(#262626 49%,#000 49%,#000 51%,#2d2d2d 51%);color:#f2e6b8;border-radius:3px;font-weight:bold;font-size:15px;position:relative;overflow:hidden}
+.f.n{width:.95em}
+.amber .f{color:#f5b400}
+.ok .f{color:#7ddc8a}
+.note{margin-top:14px;font-size:11px;color:#888;line-height:1.5;border-top:1px dashed #444;padding-top:10px}
+@media(max-width:480px){.f{font-size:12px}}
+@keyframes flip{0%{transform:rotateX(0)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+.f.flip{animation:flip .12s linear}
+</style></head><body>
+<main class="board">
+<h1><span>&#9992; Departures</span><span>Sat 24 Oct 2026</span></h1>
+<div class="sub">Midvale, UT 84047 &middot; Morning Sunrise Line</div>
+<div class="head"><span>Time</span><span>Temp &deg;F</span><span>Gate (% precip)</span><span>Status</span></div>
+<div id="rows"></div>
+<p class="note">Values are climatological estimates for late October in the Salt Lake Valley; live weather sources were unreachable when this page was generated.</p>
+</main>
+<script>
+var data=[["5:00 AM",38,0,"CLEAR / ON TIME"],["6:00 AM",37,0,"CLEAR / ON TIME"],["7:00 AM",38,5,"CLEAR / ON TIME"],["8:00 AM",42,5,"WARMING UP"],["9:00 AM",47,5,"BOARDING SUN"],["10:00 AM",52,0,"SUNNY / DEPARTED"]];
+var chars=" ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:/&%.-";
+function cell(text,cls,width){var d=document.createElement("div");d.className="cell "+cls;var fl=[];
+text=(text+Array(width+1).join(" ")).slice(0,width);
+for(var i=0;i<width;i++){var s=document.createElement("span");s.className="f"+(/\d/.test(text[i])?" n":"");s.textContent=" ";d.appendChild(s);fl.push([s,text[i]]);}
+return {el:d,fl:fl};}
+function settle(fl,delay){fl.forEach(function(p,i){var s=p[0],target=p[1],steps=6+Math.floor(Math.random()*8)+i*2,n=0;
+setTimeout(function t(){if(n++>=steps){s.textContent=target;return;}
+s.textContent=chars[Math.floor(Math.random()*chars.length)];s.classList.remove("flip");void s.offsetWidth;s.classList.add("flip");setTimeout(t,60);},delay);});}
+var rows=document.getElementById("rows");
+data.forEach(function(r,idx){var row=document.createElement("div");row.className="row";
+var cols=[cell(r[0].toUpperCase(),"amber",8),cell(r[1]+"F",""+"",5),cell(r[2]+"%","ok",4),cell(r[3],"",16)];
+cols.forEach(function(c){row.appendChild(c.el);settle(c.fl,idx*350);});rows.appendChild(row);});
+</script>
+</body></html>
