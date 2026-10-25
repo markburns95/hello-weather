@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevator Panel — Midvale, UT · Oct 25, 2026</title>
+<style>
+  :root{--brass:#c9a24b;--brass-d:#7a5f22;--steel:#2a2c30;--steel-l:#44474d;--lamp:#ffb347;--ink:#f3e9d2}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;
+    background:repeating-linear-gradient(90deg,#1b1c1f 0 3px,#202226 3px 6px);font-family:Georgia,serif;color:var(--ink)}
+  .panel{width:min(420px,100%);padding:20px;border-radius:14px;border:3px solid var(--brass-d);
+    background:linear-gradient(160deg,#4a4d54,#2a2c30 60%,#3a3d43);box-shadow:inset 0 0 0 2px #0006,0 20px 50px #000a}
+  .plate{text-align:center;color:#2b2008;background:linear-gradient(#e2c06a,var(--brass));border-radius:6px;padding:6px;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;font-weight:bold}
+  .display{margin:16px 0;background:#120a02;border:3px solid #000;border-radius:8px;padding:14px;text-align:center;
+    box-shadow:inset 0 0 20px #000}
+  .display .lbl{font:.7rem monospace;color:#a86a1d;letter-spacing:.2em}
+  .display .big{font:bold 4.5rem/1 "Courier New",monospace;color:var(--lamp);text-shadow:0 0 14px #ff9d2e}
+  .display .sub{font:.85rem monospace;color:#d98c2a;min-height:1.3em}
+  .buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  button{aspect-ratio:1;border-radius:50%;border:4px solid var(--brass);cursor:pointer;color:var(--ink);
+    background:radial-gradient(circle at 35% 30%,var(--steel-l),var(--steel));font:bold 1.6rem Georgia,serif;
+    box-shadow:0 4px 0 var(--brass-d),0 6px 10px #0008;transition:transform .08s}
+  button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--brass-d)}
+  button small{display:block;font:.6rem monospace;color:#cbbd9b}
+  button.lit{border-color:var(--lamp);box-shadow:0 0 18px var(--lamp),0 0 0 3px #ffb34755,0 4px 0 var(--brass-d);color:#fff}
+  .rain{display:flex;gap:4px;justify-content:center;margin-top:6px}
+  .rain i{width:10px;height:18px;border-radius:2px;background:#2b1a05}
+  .rain i.on{background:var(--lamp);box-shadow:0 0 8px var(--lamp)}
+  footer{font-size:.7rem;text-align:center;color:#a9a08a;margin-top:6px}
+</style>
+</head>
+<body>
+<main class="panel">
+  <div class="plate">Midvale Tower · Sun Oct 25 · 84047</div>
+  <section class="display" aria-live="polite">
+    <div class="lbl">NOW SERVING FLOOR</div>
+    <div class="big" id="temp">--°</div>
+    <div class="sub" id="sub">Press a floor</div>
+    <div class="rain" id="rain" title="Precipitation chance"></div>
+  </section>
+  <div class="buttons" id="buttons"></div>
+  <footer>Floors 5–10 = 5 AM–10 AM. Lit lamps = precipitation chance (each lamp ≈ 20%). Values are estimates; live data was unavailable.</footer>
+</main>
+<script>
+  // hour, temp F, precip chance %, precip inches (estimated)
+  var data=[[5,38,0,0.00],[6,37,0,0.00],[7,38,5,0.00],[8,42,5,0.00],[9,47,10,0.00],[10,52,10,0.00]];
+  var box=document.getElementById('buttons'),rain=document.getElementById('rain');
+  for(var i=0;i<5;i++){rain.appendChild(document.createElement('i'))}
+  function pick(k){
+    var d=data[k];
+    document.getElementById('temp').textContent=d[1]+'°F';
+    document.getElementById('sub').textContent=d[0]+':00 AM · '+d[2]+'% precip · '+d[3].toFixed(2)+' in';
+    Array.prototype.forEach.call(box.children,function(b,j){b.classList.toggle('lit',j===k)});
+    Array.prototype.forEach.call(rain.children,function(l,j){l.classList.toggle('on',j<Math.ceil(d[2]/20))});
+  }
+  data.forEach(function(d,k){
+    var b=document.createElement('button');
+    b.innerHTML=d[0]+'<small>'+d[1]+'°F</small>';
+    b.setAttribute('aria-label',d[0]+' AM, '+d[1]+' degrees, '+d[2]+' percent precipitation');
+    b.onclick=function(){pick(k)};
+    box.appendChild(b);
+  });
+  pick(0);
+</script>
+</body>
+</html>
