@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riso Zine — Midvale, UT · Oct 30, 2026</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:20px;background:#f3ecdc;font-family:"Helvetica Neue",Arial,sans-serif;color:#1b2a8a;display:flex;justify-content:center}
+.sheet{width:min(640px,100%);background:#f8f3e6;padding:22px;box-shadow:0 0 0 1px #0001,0 14px 30px #0002;background-image:radial-gradient(#0000000d 1px,transparent 1px);background-size:4px 4px}
+h1{margin:0;font-size:clamp(2.2rem,9vw,4rem);line-height:.9;text-transform:uppercase;font-weight:900;color:#ff4f8b;text-shadow:5px 4px 0 #1b2a8a;mix-blend-mode:multiply;transform:rotate(-1.5deg)}
+.sub{margin:18px 0 20px;font-weight:700;letter-spacing:.12em;font-size:.75rem;text-transform:uppercase}
+.row{display:grid;grid-template-columns:64px 1fr 90px;align-items:center;gap:10px;padding:8px 0;border-bottom:2px dotted #1b2a8a66}
+.t{font-weight:900;font-size:1.1rem}
+.bar{height:22px;background:#ff4f8b;mix-blend-mode:multiply;transform:translate(3px,2px);border-radius:2px;opacity:.9}
+.bar::after{content:"";display:block;height:100%;background:repeating-linear-gradient(45deg,#0000 0 3px,#f8f3e6 3px 4px);opacity:.35}
+.deg{font-weight:900;font-size:1.4rem;text-align:right;color:#1b2a8a}
+.rain{font-size:.7rem;grid-column:2/4;margin-top:-4px;font-weight:700;color:#1b2a8a}
+.rain b{background:#1b2a8a;color:#f8f3e6;padding:1px 5px;margin-right:6px}
+.note{margin-top:18px;font-size:.7rem;border:2px solid #1b2a8a;padding:8px;transform:rotate(.6deg)}
+</style></head><body>
+<main class="sheet">
+<h1>Morning<br>Weather<br>Zine</h1>
+<div class="sub">Midvale, UT 84047 · Fri Oct 30, 2026 · 5–10 AM · printed in two inks</div>
+<div id="rows"></div>
+<p class="note">Estimated values: the live forecast feed was unreachable when this page was generated, so figures are seasonal estimates for late October.</p>
+</main>
+<script>
+const data=[[5,36,0,5],[6,35,0,5],[7,36,0,5],[8,40,0,5],[9,45,0,5],[10,50,0,5]];
+document.getElementById('rows').innerHTML=data.map(([h,t,p,c])=>`<div class="row"><div class="t">${h}:00 AM</div><div><div class="bar" style="width:${(t-20)*2.2}%"></div></div><div class="deg">${t}°F</div><div class="rain"><b>RAIN</b>${p.toFixed(2)} in · ${c}% chance</div></div>`).join('');
+</script>
+</body></html>
