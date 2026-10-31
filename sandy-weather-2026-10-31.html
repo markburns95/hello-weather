@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admit One Forecast — Midvale, UT · Oct 31, 2026</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:24px 16px;background:#1d1530;background-image:radial-gradient(#ffffff12 1px,transparent 1px);background-size:18px 18px;font-family:"Courier New",monospace;color:#2a1a0a;display:flex;flex-direction:column;align-items:center;gap:18px}
+header{text-align:center;color:#ffd978}
+header h1{margin:0;font-family:Georgia,serif;font-style:italic;font-size:clamp(1.6rem,6vw,2.6rem);letter-spacing:.05em}
+header p{margin:6px 0 0;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:#c9b6ff}
+.rail{width:min(520px,100%);display:flex;flex-direction:column;gap:14px}
+.ticket{position:relative;display:grid;grid-template-columns:1fr 112px;background:#f4e3b8;border-radius:8px;box-shadow:0 8px 0 #0006;transition:transform .2s;
+ -webkit-mask:radial-gradient(circle 10px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 10px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 10px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 10px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.ticket:nth-child(odd){transform:rotate(-.8deg)}.ticket:nth-child(even){transform:rotate(.7deg)}
+.ticket:hover{transform:rotate(0) translateY(-4px)}
+.main{padding:16px 14px 16px 26px}
+.time{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#a0452a;font-weight:bold}
+.temp{font-family:Georgia,serif;font-size:2.8rem;line-height:1;margin:4px 0}
+.temp sup{font-size:1rem}
+.meter{display:flex;gap:3px;margin-top:6px}
+.meter i{flex:1;height:8px;background:#2a1a0a22;border-radius:2px}
+.meter i.on{background:#3b5bdb}
+.stub{border-left:3px dashed #a0452a88;padding:16px 22px 16px 12px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.stub b{font-size:1.5rem;font-family:Georgia,serif}
+.stub span{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
+.stamp{position:absolute;right:98px;top:8px;border:2px solid #b3261e;color:#b3261e;padding:1px 6px;font-size:.6rem;font-weight:bold;letter-spacing:.15em;transform:rotate(8deg);opacity:.8}
+footer{max-width:520px;text-align:center;color:#c9b6ff;font-size:.72rem;line-height:1.5}
+</style></head><body>
+<header><h1>Admit One: The Morning</h1><p>Midvale, UT 84047 · Sat Oct 31, 2026 · 5–10 AM</p></header>
+<main class="rail" id="rail"></main>
+<footer>Each ticket = one hour. Blue pips show chance of rain (each pip ≈ 10%).<br>Note: figures are estimated typical values for late October; live forecast data was unavailable when this page was generated.</footer>
+<script>
+const rows=[["5 AM",36,5],["6 AM",35,5],["7 AM",35,10],["8 AM",39,10],["9 AM",44,5],["10 AM",49,5]];
+document.getElementById("rail").innerHTML=rows.map((r,i)=>{
+ const pips=Array.from({length:10},(_,k)=>`<i class="${k<Math.round(r[2]/10)?"on":""}"></i>`).join("");
+ return `<div class="ticket"><span class="stamp">NO. ${String(i+1).padStart(3,"0")}</span><div class="main"><div class="time">${r[0]} · Gate ${i+1}</div><div class="temp">${r[1]}<sup>°F</sup></div><div class="meter">${pips}</div></div><div class="stub"><b>${r[2]}%</b><span>precip</span></div></div>`}).join("");
+</script></body></html>
