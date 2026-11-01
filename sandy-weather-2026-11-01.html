@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather Vendor 84047 — Midvale, UT · Nov 1, 2026</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:20px 12px;background:#2b2f38;font-family:"Trebuchet MS",sans-serif;color:#e8f1ff;display:flex;justify-content:center}
+.machine{width:min(560px,100%);background:linear-gradient(#c8321f,#8f1f12);border-radius:18px;padding:16px;box-shadow:0 14px 0 #0006,inset 0 0 0 4px #ffffff22}
+.sign{background:#fff3c4;color:#8f1f12;text-align:center;font-weight:900;letter-spacing:.2em;padding:8px;border-radius:8px;font-size:1.1rem}
+.sub{text-align:center;font-size:.75rem;margin:6px 0 12px;letter-spacing:.15em;text-transform:uppercase;color:#ffe2dc}
+.glass{background:#10202c;border-radius:10px;padding:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;box-shadow:inset 0 0 30px #000a}
+.slot{background:linear-gradient(#1b3a50,#13293a);border:1px solid #6fa8c9;border-radius:6px;padding:8px 4px;text-align:center;cursor:pointer;position:relative;transition:.15s}
+.slot:hover,.slot.sel{background:#2a5a7c;transform:translateY(-2px)}
+.code{position:absolute;top:4px;left:6px;font:700 .7rem monospace;color:#ffd978}
+.temp{font-size:1.9rem;font-weight:900;margin-top:10px}
+.hr{font-size:.75rem;color:#bcd9ec}
+.coil{height:6px;margin:6px 8px;border-radius:3px;background:repeating-linear-gradient(90deg,#aaa 0 4px,#666 4px 8px)}
+.stock{font:.7rem monospace;color:#8fe3a2}
+.panel{margin-top:14px;display:flex;gap:12px;align-items:stretch}
+.lcd{flex:1;background:#9fd08a;color:#16311a;font:700 1rem monospace;padding:10px;border-radius:6px;box-shadow:inset 0 0 8px #0006;min-height:92px}
+.pad{display:grid;grid-template-columns:repeat(3,38px);gap:5px}
+.pad button{height:30px;border:0;border-radius:5px;background:#ddd;font-weight:700;cursor:pointer}
+.chute{margin-top:14px;background:#000;border-radius:8px;height:34px;color:#555;text-align:center;line-height:34px;font:.75rem monospace;letter-spacing:.2em}
+.note{margin-top:10px;font-size:.7rem;color:#ffe2dc;text-align:center}
+</style></head><body>
+<div class="machine">
+<div class="sign">WEATHER VENDOR</div>
+<div class="sub">Midvale, UT 84047 · Sun Nov 1, 2026 · 5–10 AM</div>
+<div class="glass" id="glass"></div>
+<div class="panel">
+<div class="lcd" id="lcd">SELECT A SLOT<br>A1 – A6</div>
+<div class="pad" id="pad"></div>
+</div>
+<div class="chute">▼ TAKE FORECAST HERE ▼</div>
+<div class="note">Estimated seasonal values — live forecast feed was unavailable when this page was generated.</div>
+</div>
+<script>
+var data=[["5 AM",34,0],["6 AM",33,0],["7 AM",33,0],["8 AM",37,0],["9 AM",42,0],["10 AM",46,0]];
+var g=document.getElementById("glass"),lcd=document.getElementById("lcd"),pad=document.getElementById("pad");
+function pick(i){
+  var d=data[i];
+  [].forEach.call(g.children,function(c,j){c.classList.toggle("sel",j===i)});
+  lcd.innerHTML="A"+(i+1)+" · "+d[0]+"<br>TEMP "+d[1]+"°F<br>PRECIP "+d[2]+" in";
+}
+data.forEach(function(d,i){
+  var s=document.createElement("div");s.className="slot";
+  s.innerHTML='<span class="code">A'+(i+1)+'</span><div class="temp">'+d[1]+'°</div><div class="hr">'+d[0]+'</div><div class="coil"></div><div class="stock">precip '+d[2]+' in</div>';
+  s.onclick=function(){pick(i)};g.appendChild(s);
+});
+["A","1","2","3","4","5","6"].slice(1).forEach(function(k,i){
+  var b=document.createElement("button");b.textContent=k;b.onclick=function(){pick(i)};pad.appendChild(b);
+});
+</script></body></html>
