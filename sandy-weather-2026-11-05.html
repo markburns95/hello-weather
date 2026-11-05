@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather Jukebox — Midvale, UT · Nov 5, 2026</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:24px 12px;background:radial-gradient(circle at 50% 0,#4a1d5c,#140818 70%);min-height:100vh;font-family:"Trebuchet MS",sans-serif;color:#ffe9b0;display:flex;justify-content:center}
+.box{width:min(640px,100%);background:linear-gradient(#7a2a1a,#3b120a);border:6px solid #d9a441;border-radius:200px 200px 24px 24px/120px 120px 24px 24px;padding:56px 22px 26px;box-shadow:0 0 40px #ff9a2e66,inset 0 0 30px #000a}
+h1{margin:0;text-align:center;font-size:1.5rem;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 0 12px #ffb347}
+.sub{text-align:center;font-size:.8rem;opacity:.8;margin:4px 0 18px}
+.deck{display:grid;gap:10px}
+.rec{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:12px;background:#1b0b10;border:2px solid #d9a441;border-radius:12px;padding:10px 14px;box-shadow:0 0 10px #ff9a2e44}
+.rec:hover{background:#2b1018;transform:scale(1.02);transition:.15s}
+.sel{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3c4,#d9a441 60%,#8a5a12);color:#3b120a;display:grid;place-items:center;font-weight:700;font-size:1.05rem}
+.t{font-size:2rem;font-weight:700;text-shadow:0 0 10px #ff9a2e}
+.p{text-align:right;font-size:.85rem}
+.bar{height:6px;width:90px;background:#3b2a1a;border-radius:3px;margin-top:4px;margin-left:auto;overflow:hidden}
+.bar i{display:block;height:100%;background:#4fc3f7}
+.note{margin-top:16px;padding:10px;border:1px dashed #d9a441;border-radius:8px;font-size:.78rem;text-align:center;background:#0006}
+.coin{text-align:center;margin-top:14px;letter-spacing:.3em;font-size:.75rem;opacity:.7}
+</style></head><body>
+<main class="box">
+<h1>Weather Jukebox</h1>
+<div class="sub">Now spinning: Midvale, UT 84047 · Thursday, Nov 5, 2026</div>
+<div class="deck" id="deck"></div>
+<div class="note"><b>Heads up:</b> live forecast feeds were unreachable when this page was generated, so the values above are <b>placeholder samples, not real readings</b>.</div>
+<div class="coin">★ INSERT COIN · PICK A MORNING HOUR ★</div>
+</main>
+<script>
+var d=[["5 AM",31,5],["6 AM",30,10],["7 AM",32,20],["8 AM",36,30],["9 AM",41,25],["10 AM",45,15]];
+document.getElementById("deck").innerHTML=d.map(function(r,i){
+return '<div class="rec"><div class="sel">A'+(i+1)+'</div><div><div class="t">'+r[1]+'°F</div><div style="font-size:.8rem">'+r[0]+'</div></div><div class="p">Precip '+r[2]+'%<div class="bar"><i style="width:'+r[2]+'%"></i></div></div></div>'}).join("");
+</script>
+</body></html>
