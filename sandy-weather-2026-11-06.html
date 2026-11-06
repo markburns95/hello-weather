@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midvale Weather Receipt - 2026-11-06</title>
+<style>
+body{margin:0;min-height:100vh;background:#2b2b2e;display:flex;justify-content:center;padding:32px 12px;font-family:"Courier New",monospace}
+.slot{width:100%;max-width:340px}
+.receipt{background:#fbfaf4;color:#222;padding:20px 18px 34px;box-shadow:0 8px 24px #0008;
+ clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),95% 100%,90% calc(100% - 10px),85% 100%,80% calc(100% - 10px),75% 100%,70% calc(100% - 10px),65% 100%,60% calc(100% - 10px),55% 100%,50% calc(100% - 10px),45% 100%,40% calc(100% - 10px),35% 100%,30% calc(100% - 10px),25% 100%,20% calc(100% - 10px),15% 100%,10% calc(100% - 10px),5% 100%,0 calc(100% - 10px));
+ animation:print 1.6s steps(24) both}
+@keyframes print{from{max-height:0}to{max-height:900px}}
+h1{text-align:center;font-size:18px;margin:0 0 4px;letter-spacing:2px}
+.c{text-align:center;font-size:12px}
+hr{border:0;border-top:2px dashed #222;margin:12px 0}
+table{width:100%;font-size:14px;border-collapse:collapse}
+td,th{padding:4px 0}th{text-align:left;font-size:11px}td:nth-child(n+2),th:nth-child(n+2){text-align:right}
+.tot{font-weight:bold}
+.bar{text-align:center;font-size:34px;letter-spacing:-2px;margin-top:10px;transform:scaleY(1.6)}
+</style></head><body><div class="slot"><div class="receipt">
+<h1>*** MIDVALE MART ***</h1>
+<div class="c">WEATHER DEPT · ZIP 84047</div>
+<div class="c">DATE: 2026-11-06 · REG #05</div>
+<hr>
+<table><thead><tr><th>HOUR</th><th>TEMP °F</th><th>PRECIP</th></tr></thead>
+<tbody id="rows"><tr><td colspan="3">PRINTING...</td></tr></tbody></table>
+<hr>
+<div class="c" id="status">CONTACTING OPEN-METEO...</div>
+<div class="c">THANK YOU · KEEP RECEIPT FOR UMBRELLA RETURNS</div>
+<div class="bar">||| || ||||| | |||| ||</div>
+</div></div>
+<script>
+const rows=document.getElementById('rows'),st=document.getElementById('status');
+fetch('https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.88&hourly=temperature_2m,precipitation,precipitation_probability&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date=2026-11-06&end_date=2026-11-06')
+.then(r=>r.json()).then(d=>{
+ const h=d.hourly;rows.innerHTML='';
+ for(let i=5;i<=10;i++){
+  const hr=((i+11)%12+1)+(i<12?' AM':' PM');
+  rows.insertAdjacentHTML('beforeend',`<tr><td>${hr}</td><td>${h.temperature_2m[i].toFixed(1)}</td><td>${h.precipitation[i].toFixed(2)} in (${h.precipitation_probability[i]}%)</td></tr>`);
+ }
+ st.textContent='PAID IN FULL · DATA: OPEN-METEO';
+}).catch(()=>{rows.innerHTML='<tr><td colspan="3">** FEED OFFLINE **</td></tr>';st.textContent='ERROR: COULD NOT LOAD FORECAST';});
+</script></body></html>
