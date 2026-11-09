@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midvale Weather - Thermal Receipt - 2026-11-09</title>
+<style>
+body{margin:0;background:#3a3d44;padding:24px 12px;font-family:"Courier New",monospace;display:flex;justify-content:center}
+.slip{width:100%;max-width:340px;background:#f6f3ea;color:#222;padding:18px 16px 28px;box-shadow:0 12px 30px #0009;
+ clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),95% 100%,90% calc(100% - 10px),85% 100%,80% calc(100% - 10px),75% 100%,70% calc(100% - 10px),65% 100%,60% calc(100% - 10px),55% 100%,50% calc(100% - 10px),45% 100%,40% calc(100% - 10px),35% 100%,30% calc(100% - 10px),25% 100%,20% calc(100% - 10px),15% 100%,10% calc(100% - 10px),5% 100%,0 calc(100% - 10px));
+ animation:print 2.2s steps(22) both}
+@keyframes print{from{max-height:0;overflow:hidden}to{max-height:900px}}
+h1{text-align:center;font-size:18px;margin:0;letter-spacing:3px}
+.c{text-align:center;font-size:12px}
+hr{border:0;border-top:2px dashed #222;margin:10px 0}
+.row{display:flex;justify-content:space-between;font-size:14px;padding:3px 0}
+.row b{font-weight:700}
+.tot{font-size:16px;font-weight:700}
+.bar{text-align:center;letter-spacing:2px;font-size:22px;margin-top:12px}
+#status{font-size:12px;text-align:center}
+</style></head><body>
+<div class="slip">
+<h1>WEATHER MART</h1>
+<div class="c">MIDVALE, UT 84047<br>REGISTER 05 &middot; 2026-11-09</div>
+<hr>
+<div class="row"><span>QTY&nbsp;&nbsp;HOUR</span><span>TEMP &nbsp;&nbsp;PRECIP</span></div>
+<div id="rows"></div>
+<hr>
+<div id="status" class="c">PRINTING FORECAST...</div>
+<hr>
+<div class="c">THANK YOU FOR SHOPPING<br>KEEP RECEIPT FOR UMBRELLA RETURNS</div>
+<div class="bar">||| || ||||| | |||</div>
+</div>
+<script>
+var rows=document.getElementById('rows'),st=document.getElementById('status');
+var url='https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.90&hourly=temperature_2m,precipitation_probability,precipitation&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America/Denver&start_date=2026-11-09&end_date=2026-11-09';
+fetch(url).then(function(r){return r.json()}).then(function(d){
+ var h=d.hourly,out='';
+ for(var i=5;i<=10;i++){
+  var hr=(i<12?i+' AM':'12 PM');
+  out+='<div class="row"><span>1 x '+hr+'</span><span><b>'+Math.round(h.temperature_2m[i])+'&deg;F</b> &nbsp;'+h.precipitation_probability[i]+'% / '+h.precipitation[i].toFixed(2)+'in</span></div>';
+ }
+ rows.innerHTML=out;st.innerHTML='<span class="tot">** PAID IN FULL **</span>';
+}).catch(function(){
+ rows.innerHTML='<div class="row"><span>--</span><span>FORECAST OUT OF PAPER</span></div>';
+ st.textContent='COULD NOT LOAD LIVE DATA';
+});
+</script>
+</body></html>
