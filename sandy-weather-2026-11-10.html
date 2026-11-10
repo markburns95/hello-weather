@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midvale Weather - Elevator Panel - 2026-11-10</title>
+<style>
+body{margin:0;min-height:100vh;background:linear-gradient(#2b2723,#1a1816);display:flex;justify-content:center;align-items:center;padding:20px 12px;font-family:"Helvetica Neue",Arial,sans-serif;color:#eee}
+.panel{width:100%;max-width:360px;background:linear-gradient(135deg,#d9d9d6,#a9aaa6 45%,#cfd0cc);border-radius:14px;padding:18px;box-shadow:inset 0 0 0 3px #8c8d89,0 18px 40px #000a;color:#222}
+.display{background:#0b0b0b;border-radius:6px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;color:#ff7a1a;font-family:"Courier New",monospace;text-shadow:0 0 8px #ff7a1a88;box-shadow:inset 0 0 8px #000}
+.display .fl{font-size:44px;font-weight:700;line-height:1}
+.display .arrow{font-size:26px}
+.display .info{font-size:12px;text-align:right;line-height:1.4}
+.label{font-size:11px;letter-spacing:2px;text-align:center;margin:12px 0 8px;text-transform:uppercase}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{border:0;border-radius:10px;background:linear-gradient(#f4f4f2,#bdbdb8);box-shadow:0 3px 0 #77776f,0 5px 8px #0004;padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;text-align:left;color:#222;font:inherit}
+.btn .ring{flex:none;width:44px;height:44px;border-radius:50%;border:3px solid #888;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;background:#eee;transition:.25s}
+.btn.lit .ring{border-color:#ffb347;background:#fff3dc;box-shadow:0 0 12px #ffa733,inset 0 0 6px #ffcf8a}
+.btn .t{font-size:18px;font-weight:700}
+.btn .p{font-size:11px;color:#555}
+.foot{font-size:10px;text-align:center;margin-top:12px;color:#555;letter-spacing:1px}
+</style></head><body>
+<div class="panel">
+ <div class="display"><span class="arrow" id="arrow">&#9650;</span><span class="fl" id="fl">5</span>
+  <span class="info" id="info">MIDVALE UT 84047<br>2026-11-10</span></div>
+ <div class="label">Select hour &mdash; floor = a.m. hour</div>
+ <div class="btns" id="btns"></div>
+ <div class="foot">MAX LOAD: 6 FORECASTS &middot; NO SMOKING &middot; HAVE AN UMBRELLA</div>
+</div>
+<script>
+var btns=document.getElementById('btns'),fl=document.getElementById('fl'),info=document.getElementById('info'),arrow=document.getElementById('arrow');
+var url='https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.90&hourly=temperature_2m,precipitation_probability,precipitation&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America/Denver&start_date=2026-11-10&end_date=2026-11-10';
+fetch(url).then(function(r){return r.json()}).then(function(d){
+ var h=d.hourly,els=[];
+ for(var i=5;i<=10;i++){(function(i){
+  var b=document.createElement('button');b.className='btn';
+  b.innerHTML='<span class="ring">'+i+'</span><span><span class="t">'+Math.round(h.temperature_2m[i])+'&deg;F</span><br><span class="p">'+h.precipitation_probability[i]+'% / '+h.precipitation[i].toFixed(2)+' in</span></span>';
+  b.onclick=function(){go(i)};btns.appendChild(b);els.push(b);
+ })(i)}
+ var cur=5;
+ function go(t){
+  var dir=t>=cur?1:-1;arrow.innerHTML=dir>0?'&#9650;':'&#9660;';
+  var n=cur;els.forEach(function(e){e.classList.remove('lit')});
+  var iv=setInterval(function(){
+   if(n!==t)n+=dir;fl.textContent=n;
+   if(n===t){clearInterval(iv);cur=t;els[t-5].classList.add('lit');
+    info.innerHTML=Math.round(h.temperature_2m[t])+'&deg;F<br>'+h.precipitation_probability[t]+'% / '+h.precipitation[t].toFixed(2)+' in';}
+  },350);
+ }
+ var k=5;(function ride(){go(k);if(k<10){k++;setTimeout(ride,1100)}})();
+}).catch(function(){info.innerHTML='OUT OF<br>SERVICE'});
+</script>
+</body></html>
