@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chalkboard Cafe Menu — Midvale, UT · Nov 11, 2026</title>
+<style>
+body{margin:0;min-height:100vh;background:#5b3a21;display:flex;justify-content:center;align-items:center;padding:20px 12px;font-family:"Segoe Print","Bradley Hand","Chalkboard SE","Comic Sans MS",cursive;color:#f4f1e8}
+.frame{width:100%;max-width:420px;padding:14px;background:linear-gradient(135deg,#a8743f,#6f4524);border-radius:6px;box-shadow:0 18px 40px #000a}
+.board{background:radial-gradient(ellipse at 30% 20%,#34423b,#1f2a25 70%);padding:22px 20px 26px;border:2px solid #0006;box-shadow:inset 0 0 40px #000a}
+h1{margin:0;text-align:center;font-size:30px;letter-spacing:2px;font-weight:400;text-shadow:0 0 2px #fff6}
+.sub{text-align:center;font-size:14px;color:#cfe3d4;margin:4px 0 14px}
+.rule{border:0;border-top:2px dashed #f4f1e8aa;margin:12px 0}
+.item{display:flex;align-items:baseline;font-size:20px;margin:12px 0}
+.item .name{white-space:nowrap}
+.item .dots{flex:1;border-bottom:2px dotted #f4f1e888;margin:0 8px}
+.item .price{color:#ffd9a0;white-space:nowrap}
+.item .note{display:block;font-size:13px;color:#cfe3d4}
+.rain{color:#a9d8ff}
+.msg{text-align:center;font-size:15px;color:#ffd9a0;padding:10px 0}
+.foot{text-align:center;font-size:13px;color:#cfe3d4;margin-top:14px;transform:rotate(-1deg)}
+</style></head><body>
+<div class="frame"><div class="board">
+<h1>☕ Today's Skies ☕</h1>
+<div class="sub">Midvale, UT 84047 · Wed Nov 11, 2026</div>
+<hr class="rule">
+<div id="menu"><div class="msg">Chalking up the specials…</div></div>
+<hr class="rule">
+<div class="foot">~ temps in °F · rain in inches ~<br>ask your barista about umbrellas</div>
+</div></div>
+<script>
+(function(){
+var menu=document.getElementById('menu');
+var url='https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.9&hourly=temperature_2m,precipitation,precipitation_probability&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date=2026-11-11&end_date=2026-11-11';
+function label(h){return (h%12||12)+(h<12?' AM':' PM');}
+fetch(url).then(function(r){return r.json();}).then(function(j){
+  var d=j.hourly,out='';
+  for(var h=5;h<=10;h++){
+    var t=Math.round(d.temperature_2m[h]),p=d.precipitation[h],pp=d.precipitation_probability[h];
+    out+='<div class="item"><span class="name">'+label(h)+'</span><span class="dots"></span><span class="price">'+t+'°F</span></div>'+
+        '<span class="note rain" style="margin:-8px 0 6px">'+(p>0?'🌧 ':'')+'precip '+p.toFixed(2)+' in · '+pp+'% chance</span>';
+  }
+  menu.innerHTML=out;
+}).catch(function(){
+  menu.innerHTML='<div class="msg">Specials board is blank right now —<br>the forecast feed could not be reached.<br>Please reload in a moment.</div>';
+});
+})();
+</script>
+</body></html>
