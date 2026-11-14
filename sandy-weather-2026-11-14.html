@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mixing Desk Forecast — Midvale, UT · Nov 14, 2026</title>
+<style>
+body{margin:0;min-height:100vh;background:#1b1d22;display:flex;justify-content:center;padding:24px 12px;font-family:"Helvetica Neue",Arial,sans-serif;color:#d8dbe0}
+.desk{width:100%;max-width:760px;background:linear-gradient(#2c3038,#23262c);border:2px solid #3b404a;border-radius:10px;padding:18px;box-shadow:0 20px 40px #000a}
+h1{margin:0;font-size:18px;letter-spacing:.2em;text-transform:uppercase;color:#f2b84b}
+.sub{font-size:12px;color:#8b919c;margin:4px 0 16px}
+.strips{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.strip{background:#171a1f;border:1px solid #3b404a;border-radius:6px;padding:10px 6px;text-align:center}
+.ch{font-size:11px;color:#8b919c;letter-spacing:.15em}
+.time{font-size:15px;font-weight:700;margin:2px 0 8px}
+.track{position:relative;height:150px;width:10px;margin:0 auto;background:#000;border-radius:5px;box-shadow:inset 0 0 4px #000}
+.cap{position:absolute;left:50%;width:34px;height:20px;margin-left:-17px;background:linear-gradient(#e9ecef,#9aa0a8);border-radius:3px;border-top:3px solid #f2b84b;box-shadow:0 3px 5px #000a}
+.read{font-size:22px;font-weight:700;color:#f2b84b;margin-top:8px}
+.vu{display:flex;gap:2px;justify-content:center;margin-top:8px}
+.vu i{width:6px;height:10px;background:#2a3d2a}
+.vu i.on{background:#4ade80}
+.pr{font-size:11px;color:#8b919c;margin-top:4px}
+.note{margin-top:14px;font-size:11px;color:#8b919c;border-top:1px solid #3b404a;padding-top:10px}
+@media(max-width:560px){.strips{grid-template-columns:repeat(3,1fr)}}
+</style></head><body>
+<div class="desk">
+<h1>Forecast Console · Midvale, UT 84047</h1>
+<div class="sub">Saturday, Nov 14, 2026 · Ch.1–6 = 5 AM–10 AM · Fader = temperature (°F) · Meter = precipitation</div>
+<div class="strips" id="s"></div>
+<div class="note">Values shown are seasonal-typical estimates: live weather feeds were unreachable when this page was generated.</div>
+</div>
+<script>
+var d=[[5,33,0],[6,32,0],[7,32,0],[8,34,0],[9,38,0],[10,42,0]],h='';
+d.forEach(function(r,i){var pos=100-((r[1]-20)/40*100);
+var vu='';for(var k=0;k<8;k++)vu+='<i'+(k<r[2]*8?' class="on"':'')+'></i>';
+h+='<div class="strip"><div class="ch">CH '+(i+1)+'</div><div class="time">'+r[0]+' AM</div><div class="track"><div class="cap" style="top:calc('+pos+'% - 10px)"></div></div><div class="read">'+r[1]+'°</div><div class="vu">'+vu+'</div><div class="pr">'+r[2].toFixed(2)+' in</div></div>';});
+document.getElementById('s').innerHTML=h;
+</script></body></html>
