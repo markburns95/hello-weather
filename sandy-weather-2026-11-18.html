@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RISO WEATHER ZINE — Midvale, UT · Nov 18, 2026</title>
+<style>
+:root{--pink:#ff48b0;--blue:#0078bf;--paper:#f3ecd9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--blue);font-family:"Courier New",monospace;padding:16px;
+background-image:radial-gradient(#0078bf14 1px,transparent 1px);background-size:5px 5px}
+.zine{max-width:760px;margin:0 auto}
+h1{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(40px,12vw,96px);line-height:.9;margin:0;text-transform:uppercase;
+color:var(--pink);mix-blend-mode:multiply;text-shadow:5px 4px 0 var(--blue)}
+.sub{display:inline-block;background:var(--blue);color:var(--paper);padding:2px 8px;margin:10px 0 18px;transform:rotate(-1.5deg);font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:14px}
+.card{border:3px solid var(--blue);padding:10px;background:#ffffff55;position:relative;mix-blend-mode:multiply}
+.card:nth-child(even){transform:rotate(1.2deg);border-color:var(--pink);color:var(--pink)}
+.card:nth-child(odd){transform:rotate(-1deg)}
+.hr{font-family:Impact,sans-serif;font-size:22px}
+.t{font-family:Impact,sans-serif;font-size:44px;line-height:1;margin:6px 0;position:relative}
+.t::after{content:attr(data-v);position:absolute;left:3px;top:2px;color:var(--pink);opacity:.5;mix-blend-mode:multiply}
+.card:nth-child(even) .t::after{color:var(--blue)}
+.bar{height:10px;border:2px solid currentColor;margin-top:6px}
+.bar i{display:block;height:100%;background:currentColor;width:0}
+.p{font-size:13px;margin-top:4px}
+#msg{margin-top:20px;padding:10px;border:3px dashed var(--pink);color:var(--pink);font-weight:bold}
+footer{margin-top:24px;font-size:12px;opacity:.8}
+</style></head><body><div class="zine">
+<h1>Morning<br>Weather!</h1>
+<div class="sub">ISSUE No. 322 · MIDVALE, UT 84047 · WED NOV 18, 2026 · 5–10 AM</div>
+<div class="grid" id="grid"></div>
+<div id="msg">Fetching fresh ink from the forecast press…</div>
+<footer>Printed in two spot colors (fluorescent pink + blue). Misregistration is a feature. Data: Open-Meteo, loaded live in your browser.</footer>
+</div>
+<script>
+const grid=document.getElementById('grid'),msg=document.getElementById('msg');
+
+for(let h=5;h<=10;h++){grid.insertAdjacentHTML('beforeend',`<div class="card" id="h${h}"><div class="hr">${h} AM</div><div class="t" data-v="--°">--°</div><div class="p">Precip: --</div><div class="bar"><i></i></div></div>`)}
+fetch('https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.90&hourly=temperature_2m,precipitation_probability,precipitation&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date=2026-11-18&end_date=2026-11-18')
+.then(r=>r.json()).then(j=>{const d=j.hourly;
+for(let h=5;h<=10;h++){const c=document.getElementById('h'+h),t=Math.round(d.temperature_2m[h])+'°F';
+const t_=c.querySelector('.t');t_.textContent=t;t_.dataset.v=t;
+c.querySelector('.p').textContent=`Precip: ${d.precipitation_probability[h]}% · ${d.precipitation[h]}"`;
+c.querySelector('.bar i').style.width=d.precipitation_probability[h]+'%'}
+msg.style.display='none'}).catch(()=>{msg.textContent='The press jammed — could not load the forecast. Try reloading.'});
+</script></body></html>
