@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bubble Sheet Forecast — Midvale, UT · Nov 20, 2026</title>
+<style>
+:root{--paper:#fbe9e7;--ink:#c2185b;--pencil:#2b2b2b}
+@media(prefers-color-scheme:dark){:root{--paper:#2a1d22;--ink:#f48fb1;--pencil:#e8e8e8}}
+body{margin:0;background:var(--paper);color:var(--ink);font:13px/1.35 "Courier New",monospace;padding:20px 14px}
+.sheet{max-width:680px;margin:0 auto;border:2px solid var(--ink);padding:14px;position:relative}
+.sheet:before,.sheet:after{content:"";position:absolute;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 20px)}
+.sheet:before{top:-12px}.sheet:after{bottom:-12px}
+h1{margin:0 0 4px;font-size:16px;letter-spacing:.15em}
+.note{margin:0 0 12px;font-size:12px}
+.row{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:8px 0;border-top:1px dashed var(--ink)}
+.q{font-weight:bold}
+.lbl{font-size:11px;margin-bottom:3px}
+.bubbles{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.b{width:22px;height:15px;border:1.5px solid var(--ink);border-radius:50%;font-size:9px;text-align:center;line-height:13px;box-sizing:border-box}
+.b.on{background:var(--pencil);color:var(--paper);border-color:var(--pencil);box-shadow:0 0 0 1px var(--paper) inset}
+.val{font-size:11px;margin-left:6px;color:var(--pencil)}
+#msg{margin-top:10px;font-size:12px}
+</style></head><body>
+<div class="sheet">
+<h1>FORM 84047-W · USE NO. 2 PENCIL ONLY</h1>
+<p class="note">MIDVALE, UT · FRIDAY NOV 20, 2026 · 5 AM–10 AM · Fill in bubbles completely.</p>
+<div id="grid"></div>
+<div id="msg">Scanning sheet…</div>
+</div>
+<script>
+const grid=document.getElementById('grid'),msg=document.getElementById('msg');
+const bub=(label,on,max,txt)=>{let s='';for(let i=0;i<=max;i++)s+=`<span class="b${i===on?' on':''}">${i}</span>`;return `<div class="lbl">${label}<span class="val">${txt}</span></div><div class="bubbles">${s}</div>`};
+fetch('https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.90&hourly=temperature_2m,precipitation_probability,precipitation&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date=2026-11-20&end_date=2026-11-20')
+.then(r=>r.json()).then(j=>{const d=j.hourly;let h='';
+for(let i=5;i<=10;i++){const t=Math.round(d.temperature_2m[i]),p=d.precipitation_probability[i];
+const tens=Math.floor(Math.abs(t)/10),ones=Math.abs(t)%10;
+h+=`<div class="row"><div class="q">Q${i-4}.<br>${i} AM</div><div>`+
+bub('TEMP °F — tens digit'+(t<0?' (NEG)':''),tens,9,'')+
+bub('TEMP °F — ones digit',ones,9,`= ${t}°F`)+
+bub('PRECIP CHANCE (tens of %)',Math.min(10,Math.round(p/10)),10,`${p}% · ${d.precipitation[i]}"`)+
+`</div></div>`}
+grid.innerHTML=h;msg.textContent='SCAN COMPLETE. Data: Open-Meteo.'})
+.catch(()=>{msg.textContent='SCAN ERROR: sheet jammed. Reload to retry.'});
+</script></body></html>
