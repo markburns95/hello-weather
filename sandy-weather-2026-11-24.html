@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midvale Weather · Pocket Synth</title>
+<style>
+:root{--body:#e8e4da;--ink:#222;--orange:#ff5a1f;--teal:#12a594;--lcd:#c9d6a5;--lcdink:#2b3320}
+*{box-sizing:border-box}
+body{margin:0;background:#bdb8ab;font-family:"Helvetica Neue",Arial,sans-serif;color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.unit{width:100%;max-width:680px;background:var(--body);border-radius:18px;padding:20px;box-shadow:0 2px 0 #fff inset,0 18px 40px #0004,0 0 0 3px #cfcabd}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.logo{font-weight:900;letter-spacing:.25em;font-size:.9rem}
+.logo b{color:var(--orange)}
+.led{width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 8px var(--orange);animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.lcd{background:var(--lcd);color:var(--lcdink);border-radius:8px;padding:12px 14px;font-family:"Courier New",monospace;box-shadow:inset 0 3px 8px #0005;margin-bottom:18px}
+.lcd small{opacity:.7;display:block;letter-spacing:.1em}
+.lcd big{font-size:1.5rem;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.ch{display:flex;flex-direction:column;align-items:center;gap:8px}
+.knob{width:100%;max-width:70px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#d9d4c6 60%,#b9b4a5);box-shadow:0 4px 0 #9d988a,0 6px 10px #0004;position:relative}
+.knob i{position:absolute;left:50%;top:8%;width:4px;height:32%;margin-left:-2px;background:var(--orange);border-radius:2px;transform-origin:50% 156%;transform:rotate(var(--a,-135deg));transition:transform 1s cubic-bezier(.3,1.6,.5,1)}
+.val{font-family:"Courier New",monospace;font-weight:bold;font-size:1rem}
+.lab{font-size:.7rem;letter-spacing:.12em;color:#666}
+.meter{width:100%;height:56px;background:#d1ccbe;border-radius:6px;position:relative;box-shadow:inset 0 2px 4px #0003;overflow:hidden}
+.meter i{position:absolute;bottom:0;left:0;right:0;background:var(--teal);height:var(--h,0%);transition:height 1s ease-out}
+.pad{background:#dcd7c9;border-radius:6px;padding:4px 0;font-size:.7rem;font-weight:bold;width:100%;text-align:center;box-shadow:0 3px 0 #a9a496}
+.status{margin-top:16px;font-size:.75rem;color:#666;font-family:"Courier New",monospace}
+@media(max-width:480px){.grid{gap:4px}.val{font-size:.8rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<main class="unit" aria-label="Weather pocket synth">
+<div class="top"><div class="logo">POCKET<b>·</b>WX</div><div class="led" aria-hidden="true"></div></div>
+<div class="lcd"><small>MIDVALE UT 84047 · <span id="date">2026-11-24</span></small><big id="lcd">LOADING…</big></div>
+<div class="grid" id="grid"></div>
+<div class="status" id="status">Tuning in…</div>
+</main>
+<script>
+const DATE="2026-11-24",el=id=>document.getElementById(id);
+fetch("https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.90&hourly=temperature_2m,precipitation,precipitation_probability&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date="+DATE+"&end_date="+DATE)
+.then(r=>r.json()).then(d=>{
+ const h=d.hourly;let out="";const temps=[];
+ for(let i=5;i<=10;i++)temps.push(h.temperature_2m[i]);
+ const lo=Math.min(...temps)-5,hi=Math.max(...temps)+5;
+ for(let i=5;i<=10;i++){
+  const t=Math.round(h.temperature_2m[i]),p=h.precipitation[i],pr=h.precipitation_probability[i];
+  const ang=-135+270*((h.temperature_2m[i]-lo)/(hi-lo||1));
+  out+=`<div class="ch"><div class="pad">${i} AM</div><div class="knob" style="--a:${ang}deg"><i></i></div><div class="val">${t}°F</div><div class="meter" title="${pr}% chance"><i style="--h:${pr}%"></i></div><div class="val">${p.toFixed(2)}"</div><div class="lab">${pr}% PRECIP</div></div>`;
+ }
+ el("grid").innerHTML=out;
+ el("lcd").textContent="5–10 AM · TEMP / PRECIP";
+ el("status").textContent="Live · Open-Meteo · Mountain time";
+}).catch(()=>{el("lcd").textContent="NO SIGNAL";el("status").textContent="Could not load forecast.";});
+</script></body></html>
