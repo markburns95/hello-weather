@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midvale Weather · Split-Flap Departures</title>
+<style>
+:root{--bg:#15171a;--board:#0c0d0f;--flap:#1d1f23;--txt:#f3c53b;--dim:#8a7a3a;--line:#000}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:"Courier New",monospace;min-height:100vh;padding:16px;display:flex;justify-content:center}
+.board{width:100%;max-width:760px;background:var(--board);border:6px solid #2a2d33;border-radius:10px;padding:18px}
+h1{margin:0 0 4px;font-size:1.1rem;letter-spacing:.3em}
+.sub{color:var(--dim);font-size:.75rem;letter-spacing:.2em;margin-bottom:14px}
+.row{display:grid;grid-template-columns:80px 1fr 90px 110px;gap:8px;align-items:center;margin:6px 0}
+.head{color:var(--dim);font-size:.7rem;letter-spacing:.2em}
+.cell{display:flex;gap:2px;flex-wrap:nowrap}
+.f{width:1.35ch;min-width:18px;height:30px;background:var(--flap);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:bold;position:relative;overflow:hidden;perspective:200px}
+.f::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.f.flip{animation:fl .08s linear infinite}
+@keyframes fl{50%{transform:rotateX(70deg)}}
+.status{font-size:.7rem;color:var(--dim);margin-top:14px;letter-spacing:.1em}
+@media(max-width:520px){.row{grid-template-columns:62px 1fr 74px 84px}.f{min-width:13px;height:26px;font-size:.9rem}}
+</style></head><body>
+<div class="board">
+<h1>MIDVALE · UT 84047</h1>
+<div class="sub">MORNING DEPARTURES · <span id="d">2026-11-25</span></div>
+<div class="row head"><span>TIME</span><span>GATE</span><span>TEMP °F</span><span>PRECIP</span></div>
+<div id="rows"></div>
+<div class="status" id="st">LOADING BOARD…</div>
+</div>
+<script>
+const hours=[5,6,7,8,9,10], rows=document.getElementById('rows'), CH=" ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.%-:/";
+const GATES=["A1","B4","C2","D7","E3","F5"];
+function cell(len){const c=document.createElement('div');c.className='cell';for(let i=0;i<len;i++){const f=document.createElement('div');f.className='f';f.textContent=' ';c.appendChild(f)}return c}
+function setText(c,t){t=t.padEnd(c.children.length).toUpperCase();[...c.children].forEach((f,i)=>{const target=t[i]||' ';let n=0;f.classList.add('flip');const tm=setInterval(()=>{if(++n>6+i*2){clearInterval(tm);f.classList.remove('flip');f.textContent=target}else f.textContent=CH[Math.floor(Math.random()*CH.length)]},60)})}
+const cells=hours.map((h,i)=>{const r=document.createElement('div');r.className='row';const a=cell(5),b=cell(2),t=cell(4),p=cell(6);[a,b,t,p].forEach(x=>r.appendChild(x));rows.appendChild(r);setText(a,String(h).padStart(2,'0')+':00');setText(b,GATES[i]);return{t,p}});
+const st=document.getElementById('st');
+const now=new Date().toLocaleDateString('en-CA',{timeZone:'America/Denver'});
+document.getElementById('d').textContent=now;
+fetch('https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.90&hourly=temperature_2m,precipitation,precipitation_probability&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date='+now+'&end_date='+now)
+.then(r=>r.json()).then(j=>{hours.forEach((h,i)=>{const t=Math.round(j.hourly.temperature_2m[h]);const pr=j.hourly.precipitation[h],pp=j.hourly.precipitation_probability[h];
+setText(cells[i].t,t+'F');setText(cells[i].p,pr>0?pr.toFixed(2)+'IN':pp+'%');});st.textContent='ON TIME · LIVE DATA FROM OPEN-METEO · PRECIP SHOWN AS PROBABILITY WHEN NO ACCUMULATION'})
+.catch(()=>{cells.forEach(c=>{setText(c.t,'----');setText(c.p,'DELAYED')});st.textContent='DATA FEED UNAVAILABLE · RETRY LATER'});
+</script></body></html>
