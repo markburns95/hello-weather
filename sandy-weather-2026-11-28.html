@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Departures Board — Midvale, UT · Nov 28, 2026</title>
+<style>
+:root{--bg:#0b0c0e;--panel:#15171b;--tile:#1f2227;--amber:#ffb81c;--white:#f2f2f2;--dim:#6b7078}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--white);font-family:"Courier New",monospace;padding:16px;display:flex;justify-content:center}
+.board{width:100%;max-width:760px;background:var(--panel);border:3px solid #2c3036;border-radius:10px;padding:18px 14px;box-shadow:0 12px 40px #000a}
+h1{margin:0;font-size:1.05rem;letter-spacing:.2em;color:var(--amber);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.sub{color:var(--dim);font-size:.75rem;letter-spacing:.12em;margin:4px 0 14px}
+.hdr,.row{display:grid;grid-template-columns:1.1fr 1.2fr 1.4fr 1.2fr;gap:6px;align-items:center}
+.hdr{color:var(--dim);font-size:.68rem;letter-spacing:.15em;padding:0 2px 6px;border-bottom:1px solid #2c3036}
+.row{padding:8px 0;border-bottom:1px solid #1d2025}
+.cell{display:flex;gap:2px;flex-wrap:nowrap}
+.f{width:1.35em;height:1.9em;background:var(--tile);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--amber);font-weight:bold;font-size:clamp(.8rem,3.4vw,1.25rem);position:relative;overflow:hidden}
+.f::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#000}
+.f.flip{animation:fl .35s ease-in-out}
+@keyframes fl{0%{transform:scaleY(1)}50%{transform:scaleY(.05)}100%{transform:scaleY(1)}}
+.w .f{color:var(--white)}
+.status{margin-top:14px;font-size:.75rem;color:var(--dim);letter-spacing:.1em;min-height:1.2em}
+.status b{color:var(--amber)}
+</style></head><body>
+<main class="board">
+<h1><span>&#9992; DEPARTURES · MIDVALE UT 84047</span><span id="date"></span></h1>
+<div class="sub">GATE: MORNING &nbsp;|&nbsp; TERMINAL TEMPERATURES &amp; PRECIPITATION</div>
+<div class="hdr"><span>DEPART</span><span>TEMP</span><span>PRECIP</span><span>CHANCE</span></div>
+<div id="rows"></div>
+<div class="status" id="status">CONNECTING TO TOWER…</div>
+</main>
+<script>
+const DATE="2026-11-28";
+const hours=[5,6,7,8,9,10];
+const rows=document.getElementById("rows"),st=document.getElementById("status");
+document.getElementById("date").textContent="28 NOV 2026";
+function cell(txt,cls,len){txt=String(txt).toUpperCase().padEnd(len," ");const d=document.createElement("div");d.className="cell "+(cls||"");for(const ch of txt){const f=document.createElement("div");f.className="f";f.textContent=ch===" "?" ":ch;d.appendChild(f)}return d}
+function fmtHr(h){return String(h).padStart(2,"0")+":00"}
+function draw(data){
+  rows.innerHTML="";
+  hours.forEach((h,i)=>{
+    const r=document.createElement("div");r.className="row";
+    r.append(cell(fmtHr(h),"w",5),cell(data?Math.round(data.t[i])+"°F":"--","",5),cell(data?data.p[i].toFixed(2)+" IN":"--","",7),cell(data?(data.c[i]==null?"--":data.c[i]+"%"):"--","",4));
+    rows.appendChild(r);
+    [...r.querySelectorAll(".f")].forEach((f,k)=>setTimeout(()=>f.classList.add("flip"),i*120+k*25));
+  });
+}
+draw(null);
+const url="https://api.open-meteo.com/v1/forecast?latitude=40.62&longitude=-111.89&hourly=temperature_2m,precipitation,precipitation_probability&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=America%2FDenver&start_date="+DATE+"&end_date="+DATE;
+fetch(url).then(r=>r.json()).then(j=>{
+  const H=j.hourly;
+  draw({t:hours.map(h=>H.temperature_2m[h]),p:hours.map(h=>H.precipitation[h]),c:hours.map(h=>H.precipitation_probability?H.precipitation_probability[h]:null)});
+  st.innerHTML="<b>ALL FLIGHTS ON TIME.</b> LIVE DATA VIA OPEN-METEO.";
+}).catch(()=>{st.innerHTML="<b>BOARD OFFLINE.</b> COULD NOT REACH THE WEATHER TOWER — REFRESH TO RETRY."});
+</script>
+</body></html>
